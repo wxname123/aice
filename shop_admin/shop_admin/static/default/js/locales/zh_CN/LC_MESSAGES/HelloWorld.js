@@ -1,1 +1,0 @@
-var G={"Title":"Zero Framework","Hello World!":"世界，你好！"};
