@@ -43,10 +43,7 @@ class Admin extends Base {
     }
 
 
-    public  function  test(){
-        var_dump("abcd") ;
-    }
-    
+
     /**
      * 修改管理员密码
      * @return \think\mixed
