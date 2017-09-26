@@ -41,6 +41,11 @@ class Admin extends Base {
     	$this->assign('list',$list);
         return $this->fetch();
     }
+
+
+    public  function  test(){
+        var_dump("abcd") ;
+    }
     
     /**
      * 修改管理员密码
