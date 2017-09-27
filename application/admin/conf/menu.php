@@ -8,7 +8,7 @@ return	array(
 						array('name'=>'短信模板','act'=>'index','op'=>'SmsTemplate'),
 						//array('name'=>'接口对接','act'=>'index3','op'=>'System'),
 						//array('name'=>'验证码设置','act'=>'index4','op'=>'System'),
-						array('name'=>'自定义导航栏','act'=>'navigationList','op'=>'System'),
+			    			array('name'=>'自定义导航栏','act'=>'navigationList','op'=>'System'),
 						array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 						array('name'=>'清除缓存','act'=>'cleanCache','op'=>'System'),
 						array('name'=>'自提点','act'=>'index','op'=>'Pickup'),
@@ -21,6 +21,11 @@ return	array(
 						array('name'=>'汇款记录','act'=>'remittance','op'=>'User'),
 						//array('name'=>'会员整合','act'=>'integrate','op'=>'User'),
 				)),
+                array('name' => '区域','child' => array(
+                    array('name'=>'区域列表','act'=>'reList','op'=>'Region'),
+//                   array('name'=>'广告位置','act'=>'positionList','op'=>'Ad'),
+                )),
+
 				array('name' => '广告','child' => array(
 						array('name'=>'广告列表','act'=>'adList','op'=>'Ad'),
 						array('name'=>'广告位置','act'=>'positionList','op'=>'Ad'),
