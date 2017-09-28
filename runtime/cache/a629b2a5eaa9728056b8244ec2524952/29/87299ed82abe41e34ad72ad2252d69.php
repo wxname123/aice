@@ -1,3 +1,0 @@
-<?php
-//000000086400[{"goods_name":"\u534e\u4e3a\uff08HUAWEI\uff09 M2 10.0 \u5e73\u677f\u7535\u8111 WiFi \u6708\u5149\u94f6","goods_id":39,"shop_price":"2288.00","market_price":"2388.00","cat_id":191,"parent_id_path":null,"name":null},{"goods_name":"\u8363\u8000X2 \u6807\u51c6\u7248 \u53cc\u5361\u53cc\u5f85\u53cc\u901a \u79fb\u52a8\/\u8054\u901a\u53cc4G 16GB ROM\uff08\u6708\u5149\u94f6\uff09","goods_id":40,"shop_price":"1999.00","market_price":"2099.00","cat_id":191,"parent_id_path":null,"name":null},{"goods_name":"Apple iPhone 6s Plus 16G \u73ab\u7470\u91d1 \u79fb\u52a8\u8054\u901a\u7535\u4fe14G\u624b\u673a","goods_id":1,"shop_price":"6007.00","market_price":"6107.00","cat_id":12,"parent_id_path":null,"name":null}]
-?>

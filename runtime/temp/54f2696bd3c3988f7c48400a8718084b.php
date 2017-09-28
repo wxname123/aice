@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:40:"./application/admin/view2/ad\adList.html";i:1506515209;s:44:"./application/admin/view2/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:44:"./application/admin/view2/region\reList.html";i:1506565625;s:44:"./application/admin/view2/public\layout.html";i:1506391050;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -120,8 +120,8 @@
   <div class="fixed-bar">
     <div class="item-title">
       <div class="subject">
-        <h3>广告列表</h3>
-        <h5>广告索引与管理</h5>
+        <h3>区域列表</h3>
+        <h5>区域索引与管理</h5>
       </div>
     </div>
   </div>
@@ -132,27 +132,26 @@
       <span title="收起提示" id="explanationZoom" style="display: block;"></span>
     </div>
     <ul>
-      <li>只需要点击半透明广告图片即可更换广告.</li>
-      <li>预览广告所在页面中选择更换你的广告</li>      
+      <li>区域管理，由平台操作管理.</li>
     </ul>
   </div>
   <div class="flexigrid">
     <div class="mDiv">
       <div class="ftitle">
-        <h3>广告列表</h3>
+        <h3>区域列表</h3>
         <h5>(共<?php echo $pager->totalRows; ?>条记录)</h5>
       </div>
       <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>	   
-	  <form class="navbar-form form-inline" action="<?php echo U('Ad/adList'); ?>" method="post">
+	  <form class="navbar-form form-inline" action="<?php echo U('Region/reList'); ?>" method="post">
       <div class="sDiv">             
         <div class="sDiv2">
-         <select name="pid" class="form-control">
-              <option value="0">==查看所有==</option>
-              <?php if(is_array($ad_position_list) || $ad_position_list instanceof \think\Collection || $ad_position_list instanceof \think\Paginator): $k = 0; $__LIST__ = $ad_position_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($k % 2 );++$k;?>
-                <option value="<?php echo $item['position_id']; ?>"><?php echo $item['position_name']; ?></option>
-              <?php endforeach; endif; else: echo "" ;endif; ?>                  
-         </select>
-         <input type="text" name="keywords" class="qsbox" placeholder="请输入广告名称">         
+         <!--<select name="pid" class="form-control">-->
+              <!--<option value="0">==省份==</option>-->
+              <!--<?php if(is_array($province_list) || $province_list instanceof \think\Collection || $province_list instanceof \think\Paginator): $k = 0; $__LIST__ = $province_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($k % 2 );++$k;?>-->
+                <!--<option value="<?php echo $item['position_id']; ?>"></option>-->
+              <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
+         <!--</select>-->
+         <input type="text" name="keywords" class="qsbox" placeholder="请输入区域名称">
          <input type="submit" class="btn" value="搜索">
         </div>
       </div>
@@ -167,29 +166,17 @@
                 <div style="width: 24px;"><i class="ico-check"></i></div>
               </th>
               <th align="left" abbr="article_title" axis="col3" class="">
-                <div style="text-align: left; width: 50px;" class="">广告id</div>
+                <div style="text-align: left; width: 50px;" class="">区域id</div>
               </th>
               <th align="left" abbr="ac_id" axis="col4" class="">
-                <div style="text-align: left; width: 200px;" class="">广告位置</div>
+                <div style="text-align: left; width: 200px;" class="">省份</div>
               </th>
               <th align="center" abbr="article_show" axis="col5" class="">
-                <div style="text-align: center; width: 100px;" class="">广告名称</div>
+                <div style="text-align: center; width: 100px;" class="">市</div>
               </th>
               <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 100px;" class="">广告图片</div>
-              </th>     
-              <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 100px;" class="">广告链接</div>
-              </th>     
-              <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 50px;" class="">新窗口</div>
+                <div style="text-align: center; width: 100px;" class="">区</div>
               </th>
-              <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 50px;" class="">显示</div>
-              </th>
-              <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 50px;" class="">排序</div>
-              </th>              
               <th align="center" axis="col1" class="handle">
                 <div style="text-align: center; width: 100px;">操作</div>
               </th>
@@ -203,7 +190,7 @@
     </div>
     <div class="tDiv">
       <div class="tDiv2">
-        <div class="fbutton"><a href="<?php echo U('Ad/ad'); ?>"><div class="add" title="新增广告"><span><i class="fa fa-plus"></i>新增广告</span></div></a></div>
+        <div class="fbutton"><a href="<?php echo U('Ad/ad'); ?>"><div class="add" title="新增区域"><span><i class="fa fa-plus"></i>新增区域</span></div></a></div>
           <div class="fbutton"><a href="<?php echo U('admin/ad/editAd',array('request_url'=>urlencode('home/user/login'))); ?>"><div class="add" title="登录页"><span><i class="fa fa-search"></i>登录页</span></div></a></div>
           <div class="fbutton"><a href="<?php echo U('admin/ad/editAd',array('request_url'=>urlencode('home/index/index'))); ?>"><div class="add" title="首页"><span><i class="fa fa-search"></i>首页</span></div></a></div>
         <div class="fbutton"><a href="<?php echo U('admin/ad/editAd',array('request_url'=>urlencode('mobile/index/index'))); ?>"><div class="add" title="手机首页"><span><i class="fa fa-search"></i>手机首页</span></div></a></div>
@@ -215,70 +202,52 @@
       <div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
         <table>
           <tbody>
-            <?php if(empty($list) || (($list instanceof \think\Collection || $list instanceof \think\Paginator ) && $list->isEmpty())): ?>
+            <?php if(empty($region_list) || (($region_list instanceof \think\Collection || $region_list instanceof \think\Paginator ) && $region_list->isEmpty())): ?>
               <tr>
                 <td class="no-data" align="center" axis="col0" colspan="50">
                   <i class="fa fa-exclamation-circle"></i>没有符合条件的记录
                 </td>
               </tr>
-              <?php else: if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $k=>$vo): ?>
+              <?php else: if(is_array($region_list) || $region_list instanceof \think\Collection || $region_list instanceof \think\Paginator): if( count($region_list)==0 ) : echo "" ;else: foreach($region_list as $k=>$vo): if(is_array($vo) || $vo instanceof \think\Collection || $vo instanceof \think\Paginator): if( count($vo)==0 ) : echo "" ;else: foreach($vo as $k2=>$vo2): if(is_array($vo2) || $vo2 instanceof \think\Collection || $vo2 instanceof \think\Paginator): if( count($vo2)==0 ) : echo "" ;else: foreach($vo2 as $k3=>$vo3): if(is_array($vo3[region]) || $vo3[region] instanceof \think\Collection || $vo3[region] instanceof \think\Paginator): if( count($vo3[region])==0 ) : echo "" ;else: foreach($vo3[region] as $k4=>$vo4): ?>
+
                 <tr>
                   <td class="sign">
                     <div style="width: 24px;"><i class="ico-check"></i></div>
                   </td>
+                  <!--<td align="left" class="">-->
+                    <!--<div style="text-align: left; width: 50px;"><?php echo $vo3[region][0][id]; ?></div>-->
+                  <!--</td>-->
+
                   <td align="left" class="">
-                    <div style="text-align: left; width: 50px;"><?php echo $vo[ad_id]; ?></div>
+                    <div style="text-align: left; width: 50px;"><?php echo $vo4[id]; ?></div>
                   </td>
                   <td align="left" class="">
-                    <div style="text-align: left; width: 200px;"><?php echo $ad_position_list[$vo[pid]][position_name]; ?></div>
+                    <div style="text-align: left; width: 200px;"><?php echo $vo[name]; ?></div>
                   </td>
                   <td align="left" class="">
-                    <div style="text-align: left; width: 100px;"><?php echo $vo['ad_name']; ?></div>
+                    <div style="text-align: left; width: 100px;"><?php echo $vo3[name]; ?></div>
                   </td>
-                  <td align="center" class="">
-                    <div style="text-align: center; width: 100px;"><img src="<?php echo $vo['ad_code']; ?>" width="80px" height="45px"></div>
+                  <td align="left" class="">
+                    <div style="text-align: left; width: 100px;"><?php echo $vo4[name]; ?></div>
                   </td>
-                  <td align="center" class="">
-                    <div style="text-align: center; width: 100px;">
-                      <?php if($vo[target] == 1): ?>
-                        <span class="yes" onClick="changeTableVal('ad','ad_id','<?php echo $vo['ad_id']; ?>','target',this)"><i class="fa fa-check-circle"></i>是</span>
-                        <?php else: ?>
-                        <span class="no" onClick="changeTableVal('ad','ad_id','<?php echo $vo['ad_id']; ?>','target',this)"><i class="fa fa-ban"></i>否</span>
-                      <?php endif; ?>
-                    </div>
-                  </td>
-                  <td align="center" class="">
-                    <div style="text-align: center; width: 100px;">
-                      <?php if($vo[enabled] == 1): ?>
-                        <span class="yes" onClick="changeTableVal('ad','ad_id','<?php echo $vo['ad_id']; ?>','enabled',this)"><i class="fa fa-check-circle"></i>是</span>
-                        <?php else: ?>
-                        <span class="no" onClick="changeTableVal('ad','ad_id','<?php echo $vo['ad_id']; ?>','enabled',this)"><i class="fa fa-ban"></i>否</span>
-                      <?php endif; ?>
-                    </div>
-                  </td>
-                  <td align="center">
-                    <div style="text-align: center; width: 100px;">
-                      <input type="text" onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')"
-                             onblur="changeTableVal('ad','ad_id','<?php echo $vo['ad_id']; ?>','orderby',this)" size="4" value="<?php echo $vo['orderby']; ?>"/>
-                    </div>
-                  </td>
+
                   <td align="center" class="handle">
                     <div style="text-align: center; width: 100px;">
                       <a class="btn red" onClick="delfunc(this)" data-url="<?php echo U('Ad/adHandle'); ?>" data-id="<?php echo $vo['ad_id']; ?>"><i class="fa fa-trash-o"></i>删除</a>
-                      <a href="<?php echo U('Ad/ad',array('act'=>'edit','ad_id'=>$vo['ad_id'])); ?>" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+                      <a href="<?php echo U('Region/region',array('act'=>'edit','region_id'=>$vo4['id'])); ?>" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
                     </div>
                   </td>
                   <td align="" class="" style="width: 100%;">
                     <div>&nbsp;</div>
                   </td>
                 </tr>
-
-              <?php endforeach; endif; else: echo "" ;endif; endif; ?>
+              <?php endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; endif; ?>
           </tbody>
         </table>
-	 <!--分页位置--> 
-    <?php echo $pager->show(); ?> </div>
-
+	 <!--分页位置-->
+        <?php echo $pager->show(); ?>
+        </div>
+        </div>
       </div>       
     </div>    
 </div>
