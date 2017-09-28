@@ -35,7 +35,11 @@ class Ad extends Base{
         $this->assign('position',$position);
         return $this->fetch();
     }
-    
+
+    public function test(){
+        echo "情人" ;
+    }
+
     public function adList(){
         
         delFile(RUNTIME_PATH.'html'); // 先清除缓存, 否则不好预览
