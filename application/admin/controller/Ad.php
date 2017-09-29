@@ -37,7 +37,7 @@ class Ad extends Base{
     }
 
     public function test(){
-        echo "情人" ;
+        echo "情人2222" ;
     }
 
     public function adList(){
