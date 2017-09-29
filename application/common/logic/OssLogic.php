@@ -25,6 +25,7 @@ require_once './vendor/aliyun-oss-php-sdk/autoload.php';
  */
 class OssLogic
 {
+
     static private $initConfigFlag = false;
     static private $accessKeyId = '';
     static private $accessKeySecret = '';
