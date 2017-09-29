@@ -768,6 +768,7 @@ class User extends Base{
         //拿到用户id
         $user_id = $this->user_id  ;
 
+        return  $this->fetch();
     }
 
 

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:42:"./template/pc/rainbow/goods\goodsList.html";i:1506391063;s:40:"./template/pc/rainbow/public\header.html";i:1506391063;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;s:46:"./template/pc/rainbow/public\sidebar_cart.html";i:1506391063;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:42:"./template/pc/rainbow/goods\goodsList.html";i:1506391063;s:40:"./template/pc/rainbow/public\header.html";i:1506673917;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;s:46:"./template/pc/rainbow/public\sidebar_cart.html";i:1506391063;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +25,12 @@
 	<div class="top-hander clearfix">
 		<div class="w1430 pr clearfix">
 			<div class="fl">
-			    <?php if(strtolower(ACTION_NAME) != 'goodsinfo'): ?>
-                      <link rel="stylesheet" href="__STATIC__/css/location.css" type="text/css"><!-- 收货地址，物流运费 -->
-                      <div class="sendaddress pr fl">
-                          <span>送货至：</span>
-                          <!-- <span>深圳<i class="share-a_a1"></i></span>-->
-                          <span>
+				<?php if(strtolower(ACTION_NAME) != 'goodsinfo'): ?>
+					<link rel="stylesheet" href="__STATIC__/css/location.css" type="text/css"><!-- 收货地址，物流运费 -->
+					<div class="sendaddress pr fl">
+						<span>送货至：</span>
+						<!-- <span>深圳<i class="share-a_a1"></i></span>-->
+						<span>
                               <ul class="list1">
                                   <li class="summary-stock though-line">
                                       <div class="dd" style="border-right:0px;width:200px;">
@@ -42,12 +42,11 @@
                                   </li>
                               </ul>
                           </span>
-                      </div>
-                      <script src="__STATIC__/js/location.js"></script>
-                <?php endif; ?>
+					</div>
+					<script src="__STATIC__/js/location.js"></script>
+				<?php endif; ?>
 				<div class="fl nologin">
 					<a class="red" href="<?php echo U('Home/user/login'); ?>">登录</a>
-					<!--<a href="<?php echo U('Home/user/reg'); ?>">注册</a>-->
 				</div>
 				<div class="fl islogin hide">
 					<a class="red userinfo" href="<?php echo U('Home/user/index'); ?>"></a>
@@ -61,31 +60,7 @@
 				<li class="spacer"></li>
 				<li><a target="_blank" href="<?php echo U('Home/User/goods_collect'); ?>">我的收藏</a></li>
 				<li class="spacer"></li>
-				<li>客户服务</li>
-				<li class="spacer"></li>
-				<li><a target="_blank" href="http://aichesong.com/">官方网址</a></li>
-				<!--<li class="spacer"></li>-->
-				<!--<li class="hover-ba-navdh">-->
-					<!--<div class="nav-dh">-->
-						<!--<span>官方网址</span>-->
-						<!--<i class="share-a_a1"></i>-->
-					<!--</div>-->
-
-					<!--<ul class="conta-hv-nav clearfix">-->
-						<!--<li>-->
-							<!--<a href="#">优惠活动</a>-->
-						<!--</li>-->
-						<!--<li>-->
-							<!--<a href="#">预售活动</a>-->
-						<!--</li>-->
-						<!--<li>-->
-							<!--<a href="#">拍卖活动</a>-->
-						<!--</li>-->
-						<!--<li>-->
-							<!--<a href="#">兑换中心</a>-->
-						<!--</li>-->
-					<!--</ul>-->
-				<!--</li>-->
+				<li><a target="_blank" href="<?php echo U('Home/User/agent'); ?>">代理管理中心</a></li>
 			</ul>
 		</div>
 	</div>
@@ -95,20 +70,20 @@
 			<form id="searchForm" name="" method="get" action="<?php echo U('Home/Goods/search'); ?>" class="ecsc-search-form">
 				<input autocomplete="off"name="q" id="q" type="text" value="" class="ecsc-search-input" placeholder="请输入搜索关键字...">
 				<button type="submit" class="ecsc-search-button">搜索</button>
-    			<div class="candidate p">
-                    <ul id="search_list"></ul>
-                </div>
-                <script type="text/javascript">
+				<div class="candidate p">
+					<ul id="search_list"></ul>
+				</div>
+				<script type="text/javascript">
                     ;(function($){
                         $.fn.extend({
                             donetyping: function(callback,timeout){
                                 timeout = timeout || 1e3;
                                 var timeoutReference,
-                                        doneTyping = function(el){
-                                            if (!timeoutReference) return;
-                                            timeoutReference = null;
-                                            callback.call(el);
-                                        };
+                                    doneTyping = function(el){
+                                        if (!timeoutReference) return;
+                                        timeoutReference = null;
+                                        callback.call(el);
+                                    };
                                 return this.each(function(i,el){
                                     var $el = $(el);
                                     $el.is(':input') && $el.on('keyup keypress',function(e){
@@ -165,21 +140,21 @@
                             });
                         }
                     }
-                </script>
+				</script>
 			</form>
 			<div class="keyword clearfix">
 				<?php if(is_array($tpshop_config['hot_keywords']) || $tpshop_config['hot_keywords'] instanceof \think\Collection || $tpshop_config['hot_keywords'] instanceof \think\Paginator): if( count($tpshop_config['hot_keywords'])==0 ) : echo "" ;else: foreach($tpshop_config['hot_keywords'] as $k=>$wd): ?>
-				<a class="key-item" href="<?php echo U('Home/Goods/search',array('q'=>$wd)); ?>" target="_blank"><?php echo $wd; ?></a>
+					<a class="key-item" href="<?php echo U('Home/Goods/search',array('q'=>$wd)); ?>" target="_blank"><?php echo $wd; ?></a>
 				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</div>
 		</div>
 		<div class="u-g-cart fr" id="hd-my-cart">
 			<a href="<?php echo U('Home/Cart/index'); ?>">
-			<div class="c-n fl">
-				<i class="share-shopcar-index"></i>
-				<span>我的购物车</span>
-				<em class="shop-nums" id="cart_quantity"></em>
-			</div>
+				<div class="c-n fl">
+					<i class="share-shopcar-index"></i>
+					<span>我的购物车</span>
+					<em class="shop-nums" id="cart_quantity"></em>
+				</div>
 			</a>
 			<div class="u-fn-cart" id="show_minicart">
 				<div class="minicartContent" id="minicart">
@@ -195,42 +170,40 @@
 			<!--全部商品分类-s-->
 			<div class="dd">
 				<div class="cata-nav" id="cata-nav">
-				<?php if(is_array($goods_category_tree) || $goods_category_tree instanceof \think\Collection || $goods_category_tree instanceof \think\Paginator): $kr = 0; $__LIST__ = $goods_category_tree;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($kr % 2 );++$kr;?>
-					<div class="item">
-						<?php if($v[level] == 1): ?>
-						<div class="item-left">
-							<h3 class="cata-nav-name">
-								<i class="ico ico-nav-<?php echo $kr; ?>"></i>
-								<a href="<?php echo U('Home/Goods/goodsList',array('id'=>$v[id])); ?>" title="<?php echo $v[name]; ?>"><?php echo $v[mobile_name]; ?></a>
-								<!--<a href="" >手机店</a>-->
-							</h3>
-						</div>
-						<?php endif; ?>
-						<div class="cata-nav-layer">
-							<div class="cata-nav-left">
-								<div class="cata-layer-title">
-									<?php if(is_array($v['hot_cate']) || $v['hot_cate'] instanceof \think\Collection || $v['hot_cate'] instanceof \think\Paginator): if( count($v['hot_cate'])==0 ) : echo "" ;else: foreach($v['hot_cate'] as $key=>$hc): ?>
-									<a class="layer-title-item" href=""><?php echo $hc['name']; ?><i class="ico ico-arrow-right">></i></a>
-									<?php endforeach; endif; else: echo "" ;endif; ?>
-									<a class="layer-title-item" href="">手机<i class="ico ico-arrow-right">></i></a>
-									<a class="layer-title-item" href="">电脑<i class="ico ico-arrow-right">></i></a>
+					<?php if(is_array($goods_category_tree) || $goods_category_tree instanceof \think\Collection || $goods_category_tree instanceof \think\Paginator): $kr = 0; $__LIST__ = $goods_category_tree;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($kr % 2 );++$kr;?>
+						<div class="item">
+							<?php if($v[level] == 1): ?>
+								<div class="item-left">
+									<h3 class="cata-nav-name">
+										<i><img src="/public/images/ico.png"></i>
+										<a href="<?php echo U('Home/Goods/goodsList',array('id'=>$v[id])); ?>" title="<?php echo $v[name]; ?>"><?php echo $v[mobile_name]; ?></a>
+										<!--<a href="" >手机店</a>-->
+									</h3>
 								</div>
-								<div class="subitems">
-									<?php if(is_array($v['tmenu']) || $v['tmenu'] instanceof \think\Collection || $v['tmenu'] instanceof \think\Paginator): if( count($v['tmenu'])==0 ) : echo "" ;else: foreach($v['tmenu'] as $k2=>$v2): if($v2[parent_id] == $v['id']): ?>
-										<dl class="clearfix">
-											<!-- id  =  分类id-->
-											<dt><a href="<?php echo U('Home/Goods/goodsList',array('id'=>$v2[id])); ?>" target="_blank"><?php echo $v2[name]; ?></a></dt>
-											<dd class="clearfix">
-												<?php if(is_array($v2['sub_menu']) || $v2['sub_menu'] instanceof \think\Collection || $v2['sub_menu'] instanceof \think\Paginator): if( count($v2['sub_menu'])==0 ) : echo "" ;else: foreach($v2['sub_menu'] as $k3=>$v3): if($v3[parent_id] == $v2['id']): ?>
-													<a href="<?php echo U('Home/Goods/goodsList',array('id'=>$v3[id])); ?>" target="_blank"><?php echo $v3[name]; ?></a>
-													<?php endif; endforeach; endif; else: echo "" ;endif; ?>
-											</dd>
-										</dl>
-									<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+							<?php endif; ?>
+							<div class="cata-nav-layer">
+								<div class="cata-nav-left">
+									<div class="cata-layer-title">
+										<?php if(is_array($v['hot_cate']) || $v['hot_cate'] instanceof \think\Collection || $v['hot_cate'] instanceof \think\Paginator): if( count($v['hot_cate'])==0 ) : echo "" ;else: foreach($v['hot_cate'] as $key=>$hc): ?>
+											<a class="layer-title-item" href=""><?php echo $hc['name']; ?><i class="ico ico-arrow-right">></i></a>
+										<?php endforeach; endif; else: echo "" ;endif; ?>
+									</div>
+									<div class="subitems">
+										<?php if(is_array($v['tmenu']) || $v['tmenu'] instanceof \think\Collection || $v['tmenu'] instanceof \think\Paginator): if( count($v['tmenu'])==0 ) : echo "" ;else: foreach($v['tmenu'] as $k2=>$v2): if($v2[parent_id] == $v['id']): ?>
+												<dl class="clearfix">
+													<!-- id  =  分类id-->
+													<dt><a href="<?php echo U('Home/Goods/goodsList',array('id'=>$v2[id])); ?>" target="_blank"><?php echo $v2[name]; ?></a></dt>
+													<dd class="clearfix">
+														<?php if(is_array($v2['sub_menu']) || $v2['sub_menu'] instanceof \think\Collection || $v2['sub_menu'] instanceof \think\Paginator): if( count($v2['sub_menu'])==0 ) : echo "" ;else: foreach($v2['sub_menu'] as $k3=>$v3): if($v3[parent_id] == $v2['id']): ?>
+																<a href="<?php echo U('Home/Goods/goodsList',array('id'=>$v3[id])); ?>" target="_blank"><?php echo $v3[name]; ?></a>
+															<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+													</dd>
+												</dl>
+											<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+									</div>
 								</div>
-							</div>
-							<div class="advertisement_down">
-								<?php $pid =10+$kr;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1506664800 and end_time > 1506664800 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
+								<div class="advertisement_down">
+									<?php $pid =10+$kr;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1506675600 and end_time > 1506675600 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -269,64 +242,21 @@ foreach($result as $key=>$v3):
         $v3[target] = 0;
     }
     ?>
-								<a href="<?php echo $v3[ad_link]; ?>" <?php if($v3['target'] == 1): ?>target="_blank"<?php endif; ?>>
-									<img class="w-100" src="<?php echo $v3[ad_code]; ?>" title="<?php echo $v3[title]; ?>"/>
-								</a>
-								<?php endforeach; ?>
+										<a href="<?php echo $v3[ad_link]; ?>" <?php if($v3['target'] == 1): ?>target="_blank"<?php endif; ?>>
+										<img class="w-100" src="<?php echo $v3[ad_code]; ?>" title="<?php echo $v3[title]; ?>"/>
+										</a>
+									<?php endforeach; ?>
+								</div>
 							</div>
-							<?php $pid =51;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1506664800 and end_time > 1506664800 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
-if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
-{
-  M("ad_position")->insert(array(
-         "position_id"=>$pid,
-         "position_name"=>CONTROLLER_NAME."页面自动增加广告位 $pid ",
-         "is_open"=>1,
-         "position_desc"=>CONTROLLER_NAME."页面",
-  ));
-  delFile(RUNTIME_PATH); // 删除缓存
-  \think\Cache::clear();  
-}
-
-
-$c = 1- count($result); //  如果要求数量 和实际数量不一样 并且编辑模式
-if($c > 0 && I("get.edit_ad"))
-{
-    for($i = 0; $i < $c; $i++) // 还没有添加广告的时候
-    {
-      $result[] = array(
-          "ad_code" => "/public/images/not_adv.jpg",
-          "ad_link" => "/index.php?m=Admin&c=Ad&a=ad&pid=$pid",
-          "title"   =>"暂无广告图片",
-          "not_adv" => 1,
-          "target" => 0,
-      );  
-    }
-}
-foreach($result as $key=>$az):       
-    
-    $az[position] = $ad_position[$az[pid]]; 
-    if(I("get.edit_ad") && $az[not_adv] == 0 )
-    {
-        $az[style] = "filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5"; // 广告半透明的样式
-        $az[ad_link] = "/index.php?m=Admin&c=Ad&a=ad&act=edit&ad_id=$az[ad_id]";        
-        $az[title] = $ad_position[$az[pid]][position_name]."===".$az[ad_name];
-        $az[target] = 0;
-    }
-    ?>
-							<a href="<?php echo $az[ad_link]; ?>" class="cata-nav-rigth" <?php if($az['target'] == 1): ?>target="_blank"<?php endif; ?>>
-								<img class="w-100" src="<?php echo $az[ad_code]; ?>" title="<?php echo $az[title]; ?>" />
-							</a>
-							<?php endforeach; ?>
 						</div>
-					</div>
 					<?php endforeach; endif; else: echo "" ;endif; ?>
 				</div>
 				<script>
-					$('#cata-nav').find('.item').hover(function () {
-						$(this).addClass('nav-active').siblings().removeClass('nav-active');
-					},function () {
-						$(this).removeClass('nav-active');
-					})
+                    $('#cata-nav').find('.item').hover(function () {
+                        $(this).addClass('nav-active').siblings().removeClass('nav-active');
+                    },function () {
+                        $(this).removeClass('nav-active');
+                    })
 				</script>
 			</div>
 			<!--全部商品分类-e-->
@@ -346,17 +276,17 @@ foreach($result as $key=>$az):
                                     S("sql_".$md5_key,$sql_result_v,86400);
                                 }    
                               foreach($sql_result_v as $k=>$v): ?>
-			<li><a href="<?php echo $v[url]; ?>" <?php if($v[is_new] == 1): ?>target="_blank" <?php endif; ?> ><?php echo $v[name]; ?></a></li>
+				<li><a href="<?php echo $v[url]; ?>" <?php if($v[is_new] == 1): ?>target="_blank" <?php endif; ?> ><?php echo $v[name]; ?></a></li>
 			<?php endforeach; ?>
 		</ul>
 	</div>
 </div>
-	<script>
-		$('#navitems').find('li').eq(0).addClass('selected');
-		$('#navitems').find('li').click(function () {
-			$(this).addClass('selected').siblings().removeClass('selected');
-		});
-	</script>
+<script>
+    $('#navitems').find('li').eq(0).addClass('selected');
+    $('#navitems').find('li').click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+    });
+</script>
 <div class="search-box p">
 	<div class="w1430">
 		<div class="search-path fl">

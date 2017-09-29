@@ -1237,7 +1237,7 @@ function write_html_cache($html){
             foreach($val['p'] as $k=>$v)
                 $filename.='_'.$_GET[$v];
         }
-        $filename.= '.html';
+        $filename.= 'check2.html';
         \think\Cache::set($filename,$html);
         //file_put_contents($filename, $html);
     }
@@ -1266,7 +1266,7 @@ function read_html_cache(){
             foreach($val['p'] as $k=>$v)
                 $filename.='_'.$_GET[$v];
         }
-        $filename.= '.html';
+        $filename.= 'check2.html';
         $html = \think\Cache::get($filename);
         if($html)
         {

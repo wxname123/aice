@@ -129,7 +129,7 @@ function post_form(form_id,subbmit_url){
  */
 function convert_url(url){
    if(url){
-       url = url.replace('.html','');
+       url = url.replace('check.html','');
    }
     return url;
 }
