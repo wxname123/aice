@@ -760,7 +760,17 @@ class User extends Base{
     	}
     	return $this->fetch();
     }
-    
+
+    /*
+     * 提交用户身份信息
+     * */
+    public  function   Check(){
+        //拿到用户id
+        $user_id = $this->user_id  ;
+
+    }
+
+
     public function finished(){
     	if($this->user_id > 0){
             $this->redirect('Home/User/Index');

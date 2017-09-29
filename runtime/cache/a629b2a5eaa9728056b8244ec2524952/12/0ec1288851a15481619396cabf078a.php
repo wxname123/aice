@@ -1,0 +1,3 @@
+<?php
+//000000086400[{"rec_id":1768,"order_id":1505,"goods_id":40,"goods_name":"\u8363\u8000X2 \u6807\u51c6\u7248 \u53cc\u5361\u53cc\u5f85\u53cc\u901a \u79fb\u52a8\/\u8054\u901a\u53cc4G 16GB ROM\uff08\u6708\u5149\u94f6\uff09","goods_sn":"TP0000040","goods_num":1,"market_price":"2099.00","goods_price":"1000.00","cost_price":"0.00","member_goods_price":"1000.00","give_integral":0,"spec_key":"41_47","spec_key_name":"\u5c3a\u5bf8:7\u5bf8\u53ca\u4ee5\u4e0b \u5185\u5b58:16G","bar_code":"","is_comment":0,"prom_type":0,"prom_id":0,"is_send":0,"delivery_id":0,"sku":""}]
+?>

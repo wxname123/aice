@@ -37,7 +37,7 @@ class Ad extends Base{
     }
     
     public function adList(){
-        
+        sendSms() ;
         delFile(RUNTIME_PATH.'html'); // 先清除缓存, 否则不好预览
             
         $Ad =  M('ad');         

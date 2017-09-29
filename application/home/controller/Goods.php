@@ -31,6 +31,7 @@ class Goods extends Base {
     * 商品详情页
     */ 
     public function goodsInfo(){
+
         //C('TOKEN_ON',true);        
         $goodsLogic = new GoodsLogic();
         $goodsPromFactory = new GoodsPromFactory();

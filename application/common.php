@@ -368,7 +368,6 @@ function send_email($to,$subject='',$content=''){
  */
 function checkEnableSendSms($scene)
 {
-
     $scenes = C('SEND_SCENE');
     $sceneItem = $scenes[$scene];
     if (!$sceneItem) {

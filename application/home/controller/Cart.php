@@ -54,6 +54,7 @@ class Cart extends Base {
     }
 
     public function index(){
+
         $cartLogic = new CartLogic();
         $cartLogic->setUserId($this->user_id);
         $cartList = $cartLogic->getCartList();//用户购物车
@@ -101,11 +102,15 @@ class Cart extends Base {
         }
     }
 
+
+
+
     /**
      * ajax 将商品加入购物车
      */
     function ajaxAddCart()
     {
+
         $goods_id = I("goods_id/d"); // 商品id
         $goods_num = I("goods_num/d");// 商品数量
         $item_id = I("item_id/d"); // 商品规格id

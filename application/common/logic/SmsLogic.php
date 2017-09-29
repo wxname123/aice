@@ -32,6 +32,7 @@ class SmsLogic
     /**
      * 发送短信逻辑
      * @param unknown $scene
+     * @param  string $sender    接受者电话号码
      */
     public function sendSms($scene, $sender, $params, $unique_id=0)
     {
@@ -98,7 +99,6 @@ class SmsLogic
             default:
                 $result = ['status' => -1, 'msg' => '不支持的短信平台'];
         }
-        
         return $result;
     }
     

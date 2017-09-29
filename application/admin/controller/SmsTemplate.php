@@ -91,7 +91,6 @@ class SmsTemplate extends Base {
      * 删除订单
      */
    public function delTemplate(){
-       
        $model = M("sms_template");
        $row = $model->where('tpl_id ='.$_GET['id'])->delete();
        $return_arr = array();
@@ -101,7 +100,6 @@ class SmsTemplate extends Base {
            $return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);  
        } 
        return $this->ajaxReturn($return_arr);
-       
    }
 
 }

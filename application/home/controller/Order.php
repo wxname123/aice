@@ -21,6 +21,7 @@ use app\common\logic\UsersLogic;
 use think\Db;
 use think\Page;
 
+
 class Order extends Base {
 
 	public $user_id = 0;
