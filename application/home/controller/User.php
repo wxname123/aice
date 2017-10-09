@@ -766,7 +766,8 @@ class User extends Base{
      * 提交用户身份信息
      * */
     public  function   Check(){
-        //拿到用户id
+
+       //拿到用户id
         $user_id = $this->user_id  ;
         //获取到订单编码
         $good_id =    request()->get('id') ;   //  input('get.')
@@ -793,7 +794,14 @@ class User extends Base{
 //        }
 
         //获取商品编码
-         $good_id =  request()->post('good_id')  ; //input('post.') ;
+         $goods_id =  request()->post('good_id')  ; //input('post.') ;
+        //获取 商品数量
+        $goods_num = request()->post('good_num')  ;
+        //获取 商品item_id
+        $item_id = request()->post('item_id') ;
+
+
+
 
         if(request()->isPost()){
             $post = request()->post() ;
@@ -819,7 +827,12 @@ class User extends Base{
 //             var_dump($backUrl) ; die ;
 
 //            $this->success('图片图片上传成功', $backUrl) ;
-            $this->success('success', 'Order/order_detail', array('id' => $good_id)) ;
+            //手动将商品加入到购物车(需要传入的参数：goods_id, goods_num, item_id)
+
+
+            $this->success('success', 'Cart/index', array('id' => $goods_id)) ;
+
+
 
             $res = M('image')->save($data);
             if($res){

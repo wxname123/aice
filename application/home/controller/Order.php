@@ -108,7 +108,7 @@ class Order extends Base {
      */
     public function order_detail(){
         $id = I('get.id/d');
-        var_dump($id) ; die($id);
+//        var_dump($id) ; die($id);
         $map['order_id'] = $id;
         $map['user_id'] = $this->user_id;
         $order_info = M('order')->where($map)->find();
