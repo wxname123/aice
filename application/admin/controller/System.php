@@ -20,7 +20,6 @@ class System extends Base
             'smtp'      => '邮件设置',
             'water'     => '水印设置',
             'push'      => '推送设置',
-            'oss'       => '对象存储'
         ];		
 		$this->assign('group_list',$group_list);
 		$inc_type =  I('get.inc_type','shop_info');
