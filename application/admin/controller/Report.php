@@ -77,6 +77,24 @@ class Report extends Base{
 		return $this->fetch();
 	}
 
+    //	区代理列表
+    public function area(){
+        $sql = "select a.user_id,a.mobile,from_unixtime(a.reg_time,'%Y-%m-%d') as reg_time,a.nickname ,b.name from __PREFIX__users  a";
+        $sql .=" left join __PREFIX__region b on a.district=b.id  where is_agent = 2  order by reg_time DESC limit 100";
+        $res = DB::cache(true,3600)->query($sql);
+        $this->assign('list',$res);
+        return $this->fetch();
+    }
+
+    //	市代理列表
+    public function agent(){
+        $sql = "select a.user_id,a.mobile,from_unixtime(a.reg_time,'%Y-%m-%d') as reg_time,a.nickname ,b.name from __PREFIX__users  a";
+        $sql .=" left join __PREFIX__region b on a.district=b.id  where is_agent = 1  order by reg_time DESC limit 100";
+        $res = DB::cache(true,3600)->query($sql);
+        $this->assign('list',$res);
+        return $this->fetch();
+    }
+
 	public function saleTop(){
 		$sql = "select goods_name,goods_sn,sum(goods_num) as sale_num,sum(goods_num*goods_price) as sale_amount from __PREFIX__order_goods ";
 		$sql .=" where is_send = 1 group by goods_id order by sale_amount DESC limit 100";

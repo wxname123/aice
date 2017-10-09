@@ -27,30 +27,6 @@ use think\db;
  */
 class UsersLogic extends Model
 {
-    /*
-     * 登陆
-     */
-//    public function login($username,$password){
-//    	$result = array();
-//        if(!$username || !$password)
-//           $result= array('status'=>0,'msg'=>'请填写账号或密码');
-//        $user = M('users')->where("mobile",$username)->whereOr('email',$username)->find();
-//        if(!$user){
-//           $result = array('status'=>-1,'msg'=>'账号不存在!');
-//        }elseif(encrypt($password) != $user['password']){
-//           $result = array('status'=>-2,'msg'=>'密码错误!');
-//        }elseif($user['is_lock'] == 1){
-//           $result = array('status'=>-3,'msg'=>'账号异常已被锁定！！！');
-//        }else{
-//            //查询用户信息之后, 查询用户的登记昵称
-//            $levelId = $user['level'];
-//            $levelName = M("user_level")->where("level_id", $levelId)->getField("level_name");
-//            $user['level_name'] = $levelName;
-//
-//           $result = array('status'=>1,'msg'=>'登陆成功','result'=>$user);
-//        }
-//        return $result;
-//    }
 
 
     public function login($mobile,$password){
@@ -191,14 +167,6 @@ class UsersLogic extends Model
                 $map['is_distribut']  = 1;
             
             $row_id = M('users')->insertGetId($map);
-//			// 会员注册送优惠券
-//			$coupon = M('coupon')->where("send_end_time > ".time()." and ((createnum - send_num) > 0 or createnum = 0) and type = 2")->select();
-//			foreach ($coupon as $key => $val)
-//			{
-//				// 送券
-//				M('coupon_list')->add(array('cid'=>$val['id'],'type'=>$val['type'],'uid'=>$row_id,'send_time'=>time()));
-//				M('Coupon')->where("id", $val['id'])->setInc('send_num'); // 优惠券领取数量加一
-//			}
             $user = M('users')->where("user_id", $row_id)->find();
 			
         } else {
@@ -358,6 +326,45 @@ class UsersLogic extends Model
             
          return ['status' => 1, 'msg' => '获取成功', 'result' => $user];
      }
+
+    /*
+     * 添加区代理用户
+     */
+
+    public function  add_agent($data,$password,$password2){
+        if(empty($data['nickname']))
+            return array('status'=>-1,'msg'=>'请输入用户名');
+
+        //一个用户只能使用一个身份证
+        if(get_user_info($data['id_card'],3))
+            return array('status'=>-1,'msg'=>'账号已存在');
+
+        if(empty($password))
+            return array('status'=>-1,'msg'=>'请输入密码');
+
+        //验证两次密码是否匹配
+        if($password != $password2)
+            return array('status'=>-1,'msg'=>'两次输入密码不一致');
+
+
+        if(empty($data['mobile']))
+            return array('status'=>-1,'msg'=>'请输入手机号');
+
+        if(!$data['id_card'] )
+            return array('status'=>-1,'msg'=>'请输入身份证号');
+
+        if(!preg_match("/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/", $data['id_card'])){
+            return array('status'=>-1,'msg'=>'输入的身份证格式不对！请重新输入');
+        }
+        if(!$data['district'])
+            return array('status'=>-1,'msg'=>'请填选所属区域');
+
+        $user_id=M('users')->insertGetId($data);
+        if($user_id === false)
+            return array('status'=>-1,'msg'=>'注册失败');
+        $user = M('users')->where("user_id", $user_id)->find();
+        return array('status'=>1,'msg'=>'注册成功','result'=>$user);
+    }
      
     /*
      * 获取最近一笔订单
