@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1506685820;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507537667;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -195,9 +195,9 @@
 </style>
 <!--物流配置 css -end-->
 <!--以下是在线编辑器 代码 -->
-<script type="text/javascript" src="__ROOT__/public/plugins/Ueditor/ueditor.config.js"></script>
-<script type="text/javascript" src="__ROOT__/public/plugins/Ueditor/ueditor.all.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="__ROOT__/public/plugins/Ueditor/lang/zh-cn/zh-cn.js"></script>
+<!--<script type="text/javascript" src="__ROOT__/public/plugins/Ueditor/ueditor.config.js"></script>-->
+<!--<script type="text/javascript" src="__ROOT__/public/plugins/Ueditor/ueditor.all.min.js"></script>-->
+<!--<script type="text/javascript" charset="utf-8" src="__ROOT__/public/plugins/Ueditor/lang/zh-cn/zh-cn.js"></script>-->
 <!--以上是在线编辑器 代码  end-->
 <body style="background-color: #FFF; overflow: auto;">
 <div id="append_parent"></div>
@@ -214,27 +214,28 @@
         </ul>
     </div>
     <!--表单数据-->
-    <form method="post" id="addEditGoodsForm">
+    <form method="post"  action="<?php echo U('User/aticleHandle'); ?>" id="addEditGoodsForm">
         <input type="hidden" value="<?php echo \think\Request::instance()->param('is_distribut'); ?>" name="is_distribut" class="input-txt"/>
+        <input type="hidden" value="<?php echo $good_id; ?>" name="good_id" class="input-txt"/>
         <!--通用信息-->
+        <!--驾驶证上传-->
         <div class="ncap-form-default tab_div_1">
 
             <dl class="row">
                 <dt class="tit">
                     <label>驾驶证上传</label>
                 </dt>
-
                 <dd class="opt">
                     <div class="input-file-show">
             <span class="show">
-                <a id="img_a" target="_blank" class="nyroModal" rel="gal" href="<?php echo $goodsInfo['original_img']; ?>">
-                    <i id="img_input_a" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=<?php echo $goodsInfo['original_img']; ?>>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
+                <a id="img_a" target="_blank" class="nyroModal" rel="gal" href="<?php echo $info['license']; ?>">
+                    <i id="img_input_a" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=<?php echo $info['license']; ?>>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
                 </a>
             </span>
                         <span class="type-file-box">
-                <input type="text" id="imagetext" name="original_img" value="<?php echo $goodsInfo['original_img']; ?>" class="type-file-text">
+                <input type="text" id="license" name="license" value="<?php echo $info['license']; ?>" class="type-file-text">
                 <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
-                <input class="type-file-file" onClick="GetUploadify(1,'','goods','img_call_back')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+                <input class="type-file-file" onClick="GetUploadify(1,'','image','img_call_back')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
             </span>
                     </div>
                     <span class="err"></span>
@@ -244,11 +245,117 @@
         </div>
 
 
+        <!--身份证上传-->
+        <div class="ncap-form-default tab_div_1">
+        <dl class="row">
+            <dt class="tit">
+                <label>身份证正面上传</label>
+            </dt>
+
+            <dd class="opt">
+                <div class="input-file-show">
+            <span class="show">
+                <a id="img_b" target="_blank" class="nyroModal" rel="gal" href="<?php echo $info['identi_front']; ?>">
+                    <i id="img_input_b" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=<?php echo $info['identi_front']; ?>>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
+                </a>
+            </span>
+                    <span class="type-file-box">
+                <input type="text" id="identi_front" name="identi_front" value="<?php echo $info['identi_front']; ?>" class="type-file-text">
+                <input type="button" name="button" id="button1-b" value="选择上传..." class="type-file-button">
+                <input class="type-file-file" onClick="GetUploadify(1,'','image','img_call_back_b')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+            </span>
+                </div>
+                <span class="err"></span>
+                <p class="notic">请上传图片格式文件</p>
+            </dd>
+        </dl>
+</div>
+
+        <div class="ncap-form-default tab_div_1">
+            <dl class="row">
+                <dt class="tit">
+                    <label>身份证反面上传</label>
+                </dt>
+
+                <dd class="opt">
+                    <div class="input-file-show">
+            <span class="show">
+                <a id="img_c" target="_blank" class="nyroModal" rel="gal" href="<?php echo $info['identi_back']; ?>">
+                    <i id="img_input_c" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=<?php echo $info['identi_back']; ?>>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
+                </a>
+            </span>
+                        <span class="type-file-box">
+                <input type="text" id="identi_back" name="identi_back" value="<?php echo $info['identi_back']; ?>" class="type-file-text">
+                <input type="button" name="button" id="button1-c" value="选择上传..." class="type-file-button">
+                <input class="type-file-file" onClick="GetUploadify(1,'','image','img_call_back_c')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+            </span>
+                    </div>
+                    <span class="err"></span>
+                    <p class="notic">请上传图片格式文件</p>
+                </dd>
+            </dl>
+        </div>
+
+
+        <!--银行卡上传-->
+        <div class="ncap-form-default tab_div_1">
+            <dl class="row">
+                <dt class="tit">
+                    <label>银行卡正面上传</label>
+                </dt>
+
+                <dd class="opt">
+                    <div class="input-file-show">
+            <span class="show">
+                <a id="img_d" target="_blank" class="nyroModal" rel="gal" href="<?php echo $info['credit_front']; ?>">
+                    <i id="img_input_d" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=<?php echo $info['credit_front']; ?>>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
+                </a>
+            </span>
+                        <span class="type-file-box">
+                <input type="text" id="credit_front" name="credit_front" value="<?php echo $info['credit_front']; ?>" class="type-file-text">
+                <input type="button" name="button" id="button1-d" value="选择上传..." class="type-file-button">
+                <input class="type-file-file" onClick="GetUploadify(1,'','image','img_call_back_d')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+            </span>
+                    </div>
+                    <span class="err"></span>
+                    <p class="notic">请上传图片格式文件</p>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="ncap-form-default tab_div_1">
+            <dl class="row">
+                <dt class="tit">
+                    <label>银行卡反面上传</label>
+                </dt>
+
+                <dd class="opt">
+                    <div class="input-file-show">
+            <span class="show">
+                <a id="img_e" target="_blank" class="nyroModal" rel="gal" href="<?php echo $info['credit_back']; ?>">
+                    <i id="img_input_e" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=<?php echo $info['credit_back']; ?>>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
+                </a>
+            </span>
+                        <span class="type-file-box">
+                <input type="text" id="credit_back" name="credit_back" value="<?php echo $info['credit_back']; ?>" class="type-file-text">
+                <input type="button" name="button" id="button1-e" value="选择上传..." class="type-file-button">
+                <input class="type-file-file" onClick="GetUploadify(1,'','image','img_call_back_e')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+            </span>
+                    </div>
+                    <span class="err"></span>
+                    <p class="notic">请上传图片格式文件</p>
+                </dd>
+            </dl>
+        </div>
+
+
+
         <div class="ncap-form-default">
             <div class="bot">
                 <input type="hidden" name="goods_id" value="<?php echo $goodsInfo['goods_id']; ?>">
                 <input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
-                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="ajax_submit_form('addEditGoodsForm','<?php echo U('Goods/addEditGoods?is_ajax=1'); ?>');">确认提交</a>
+                <!--<a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="ajax_submit_form('addEditGoodsForm','<?php echo U('User/addEditImage?is_ajax=1'); ?>');">确认提交</a>-->
+                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="checkForm()">确认提交</a>
             </div>
         </div>
     </form>
@@ -272,9 +379,71 @@
 
     function img_call_back(fileurl_tmp)
     {
-        $("#imagetext").val(fileurl_tmp);
+        $("#license").val(fileurl_tmp);
         $("#img_a").attr('href', fileurl_tmp);
         $("#img_input_a").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+
+    function img_call_back_b(fileurl_tmp)
+    {
+        $("#identi_front").val(fileurl_tmp);
+        $("#img_b").attr('href', fileurl_tmp);
+        $("#img_input_b").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+
+    function img_call_back_c(fileurl_tmp)
+    {
+        $("#identi_back").val(fileurl_tmp);
+        $("#img_c").attr('href', fileurl_tmp);
+        $("#img_input_c").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+    function img_call_back_d(fileurl_tmp)
+    {
+        $("#credit_front").val(fileurl_tmp);
+        $("#img_d").attr('href', fileurl_tmp);
+        $("#img_input_d").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+
+    function img_call_back_e(fileurl_tmp)
+    {
+        $("#credit_back").val(fileurl_tmp);
+        $("#img_e").attr('href', fileurl_tmp);
+        $("#img_input_e").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+
+    function checkForm(){
+        if($('input[name="license"]').val() == ''){
+            layer.alert("请选择驾驶证图片上传！",{icon:2});
+            return false;
+        }
+
+//        if($('input[name="identi_front"]').val() == ''){
+//            layer.alert("请选择身份证正面照上传！",{icon:2});
+//            return false;
+//        }
+//
+//        if($('input[name="identi_back"]').val() == ''){
+//            layer.alert("请选择身份证反面照上传！",{icon:2});
+//            return false;
+//        }
+//
+//        if($('input[name="credit_front"]').val() == ''){
+//            layer.alert("请选择银行卡正面照上传！",{icon:2});
+//            return false;
+//        }
+//
+//        if($('input[name="credit_back"]').val() == ''){
+//            layer.alert("请选择银行卡反面照上传！",{icon:2});
+//            return false;
+//        }
+
+
+        $('#addEditGoodsForm').submit();
     }
 
 </script>

@@ -38,7 +38,8 @@ function ajax_submit_form(form_id,submit_url){
                 		//});
                 		
                         if(v.status == 1)
-						{							
+						{
+                            //函数用于指示一个对象自身(不包括原型链)是否具有指定名称的属性。如果有，返回true，否则返回false
 							if(v.hasOwnProperty('data')){
 								if(v.data.hasOwnProperty('url')){
 									location.href = v.data.url;

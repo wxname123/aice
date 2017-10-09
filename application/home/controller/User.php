@@ -15,6 +15,7 @@ namespace app\home\controller;
 use app\common\logic\MessageLogic;
 use app\common\logic\UsersLogic;
 use app\common\logic\CartLogic;
+use think\console\Input;
 use think\Page;
 use think\Verify;
 use think\Db;
@@ -767,9 +768,74 @@ class User extends Base{
     public  function   Check(){
         //拿到用户id
         $user_id = $this->user_id  ;
+        //获取到订单编码
+        $good_id =    request()->get('id') ;   //  input('get.')
+//        var_dump($good_id) ; die ;
+        $info = [] ;
+        $this->assign('info', $info) ;
+        $this->assign('good_id', $good_id) ;
 
         return  $this->fetch();
     }
+
+
+    /*
+     * 用户上传图片写入到数据表
+     * */
+    public  function  aticleHandle(){
+//        $url = $this->request->server('HTTP_REFERER') ;
+
+//        if(session('?user')){
+//            $user = session('user') ;
+//            $this->user_id  = $user['user_id'];
+//        }else{
+//            //跳转到登录页面
+//        }
+
+        //获取商品编码
+         $good_id =  request()->post('good_id')  ; //input('post.') ;
+
+        if(request()->isPost()){
+            $post = request()->post() ;
+            $data = [] ;
+            $data['user_id'] = $this->user_id ;
+            if($post['license'] != ""){
+                $data['license'] = $post['license'] ;
+            }
+            if($post['identi_front'] != ""){
+                $data['identi_front'] = $post['identi_front'] ;
+            }
+            if($post['identi_back'] != ""){
+                $data['identi_back'] = $post['identi_back'] ;
+            }
+            if($post['credit_front'] != ""){
+                $data['credit_front'] = $post['credit_front'] ;
+            }
+            if($post['credit_back'] != ""){
+                $data['credit_back'] = $post['credit_back'] ;
+            }
+
+//            $backUrl =  session('backurl') ;
+//             var_dump($backUrl) ; die ;
+
+//            $this->success('图片图片上传成功', $backUrl) ;
+            $this->success('success', 'Order/order_detail', array('id' => $good_id)) ;
+
+            $res = M('image')->save($data);
+            if($res){
+//                //上传图片成功，返回到上一个页面
+
+//                $this->redirect($url);
+                exit ;
+            }
+//            M('image')
+//            var_dump($res) ; die ;
+        }
+
+    }
+
+
+
 
 
     public function finished(){
@@ -1254,4 +1320,7 @@ class User extends Base{
         }
         $this->error("操作失败");
     }
+
+
+
 }

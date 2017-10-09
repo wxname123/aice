@@ -22,6 +22,9 @@ use think\Verify;
 use think\Db;
 use think\Cookie;
 class Goods extends Base {
+
+
+
     public function index(){      
         return $this->fetch();
     }
@@ -79,6 +82,11 @@ class Goods extends Base {
         $this->assign('point_rate',$point_rate);
         return $this->fetch();
     }
+
+
+
+
+
 
     public function activity(){
         $goods_id = input('goods_id/d');//商品id

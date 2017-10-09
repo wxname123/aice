@@ -254,6 +254,7 @@ class Goods extends Base {
     
     
     public function stock_list(){
+
     	$model = M('stock_log');
     	$map = array();
     	$mtype = I('mtype');

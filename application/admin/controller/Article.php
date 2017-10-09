@@ -61,6 +61,7 @@ class Article extends Base {
     }
     
     public function articleList(){
+
         $Article =  M('Article'); 
         $list = array();
         $p = input('p/d', 1);
@@ -91,8 +92,10 @@ class Article extends Base {
         $this->assign('pager',$pager);
         return $this->fetch('articleList');
     }
-    
+
+    //新增文章
     public function article(){
+
         $ArticleCat = new ArticleCatLogic();
  		$act = I('get.act','add');
         $info = array();
@@ -106,7 +109,7 @@ class Article extends Base {
         
         $this->assign('cat_select',$cats);
         $this->assign('cat_select2',$cats2);
-        
+
         $this->assign('act',$act);
         $this->assign('info',$info);
         $this->initEditor();
@@ -178,7 +181,8 @@ class Article extends Base {
         	$this->error("操作失败",U('Admin/Article/categoryList'));
         }
     }
-    
+
+//    文章列表点击“确认提交”
     public function aticleHandle(){
         $data = I('post.');
         $data['content'] = I('content'); // 文章内容单独过滤
