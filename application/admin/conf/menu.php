@@ -8,7 +8,7 @@ return	array(
 						array('name'=>'短信模板','act'=>'index','op'=>'SmsTemplate'),
 						//array('name'=>'接口对接','act'=>'index3','op'=>'System'),
 						//array('name'=>'验证码设置','act'=>'index4','op'=>'System'),
-			    			array('name'=>'自定义导航栏','act'=>'navigationList','op'=>'System'),
+                        array('name'=>'自定义导航栏','act'=>'navigationList','op'=>'System'),
 						array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 						array('name'=>'清除缓存','act'=>'cleanCache','op'=>'System'),
 						array('name'=>'自提点','act'=>'index','op'=>'Pickup'),
@@ -75,29 +75,6 @@ return	array(
 					array('name' => '添加订单', 'act'=>'add_order', 'op'=>'Order'),
 			        array('name' => '订单日志','act'=>'order_log','op'=>'Order'),
 			)),
-			array('name' => '促销','child' => array(
-					array('name' => '抢购管理', 'act'=>'flash_sale', 'op'=>'Promotion'),
-					array('name' => '团购管理', 'act'=>'group_buy_list', 'op'=>'Promotion'),
-					array('name' => '优惠促销', 'act'=>'prom_goods_list', 'op'=>'Promotion'),
-					array('name' => '订单促销', 'act'=>'prom_order_list', 'op'=>'Promotion'),
-					array('name' => '优惠券','act'=>'index', 'op'=>'Coupon'),
-					array('name' => '预售管理','act'=>'pre_sell_list', 'op'=>'Promotion'),
-			)),
-			
-			array('name' => '分销','child' => array(
-					array('name' => '分销商品列表', 'act'=>'goods_list', 'op'=>'Distribut'),
-					array('name' => '分销商列表', 'act'=>'distributor_list', 'op'=>'Distribut'),
-					array('name' => '分销关系', 'act'=>'tree', 'op'=>'Distribut'),
-					array('name' => '分销商等级', 'act'=>'grade_list', 'op'=>'Distribut'),
-					array('name' => '分成日志', 'act'=>'rebate_log', 'op'=>'Distribut'),
-			)),
-	     
-    	    array('name' => '微信','child' => array(
-    	        array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
-    	        array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
-    	        array('name' => '文本回复', 'act'=>'text', 'op'=>'Wechat'),
-    	        //array('name' => '图文回复', 'act'=>'img', 'op'=>'Wechat'),
-    	    )),
 
 			
 			array('name' => '统计','child' => array(
@@ -106,6 +83,8 @@ return	array(
 					array('name' => '会员排行', 'act'=>'userTop', 'op'=>'Report'),
 					array('name' => '销售明细', 'act'=>'saleList', 'op'=>'Report'),
 					array('name' => '会员统计', 'act'=>'user', 'op'=>'Report'),
+                    array('name' => '区代理列表', 'act'=>'area', 'op'=>'Report'),
+                    array('name' => '市代理列表', 'act'=>'agent', 'op'=>'Report'),
 					array('name' => '运营概览', 'act'=>'finance', 'op'=>'Report'),
 					array('name' => '平台支出记录','act'=>'expense_log','op'=>'Report'),
 			)),
