@@ -36,14 +36,18 @@ function get_user_info($user_id_or_name,$type = 0,$oauth=''){
     if($type == 0)
         $map['user_id'] = $user_id_or_name;
     if($type == 1)
-        $map['email'] = $user_id_or_name;
+        $map['id_card'] = $user_id_or_name;
     if($type == 2)
         $map['mobile'] = $user_id_or_name;
-    if($type == 3){
+    if($type== 3)
+        $map['email'] = $user_id_or_name;
+
+    if($type == 4){
         $map['openid'] = $user_id_or_name;
         $map['oauth'] = $oauth;
     }
-    if($type == 4){
+
+    if($type == 5){
         $map['unionid'] = $user_id_or_name;
         $map['oauth'] = $oauth;
     }
