@@ -683,6 +683,116 @@ class User extends Base{
         $this->success('删除成功');
     }
 
+    /**
+     * 代理管理中心
+     */
+    public function agent(){
+        header("Content-type:text/html;charset=utf-8");
+        $user_info =$this->user_id; // 获取用户ID
+        $_Map=[
+            'user_id'=>$user_info,
+//            'is_agent'=>'1'
+        ];
+        $user = M('users')->where($_Map)->find();
+        if(empty($user_info)){
+            $this->error(' 请先登陆',U('Home/User/login'));
+        }
+        if(empty($user)){
+            $this->error('您还不是代理，不能使用该功能',U('Home/Index/index'));
+        }
+        if($user['is_agent']==2){
+            return $this->fetch('area');
+
+        }
+        if($user['is_agent']==1){
+            if(IS_POST){
+                $logic = new UsersLogic();
+                $data = $logic->add_address($this->user_id,0,I('post.'));
+                if($data['status'] != 1)
+                    exit('<script>alert("'.$data['msg'].'");history.go(-1);</script>');
+                $call_back = $_REQUEST['call_back'];
+                echo "<script>parent.{$call_back}('success');</script>";
+                exit(); // 成功 回调closeWindow方法 并返回新增的id
+            }
+            $p = M('region')->where(array('parent_id'=>0,'level'=> 1))->select();
+            $this->assign('province',$p);
+            return $this->fetch();
+        }
+
+    }
+
+    /**
+     * 市代理添加区代理
+     */
+    public function agent_add(){
+        header("Content-type:text/html;charset=utf-8");
+        $user_info =$this->user_id; // 获取用户信息
+        $password = I('post.password');
+        $password2 = I('post.password2');
+        if(IS_POST){
+            $data['nickname']  =   I('post.nickname');
+            $data['mobile']    =   I('post.mobile');
+            $data['id_card']   =   I('post.id_card');
+            $data['password']    =  encrypt( I('post.password'));
+            $data['province']    =   I('post.province');
+            $data['city']         =   I('post.city');
+            $data['district']    =   I('post.district');
+            $data['uid']          =  $user_info;
+            $data['is_agent']    =  2;
+            $data['reg_time']    =time();
+            $data['token'] = md5(time().mt_rand(1,999999999));
+            $data['last_login'] = time();
+        }
+        $logic = new UsersLogic();
+        //区代理
+        $row = $logic->add_agent($data,$password,$password2);
+        exit(json_encode($row));
+    }
+
+    /**
+     * 区代理用户列表
+     */
+    public function user_list(){
+        $user_info =$this->user_id; // 获取用户ID
+        $search_key = trim(I('search_key'));
+
+
+        if(!empty($search_key)){
+            $map['uid']=$user_info;
+            $map['is_agent'] = 0;
+            $map['nickname']=array('like','%'.$search_key.'%');
+            $count = M('users')->where($map)->count();
+            $Page = new Page($count,10);
+            $show = $Page->show();
+            $order_str = "user_id DESC";
+            $area_list = M('users ')->field('user_id,nickname,mobile,reg_time')
+                ->where($map)
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->order($order_str)
+                ->select();
+        }else{
+            $map['uid'] =$user_info;
+            $map['is_agent'] =0;
+            $count = M('users')->where($map)->count();
+            $Page = new Page($count,10);
+
+            $show = $Page->show();
+            $order_str = "user_id DESC";
+            $area_list = M('users ')->field('user_id,nickname,mobile,reg_time')
+                ->where($map)
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->order($order_str)
+                ->select();
+        }
+
+        $this->assign('area_list',$area_list);
+        $this->assign('page',$show);
+
+        return $this->fetch();
+    }
+
+
+
     /*
      * 密码修改
      */
