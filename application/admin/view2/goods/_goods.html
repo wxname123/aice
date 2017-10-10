@@ -145,7 +145,17 @@
                     <span class="err" id="err_goods_sn" style="color:#F00; display:none;"></span>                
                     <p class="notic">如果不填会自动生成</p>
                 </dd>
-            </dl>    
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="record_no">任务数量</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$goodsInfo.mission}" name="mission" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
+                    <span class="err" id="mission" style="color:#F00; display:none;"></span>
+                    <p class="notic">提车需完成的任务数量</p>
+                </dd>
+            </dl>
             <dl class="row">
                 <dt class="tit">
                     <label for="record_no">SPU</label>
