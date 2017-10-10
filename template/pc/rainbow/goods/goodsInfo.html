@@ -218,8 +218,9 @@
                 </div>
                 <div class="standard p">
                     <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
-                    <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart2({$goods.goods_id},1,1);">立即购买</a>
-                    <!--<a id="join_cart_now" class="paybybill"   href="{:U('/Home/User/Check', array('id' => $goods.goods_id))}"    >立即购买</a>-->
+                    <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                    <!--<a id="join_cart_now" class="paybybill"     href="{:U('/Home/User/Check', array('id' => $goods.goods_id))}" >立即购买</a>-->
+                    <!--href="{:U('/Home/User/Check', array('id' => $goods.goods_id))}"                   AjaxAddCart({$goods.goods_id},1,1); -->
                     <a id="join_cart" class="addcar" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,0);"><i class="sk"></i>加入购物车</a>
                     <a id="no_join_cart_now" class="paybybill" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed">立即购买</a>
                     <a id="no_join_cart" class="addcar" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed"><i class="sk"></i>加入购物车</a>
@@ -485,6 +486,27 @@
     var commentType = 1;// 默认评论类型
     var spec_goods_price = {$spec_goods_price|default='null'};//规格库存价格
 
+
+    function  buyClick(){
+            $.ajax({
+                dataType:'json' ,
+                url:'http://localhost/index.php/Home/User/Check/id/1.html' ,
+                type:'post' ,
+                data:{'id' : 1} ,
+//                url:'/index.php?m=Home&c=User&a=Check' ,
+
+                success:function (data) {
+                    window.location.href = "/index.php?m=Home&c=User&a=Check" ;
+//                      if(data.status == 0){
+//
+//                      }else{
+//
+//                      }
+                }
+            });
+//        var a = 1 ;
+//        location.href = "/index.php?m=Home&c=User&a=Check?id="a"";
+    }
 
 
     $(document).ready(function () {

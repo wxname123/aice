@@ -770,13 +770,13 @@ class User extends Base{
        //拿到用户id
         $user_id = $this->user_id  ;
         //获取到订单编码
-        $good_id =    request()->get('id') ;   //  input('get.')
+        $good_id =  request()->get('id') ;   //  input('get.')
 //        var_dump($good_id) ; die ;
         $info = [] ;
         $this->assign('info', $info) ;
         $this->assign('good_id', $good_id) ;
-
-        return  $this->fetch();
+//        $this->redirect('/home/user/check') ;
+        return  $this->fetch() ;
     }
 
 
@@ -784,67 +784,61 @@ class User extends Base{
      * 用户上传图片写入到数据表
      * */
     public  function  aticleHandle(){
-//        $url = $this->request->server('HTTP_REFERER') ;
-
-//        if(session('?user')){
-//            $user = session('user') ;
-//            $this->user_id  = $user['user_id'];
-//        }else{
-//            //跳转到登录页面
-//        }
 
         //获取商品编码
-         $goods_id =  request()->post('good_id')  ; //input('post.') ;
+         $goods_id =  request()->post('id')  ; //input('post.') ;
         //获取 商品数量
         $goods_num = request()->post('good_num')  ;
         //获取 商品item_id
         $item_id = request()->post('item_id') ;
 
 
+//        var_dump($goods_id) ; die ;
 
+            if(request()->isPost()) {
 
-        if(request()->isPost()){
-            $post = request()->post() ;
-            $data = [] ;
-            $data['user_id'] = $this->user_id ;
-            if($post['license'] != ""){
-                $data['license'] = $post['license'] ;
-            }
-            if($post['identi_front'] != ""){
-                $data['identi_front'] = $post['identi_front'] ;
-            }
-            if($post['identi_back'] != ""){
-                $data['identi_back'] = $post['identi_back'] ;
-            }
-            if($post['credit_front'] != ""){
-                $data['credit_front'] = $post['credit_front'] ;
-            }
-            if($post['credit_back'] != ""){
-                $data['credit_back'] = $post['credit_back'] ;
-            }
+                $post = request()->post();
+                $data = [];
+                $data['user_id'] = $this->user_id;
+                if ($post['license'] != "") {
+                    $data['license'] = $post['license'];
+                }
+                if ($post['identi_front'] != "") {
+                    $data['identi_front'] = $post['identi_front'];
+                }
+                if ($post['identi_back'] != "") {
+                    $data['identi_back'] = $post['identi_back'];
+                }
+                if ($post['credit_front'] != "") {
+                    $data['credit_front'] = $post['credit_front'];
+                }
+                if ($post['credit_back'] != "") {
+                    $data['credit_back'] = $post['credit_back'];
+                }
+
 
 //            $backUrl =  session('backurl') ;
 //             var_dump($backUrl) ; die ;
 
 //            $this->success('图片图片上传成功', $backUrl) ;
-            //手动将商品加入到购物车(需要传入的参数：goods_id, goods_num, item_id)
+                //手动将商品加入到购物车(需要传入的参数：goods_id, goods_num, item_id)
 
-
-            $this->success('success', 'Cart/index', array('id' => $goods_id)) ;
-
-
-
-            $res = M('image')->save($data);
-            if($res){
+                $res = M('image')->save($data);
+                if ($res) {
 //                //上传图片成功，返回到上一个页面
-
-//                $this->redirect($url);
-                exit ;
+                    $data = [
+                        'status' => 0,
+                        'msg' => '图片上传成功',
+                    ];
+                    echo json_encode($data, true);
+                } else {
+                    $data = [
+                        'status' => 1,
+                        'msg' => '图片上传失败',
+                    ];
+                    echo json_encode($data, true);
+                }
             }
-//            M('image')
-//            var_dump($res) ; die ;
-        }
-
     }
 
 

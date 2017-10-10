@@ -114,6 +114,11 @@ class Cart extends Base {
         $goods_id = I("goods_id/d"); // 商品id
         $goods_num = I("goods_num/d");// 商品数量
         $item_id = I("item_id/d"); // 商品规格id
+
+//        var_dump($goods_id) ;
+//        var_dump($goods_num) ;
+//        var_dump($item_id) ;
+//        die  ;
         if(empty($goods_id)){
             $this->ajaxReturn(['status'=>0,'msg'=>'请选择要购买的商品','result'=>'']);
         }
@@ -165,7 +170,7 @@ class Cart extends Base {
         $this->assign('cartPriceInfo',$cartPriceInfo);
         return $this->fetch();
     }
-   
+
     /*
      * ajax 获取用户收货地址 用于购物车确认订单页面
      */
