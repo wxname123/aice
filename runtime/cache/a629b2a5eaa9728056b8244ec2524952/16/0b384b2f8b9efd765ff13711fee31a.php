@@ -1,0 +1,3 @@
+<?php
+//000000086400[{"rec_id":1771,"order_id":1508,"goods_id":1,"goods_name":"Apple iPhone 6s Plus 16G \u73ab\u7470\u91d1 \u79fb\u52a8\u8054\u901a\u7535\u4fe14G\u624b\u673a","goods_sn":"TP000000","goods_num":10,"market_price":"6107.00","goods_price":"6008.00","cost_price":"0.00","member_goods_price":"6008.00","give_integral":0,"spec_key":"11_55_102","spec_key_name":"\u7f51\u7edc:4G \u989c\u8272:\u9ed1\u8272 \u5185\u5b58:128G","bar_code":"","is_comment":0,"prom_type":0,"prom_id":0,"is_send":0,"delivery_id":0,"sku":""}]
+?>

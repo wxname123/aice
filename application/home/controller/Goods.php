@@ -23,9 +23,7 @@ use think\Db;
 use think\Cookie;
 class Goods extends Base {
 
-
-
-    public function index(){      
+    public function index(){
         return $this->fetch();
     }
 
@@ -35,7 +33,6 @@ class Goods extends Base {
     */ 
     public function goodsInfo(){
 
-        //C('TOKEN_ON',true);        
         $goodsLogic = new GoodsLogic();
         $goodsPromFactory = new GoodsPromFactory();
         $goods_id = I("get.id/d");

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:42:"./template/pc/rainbow/goods\goodsList.html";i:1506391063;s:40:"./template/pc/rainbow/public\header.html";i:1506673917;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;s:46:"./template/pc/rainbow/public\sidebar_cart.html";i:1506391063;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:42:"./template/pc/rainbow/goods\goodsList.html";i:1506391063;s:40:"./template/pc/rainbow/public\header.html";i:1507629635;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;s:46:"./template/pc/rainbow/public\sidebar_cart.html";i:1506391063;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -203,7 +203,7 @@
 									</div>
 								</div>
 								<div class="advertisement_down">
-									<?php $pid =10+$kr;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507618800 and end_time > 1507618800 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
+									<?php $pid =10+$kr;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507629600 and end_time > 1507629600 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(

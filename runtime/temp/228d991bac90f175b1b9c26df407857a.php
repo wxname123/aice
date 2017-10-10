@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507622953;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507624125;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -406,7 +406,6 @@
         credit_front = $('#credit_front').val();
         credit_back = $('#credit_back').val();
 
-
         $.ajax({
             dataType:'json' ,
             url:'/Home/User/aticleHandle',
@@ -425,7 +424,6 @@
                              location.href = "/index.php?m=Home&c=Cart&a=cart2";
 //                         }
 //                     }) ;
-
                 }else{
                     layer.alert(data.msg, {icon:5}) ;
                 }

@@ -694,15 +694,16 @@ class User extends Base{
 //            'is_agent'=>'1'
         ];
         $user = M('users')->where($_Map)->find();
+
         if(empty($user_info)){
             $this->error(' 请先登陆',U('Home/User/login'));
         }
-        if(empty($user)){
+
+        if(empty($user)  ||  $user['is_agent'] ==  0){
             $this->error('您还不是代理，不能使用该功能',U('Home/Index/index'));
         }
         if($user['is_agent']==2){
             return $this->fetch('area');
-
         }
         if($user['is_agent']==1){
             if(IS_POST){
@@ -904,11 +905,9 @@ class User extends Base{
 
 
 //        var_dump($goods_id) ; die ;
-
+            $data = [];
             if(request()->isPost()) {
-
                 $post = request()->post();
-                $data = [];
                 $data['user_id'] = $this->user_id;
                 if ($post['license'] != "") {
                     $data['license'] = $post['license'];
@@ -932,8 +931,17 @@ class User extends Base{
 
 //            $this->success('图片图片上传成功', $backUrl) ;
                 //手动将商品加入到购物车(需要传入的参数：goods_id, goods_num, item_id)
+                //如果该用户在tp_image 表中已经存在，那么我们只需要更新，不存在才需要插入
+                  // 查询该用户是否存在
+                $imgObj = M('image')->where('user_id' , $this->user_id)->find() ;
+                if($imgObj == NULL ){
+                        //用户不存在
+                    $res = M('image')->save($data);
+                }else{
+                        //用户存在
+                    $res = M('image')->where('user_id',$this->user_id)->save($data);
+                }
 
-                $res = M('image')->save($data);
                 if ($res) {
 //                //上传图片成功，返回到上一个页面
                     $data = [
@@ -950,8 +958,6 @@ class User extends Base{
                 }
             }
     }
-
-
 
 
 
