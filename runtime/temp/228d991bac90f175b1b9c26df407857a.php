@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507537667;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507622953;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -113,6 +113,9 @@
 </script>  
 
 </head>
+
+<script src="__PUBLIC__/js/pc_common.js"></script>
+
 <!--物流配置 css -start-->
 <style>
     ul.group-list {
@@ -352,10 +355,11 @@
 
         <div class="ncap-form-default">
             <div class="bot">
-                <input type="hidden" name="goods_id" value="<?php echo $goodsInfo['goods_id']; ?>">
-                <input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
+                <input type="hidden"  name="goods_id" value="<?php echo $good_id; ?>">
+                <input type="hidden"  name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
                 <!--<a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="ajax_submit_form('addEditGoodsForm','<?php echo U('User/addEditImage?is_ajax=1'); ?>');">确认提交</a>-->
-                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="checkForm()">确认提交</a>
+                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green"  onclick="ConfirmClick()"><i class="sk">确认提交</i></a>
+
             </div>
         </div>
     </form>
@@ -365,6 +369,69 @@
 </div>
 <div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
 <script>
+
+
+    function  ConfirmClick(){
+        if($('input[name="license"]').val() == ''){
+            layer.alert("请选择驾驶证图片上传！",{icon:2});
+            return false;
+        }
+
+        if($('input[name="identi_front"]').val() == ''){
+            layer.alert("请选择身份证正面照上传！",{icon:2});
+            return false;
+        }
+
+        if($('input[name="identi_back"]').val() == ''){
+            layer.alert("请选择身份证反面照上传！",{icon:2});
+            return false;
+        }
+
+        if($('input[name="credit_front"]').val() == ''){
+            layer.alert("请选择银行卡正面照上传！",{icon:2});
+            return false;
+        }
+
+        if($('input[name="credit_back"]').val() == ''){
+            layer.alert("请选择银行卡反面照上传！",{icon:2});
+            return false;
+        }
+
+
+        good_id =  $("input[name='goods_id']").val() ;
+
+        license = $('#license').val();
+        identi_front = $('#identi_front').val();
+        identi_back = $('#identi_back').val();
+        credit_front = $('#credit_front').val();
+        credit_back = $('#credit_back').val();
+
+
+        $.ajax({
+            dataType:'json' ,
+            url:'/Home/User/aticleHandle',
+            data:{'id':good_id ,'license':license,'identi_front':identi_front,'identi_back':identi_back,'credit_front':credit_front ,'credit_back':credit_back },
+            type:'post',
+            success:function (data) {
+                if(data.status == 0){
+//                     $.ajax({
+//                         type : "POST",
+////                         url:"/index.php?m=Home&c=Cart&a=cart2",
+//                         url:"/Home/Cart/cart2",
+////                         data : $('#buy_goods_form').serialize(),// 你的formid 搜索表单 序列化提交
+//                         data : {},// 你的formid 搜索表单 序列化提交
+//                         dataType:'json',
+//                         success:function (data) {
+                             location.href = "/index.php?m=Home&c=Cart&a=cart2";
+//                         }
+//                     }) ;
+
+                }else{
+                    layer.alert(data.msg, {icon:5}) ;
+                }
+            }
+        });
+    }
 
 
 

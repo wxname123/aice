@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:46:"./template/pc/rainbow/goods\open_add_cart.html";i:1506391063;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:46:"./template/pc/rainbow/goods\open_add_cart.html";i:1507620655;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +25,7 @@
                     <div class="conect-title">
                       <span>添加成功</span>
                       <div class="add-cart-btn fn-clear"> 
-                          <a href="javascript:;" onclick="javascript:parent.layer.closeAll('iframe');" class="ui-button ui-button-f80 fl go-shopping">继续购物</a> 
+                          <a href="javascript:;" onclick="javascript:parent.layer.closeAll('iframe');" class="ui-button ui-button-f80 fl go-shopping">继续购物</a>
                           <a href="<?php echo U('Home/Cart/index'); ?>" target="_parent" class="ui-button ui-button-122 fl">去购物车结算</a>
                       </div>
                     </div>
