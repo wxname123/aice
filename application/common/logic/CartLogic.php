@@ -55,6 +55,9 @@ class CartLogic extends Model
         $goodsModel = new Goods();
         $this->goods = $goodsModel::get($goods_id);
     }
+
+
+
     /**
      * 包含一个商品规格模型
      * @param $item_id

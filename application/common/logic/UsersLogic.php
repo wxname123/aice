@@ -53,6 +53,15 @@ class UsersLogic extends Model
 
 
     /*
+    *  根据用户编码获取到该用户是否认证通过的字段
+    *  @param    $user_id   : int    用户编码
+    * */
+    public  function   getUserStatuBy($user_id){
+         $statu =   M('users')->where('user_id', $user_id)->field('statu')->find() ;
+         return  $statu ;
+    }
+
+    /*
      * app端登陆
      */
     public function app_login($username, $password, $capache, $push_id=0)

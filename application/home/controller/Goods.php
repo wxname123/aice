@@ -27,12 +27,10 @@ class Goods extends Base {
         return $this->fetch();
     }
 
-
    /**
     * 商品详情页
     */ 
     public function goodsInfo(){
-
         $goodsLogic = new GoodsLogic();
         $goodsPromFactory = new GoodsPromFactory();
         $goods_id = I("get.id/d");

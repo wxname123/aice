@@ -26,9 +26,30 @@ class User extends Base{
 
 	public $user_id = 0;
 	public $user = array();
-	
+
+	/*
+	 *  _initialize   :    是TP框架独有的
+	 * 当THINKPHP的父类有构造函数而子类没有时，THINKPHP不会去执行子类的_initialize()；
+
+　　   当THINKPHP的父类子类均有构造函数时，要调用父类的构造函数必须使用parent::__construct()-----------------_initialize()同理；
+
+　　   当THINKPHP的子类同时存在__construct构造函数和_initialize()方法，只会执行子类的__construct构造函数
+
+	   子类的_initialize方法自动调用父类的_initialize方法。而php的构造函数construct，如果要调用父类的方法，必须在子类构造函数显示调用parent::__construct()
+	 *
+	 * */
+
     public function _initialize() {      
         parent::_initialize();
+//        $ref  =  $_SERVER['HTTP_REFERER'] ;
+//        $count =  strrpos($ref, '?');
+//        $subStr =   substr($ref, $count+1) ;
+//
+//        if($subStr == 'm=Home&c=Cart&a=index'){
+//             $this->redirect('Home/User/Check') ;
+//             exit ;
+//        }
+
         if(session('?user'))
         {
         	$user = session('user');
@@ -53,6 +74,9 @@ class User extends Base{
         		exit;
         	}
         }
+
+
+
         //用户中心面包屑导航
         $navigate_user = navigate_user();
         $this->assign('navigate_user',$navigate_user);        
@@ -877,7 +901,6 @@ class User extends Base{
      * 提交用户身份信息
      * */
     public  function   Check(){
-
        //拿到用户id
         $user_id = $this->user_id  ;
         //获取到订单编码

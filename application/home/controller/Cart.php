@@ -56,7 +56,17 @@ class Cart extends Base {
     public function index(){
 
         $cartLogic = new CartLogic();
+        $userLogic = new  UsersLogic() ;
         $cartLogic->setUserId($this->user_id);
+        //根据用户编码获取到该用户是否认证通过的字段
+        $statu =   $userLogic->getUserStatuBy($this->user_id) ;
+
+        if($statu != NULL ){
+              $this->assign('statu' , $statu['statu']) ;
+        }else{
+              $this->assign('statu' , 0) ;
+        }
+
         $cartList = $cartLogic->getCartList();//用户购物车
         $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
         $this->assign('userCartGoodsTypeNum', $userCartGoodsTypeNum);
