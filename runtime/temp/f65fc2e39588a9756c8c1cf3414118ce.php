@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:46:"./application/admin/view2/user\authdetail.html";i:1507791718;s:44:"./application/admin/view2/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:46:"./application/admin/view2/user\authdetail.html";i:1507806147;s:44:"./application/admin/view2/public\layout.html";i:1506391050;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -114,14 +114,9 @@
 
 </head>
 
-<link rel="stylesheet" type="text/css" href="__ROOT__/public/static/lib/imagejs/zzsc.css">
-<script type="text/javascript" src="__ROOT__/public/static/lib/imagejs/zooming.js"></script>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
     td{height:40px;line-height:40px; padding-left:20px;}
     .span_1{
         float:left;
@@ -138,6 +133,30 @@
         margin-top:-1px;
         line-height:40px;
     }
+
+
+    /*自适应圆角投影*/
+    .round_shade_box{width:1px; height:1px; font-size:0; display:none; _background:white; _border:1px solid #cccccc;}
+    .round_shade_top{margin:0 12px 0 10px; background:url(../image/zxx_round_shade.png) repeat-x -20px -40px; _background:white; zoom:1;}
+    .round_shade_topleft{width:11px; height:10px; background:url(../image/zxx_round_shade.png) no-repeat 0 0; _background:none; float:left; margin-left:-11px; position:relative;}
+    .round_shade_topright{width:12px; height:10px; background:url(../image/zxx_round_shade.png) no-repeat -29px 0; _background:none; float:right; margin-right:-12px; position:relative;}
+    .round_shade_centerleft{background:url(../image/zxx_round_shade.png) no-repeat 0 -1580px; _background:none;}
+    .round_shade_centerright{background:url(../image/zxx_round_shade.png) no-repeat right -80px; _background:none;}
+    .round_shade_center{font-size:14px; margin:0 12px 0 10px; padding:10px; background:white; letter-spacing:1px; line-height:1.5;}
+    .round_shade_bottom{margin:0 12px 0 11px; background:url(../image/zxx_round_shade.png) repeat-x -20px bottom; _background:white; zoom:1;}
+    .round_shade_bottomleft{width:11px; height:10px; background:url(../image/zxx_round_shade.png) no-repeat 0 -30px; _background:none; float:left; margin-left:-11px; position:relative;}
+    .round_shade_bottomright{width:12px; height:10px; background:url(../image/zxx_round_shade.png) no-repeat -29px -30px; _background:none; float:right; margin-right:-12px; position:relative;}
+    .round_shade_top:after,.round_shade_bottom:after,.zxx_zoom_box:after{display:block; content:"."; height:0; clear:both; overflow:hidden; visibility:hidden;}
+    .round_box_close{padding:2px 5px; font-size:12px; color:#ffffff; text-decoration:none; border:1px solid #cccccc; -moz-border-radius:4px; -webkit-border-radius:4px; background:#000000; opacity:0.8; filter:alpha(opacity=80); position:absolute; right:-5px; top:-5px;}
+    .round_box_close:hover{opacity:0.95; filter:alpha(opacity=95);}
+    /*自适应圆角投影结束*/
+    .zxx_zoom_left{width:45%; float:left; margin-top:20px; border-right:1px solid #dddddd;}
+    .zxx_zoom_left h4{margin:5px 0px 15px 5px; font-size:1.1em;}
+    .small_pic{display:inline-block; width:48%; height:150px; font-size:120px; text-align:center; *display:inline; zoom:1; vertical-align:middle;}
+    .small_pic img{padding:3px; background:#ffffff; border:1px solid #cccccc; vertical-align:middle;}
+    .zxx_zoom_right{width:50%; float:left; margin-top:20px; padding-left:2%;}
+    .zxx_zoom_right h4{margin:5px 0px; font-size:1.1em;}
+    .zxx_zoom_right p.zxx_zoom_word{line-height:1.5; font-size:1.05em; letter-spacing:1px; margin:0 0 35px; padding-top:5px;}
 </style>
 
 
@@ -156,101 +175,229 @@
     </div>
     <form class="form-horizontal" id="user_form" method="post">
         <div class="ncap-form-default">
+
+
             <dl class="row">
                 <dt class="tit">
-                    <label>驾驶证</label>
+                    <label>驾驶证：</label>
                 </dt>
                 <dd class="opt">
-                    <img   id="img11" src="<?php echo $idata['identi_front']; ?>"  style="width:100px;height: 150px"  />
-                    <!--data-action="zoom"-->
+                    <img   id="img11" src="<?php echo $idata['license']; ?>"    />
                 </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label>用户积分</label>
-                </dt>
-                <dd class="opt"><strong class="red"><?php echo $user['pay_points']; ?></strong>&nbsp;积分 </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label>账户余额</label>
-                </dt>
-                <dd class="opt"><strong class="red"><?php echo $user['user_money']; ?></strong>&nbsp;元 </dd>
             </dl>
 
-                <dd class="opt">
-                    <input id="password" name="password" class="input-txt" type="text">
-                    <span class="err"></span>
-                    <p class="notic">留空表示不修改密码</p>
-                </dd>
-            </dl>
+
             <dl class="row">
                 <dt class="tit">
-                    <label for="password2">确认密码</label>
+                    <label>身份证正面照：</label>
                 </dt>
                 <dd class="opt">
-                    <input id="password2" name="password2" class="input-txt" type="text">
-                    <span class="err"></span>
-                    <p class="notic">留空表示不修改密码</p>
+                    <img   id="img12" src="<?php echo $idata['identi_front']; ?>"    />
+                </dd>
+            </dl>
+
+
+            <dl class="row">
+                <dt class="tit">
+                    <label>身份证反面照：</label>
+                </dt>
+                <dd class="opt">
+                    <img   id="img13" src="<?php echo $idata['identi_back']; ?>"   />
                 </dd>
             </dl>
 
             <dl class="row">
                 <dt class="tit">
-                    <label class="qq">QQ</label>
+                    <label>银行卡正面照：</label>
                 </dt>
                 <dd class="opt">
-                    <input id="qq" name="qq" value="<?php echo $user['qq']; ?>" class="input-txt" type="text">
-                    <span class="err"></span> </dd>
+                    <img   id="img14" src="<?php echo $idata['credit_back']; ?>"   />
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>银行卡反面照：</label>
+                </dt>
+                <dd class="opt">
+                    <img   id="img15" src="<?php echo $idata['credit_back']; ?>"    />
+                </dd>
             </dl>
 
-
-
-            <div class="bot"><a href="JavaScript:void(0);" onclick="checkUserUpdate();" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+            <input  hidden="hidden" name="user_id" value="<?php echo $idata['user_id']; ?>">
+            <div class="bot"><a href="JavaScript:void(0);" onclick="AgreeCheck()" class="ncap-btn-big ncap-btn-green">审核通过</a></div>
         </div>
     </form>
 </div>
 
 
-
 <script type="text/javascript">
-    function checkUserUpdate(){
-        var email = $('input[name="email"]').val();
-        var mobile = $('input[name="mobile"]').val();
-        var password = $('input[name="password"]').val();
-        var password2 = $('input[name="password2"]').val();
+//    var  record = false ;
 
-        var error ='';
-        if(password != password2){
-            error += "两次密码不一样\n";
-        }
-        if(!checkEmail(email) && email != ''){
-            error += "邮箱地址有误\n";
-        }
-        if(!checkMobile(mobile) && mobile != ''){
-            error += "手机号码填写有误\n";
-        }
-        if(error){
-            layer.alert(error, {icon: 2});  //alert(error);
-            return false;
-        }
-        $('#user_form').submit();
+
+    function  AgreeCheck(){
+         var  uid =   $('input[name=user_id]').val() ;
+
+        layer.confirm('您确定要通过审核？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+//            layer.close();
+            layer.closeAll() ;
+//            layer.msg('的确很重要', {icon: 1});
+            $.ajax({
+                dataType:'json' ,
+                url:'/Admin/User/agreeCheck',
+                data:{'id' : uid},
+                type:'get',
+                success:function (data) {
+                    if(data.status == 0){
+                        layer.close();
+//                        opener.location.reload() ;
+//                        layer.alert(data.msg, {icon: 6});
+//                        location.reload() ;
+
+                        window.location.href = '/Admin/User/memberAuth' ;
+                    }else if (data.status == 1){
+                        layer.alert(data.msg, {icon: 5});
+                    }else{
+                        layer.alert(data.msg, {icon: 5});
+                    }
+                }
+            });
+        }, function(){
+               //取消
+        });
     }
 
+//    function  imgClic(obj){
+//         var img_id = obj.id ;
+//        //调用我写好的方法，只需要传入一个id
+//        ChangeImg(img_id) ;
+//    }
+
+//    function  ChangeImg(img_id){
+//
+//        var  width =  $("#"+img_id).width() ;
+//        var  height =  $("#"+img_id).height() ;
+//
+//        var b_width = $("#"+img_id).width() * 1.5 ;
+//        var b_height = $("#"+img_id).height() * 1.5 ;
+//
+//
+//
+//        if(b_width > width){
+//
+//                $("#"+img_id).attr('width', b_width) ;
+//
+//
+//            b_width = width ;
+//            record = true ;
+//        }else{
+//
+//                $("#"+img_id).attr('width', width) ;
+//                $("#"+img_id).attr('height', height) ;
+//
+//            b_width = width * 1.5 ;
+//            record = false ;
+//        }
+//    }
+
     $(function () {
+        //先获取到原图片宽高
+         var width =  $('#img11').width()    ;
+         var height =  $('#img11').height() ;
+         //设置到图片属性中
+        var b_width = $('#img11').width() * 1.5 ;
+        var b_height = $('#img11').height() * 1.5 ;
+
+        var width =  $('#img12').width()    ;
+        var height =  $('#img12').height() ;
+        //设置到图片属性中
+        var b_width = $('#img12').width() * 1.5 ;
+        var b_height = $('#img12').height() * 1.5 ;
+
+        var width =  $('#img13').width()    ;
+        var height =  $('#img13').height() ;
+        //设置到图片属性中
+        var b_width = $('#img13').width() * 1.5 ;
+        var b_height = $('#img13').height() * 1.5 ;
+
+        var width =  $('#img14').width()    ;
+        var height =  $('#img14').height() ;
+        //设置到图片属性中
+        var b_width = $('#img14').width() * 1.5 ;
+        var b_height = $('#img14').height() * 1.5 ;
+
+        var width =  $('#img15').width()    ;
+        var height =  $('#img15').height() ;
+        //设置到图片属性中
+        var b_width = $('#img15').width() * 1.5 ;
+        var b_height = $('#img15').height() * 1.5 ;
+
         $('#img11').click(function () {
-            var width = $(this).width();
-            if(width==100)
-            {
-                $(this).width(200);
-                $(this).height(300);
-            }
-            else
-            {
-                $(this).width(100);
-                $(this).height(150);
+            //点击的时候获取到当前的宽高，然后再将其放大
+                    if(b_width > width){
+                        $('#img11').attr('width', b_width) ;
+                        $('#img11').attr('height', b_height) ;
+                        b_width = width ;
+                    }else{
+                        $('#img11').attr('width', width) ;
+                        $('#img11').attr('height', height) ;
+                        b_width = width * 1.5 ;
+                    }
+        });
+
+        $('#img12').click(function () {
+            //点击的时候获取到当前的宽高，然后再将其放大
+            if(b_width > width){
+                $('#img12').attr('width', b_width) ;
+                $('#img12').attr('height', b_height) ;
+                b_width = width ;
+            }else{
+                $('#img12').attr('width', width) ;
+                $('#img12').attr('height', height) ;
+                b_width = width * 1.5 ;
             }
         });
+
+        $('#img13').click(function () {
+            //点击的时候获取到当前的宽高，然后再将其放大
+            if(b_width > width){
+                $('#img13').attr('width', b_width) ;
+                $('#img13').attr('height', b_height) ;
+                b_width = width ;
+            }else{
+                $('#img13').attr('width', width) ;
+                $('#img13').attr('height', height) ;
+                b_width = width * 1.5 ;
+            }
+        });
+
+        $('#img14').click(function () {
+            //点击的时候获取到当前的宽高，然后再将其放大
+            if(b_width > width){
+                $('#img14').attr('width', b_width) ;
+                $('#img14').attr('height', b_height) ;
+                b_width = width ;
+            }else{
+                $('#img14').attr('width', width) ;
+                $('#img14').attr('height', height) ;
+                b_width = width * 1.5 ;
+            }
+        });
+
+        $('#img15').click(function () {
+            //点击的时候获取到当前的宽高，然后再将其放大
+            if(b_width > width){
+                $('#img15').attr('width', b_width) ;
+                $('#img15').attr('height', b_height) ;
+                b_width = width ;
+            }else{
+                $('#img15').attr('width', width) ;
+                $('#img15').attr('height', height) ;
+                b_width = width * 1.5 ;
+            }
+        });
+
     });
 </script>
 </body>

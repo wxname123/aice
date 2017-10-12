@@ -38,6 +38,7 @@ class User extends Base {
         I('email') ? $condition['email'] = I('email') : false;
 //        $sort_order = I('order_by').' '.I('sort');
         $condition['statu'] = 1 ;
+        $condition['review'] = 0 ;
         $sort_order = 'update_time desc' ;
         $model = M('users');
         $count = $model->where($condition)->count();
@@ -59,6 +60,18 @@ class User extends Base {
 
     }
 
+
+    /*
+    * 会员认证
+    * */
+    public  function  memberAuth(){
+        $dataList =  M('users')->where('statu', 1)->where('review',0)->field('user_id, nickname,level, mobile')->select() ;
+        $count = count($dataList);
+//       var_dump($count) ; die ;
+        $this->assign('count', $count) ;
+        $this->assign('mlist', $dataList) ;
+        return  $this->fetch() ;
+    }
 
     /**
      * 会员列表
@@ -121,10 +134,39 @@ class User extends Base {
 //                    $v =   'localhost'  . $v ;
 //                    $idata[$k] = $v ;
 //             }
+             $idata['user_id'] = $uid ;
              $this->assign( 'idata',$idata) ;
         }
 
         return  $this->fetch() ;
+    }
+
+    public  function agreeCheck(){
+        $uid =  request()->get('id') ;
+        if($uid){
+               $res =  M('users')->where(array('user_id' => $uid))->save(array('review' => 1)) ;
+                if($res){
+                    $data = [
+                        'status' => 0 ,
+                        'msg'   =>  '修改成功'
+                    ] ;
+                    echo  json_encode($data , true ) ;
+                }else{
+                    $data = [
+                        'status' => 1 ,
+                        'msg'   =>  '修改失败'
+                    ] ;
+                    echo  json_encode($data , true ) ;
+                }
+        }else{
+            $data = [
+                'status' => 2 ,
+                'msg'   =>  '用户不存在'
+            ] ;
+            echo  json_encode($data , true ) ;
+        }
+
+
     }
 
     /**
@@ -743,17 +785,6 @@ class User extends Base {
         return $this->fetch();
     }
 
-    /*
-     * 会员认证
-     * */
-    public  function  memberAuth(){
 
-       $dataList =  M('users')->where('statu', 1)->field('user_id, nickname,level, mobile')->select() ;
-       $count = count($dataList);
-//       var_dump($count) ; die ;
-       $this->assign('count', $count) ;
-       $this->assign('mlist', $dataList) ;
-       return  $this->fetch() ;
-    }
 
 }
