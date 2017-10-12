@@ -137,8 +137,14 @@
                                 </table>
                             </div>
                             <div class="sc-acti-list ma-to-20 "> <a class="gwc-jxgw" href="javascript:history.go(-1);">继续购物</a>
-                                <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/User/Check')}">去结算</a>
-                                <!--{:U('Home/Cart/cart2')}-->
+
+                                <if condition="($statu == 0)">
+                                    <!--说明该用户没有通过认证-->
+                                    <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/User/Check')}">去结算</a>
+                                <else />
+                                    <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">去结算</a>
+                                </if>
+
                             </div>
                         </notempty>
                         </div>

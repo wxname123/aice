@@ -24,8 +24,8 @@ class Index extends Base {
 
     public function index(){
         $this->pushVersion();        
-        $act_list = session('act_list');
-        $menu_list = getMenuList($act_list);         
+        $act_list = session('act_list');        //   all
+        $menu_list = getMenuList($act_list);
         $this->assign('menu_list',$menu_list);//view
         $admin_info = getAdminInfo(session('admin_id'));
         $order_amount = M('order')->where("order_status=0 and (pay_status=1 or pay_code='cod')")->count();
@@ -36,9 +36,7 @@ class Index extends Base {
     }
 
 
-    public  function  test(){
-        var_dump("abcd") ;
-    }
+
    
     public function welcome(){
     	$this->assign('sys_info',$this->get_sys_info());

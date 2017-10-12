@@ -28,6 +28,38 @@ class User extends Base {
         return $this->fetch();
     }
 
+    /*
+     * 会员认证列表
+     * */
+    public  function ajaxmlist(){
+        // 搜索条件
+        $condition = array();
+        I('mobile') ? $condition['mobile'] = I('mobile') : false;
+        I('email') ? $condition['email'] = I('email') : false;
+//        $sort_order = I('order_by').' '.I('sort');
+        $condition['statu'] = 1 ;
+        $sort_order = 'update_time desc' ;
+        $model = M('users');
+        $count = $model->where($condition)->count();
+        $Page  = new AjaxPage($count,10);
+        //  搜索条件下 分页赋值
+        foreach($condition as $key=>$val) {
+            $Page->parameter[$key]   =   urlencode($val);
+        }
+
+        $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $user_id_arr = get_arr_column($userList, 'user_id');
+
+        $show = $Page->show();
+        $this->assign('userList',$userList);
+        $this->assign('level',M('user_level')->getField('level_id,level_name'));
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('pager',$Page);
+        return $this->fetch();
+
+    }
+
+
     /**
      * 会员列表
      */
@@ -73,6 +105,26 @@ class User extends Base {
         $this->assign('page',$show);// 赋值分页输出
         $this->assign('pager',$Page);
         return $this->fetch();
+    }
+
+    /*
+     * 会员认证信息详情
+     * */
+    public  function  authdetail(){
+        $uid = I('get.id');
+        $model =  M('image') ;
+
+        $idata = $model->where('user_id', $uid)->field('license,identi_front,identi_back,credit_front,credit_back')->find() ;
+
+        if($idata != NULL ){
+//             foreach ($idata as  $k => $v ) {
+//                    $v =   'localhost'  . $v ;
+//                    $idata[$k] = $v ;
+//             }
+             $this->assign( 'idata',$idata) ;
+        }
+
+        return  $this->fetch() ;
     }
 
     /**
@@ -690,4 +742,18 @@ class User extends Base {
     	$this->get_withdrawals_list($status);
         return $this->fetch();
     }
+
+    /*
+     * 会员认证
+     * */
+    public  function  memberAuth(){
+
+       $dataList =  M('users')->where('statu', 1)->field('user_id, nickname,level, mobile')->select() ;
+       $count = count($dataList);
+//       var_dump($count) ; die ;
+       $this->assign('count', $count) ;
+       $this->assign('mlist', $dataList) ;
+       return  $this->fetch() ;
+    }
+
 }

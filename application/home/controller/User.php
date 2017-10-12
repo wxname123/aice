@@ -966,6 +966,9 @@ class User extends Base{
                 }
 
                 if ($res) {
+                    //在用户表中将该用户的statu字段更新为1(已提交)
+                    M('users')->where('user_id', $this->user_id)->save(array('statu' => 1)) ;
+
 //                //上传图片成功，返回到上一个页面
                     $data = [
                         'status' => 0,

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:37:"./template/pc/rainbow/cart\index.html";i:1507621404;s:45:"./template/pc/rainbow/public\sign-header.html";i:1507538854;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:37:"./template/pc/rainbow/cart\index.html";i:1507692798;s:45:"./template/pc/rainbow/public\sign-header.html";i:1507538854;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;}*/ ?>
 <!DOCTYPE html>
 <html id="ng-app">
 <head lang="zh">
@@ -200,8 +200,14 @@
                                 </table>
                             </div>
                             <div class="sc-acti-list ma-to-20 "> <a class="gwc-jxgw" href="javascript:history.go(-1);">继续购物</a>
-                                <a class="gwc-qjs" href="javascript:void(0)" data-url="<?php echo U('Home/User/Check'); ?>">去结算</a>
-                                <!--<?php echo U('Home/Cart/cart2'); ?>-->
+
+                                <?php if(($statu == 0)): ?>
+                                    <!--说明该用户没有通过认证-->
+                                    <a class="gwc-qjs" href="javascript:void(0)" data-url="<?php echo U('Home/User/Check'); ?>">去结算</a>
+                                <?php else: ?>
+                                    <a class="gwc-qjs" href="javascript:void(0)" data-url="<?php echo U('Home/Cart/cart2'); ?>">去结算</a>
+                                <?php endif; ?>
+
                             </div>
                         <?php endif; ?>
                         </div>

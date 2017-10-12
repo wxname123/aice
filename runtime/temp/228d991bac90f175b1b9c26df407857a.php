@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507624125;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\Check.html";i:1507632971;s:40:"./template/pc/rainbow/public\layout.html";i:1506391050;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -396,7 +396,6 @@
             layer.alert("请选择银行卡反面照上传！",{icon:2});
             return false;
         }
-
 
         good_id =  $("input[name='goods_id']").val() ;
 
