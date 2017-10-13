@@ -952,10 +952,35 @@ function confirm_order($id,$user_id = 0){
         return array('status'=>-3,'msg'=>'操作失败');
 
     order_give($order);// 调用送礼物方法, 给下单这个人赠送相应的礼物
+
+    // 查询用户信息
+    $number = M('users ')
+        ->where('user_id', $user_id)
+        ->find();
+    $uid = $number['uid'];
+    //根据用户信息查询上级
+    $num = M('users ')
+        ->where('user_id', $uid)
+        ->find();
+    //用户下单成功之后order_goods表里的商品mission任务减少1
+    if ($num != null) {
+        $arr['a.user_id'] = $num['user_id'];
+        $arr['a.order_status'] = 2;
+        $number_order = M('order a')
+            ->join('order_goods b', 'a.order_id = b.order_id')
+            ->where($arr)
+            ->find();
+        if ($number_order != NULL) {
+            $ui=$num['user_id'];
+            Db::execute('update  tp_order_goods a   LEFT JOIN  tp_order b ON a.order_id = b.order_id  set a.mission = a.mission-1  where b.user_id = '.$ui.' and b.order_status =2 ');
+        }
+    }
+
     //分销设置
     M('rebate_log')->where("order_id", $id)->save(array('status'=>2,'confirm'=>time()));
     return array('status'=>1,'msg'=>'操作成功','url'=>U('Order/order_detail',['id'=>$id]));
 }
+
 
 /**
  * 下单赠送活动：优惠券，积分
