@@ -37,12 +37,10 @@ function AjaxAddCart(goods_id,num,to_catr)
 										  skin: 'layui-layer-rim', //加上边框
 										  area: ['490px', '386px'], //宽高
                                           content:["/index.php?m=Home&c=Goods&a=open_add_cart","no"],
-
                                           success: function(layero, index) {
                                                 layer.iframeAuto(index);
                                         }
 									});
-                                    
 							   }
                         }
                 });     

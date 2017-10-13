@@ -18,32 +18,11 @@
 
 
 
-<style type="text/css">
-    td{height:40px;line-height:40px; padding-left:20px;}
-    .span_1{
-        float:left;
-        margin-left:0px;
-        height:130px;
-        line-height:130px;
-    }
-    .span_1 ul{list-style:none;padding:0px;}
-    .span_1 ul li{
-        border:1px solid #CCC;
-        height:40px;
-        padding:0px 10px;
-        margin-left:-1px;
-        margin-top:-1px;
-        line-height:40px;
-    }
-
-</style>
-
-
 <body style="background-color: #FFF; overflow: auto;">
 <div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
 <div id="append_parent"></div>
 <div id="ajaxwaitid"></div>
-<div class="page">
+<div class="page kePublic">
     <div class="fixed-bar">
         <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
             <div class="subject">
@@ -52,68 +31,80 @@
             </div>
         </div>
     </div>
-    <form class="form-horizontal" id="user_form" method="post">
-
+    <form class="form-horizontal">
 
         <!--效果html开始-->
         <!--图库弹出层 开始-->
-        <!--<div class="mskeLayBg"></div>-->
-        <!--<div class="mskelayBox">-->
-            <!--<div class="mske_html">-->
-            <!--</div>-->
-            <!--<img class="mskeClaose" src="__PUBLIC__/static/lib/ScaleImage/images/mke_close.png" width="27" height="27" />-->
-        <!--</div>-->
-        <!--&lt;!&ndash;图库弹出层 结束&ndash;&gt;-->
+        <div class="mskeLayBg"></div>
+        <div class="mskelayBox" >
+            <div class="mske_html">
+            </div>
+            <img class="mskeClaose" src="__PUBLIC__/static/lib/ScaleImage/images/mke_close.png" width="27" height="27" />
+        </div>
+        <!--图库弹出层 结束-->
+
+        <div class="msKeimgBox"  >
+            <ul >
+                  <li><label>驾驶证：</label></li>
+                    <li style="margin-left: 10%">
+                        <img    src="{$idata.license}"     />
+                        <span class="hidden">
+                            <img src="{$idata.license}"  />
+                        </span>
+                    </li>
+            </ul>
+        </div>
 
 
+        <div class="msKeimgBox">
+            <ul >
+                <li><label>身份证正面照：</label></li>
+                <li style="margin-left: 10%">
+                    <img    src="{$idata.identi_front}"    />
+                    <span class="hidden">
+                            <img src="{$idata.identi_front}"  />
+                        </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="msKeimgBox">
+            <ul >
+                <li><label>身份证反面照：</label></li>
+                <li style="margin-left: 10%">
+                    <img    src="{$idata.identi_back}"   />
+                    <span class="hidden">
+                            <img src="{$idata.identi_back}"  />
+                        </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="msKeimgBox">
+            <ul >
+                <li><label>银行卡正面照：</label></li>
+                <li style="margin-left: 10%">
+                    <img    src="{$idata.credit_front}"    />
+                    <span class="hidden">
+                            <img src="{$idata.credit_front}"  />
+                        </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="msKeimgBox">
+            <ul >
+                <li><label>银行卡反面照：</label></li>
+                <li style="margin-left: 10%">
+                    <img    src="{$idata.credit_back}"    />
+                    <span class="hidden">
+                            <img src="{$idata.credit_back}"   />
+                        </span>
+                </li>
+            </ul>
+        </div>
 
         <div class="ncap-form-default">
-            <dl class="row">
-                <dt class="tit">
-                    <label>驾驶证：</label>
-                </dt>
-                <dd class="opt">
-                    <img   id="img11" src="{$idata.license}"   />
-                </dd>
-            </dl>
-
-
-            <dl class="row">
-                <dt class="tit">
-                    <label>身份证正面照：</label>
-                </dt>
-                <dd class="opt">
-                    <img   id="img12" src="{$idata.identi_front}"    />
-                </dd>
-            </dl>
-
-
-            <dl class="row">
-                <dt class="tit">
-                    <label>身份证反面照：</label>
-                </dt>
-                <dd class="opt">
-                    <img   id="img13" src="{$idata.identi_back}"   />
-                </dd>
-            </dl>
-
-            <dl class="row">
-                <dt class="tit">
-                    <label>银行卡正面照：</label>
-                </dt>
-                <dd class="opt">
-                    <img   id="img14" src="{$idata.credit_back}"   />
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label>银行卡反面照：</label>
-                </dt>
-                <dd class="opt">
-                    <img   id="img15" src="{$idata.credit_back}"    />
-                </dd>
-            </dl>
-
             <input  hidden="hidden" name="user_id" value="{$idata['user_id']}">
             <div class="bot"><a href="JavaScript:void(0);" onclick="AgreeCheck()" class="ncap-btn-big ncap-btn-green">审核通过</a></div>
         </div>
@@ -194,104 +185,104 @@
 
 
 
-    $(function () {
-        //先获取到原图片宽高
-         var width =  $('#img11').width()    ;
-         var height =  $('#img11').height() ;
-         //设置到图片属性中
-        var b_width = $('#img11').width() * 1.5 ;
-        var b_height = $('#img11').height() * 1.5 ;
-
-        var width =  $('#img12').width()    ;
-        var height =  $('#img12').height() ;
-        //设置到图片属性中
-        var b_width = $('#img12').width() * 1.5 ;
-        var b_height = $('#img12').height() * 1.5 ;
-
-        var width =  $('#img13').width()    ;
-        var height =  $('#img13').height() ;
-        //设置到图片属性中
-        var b_width = $('#img13').width() * 1.5 ;
-        var b_height = $('#img13').height() * 1.5 ;
-
-        var width =  $('#img14').width()    ;
-        var height =  $('#img14').height() ;
-        //设置到图片属性中
-        var b_width = $('#img14').width() * 1.5 ;
-        var b_height = $('#img14').height() * 1.5 ;
-
-        var width =  $('#img15').width()    ;
-        var height =  $('#img15').height() ;
-        //设置到图片属性中
-        var b_width = $('#img15').width() * 1.5 ;
-        var b_height = $('#img15').height() * 1.5 ;
-
-        $('#img11').click(function () {
-            //点击的时候获取到当前的宽高，然后再将其放大
-                    if(b_width > width){
-                        $('#img11').attr('width', b_width) ;
-                        $('#img11').attr('height', b_height) ;
-                        b_width = width ;
-                    }else{
-                        $('#img11').attr('width', width) ;
-                        $('#img11').attr('height', height) ;
-                        b_width = width * 1.5 ;
-                    }
-        });
-
-        $('#img12').click(function () {
-            //点击的时候获取到当前的宽高，然后再将其放大
-            if(b_width > width){
-                $('#img12').attr('width', b_width) ;
-                $('#img12').attr('height', b_height) ;
-                b_width = width ;
-            }else{
-                $('#img12').attr('width', width) ;
-                $('#img12').attr('height', height) ;
-                b_width = width * 1.5 ;
-            }
-        });
-
-        $('#img13').click(function () {
-            //点击的时候获取到当前的宽高，然后再将其放大
-            if(b_width > width){
-                $('#img13').attr('width', b_width) ;
-                $('#img13').attr('height', b_height) ;
-                b_width = width ;
-            }else{
-                $('#img13').attr('width', width) ;
-                $('#img13').attr('height', height) ;
-                b_width = width * 1.5 ;
-            }
-        });
-
-        $('#img14').click(function () {
-            //点击的时候获取到当前的宽高，然后再将其放大
-            if(b_width > width){
-                $('#img14').attr('width', b_width) ;
-                $('#img14').attr('height', b_height) ;
-                b_width = width ;
-            }else{
-                $('#img14').attr('width', width) ;
-                $('#img14').attr('height', height) ;
-                b_width = width * 1.5 ;
-            }
-        });
-
-        $('#img15').click(function () {
-            //点击的时候获取到当前的宽高，然后再将其放大
-            if(b_width > width){
-                $('#img15').attr('width', b_width) ;
-                $('#img15').attr('height', b_height) ;
-                b_width = width ;
-            }else{
-                $('#img15').attr('width', width) ;
-                $('#img15').attr('height', height) ;
-                b_width = width * 1.5 ;
-            }
-        });
-
-    });
+//    $(function () {
+//        //先获取到原图片宽高
+//         var width =  $('#img11').width()    ;
+//         var height =  $('#img11').height() ;
+//         //设置到图片属性中
+//        var b_width = $('#img11').width() * 1.5 ;
+//        var b_height = $('#img11').height() * 1.5 ;
+//
+//        var width =  $('#img12').width()    ;
+//        var height =  $('#img12').height() ;
+//        //设置到图片属性中
+//        var b_width = $('#img12').width() * 1.5 ;
+//        var b_height = $('#img12').height() * 1.5 ;
+//
+//        var width =  $('#img13').width()    ;
+//        var height =  $('#img13').height() ;
+//        //设置到图片属性中
+//        var b_width = $('#img13').width() * 1.5 ;
+//        var b_height = $('#img13').height() * 1.5 ;
+//
+//        var width =  $('#img14').width()    ;
+//        var height =  $('#img14').height() ;
+//        //设置到图片属性中
+//        var b_width = $('#img14').width() * 1.5 ;
+//        var b_height = $('#img14').height() * 1.5 ;
+//
+//        var width =  $('#img15').width()    ;
+//        var height =  $('#img15').height() ;
+//        //设置到图片属性中
+//        var b_width = $('#img15').width() * 1.5 ;
+//        var b_height = $('#img15').height() * 1.5 ;
+//
+//        $('#img11').click(function () {
+//            //点击的时候获取到当前的宽高，然后再将其放大
+//                    if(b_width > width){
+//                        $('#img11').attr('width', b_width) ;
+//                        $('#img11').attr('height', b_height) ;
+//                        b_width = width ;
+//                    }else{
+//                        $('#img11').attr('width', width) ;
+//                        $('#img11').attr('height', height) ;
+//                        b_width = width * 1.5 ;
+//                    }
+//        });
+//
+//        $('#img12').click(function () {
+//            //点击的时候获取到当前的宽高，然后再将其放大
+//            if(b_width > width){
+//                $('#img12').attr('width', b_width) ;
+//                $('#img12').attr('height', b_height) ;
+//                b_width = width ;
+//            }else{
+//                $('#img12').attr('width', width) ;
+//                $('#img12').attr('height', height) ;
+//                b_width = width * 1.5 ;
+//            }
+//        });
+//
+//        $('#img13').click(function () {
+//            //点击的时候获取到当前的宽高，然后再将其放大
+//            if(b_width > width){
+//                $('#img13').attr('width', b_width) ;
+//                $('#img13').attr('height', b_height) ;
+//                b_width = width ;
+//            }else{
+//                $('#img13').attr('width', width) ;
+//                $('#img13').attr('height', height) ;
+//                b_width = width * 1.5 ;
+//            }
+//        });
+//
+//        $('#img14').click(function () {
+//            //点击的时候获取到当前的宽高，然后再将其放大
+//            if(b_width > width){
+//                $('#img14').attr('width', b_width) ;
+//                $('#img14').attr('height', b_height) ;
+//                b_width = width ;
+//            }else{
+//                $('#img14').attr('width', width) ;
+//                $('#img14').attr('height', height) ;
+//                b_width = width * 1.5 ;
+//            }
+//        });
+//
+//        $('#img15').click(function () {
+//            //点击的时候获取到当前的宽高，然后再将其放大
+//            if(b_width > width){
+//                $('#img15').attr('width', b_width) ;
+//                $('#img15').attr('height', b_height) ;
+//                b_width = width ;
+//            }else{
+//                $('#img15').attr('width', width) ;
+//                $('#img15').attr('height', height) ;
+//                b_width = width * 1.5 ;
+//            }
+//        });
+//
+//    });
 </script>
 </body>
 </html>

@@ -228,7 +228,10 @@
                 </div>
                 <div class="standard p">
                     <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
+
                     <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+
+
                     <!--<a id="join_cart_now" class="paybybill"     href="{:U('/Home/User/Check', array('id' => $goods.goods_id))}" >立即购买</a>-->
                     <!--href="{:U('/Home/User/Check', array('id' => $goods.goods_id))}"                   AjaxAddCart({$goods.goods_id},1,1); -->
                     <a id="join_cart" class="addcar" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,0);"><i class="sk"></i>加入购物车</a>
