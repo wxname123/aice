@@ -1,16 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * 2015-11-21
- */
+
 namespace app\home\controller; 
 use app\common\logic\MessageLogic;
 use app\common\logic\UsersLogic;
@@ -27,28 +16,10 @@ class User extends Base{
 	public $user_id = 0;
 	public $user = array();
 
-	/*
-	 *  _initialize   :    是TP框架独有的
-	 * 当THINKPHP的父类有构造函数而子类没有时，THINKPHP不会去执行子类的_initialize()；
-
-　　   当THINKPHP的父类子类均有构造函数时，要调用父类的构造函数必须使用parent::__construct()-----------------_initialize()同理；
-
-　　   当THINKPHP的子类同时存在__construct构造函数和_initialize()方法，只会执行子类的__construct构造函数
-
-	   子类的_initialize方法自动调用父类的_initialize方法。而php的构造函数construct，如果要调用父类的方法，必须在子类构造函数显示调用parent::__construct()
-	 *
-	 * */
 
     public function _initialize() {      
         parent::_initialize();
-//        $ref  =  $_SERVER['HTTP_REFERER'] ;
-//        $count =  strrpos($ref, '?');
-//        $subStr =   substr($ref, $count+1) ;
-//
-//        if($subStr == 'm=Home&c=Cart&a=index'){
-//             $this->redirect('Home/User/Check') ;
-//             exit ;
-//        }
+
 
         if(session('?user'))
         {
@@ -91,6 +62,53 @@ class User extends Base{
         $user = $user['result'];
         $level = M('user_level')->select();
         $level = convert_arr_key($level,'level_id');
+        $user_id=$this->user_id;
+        $map=array();
+        $map=[
+            'user_id'       => $user_id,
+            'order_status' => 2
+        ];
+        $oder =  M('order')->where($map)->find();
+        if(!empty($oder)){
+            $order_id=array();
+            $der=$oder['order_id'];
+            $order_id=[
+                'order_id' => $der
+            ];
+            $order_str = "rec_id DESC";
+            //查询购买成功之后订单里的任务数
+            $order = M('order_goods a')
+                ->join('goods b','a.goods_id = b.goods_id','LEFT')
+                ->where($order_id)
+                ->order($order_str)
+                ->select();
+
+            //查询下级中的用户订单
+            $record  = M('users a ')->field('a.user_id')
+                ->where('uid','=',$user_id)
+                ->select();
+            $tmp = [] ;
+            if(!empty($record)){
+                foreach($record as $key=>$value){
+                    $num_id                    = $value['user_id'];
+                    $arr['a.user_id']           =  $num_id;
+                    $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
+                        ->join('order_goods b','a.order_id = b.order_id','LEFT')
+                        ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
+                        ->join('users d' ,'d.user_id = a.user_id','LEFT')
+                        ->where($arr)
+                        ->find();
+                    if($number_order != null){
+                        $tmp[$key] = $number_order ;
+                        $complete = count($tmp);
+
+                    }
+                }
+            }
+        }
+
+        $this->assign('complete',$complete);
+        $this->assign('order',$order);
         $this->assign('level',$level);
         $this->assign('user',$user);
         return $this->fetch();
@@ -137,6 +155,59 @@ class User extends Base{
         $this->assign('active','coupon');
         return $this->fetch();
     }
+
+    public function mission(){
+        $user_id=$this->user_id;
+        $map=[
+            'user_id'       => $user_id,
+            'order_status' => 2
+        ];
+        $order =  M('order')->where($map)->find();
+        //判断是否存在order表里
+        if(!empty($order)){
+            $order_id=array();
+            $order=$order['order_id'];
+            $order_id=[
+                'order_id' => $order
+            ];
+            $order_str = "rec_id DESC";
+            $order_list = M('order_goods a')
+                ->join('goods b','a.goods_id = b.goods_id','LEFT')
+                ->where($order_id)
+                ->order($order_str)
+                ->select();
+
+            //查询下级中的用户订单
+            $record  = M('users a ')->field('a.user_id')
+                ->where('uid','=',$user_id)
+                ->select();
+            $tmp = [] ;
+            if(!empty($record)){
+                foreach($record as $key=>$value){
+                    $num_id                    = $value['user_id'];
+                    $arr['a.user_id']           =  $num_id;
+                    $arr['a.order_status']          = 2;
+                    $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
+                        ->join('order_goods b','a.order_id = b.order_id','LEFT')
+                        ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
+                        ->join('users d' ,'d.user_id = a.user_id','LEFT')
+                        ->where($arr)
+                        ->find();
+                    if($number_order != null){
+                        $tmp[$key] = $number_order ;
+                        $complete=count($tmp);
+
+                    }
+                }
+            }
+
+        }
+        $this->assign('complete',$complete);
+        $this->assign('tmp',$tmp);
+        $this->assign('order',$order_list);
+        return $this->fetch();
+    }
+
     /**
      *  登录
      */
