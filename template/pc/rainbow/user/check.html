@@ -69,8 +69,15 @@
         background-color: #f9f9f9;
     }
     .ncap-form-default .title{
-        border-bottom: 0
+        border-bottom: 0 ;
     }
+
+    .tab_div_1{
+        /*border: 1px solid red;*/
+        text-align: center;/*(让div中的内容居中)*/
+        margin-left: 30%;
+    }
+
     .ncap-form-default dl.row, .ncap-form-all dd.opt{
         /*border-color: #F0F0F0;*/
         border: none;
@@ -92,7 +99,6 @@
 <div id="append_parent"></div>
 <div id="ajaxwaitid"></div>
 <div class="page">
-
     <!-- 操作说明 -->
     <div class="explanation" id="explanation">
         <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
@@ -109,7 +115,6 @@
         <!--通用信息-->
         <!--驾驶证上传-->
         <div class="ncap-form-default tab_div_1">
-
             <dl class="row">
                 <dt class="tit">
                     <label>驾驶证上传</label>
@@ -238,14 +243,12 @@
         </div>
 
 
-
         <div class="ncap-form-default">
             <div class="bot">
                 <input type="hidden"  name="goods_id" value="{$good_id}">
                 <input type="hidden"  name="__token__" value="{$Request.token}" />
                 <!--<a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="ajax_submit_form('addEditGoodsForm','{:U('User/addEditImage?is_ajax=1')}');">确认提交</a>-->
-                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green"  onclick="ConfirmClick()"><i class="sk">确认提交</i></a>
-
+                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green"   style="margin-left: 33%" onclick="ConfirmClick()"><i class="sk">确认提交</i></a>
             </div>
         </div>
     </form>
