@@ -120,31 +120,41 @@ class Cart extends Base {
      */
     function ajaxAddCart()
     {
-
-        $goods_id = I("goods_id/d"); // 商品id
-        $goods_num = I("goods_num/d");// 商品数量
-        $item_id = I("item_id/d"); // 商品规格id
-
-//        var_dump($goods_id) ;
-//        var_dump($goods_num) ;
-//        var_dump($item_id) ;
-//        die  ;
-        if(empty($goods_id)){
-            $this->ajaxReturn(['status'=>0,'msg'=>'请选择要购买的商品','result'=>'']);
+        $user_id=$this->user_id;
+        $map=array();
+        $map=[
+            'user_id'       => $user_id,
+            'order_status' => 2
+        ];
+        $order =  M('order a')
+            ->field('b.mission')
+            ->join('order_goods b','a.order_id = b.order_id','LEFT')
+            ->where($map)
+            ->find();
+        if($order['mission'] != 0){
+            $this->ajaxReturn(['status'=>0,'msg'=>'你有未完成的任务不能进行再次购买','result'=>'']);
+        }else{
+            $goods_id = I("goods_id/d"); // 商品id
+            $goods_num = I("goods_num/d");// 商品数量
+            $item_id = I("item_id/d"); // 商品规格id
+            if(empty($goods_id)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'请选择要购买的商品','result'=>'']);
+            }
+            if(empty($goods_num)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'购买商品数量不能为0','result'=>'']);
+            }
+            $cartLogic = new CartLogic();
+            $cartLogic->setUserId($this->user_id);
+            $cartLogic->setGoodsModel($goods_id);
+            if($item_id){
+                $cartLogic->setSpecGoodsPriceModel($item_id);
+            }
+            $cartLogic->setGoodsBuyNum($goods_num);
+            $result = $cartLogic->addGoodsToCart();
+            $this->ajaxReturn($result);
         }
-        if(empty($goods_num)){
-            $this->ajaxReturn(['status'=>0,'msg'=>'购买商品数量不能为0','result'=>'']);
-        }
-        $cartLogic = new CartLogic();
-        $cartLogic->setUserId($this->user_id);
-        $cartLogic->setGoodsModel($goods_id);
-        if($item_id){
-            $cartLogic->setSpecGoodsPriceModel($item_id);
-        }
-        $cartLogic->setGoodsBuyNum($goods_num);
-        $result = $cartLogic->addGoodsToCart();
-        $this->ajaxReturn($result);
     }
+
 
     /**
      * 购物车第二步确定页面
