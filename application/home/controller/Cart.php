@@ -60,10 +60,16 @@ class Cart extends Base {
         $cartLogic->setUserId($this->user_id);
         //根据用户编码获取到该用户是否认证通过的字段
         $statu =   $userLogic->getUserStatuBy($this->user_id) ;
+//        var_dump($this->user_id) ;die ;
+
+        //先让用户登录
+        if($this->user_id == 0){
+                $this->redirect('Home/User/login') ;
+        }
 
         if($statu != NULL ){
               $this->assign('statu' , $statu['statu']) ;
-        }else{
+        }else {
               $this->assign('statu' , 0) ;
         }
 

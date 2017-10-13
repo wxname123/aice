@@ -158,7 +158,6 @@
             return false;
         }
 
-
         if(password == ''){
             showErrorMsg('密码不能为空!');
             return false;
@@ -176,7 +175,11 @@
             dataType : 'json',
             success : function(res){
                 if(res.status == 1){
-                    window.location.href = res.url;
+                    if(res.result.statu == 1 ){
+                        window.location.href = res.url;
+                    }else{
+                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
+                    }
                 }else{
                     showErrorMsg(res.msg);
                     verify();
@@ -186,7 +189,6 @@
                 showErrorMsg('网络失败，请刷新页面后重试');
             }
         })
-
     }
 
     function checkMobile(tel) {

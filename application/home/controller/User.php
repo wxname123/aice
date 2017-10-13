@@ -38,9 +38,19 @@ class User extends Base{
         	$nologin = array(
         			'login','pop_login','do_login','logout','verify','set_pwd','finished',
         			'verifyHandle','reg','send_sms_reg_code','identity','check_validate_code',
-        			'forget_pwd','check_captcha','check_username','send_validate_code',
+        			'forget_pwd','check_captcha','check_username','send_validate_code', // 'Check'
         	);
         	if(!in_array(ACTION_NAME,$nologin)){
+
+//        	    if($this->user_id == 0){
+//                    //截取 ?  后面的字符串
+//                    $count =   strpos( $_SERVER['HTTP_REFERER'],'?') ;
+//                    $sub_str =   substr($_SERVER['HTTP_REFERER'], $count+1) ;
+//
+//                    if($sub_str == "m=Home&c=Cart&a=index"){
+//                          $this->redirect('Home/User/Check') ;
+//                    }
+//                }
                 $this->redirect('Home/User/login');
         		exit;
         	}
@@ -57,6 +67,7 @@ class User extends Base{
      * 用户中心首页
      */
     public function index(){
+
         $logic = new UsersLogic();
         $user = $logic->get_info($this->user_id);
         $user = $user['result'];
@@ -212,6 +223,7 @@ class User extends Base{
      *  登录
      */
     public function login(){
+//        var_dump($_SERVER['HTTP_REFERER']) ; die ;
         if($this->user_id > 0){
             $this->redirect('Home/User/index');
         }
@@ -248,6 +260,7 @@ class User extends Base{
 
 
     	if($res['status'] == 1){
+
     		$res['url'] =  urldecode(I('post.referurl'));
     		session('user',$res['result']);
     		setcookie('user_id',$res['result']['user_id'],null,'/');
@@ -259,6 +272,12 @@ class User extends Base{
             $cartLogic->setUserId($res['result']['user_id']);
             $cartLogic->doUserLoginHandle();// 用户登录后 需要对购物车 一些操作
 //    		$cartLogic->login_cart_handle($this->session_id,$res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
+
+            //如果该用户已经认证过了，则不需要再次填写认证信息，如果没有认证过才需要跳转到认证页面
+//            if(!empty($res['result'])){
+//                //根据这个用户编码获取到 该用户是否 提交了认证信息 的字段（statu）
+//                 $res['result']['statu']
+//            }
     	}
     	exit(json_encode($res));
     }
