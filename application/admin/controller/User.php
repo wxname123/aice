@@ -195,12 +195,17 @@ class User extends Base {
                 exit($this->success('修改成功'));
             exit($this->error('未作内容修改或修改失败'));
         }
-        
-        $user['first_lower'] = M('users')->where("first_leader = {$user['user_id']}")->count();
-        $user['second_lower'] = M('users')->where("second_leader = {$user['user_id']}")->count();
-        $user['third_lower'] = M('users')->where("third_leader = {$user['user_id']}")->count();
- 
+
+        $user_data = M('users')
+            ->where(" user_id = {$user['user_id']}")
+            ->find();
+        $ar['user_id'] =$user_data['uid'];
+        $us = M('users')->where($ar)->find();
+        $user['first_leader'] =$us['user_id'];
+
+        $user['first_lower'] = M('users')->where("uid = {$user['user_id']}")->count();
         $this->assign('user',$user);
+
         return $this->fetch();
     }
     
@@ -208,7 +213,7 @@ class User extends Base {
     	if(IS_POST){
     		$data = I('post.');
 			$user_obj = new UsersLogic();
-			$res = $user_obj->addUser($data);
+			$res = $user_obj->addfiUser($data);
 			if($res['status'] == 1){
 				$this->success('添加成功',U('User/index'));exit;
 			}else{
