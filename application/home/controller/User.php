@@ -865,6 +865,96 @@ class User extends Base{
     }
 
     /**
+     * 代理管理
+     */
+    public function agent_list(){
+        $user_info =$this->user_id; // 获取用户ID
+        $search_key = trim(I('search_key'));
+
+
+        if(!empty($search_key)){
+            $map['uid'] =$user_info;
+            $map['is_agent'] = array('neq',2);
+            $map['nickname']=array('like','%'.$search_key.'%');
+//            $agent_list = M('users')->where($map)->select();
+            $count = M('users')->where($map)->count();
+            $Page = new Page($count,10);
+
+            $show = $Page->show();
+            $order_str = "user_id DESC";
+            $agent_list = M('users a')->field('a.user_id,a.nickname,a.mobile,b.name,a.reg_time')
+                ->join('region b','a.district = b.id','LEFT')
+                ->where($map)
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->order($order_str)
+                ->select();
+        }else{
+            $map['uid'] =$user_info;
+            $map['is_agent'] = array('neq',2);
+            $count = M('users')->where($map)->count();
+            $Page = new Page($count,10);
+
+            $show = $Page->show();
+            $order_str = "user_id DESC";
+            $agent_list = M('users a')->field('a.user_id,a.nickname,a.mobile,b.name,a.reg_time')
+                ->join('region b','a.district = b.id','LEFT')
+                ->where($map)
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->order($order_str)
+                ->select();
+        }
+
+        $this->assign('agent_list',$agent_list);
+        $this->assign('page',$show);
+
+        return $this->fetch();
+    }
+
+    /**
+     * 区代理管理
+     */
+    public function area_list(){
+        $user_info =$this->user_id; // 获取用户ID
+        $search_key = trim(I('search_key'));
+
+
+        if(!empty($search_key)){
+            $map['uid']=$user_info;
+            $map['is_agent'] = 2;
+            $map['nickname']=array('like','%'.$search_key.'%');
+            $count = M('users')->where($map)->count();
+            $Page = new Page($count,10);
+            $show = $Page->show();
+            $order_str = "user_id DESC";
+            $area_list = M('users a')->field('a.user_id,a.nickname,a.mobile,b.name,a.reg_time')
+                ->join('region b','a.district = b.id','LEFT')
+                ->where($map)
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->order($order_str)
+                ->select();
+        }else{
+            $map['uid'] =$user_info;
+            $map['is_agent'] =2;
+            $count = M('users')->where($map)->count();
+            $Page = new Page($count,10);
+
+            $show = $Page->show();
+            $order_str = "user_id DESC";
+            $area_list = M('users a')->field('a.user_id,a.nickname,a.mobile,b.name,a.reg_time')
+                ->join('region b','a.district = b.id','LEFT')
+                ->where($map)
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->order($order_str)
+                ->select();
+        }
+
+        $this->assign('area_list',$area_list);
+        $this->assign('page',$show);
+
+        return $this->fetch();
+    }
+
+    /**
      * 区代理用户列表
      */
     public function user_list(){
