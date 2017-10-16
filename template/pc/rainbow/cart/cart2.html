@@ -41,11 +41,10 @@
             <div class="layout be-table fo-fa ma-bo-45">
                 <div class="con-info">
                     <div class="con-y-info ma-bo-35">
-                        <!--<h3>收货人信息<b>[<a href="javascript:void(0);" onClick="add_edit_address(0);">使用新地址</a>]</b></h3>-->
-
-                        <!--<div id="ajax_address">&lt;!&ndash;ajax 返回收货地址&ndash;&gt;</div>-->
-                        <!--<h3 style="margin-top:30px">自提点</h3>-->
-                        <!--<div id="ajax_pickup">&lt;!&ndash;ajax 返回自提点&ndash;&gt;</div>-->
+                        <h3>收货人信息<b>[<a href="javascript:void(0);" onClick="add_edit_address(0);">使用新地址</a>]</b></h3>
+                        <div id="ajax_address"><!--ajax 返回收货地址--></div>
+                        <h3 style="margin-top:30px">自提点</h3>
+                        <div id="ajax_pickup"><!--ajax 返回自提点--></div>
                     </div>
                     <div class="con-y-info ma-bo-35 con-h">
                         <h3>发票信息<em>(请谨慎选择发票抬头，订单出库后不能修改)</em></h3>
@@ -358,20 +357,20 @@
      * id 为零 则为新增, 否则是修改
      *  使用 公共的 layer 弹窗插件  参考官方手册 http://layer.layui.com/
      */
-//    function add_edit_address(id) {
-//        if (id > 0)
-//            var url = "/index.php?m=Home&c=User&a=edit_address&scene=1&call_back=call_back_fun&id=" + id; // 修改地址  '{:U('Home/User/add_address',array('scene'=>'1','call_back'=>'call_back_fun','id'=>id))}' //iframe的url /index.php/Home/User/add_address
-//        else
-//            var url = "/index.php?m=Home&c=User&a=add_address&scene=1&call_back=call_back_fun";	// 新增地址
-//        layer.open({
-//            type: 2,
-//            title: '添加收货地址',
-//            shadeClose: true,
-//            shade: 0.8,
-//            area: ['880px', '580px'],
-//            content: url,
-//        });
-//    }
+    function add_edit_address(id) {
+        if (id > 0)
+            var url = "/index.php?m=Home&c=User&a=edit_address&scene=1&call_back=call_back_fun&id=" + id; // 修改地址  '{:U('Home/User/add_address',array('scene'=>'1','call_back'=>'call_back_fun','id'=>id))}' //iframe的url /index.php/Home/User/add_address
+        else
+            var url = "/index.php?m=Home&c=User&a=add_address&scene=1&call_back=call_back_fun";	// 新增地址
+        layer.open({
+            type: 2,
+            title: '添加收货地址',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['880px', '580px'],
+            content: url,
+        });
+    }
     // 添加修改收货地址回调函数
     function call_back_fun(v) {
         layer.closeAll(); // 关闭窗口
@@ -508,6 +507,7 @@
     ajax_return_status = 1;
     function submit_order()
     {
+
         if(ajax_return_status == 0)
             return false;
         ajax_return_status = 0;

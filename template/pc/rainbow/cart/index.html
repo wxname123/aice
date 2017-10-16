@@ -138,13 +138,15 @@
                             </div>
                             <div class="sc-acti-list ma-to-20 "> <a class="gwc-jxgw" href="javascript:history.go(-1);">继续购物</a>
 
-                                <if condition="($statu == 0)">
+                                <if condition="($review == 0)">
                                     <!--说明该用户没有通过认证-->
                                         <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/User/Check')}">去结算</a>
+                                    <elseif condition="($review == 1)" />
+                                          <a class="" href="javascript:void(0)"   onclick="passjudge()"  data-url="">去结算</a>
+                                    <elseif condition="($review == 2)" />
+                                          <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">去结算</a>
                                     <else />
-                                        <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">去结算</a>
                                 </if>
-
                             </div>
                         </notempty>
                         </div>
@@ -426,6 +428,11 @@
                 window.location.href = $(this).attr('data-url');
             }
         })
+
+
+        function  passjudge(){
+            layer.alert('您还没有通过后台管理员的认证，请耐心等待', {'icon':5}) ;
+        }
     </script>
 </body>
 </html>
