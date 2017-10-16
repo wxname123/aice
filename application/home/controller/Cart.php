@@ -132,6 +132,7 @@ class Cart extends Base {
             'user_id'       => $user_id,
             'order_status' => 2
         ];
+
         $oder =  M('order ')->where($map)->find();
         if(!empty($oder)){
                 $this->ajaxReturn(['status'=>0,'msg'=>'你有未完成的任务不能进行再次购买','result'=>'']);
