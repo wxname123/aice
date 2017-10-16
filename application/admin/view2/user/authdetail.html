@@ -83,7 +83,7 @@
                     <label>身份证正面照：</label>
                 </dt>
                 <dd class="opt">
-                    <img   id="img12" src="{$idata.identi_front}" width="300px" height="300px"   />
+                    <img   id="img12" src="{$idata.identi_front}"   />
                 </dd>
             </dl>
 
@@ -93,7 +93,7 @@
                     <label>身份证反面照：</label>
                 </dt>
                 <dd class="opt">
-                    <img   id="img13" src="{$idata.identi_back}"  width="300px" height="300px"   />
+                    <img   id="img13" src="{$idata.identi_back}"     />
                 </dd>
             </dl>
 
@@ -102,7 +102,7 @@
                     <label>银行卡正面照：</label>
                 </dt>
                 <dd class="opt">
-                    <img   id="img14" src="{$idata.credit_back}" width="300px" height="300px"  />
+                    <img   id="img14" src="{$idata.credit_back}"   />
                 </dd>
             </dl>
             <dl class="row">
@@ -110,7 +110,7 @@
                     <label>银行卡反面照：</label>
                 </dt>
                 <dd class="opt">
-                    <img   id="img15" src="{$idata.credit_back}"  width="300px" height="300px"    />
+                    <img   id="img15" src="{$idata.credit_back}"      />
                 </dd>
             </dl>
 
@@ -196,22 +196,49 @@
 
     $(function () {
         //先获取到原图片宽高
-         var width =  $('#img11').width()   ;
-         var height =  $('#img11').height()  ;
+         var width_1 =  $('#img11').width()   ;
+         var height_1 =  $('#img11').height()  ;
          //设置到图片属性中
-        var b_width = $('#img11').width() * 0.5 ;
-        var b_height = $('#img11').height() * 0.5 ;
-        $('#img11').attr('width', b_width) ;
-        $('#img11').attr('height', b_height) ;
+        var b_width_1 = $('#img11').width() * 0.5 ;
+        var b_height_1 = $('#img11').height() * 0.5 ;
+        $('#img11').attr('width', b_width_1) ;
+        $('#img11').attr('height', b_height_1) ;
 
-        $('#img12').attr('width', b_width) ;
-        $('#img12').attr('height', b_height) ;
-        $('#img13').attr('width', b_width) ;
-        $('#img13').attr('height', b_height) ;
-        $('#img14').attr('width', b_width) ;
-        $('#img14').attr('height', b_height) ;
-        $('#img15').attr('width', b_width) ;
-        $('#img15').attr('height', b_height) ;
+
+        var width_2 =  $('#img12').width()   ;
+        var height_2 =  $('#img12').height()  ;
+        //设置到图片属性中
+        var b_width_2 = $('#img12').width() * 0.5 ;
+        var b_height_2 = $('#img12').height() * 0.5 ;
+        $('#img12').attr('width', b_width_2) ;
+        $('#img12').attr('height', b_height_2) ;
+
+        var width_3 =  $('#img13').width()   ;
+        var height_3 =  $('#img13').height()  ;
+        //设置到图片属性中
+        var b_width_3 = $('#img13').width() * 0.5 ;
+        var b_height_3 = $('#img13').height() * 0.5 ;
+        $('#img13').attr('width', b_width_3) ;
+        $('#img13').attr('height', b_height_3) ;
+
+
+        var width_4 =  $('#img14').width()   ;
+        var height_4 =  $('#img14').height()  ;
+        //设置到图片属性中
+        var b_width_4 = $('#img14').width() * 0.5 ;
+        var b_height_4 = $('#img14').height() * 0.5 ;
+        $('#img14').attr('width', b_width_4) ;
+        $('#img14').attr('height', b_height_4) ;
+
+        var width_5 =  $('#img15').width()   ;
+        var height_5 =  $('#img15').height()  ;
+        //设置到图片属性中
+        var b_width_5 = $('#img15').width() * 0.5 ;
+        var b_height_5 = $('#img15').height() * 0.5 ;
+        $('#img15').attr('width', b_width_5) ;
+        $('#img15').attr('height', b_height_5) ;
+
+
 
 
 //        $('#img11').click(function () {
