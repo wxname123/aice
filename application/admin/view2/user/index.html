@@ -67,25 +67,16 @@
                             <div style="text-align: center; width: 50px;" class="">累计消费</div>
                         </th>
                         <th align="center" abbr="email" axis="col6" class="">
-                            <div style="text-align: center; width: 150px;" class="">邮件地址</div>
+                            <div style="text-align: center; width: 60px;" class="">邮件地址</div>
                         </th>
                         <th align="center" axis="col6" class="">
-                            <div style="text-align: center; width: 30px;" class="">一级下线数</div>
-                        </th>
-                        <th align="center" axis="col6" class="">
-                            <div style="text-align: center; width: 30px;" class="">二级下线数</div>
-                        </th>
-                        <th align="center" axis="col6" class="">
-                            <div style="text-align: center; width: 30px;" class="">三级下线数</div>
+                            <div style="text-align: center; width: 60px;" class="">上级ID</div>
                         </th>
                         <th align="center" abbr="mobile" axis="col6" class="">
                             <div style="text-align: center; width: 80px;" class="">手机号码</div>
                         </th>
                         <th align="center" abbr="user_money" axis="col6" class="">
                             <div style="text-align: center; width: 60px;" class="">余额</div>
-                        </th>
-                        <th align="center" abbr="pay_points" axis="col6" class="">
-                            <div style="text-align: center; width: 60px;" class="">积分</div>
                         </th>
                         <th align="center" abbr="reg_time" axis="col6" class="">
                             <div style="text-align: center; width: 120px;" class="">注册日期</div>
@@ -161,24 +152,24 @@
                     $(this).find('div').addClass(ssort);
                 }
             }, function () {
-                    if(typeof($(this).attr('abbr')) == "undefined"){
-                        return false;
-                    }
-                    if(on_sclick == 0){
-                        if($(this).hasClass('sorted')){
-                            if(ssort == 'sdesc'){
-                                $(this).find('div').removeClass('sasc');
-                                $(this).find('div').addClass('sdesc');
-                            }else{
-                                $(this).find('div').removeClass('sdesc');
-                                $(this).find('div').addClass('sasc');
-                            }
+                if(typeof($(this).attr('abbr')) == "undefined"){
+                    return false;
+                }
+                if(on_sclick == 0){
+                    if($(this).hasClass('sorted')){
+                        if(ssort == 'sdesc'){
+                            $(this).find('div').removeClass('sasc');
+                            $(this).find('div').addClass('sdesc');
                         }else{
-                            $(this).find('div').removeClass(ssort);
+                            $(this).find('div').removeClass('sdesc');
+                            $(this).find('div').addClass('sasc');
                         }
+                    }else{
+                        $(this).find('div').removeClass(ssort);
                     }
-                    $(this).removeClass("thOver");
-                    on_sclick = 0;
+                }
+                $(this).removeClass("thOver");
+                on_sclick = 0;
             }
         );
         $('.hDivBox > table>thead>tr>th').click(function(){
@@ -218,17 +209,17 @@
     //选中全部
     $('.hDivBox .sign').click(function(){
         var sign = $('#flexigrid > table>tbody>tr');
-       if($(this).parent().hasClass('trSelected')){
-           sign.each(function(){
-               $(this).removeClass('trSelected');
-           });
-           $(this).parent().removeClass('trSelected');
-       }else{
-           sign.each(function(){
-               $(this).addClass('trSelected');
-           });
-           $(this).parent().addClass('trSelected');
-       }
+        if($(this).parent().hasClass('trSelected')){
+            sign.each(function(){
+                $(this).removeClass('trSelected');
+            });
+            $(this).parent().removeClass('trSelected');
+        }else{
+            sign.each(function(){
+                $(this).addClass('trSelected');
+            });
+            $(this).parent().addClass('trSelected');
+        }
     })
 
     // ajax 抓取页面
