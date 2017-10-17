@@ -129,13 +129,16 @@ class Cart extends Base {
         $user_id=$this->user_id;
         $map=array();
         $map=[
-            'user_id'       => $user_id,
-            'order_status' => 2
+            'a.user_id'       => $user_id,
+            'a.order_status' => 2
         ];
 
-        $oder =  M('order ')->where($map)->find();
-        if(!empty($oder)){
-                $this->ajaxReturn(['status'=>0,'msg'=>'你有未完成的任务不能进行再次购买','result'=>'']);
+        $oder =  M('order  a')
+                ->join('order_goods b','a.order_id = b.order_id')
+                ->where($map)
+                ->find();
+        if($oder['mission'] > 0){
+            $this->ajaxReturn(['status'=>0,'msg'=>'你有未完成的任务不能进行再次购买','result'=>'']);
             }else{
                 $goods_id = I("goods_id/d"); // 商品id
                 $goods_num = I("goods_num/d");// 商品数量

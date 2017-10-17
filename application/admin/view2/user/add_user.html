@@ -65,6 +65,15 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
+                    <label for="qq">身份证信息</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="" name="id_card" id="id_card" class="input-txt">
+                    <span class="err"></span>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
                     <label for="sex">性别</label>
                 </dt>
                 <dd class="opt">
@@ -81,8 +90,11 @@
     function checkUserUpdate(){
         var email = $('input[name="email"]').val();
         var mobile = $('input[name="mobile"]').val();
+        var idcard = $('input[name="id_card"]').val();
         var password = $('input[name="password"]').val();
         var nickname = $.trim($('input[name="nickname"]').val());
+
+
         var error ='';
         if(nickname == ''){
             error += "昵称不能为空\n";
@@ -93,7 +105,6 @@
         if(password.length<6 || password.length>16){
             error += "密码长度不正确\n";
         }
-
         if(!checkEmail(email) && email != ''){
             error += "邮箱地址有误\n";
         }
@@ -103,6 +114,13 @@
 
         if(email == '' && mobile ==''){
             error += "手机和邮箱请至少填一项\n";
+        }
+
+        if(idcard == '' ){
+            error += "身份证信息不能为空\n";
+        }
+        if(!checkCar(idcard) && idcard != ''){
+            error += "身份证信息有误\n";
         }
 
         if(error){
