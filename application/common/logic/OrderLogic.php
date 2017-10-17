@@ -255,48 +255,55 @@ class OrderLogic
 	 * @param string $user_note|用户备注
 	 * @return array
 	 */
-    public function addOrder($user_id,$address_id,$shipping_code,$invoice_title,$coupon_id = 0,$car_price,$user_note='',$pay_name='')
+    public function addOrder($user_id,$invoice_title, $car_price,$user_note='',$pay_name='')
     {
-
         // 仿制灌水 1天只能下 50 单  // select * from `tp_order` where user_id = 1  and order_sn like '20151217%'
         //$order_count = M('Order')->where("user_id",$user_id)->where('order_sn', 'like', date('Ymd')."%")->count(); // 查找购物车商品总数量
         //if($order_count >= 50)
         //    return array('status'=>-9,'msg'=>'一天只能下50个订单','result'=>'');
 
         // 0插入订单 order
-        $address = M('UserAddress')->where("address_id", $address_id)->find();
-        $shipping = M('Plugin')->where("code", $shipping_code)->cache(true,TPSHOP_CACHE_TIME)->find();
-        $order_sn = $this->get_order_sn();
+//        $address = M('UserAddress')->where("address_id", $address_id)->find();
+//        $shipping = M('Plugin')->where("code", $shipping_code)->cache(true,TPSHOP_CACHE_TIME)->find();
+
+        $order_sn = $this->get_order_sn();          //201710171442465902
+
+        //通过  user_id 获取到 tp_users 表里面的mobile
+        $user_info =   M('users')->where('user_id' , $user_id)->field('mobile,nickname')->find();
+//        var_dump($user_info) ; die ;
+
         $data = array(
             'order_sn'         => $order_sn, // 订单编号
             'user_id'          =>$user_id, // 用户id
-            'consignee'        =>$address['consignee'], // 收货人
-            'province'         =>$address['province'],//'省份id',
-            'city'             =>$address['city'],//'城市id',
-            'district'         =>$address['district'],//'县',
-            'twon'             =>$address['twon'],// '街道',
-            'address'          =>$address['address'],//'详细地址',
-            'mobile'           =>$address['mobile'],//'手机',
-            'zipcode'          =>$address['zipcode'],//'邮编',
-            'email'            =>$address['email'],//'邮箱',
-            'shipping_code'    =>$shipping_code,//'物流编号',
-            'shipping_name'    =>$shipping['name'], //'物流名称',                为照顾新手开发者们能看懂代码，此处每个字段加于详细注释
+            'consignee'        =>$user_info['nickname'], // 收货人
+//            'province'         =>$address['province'],//'省份id',
+//            'city'             =>$address['city'],//'城市id',
+//            'district'         =>$address['district'],//'县',
+//            'twon'             =>$address['twon'],// '街道',
+//            'address'          =>$address['address'],//'详细地址',
+            'mobile'           =>$user_info['mobile'],//'手机',
+//            'zipcode'          =>$address['zipcode'],//'邮编',
+//            'email'            =>$address['email'],//'邮箱',
+//            'shipping_code'    =>$shipping_code,//'物流编号',
+//            'shipping_name'    =>$shipping['name'], //'物流名称',                为照顾新手开发者们能看懂代码，此处每个字段加于详细注释
             'invoice_title'    =>$invoice_title, //'发票抬头',
             'goods_price'      =>$car_price['goodsFee'],//'商品价格',
-            'shipping_price'   =>$car_price['postFee'],//'物流价格',
-            'user_money'       =>$car_price['balance'],//'使用余额',
-            'coupon_price'     =>$car_price['couponFee'],//'使用优惠券',
-            'integral'         =>($car_price['pointsFee'] * tpCache('shopping.point_rate')), //'使用积分',
-            'integral_money'   =>$car_price['pointsFee'],//'使用积分抵多少钱',
-            'total_amount'     =>($car_price['goodsFee'] + $car_price['postFee']),// 订单总额
-            'order_amount'     =>$car_price['payables'],//'应付款金额',
+//            'shipping_price'   =>$car_price['postFee'],//'物流价格',
+//            'user_money'       =>$car_price['balance'],//'使用余额',
+//            'coupon_price'     =>$car_price['couponFee'],//'使用优惠券',
+//            'integral'         =>($car_price['pointsFee'] * tpCache('shopping.point_rate')), //'使用积分',
+//            'integral_money'   =>$car_price['pointsFee'],//'使用积分抵多少钱',
+            'total_amount'     =>$car_price['goodsFee'] ,// 订单总额
+//            'order_amount'     =>$car_price['payables'],//'应付款金额',
             'add_time'         =>time(), // 下单时间
-            'order_prom_id'    =>$car_price['order_prom_id'],//'订单优惠活动id',
-            'order_prom_amount'=>$car_price['order_prom_amount'],//'订单优惠活动优惠了多少钱',
+//            'order_prom_id'    =>$car_price['order_prom_id'],//'订单优惠活动id',
+//            'order_prom_amount'=>$car_price['order_prom_amount'],//'订单优惠活动优惠了多少钱',
             'user_note'        =>$user_note, // 用户下单备注
             'pay_name'         =>$pay_name,//支付方式，可能是余额支付或积分兑换，后面其他支付方式会替换
         );
+
         $data['order_id'] = $order_id = M("Order")->insertGetId($data);
+//        var_dump($data) ; die ;
         $order = $data;//M('Order')->where("order_id", $order_id)->find();
         if(!$order_id)
             return array('status'=>-8,'msg'=>'添加订单失败','result'=>NULL);
@@ -313,6 +320,7 @@ class OrderLogic
 
         // 1插入order_goods 表
         $cartList = M('Cart')->where(['user_id'=>$user_id,'selected'=>1])->select();
+
         foreach($cartList as $key => $val)
         {
             $goods = M('goods')->where("goods_id", $val['goods_id'])->cache(true,TPSHOP_CACHE_TIME)->find();
@@ -336,39 +344,39 @@ class OrderLogic
         }
 
         // 如果应付金额为0  可能是余额支付 + 积分 + 优惠券 这里订单支付状态直接变成已支付
-        if($data['order_amount'] == 0)
-        {
-            update_pay_status($order['order_sn']);
-        }
+//        if($data['order_amount'] == 0)
+//        {
+//            update_pay_status($order['order_sn']);
+//        }
 
         // 2修改优惠券状态
-        if($coupon_id > 0){
-            $data3['uid'] = $user_id;
-            $data3['order_id'] = $order_id;
-            $data3['use_time'] = time();
-            $data3['status'] = 1;
-            M('CouponList')->where("id", $coupon_id)->save($data3);
-            $cid = M('CouponList')->where("id", $coupon_id)->getField('cid');
-            M('Coupon')->where("id", $cid)->setInc('use_num'); // 优惠券的使用数量加一
-        }
+//        if($coupon_id > 0){
+//            $data3['uid'] = $user_id;
+//            $data3['order_id'] = $order_id;
+//            $data3['use_time'] = time();
+//            $data3['status'] = 1;
+//            M('CouponList')->where("id", $coupon_id)->save($data3);
+//            $cid = M('CouponList')->where("id", $coupon_id)->getField('cid');
+//            M('Coupon')->where("id", $cid)->setInc('use_num'); // 优惠券的使用数量加一
+//        }
         // 3 扣除积分 扣除余额
-        if($car_price['pointsFee']>0)
-            M('Users')->where("user_id", $user_id)->setDec('pay_points',($car_price['pointsFee'] * tpCache('shopping.point_rate'))); // 消费积分
-        if($car_price['balance']>0)
-            M('Users')->where("user_id", $user_id)->setDec('user_money',$car_price['balance']); // 抵扣余额
+//        if($car_price['pointsFee']>0)
+//            M('Users')->where("user_id", $user_id)->setDec('pay_points',($car_price['pointsFee'] * tpCache('shopping.point_rate'))); // 消费积分
+//        if($car_price['balance']>0)
+//            M('Users')->where("user_id", $user_id)->setDec('user_money',$car_price['balance']); // 抵扣余额
         // 4 删除已提交订单商品
         M('Cart')->where(['user_id' => $user_id,'selected' => 1])->delete();
 
         // 5 记录log 日志
-        $data4['user_id'] = $user_id;
-        $data4['user_money'] = -$car_price['balance'];
-        $data4['pay_points'] = -($car_price['pointsFee'] * tpCache('shopping.point_rate'));
-        $data4['change_time'] = time();
-        $data4['desc'] = '下单消费';
-        $data4['order_sn'] = $order['order_sn'];
-        $data4['order_id'] = $order_id;
+//        $data4['user_id'] = $user_id;
+//        $data4['user_money'] = -$car_price['balance'];
+//        $data4['pay_points'] = -($car_price['pointsFee'] * tpCache('shopping.point_rate'));
+//        $data4['change_time'] = time();
+//        $data4['desc'] = '下单消费';
+//        $data4['order_sn'] = $order['order_sn'];
+//        $data4['order_id'] = $order_id;
         // 如果使用了积分或者余额才记录
-        ($data4['user_money'] || $data4['pay_points']) && M("AccountLog")->add($data4);
+//        ($data4['user_money'] || $data4['pay_points']) && M("AccountLog")->add($data4);
 
         //分销开关全局
         $distribut_switch = tpCache('distribut.switch');
@@ -391,7 +399,6 @@ class OrderLogic
         $sender = tpCache("shop_info.mobile");
 
         if($res && $res['status'] ==1 && !empty($sender)){
-
             $params = array('consignee'=>$order['consignee'] , 'mobile' => $order['mobile']);
             $resp = sendSms("3", $sender, $params);
         }

@@ -108,10 +108,9 @@ class User extends Base {
 
             //便利$userlist
             foreach($userList as  $k=>$v ){
-                $userList[$k]['mobile_id'] = $v['user_id'] + 32304580 ;
-                $userList[$k]['mobile_uid'] = $v['uid'] + 32304580 ;
+                $userList[$k]['mobile_id'] = $v['user_id'] + BUSINESS_ID_BASE ;
+                $userList[$k]['mobile_uid'] = $v['uid'] + BUSINESS_ID_BASE ;
             }
-
 
         }
 //        var_dump($userList) ; die ;

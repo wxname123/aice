@@ -41,16 +41,14 @@
         <div class="layout after-ta order-ha">
             <div class="erhuh">
                 <i class="icon-succ"></i>
-
                 <h3>订单提交成功，请您尽快付款！</h3>
-
                 <p class="succ-p">
                     <if condition="$master_order_sn neq ''">
                         订单号：&nbsp;&nbsp;{$master_order_sn}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                        付款金额（元）：&nbsp;&nbsp;<b>{$sum_order_amount}</b>&nbsp;<b>元</b>
+                        付款金额（元）：&nbsp;&nbsp;<b>{$total_amount}</b>&nbsp;<b>元</b>
                         <else/>
                         订单号：&nbsp;&nbsp;{$order['order_sn']}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                        付款金额（元）：&nbsp;&nbsp;<b>{$order['order_amount']}</b>&nbsp;<b>元</b>
+                        付款金额（元）：&nbsp;&nbsp;<b>{$order['total_amount']}</b>&nbsp;<b>元</b>
                     </if>
                 </p>
                 <div class="succ-tip">
