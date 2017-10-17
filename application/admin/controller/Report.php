@@ -74,7 +74,6 @@ class Report extends Base{
         return $this->fetch();
     }
 
-
     //	市代理列表
     public function agent(){
         $sql = "select a.user_id,a.mobile,from_unixtime(a.reg_time,'%Y-%m-%d') as reg_time,a.nickname ,b.name from __PREFIX__users  a";
