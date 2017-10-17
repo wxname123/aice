@@ -244,7 +244,8 @@ class User extends Base {
         $this->assign('province',$p);
     	return $this->fetch();
     }
-    
+
+
     public function export_user(){
     	$strTable ='<table width="500" border="1">';
     	$strTable .= '<tr>';
