@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:46:"./application/admin/view2/user\memberAuth.html";i:1507716030;s:44:"./application/admin/view2/public\layout.html";i:1506391050;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:46:"./application/admin/view2/user\memberAuth.html";i:1507883307;s:44:"./application/admin/view2/public\layout.html";i:1507883307;}*/ ?>
 <!doctype html>
 <html>
 <head>
