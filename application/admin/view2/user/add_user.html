@@ -74,6 +74,29 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
+                    <label for="province">所属地区：</label>
+                </dt>
+                <dd class="opt">
+                    <td>
+                        <select class="di-bl fl seauii" name="province" id="province" onChange="get_city(this,0)">
+                            <option value="0">请选择</option>
+                            <volist name="province" id="p">
+                                <option <if condition="$address['province'] eq $p['id']">selected</if>  value="{$p.id}">{$p.name}</option>
+                            </volist>
+                        </select>
+
+                        <select class="di-bl fl seauii" name="city" id="city" onChange="get_area(this)">
+                            <option  value="0">请选择</option>
+                            <volist name="city" id="p">
+                                <option <if condition="$address['city'] eq $p['id']">selected</if>  value="{$p.id}">{$p.name}</option>
+                            </volist>
+                        </select>
+                        <br>
+                    </td>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
                     <label for="sex">性别</label>
                 </dt>
                 <dd class="opt">
