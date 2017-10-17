@@ -113,7 +113,8 @@
     function checkUserUpdate(){
         var email = $('input[name="email"]').val();
         var mobile = $('input[name="mobile"]').val();
-        var idcard = $('input[name="id_card"]').val();
+//        var idcard = $('input[name="id_card"]').val();
+        var idcard =   $('#id_card').val() ;
         var password = $('input[name="password"]').val();
         var nickname = $.trim($('input[name="nickname"]').val());
 
@@ -131,6 +132,11 @@
         if(!checkEmail(email) && email != ''){
             error += "邮箱地址有误\n";
         }
+
+        if(!checkCar(idcard) && idcard != ''){
+            error += "身份证信息有误\n";
+        }
+
         if(!checkMobile(mobile) && mobile != ''){
             error += "手机号码填写有误\n";
         }
@@ -142,15 +148,28 @@
         if(idcard == '' ){
             error += "身份证信息不能为空\n";
         }
-        if(!checkCar(idcard) && idcard != ''){
-            error += "身份证信息有误\n";
-        }
+
 
         if(error){
             layer.alert(error, {icon: 2});  //alert(error);
             return false;
         }
         $('#add_form').submit();
+    }
+
+
+    /**
+     * 身份证格式判断
+     * @param idcar
+     * @returns {boolean}
+     */
+    function checkCar(idcar){
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(reg.test(idcar)){
+            return true;
+        }else{
+            return false;
+        }
     }
 </script>
 </body>
