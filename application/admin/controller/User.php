@@ -215,13 +215,15 @@ class User extends Base {
     	if(IS_POST){
     		$data = I('post.');
 			$user_obj = new UsersLogic();
-			$res = $user_obj->addfiUser($data);
+			$res = $user_obj->addUser($data);
 			if($res['status'] == 1){
 				$this->success('添加成功',U('User/index'));exit;
 			}else{
 				$this->error('添加失败,'.$res['msg'],U('User/index'));
 			}
     	}
+        $p = M('region')->where(array('parent_id'=>0,'level'=> 1))->select();
+        $this->assign('province',$p);
     	return $this->fetch();
     }
     
