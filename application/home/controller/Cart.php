@@ -54,23 +54,30 @@ class Cart extends Base {
     }
 
     public function index(){
-
         $cartLogic = new CartLogic();
         $userLogic = new  UsersLogic() ;
         $cartLogic->setUserId($this->user_id);
         //根据用户编码获取到该用户是否认证通过的字段
-        $statu =   $userLogic->getUserStatuBy($this->user_id) ;
-//        var_dump($this->user_id) ;die ;
+        $resData =   $userLogic->getUserStatuBy($this->user_id) ;
+//        var_dump($resData) ;die ;
 
         //先让用户登录
         if($this->user_id == 0){
                 $this->redirect('Home/User/login') ;
         }
 
-        if($statu != NULL ){
-              $this->assign('statu' , $statu['statu']) ;
+        if($resData != NULL ){
+            $this->assign('statu' , $resData['statu']) ;
+            $this->assign('review' , $resData['statu']) ;
+            if($resData['statu'] == 0  &&  $resData['review'] == 0){
+                $this->assign('review' , 0) ;
+            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0 ){
+                $this->assign('review' , 1) ;
+            }elseif ($resData['statu'] == 1  &&  $resData['review'] == 1 ){
+                $this->assign('review' , 2) ;
+            }
         }else {
-              $this->assign('statu' , 0) ;
+            $this->assign('review' , 3) ;
         }
 
         $cartList = $cartLogic->getCartList();//用户购物车

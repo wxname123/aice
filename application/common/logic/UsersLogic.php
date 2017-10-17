@@ -57,7 +57,7 @@ class UsersLogic extends Model
     *  @param    $user_id   : int    用户编码
     * */
     public  function   getUserStatuBy($user_id){
-         $statu =   M('users')->where('user_id', $user_id)->field('statu')->find() ;
+         $statu =   M('users')->where('user_id', $user_id)->field('statu,review')->find() ;
          return  $statu ;
     }
 

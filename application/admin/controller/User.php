@@ -83,7 +83,15 @@ class User extends Base {
             $Page->parameter[$key]   =   urlencode($val);
         }
         $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+
         $user_id_arr = get_arr_column($userList, 'user_id');
+//        var_dump($user_id_arr) ; die ;
+
+
+
+        $user_id_arr = get_arr_column($userList, 'user_id');
+
 
         if(!empty($user_id_arr))
         {
@@ -96,7 +104,17 @@ class User extends Base {
 
             $third_leader = DB::query("select third_leader,count(1) as count  from __PREFIX__users where third_leader in(".  implode(',', $user_id_arr).")  group by third_leader");
             $third_leader = convert_arr_key($third_leader,'third_leader');
+
+
+            //便利$userlist
+            foreach($userList as  $k=>$v ){
+                $userList[$k]['mobile_id'] = $v['user_id'] + 32304580 ;
+                $userList[$k]['mobile_uid'] = $v['uid'] + 32304580 ;
+            }
+
+
         }
+//        var_dump($userList) ; die ;
         $this->assign('first_leader',$first_leader);
         $this->assign('second_leader',$second_leader);
         $this->assign('third_leader',$third_leader);
