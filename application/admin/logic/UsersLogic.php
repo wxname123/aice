@@ -68,11 +68,22 @@ class UsersLogic extends Model
 					}
 				})
 				->count();
+        $count = Db::name('users')
+            ->where(function($query) use ($user){
+                if ($user['id_card']) {
+                    $query->where('id_card',$user['id_card']);
+                }
+            })
+            ->count();
 		if ($user_count > 0) {
 			return array('status' => -1, 'msg' => '账号已存在');
 		}
+        if ($count > 0) {
+            return array('status' => -1, 'msg' => '账号已存在');
+        }
     	$user['password'] = encrypt($user['password']);
     	$user['reg_time'] = time();
+        $user['is_agent']  = 1;
     	$user_id = M('users')->add($user);
     	if(!$user_id){
     		return array('status'=>-1,'msg'=>'添加失败');

@@ -153,6 +153,21 @@ function checkMobile(tel) {
     };
 }
 
+/**
+ * 身份证格式判断
+ * @param idcar
+ * @returns {boolean}
+ */
+
+function checkCar(idcar){
+    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    if(reg.test(idcar)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 /*
  * 上传图片 后台专用
  * @access  public
