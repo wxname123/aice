@@ -36,12 +36,9 @@ class Ad extends Base{
         return $this->fetch();
     }
 
-    public function test(){
-        echo "情人2222" ;
-    }
 
     public function adList(){
-        sendSms() ;
+//        sendSms() ;
         delFile(RUNTIME_PATH.'html'); // 先清除缓存, 否则不好预览
             
         $Ad =  M('ad');         
