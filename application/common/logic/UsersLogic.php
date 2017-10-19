@@ -345,7 +345,7 @@ class UsersLogic extends Model
             return array('status'=>-1,'msg'=>'请输入用户名');
 
         //一个用户只能使用一个身份证
-        if(get_user_info($data['id_card'],3))
+        if(get_user_info($data['id_card'],1))
             return array('status'=>-1,'msg'=>'账号已存在');
 
         if(empty($password))

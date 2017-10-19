@@ -51,6 +51,7 @@ function get_user_info($user_id_or_name,$type = 0,$oauth=''){
         $map['unionid'] = $user_id_or_name;
         $map['oauth'] = $oauth;
     }
+
     $user = M('users')->where($map)->find();
     return $user;
 }

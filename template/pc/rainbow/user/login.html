@@ -69,48 +69,48 @@
                         </div>
                     </div>
                 </form>
-                <div class="layel3">
-                    <div class="contactsty">
-                        <div class="tecant_c">
-                            <ul>
-                                <tpshop sql="select * from __PREFIX__plugin where type='login' AND status = 1" item="v" key="k">
-                                    <if condition="$v['code'] eq 'weixin'">
-                                        <li class="spacer"></li>
-                                        <li>
-                                            <a class="justclix" href="{:U('LoginApi/login',array('oauth'=>'weixin'))}" title="weixin">
-                                                <i class="judgp co_wechat"></i>
-                                                <span>微信</span>
-                                            </a>
-                                        </li>
-                                    </if>
-                                    <if condition="$v['code'] eq 'qq'">
-                                        <li class="spacer"></li>
-                                        <li>
-                                            <a class="justclix" href="{:U('LoginApi/login',array('oauth'=>'qq'))}" title="QQ">
-                                                <i class="judgp co_qq"></i>
-                                                <span>QQ</span>
-                                            </a>
-                                        </li>
-                                    </if>
-                                    <if condition="$v['code'] eq 'alipay'">
-                                        <li>
-                                            <a class="justclix" href="{:U('LoginApi/login',array('oauth'=>'alipay'))}" title="支付宝">
-                                                <i class="judgp co_alipay"></i>
-                                                <span>支付宝</span>
-                                            </a>
-                                        </li>
-                                    </if>
-                                </tpshop>
-                            </ul>
-                        </div>
-                        <div class="register_c">
-                            <a class="justclix" href="{:U('Home/User/reg')}">
-                                <i class="judgp co_register"></i>
-                                <span>立即注册</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="layel3">-->
+                    <!--<div class="contactsty">-->
+                        <!--<div class="tecant_c">-->
+                            <!--<ul>-->
+                                <!--<tpshop sql="select * from __PREFIX__plugin where type='login' AND status = 1" item="v" key="k">-->
+                                    <!--<if condition="$v['code'] eq 'weixin'">-->
+                                        <!--<li class="spacer"></li>-->
+                                        <!--<li>-->
+                                            <!--<a class="justclix" href="{:U('LoginApi/login',array('oauth'=>'weixin'))}" title="weixin">-->
+                                                <!--<i class="judgp co_wechat"></i>-->
+                                                <!--<span>微信</span>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                    <!--</if>-->
+                                    <!--<if condition="$v['code'] eq 'qq'">-->
+                                        <!--<li class="spacer"></li>-->
+                                        <!--<li>-->
+                                            <!--<a class="justclix" href="{:U('LoginApi/login',array('oauth'=>'qq'))}" title="QQ">-->
+                                                <!--<i class="judgp co_qq"></i>-->
+                                                <!--<span>QQ</span>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                    <!--</if>-->
+                                    <!--<if condition="$v['code'] eq 'alipay'">-->
+                                        <!--<li>-->
+                                            <!--<a class="justclix" href="{:U('LoginApi/login',array('oauth'=>'alipay'))}" title="支付宝">-->
+                                                <!--<i class="judgp co_alipay"></i>-->
+                                                <!--<span>支付宝</span>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                    <!--</if>-->
+                                <!--</tpshop>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--<div class="register_c">-->
+                            <!--<a class="justclix" href="{:U('Home/User/reg')}">-->
+                                <!--<i class="judgp co_register"></i>-->
+                                <!--<span>立即注册</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
     </div>

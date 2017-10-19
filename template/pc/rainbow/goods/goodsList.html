@@ -232,7 +232,7 @@
 			<div class="tjhot-shoplist" id="ajax_hot_goods">
                 <tpshop sql="select goods_id,goods_name,shop_price from `__PREFIX__goods` where  is_recommend = 1 and is_on_sale = 1 limit 5" item="vo" key="k">
                     <div class="alone-shop">
-                        <a href="{:U('Home/Goods/goodsInfo',array('id'=>$vo.goods_id))}"><img class="lazy" data-original="{$vo.goods_id|goods_thum_images=180,180}"/></a>
+                        <a href="{:U('index.php/Home/Goods/goodsInfo',array('id'=>$vo.goods_id))}"><img class="lazy" data-original="{$vo.goods_id|goods_thum_images=180,180}"/></a>
                         <p class="line-two-hidd"><a href="{:U('Home/Goods/goodsInfo',array('id'=>$vo.goods_id))}">{$vo.goods_name}</a></p>
                         <p class="price-tag"><span class="li_xfo">￥</span><span>{$vo.shop_price}</span></p>
                     </div>

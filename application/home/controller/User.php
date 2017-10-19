@@ -20,7 +20,6 @@ class User extends Base{
     public function _initialize() {      
         parent::_initialize();
 
-
         if(session('?user'))
         {
         	$user = session('user');
