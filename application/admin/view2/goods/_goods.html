@@ -156,24 +156,29 @@
                     <p class="notic">提车需完成的任务数量</p>
                 </dd>
             </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label for="record_no">SPU</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" value="{$goodsInfo.SPU}" name="SPU" class="input-txt"/>
-                    <span class="err" id="err_SPU" style="color:#F00; display:none;"></span>
-                </dd>
-            </dl>    
-            <dl class="row">
-                <dt class="tit">
-                    <label for="record_no">SKU</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" value="{$goodsInfo.SKU}" name="SKU" class="input-txt"/>
-                    <span class="err" id="err_SKU" style="color:#F00; display:none;"></span>
-                </dd>
-            </dl> 
+
+
+            <!--<dl class="row">-->
+                <!--<dt class="tit">-->
+                    <!--<label for="record_no">SPU</label>-->
+                <!--</dt>-->
+                <!--<dd class="opt">-->
+                    <!--<input type="text" value="{$goodsInfo.SPU}" name="SPU" class="input-txt"/>-->
+                    <!--<span class="err" id="err_SPU" style="color:#F00; display:none;"></span>-->
+                <!--</dd>-->
+            <!--</dl>    -->
+            <!---->
+            <!--<dl class="row">-->
+                <!--<dt class="tit">-->
+                    <!--<label for="record_no">SKU</label>-->
+                <!--</dt>-->
+                <!--<dd class="opt">-->
+                    <!--<input type="text" value="{$goodsInfo.SKU}" name="SKU" class="input-txt"/>-->
+                    <!--<span class="err" id="err_SKU" style="color:#F00; display:none;"></span>-->
+                <!--</dd>-->
+            <!--</dl> -->
+
+
             <dl class="row">
                 <dt class="tit">
                     <label for="record_no">商品分类</label>
@@ -250,7 +255,7 @@
             </dl>  
             <dl class="row">
                 <dt class="tit">
-                    <label for="record_no">本店售价</label>
+                    <label for="record_no">爱车送销售价   </label>
                 </dt>
                 <dd class="opt">
                     <input type="text" value="{$goodsInfo.shop_price}" name="shop_price" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
@@ -260,32 +265,38 @@
 
             <dl class="row">
                 <dt class="tit">
-                    <label for="record_no">官方价</label>
+                    <label for="record_no">官方指导价</label>
                 </dt>
                 <dd class="opt">
                     <input type="text" value="{$goodsInfo.market_price}" name="market_price" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
                     <span class="err" id="err_market_price" style="color:#F00; display:none;"></span>
                 </dd>
-            </dl>   
-            <dl class="row">
-                <dt class="tit">
-                    <label for="record_no">成本价</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" value="{$goodsInfo.cost_price}" name="cost_price" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
-                    <span class="err" id="err_cost_price" style="color:#F00; display:none;"></span>
-                </dd>
-            </dl>            
-            <dl class="row">
-                <dt class="tit">
-                    <label for="record_no">佣金</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" value="{$goodsInfo.commission}" name="commission" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
-                    <span class="err" id="err_commission" style="color:#F00; display:none;"></span>
-                    <p class="notic">用于分销的分成金额</p>
-                </dd>
             </dl>
+
+            <!--<dl class="row">-->
+                <!--<dt class="tit">-->
+                    <!--<label for="record_no">成本价</label>-->
+                <!--</dt>-->
+                <!--<dd class="opt">-->
+                    <!--<input type="text" value="{$goodsInfo.cost_price}" name="cost_price" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />-->
+                    <!--<span class="err" id="err_cost_price" style="color:#F00; display:none;"></span>-->
+                <!--</dd>-->
+            <!--</dl>         -->
+
+
+            <!--<dl class="row">-->
+                <!--<dt class="tit">-->
+                    <!--<label for="record_no">佣金</label>-->
+                <!--</dt>-->
+                <!--<dd class="opt">-->
+                    <!--<input type="text" value="{$goodsInfo.commission}" name="commission" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />-->
+                    <!--<span class="err" id="err_commission" style="color:#F00; display:none;"></span>-->
+                    <!--<p class="notic">用于分销的分成金额</p>-->
+                <!--</dd>-->
+            <!--</dl>-->
+
+
+
             <dl class="row">
                 <dt class="tit">
                     <label>图片上传</label>
@@ -308,30 +319,36 @@
                 </dd>
             </dl>
 
-            <dl class="row">
-                <dt class="tit">
-                    <label for="record_no">商品重量</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" value="{$goodsInfo.weight}" name="weight" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />
-                    <span class="err" id="err_weight" style="color:#F00; display:none;"></span>
-                    <p class="notic"> 务必设置商品重量, 用于计算物流费.以克为单位</p>
-                </dd>
-            </dl>  
-	  <dl class="row">
-        <dt class="tit">
-          <label>是否包邮</label>
-        </dt>
-        <dd class="opt">
-          <div class="onoff">
-            <label for="is_free_shipping1" class="cb-enable <if condition="$goodsInfo[is_free_shipping] eq 1">selected</if>">是</label>
-            <label for="is_free_shipping0" class="cb-disable <if condition="$goodsInfo[is_free_shipping] eq 0">selected</if>">否</label>
-            <input id="is_free_shipping1" name="is_free_shipping" value="1" type="radio" <if condition="$goodsInfo[is_free_shipping] eq 1"> checked="checked"</if>>
-            <input id="is_free_shipping0" name="is_free_shipping" value="0" type="radio" <if condition="$goodsInfo[is_free_shipping] eq 0"> checked="checked"</if>>
-          </div>
-          <p class="notic"></p>
-        </dd>
-      </dl>              
+            <!--<dl class="row">-->
+                <!--<dt class="tit">-->
+                    <!--<label for="record_no">商品重量</label>-->
+                <!--</dt>-->
+                <!--<dd class="opt">-->
+                    <!--<input type="text" value="{$goodsInfo.weight}" name="weight" class="t_mane" onKeyUp="this.value=this.value.replace(/[^\d.]/g,'')" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" />-->
+                    <!--<span class="err" id="err_weight" style="color:#F00; display:none;"></span>-->
+                    <!--<p class="notic"> 务必设置商品重量, 用于计算物流费.以克为单位</p>-->
+                <!--</dd>-->
+            <!--</dl>  -->
+
+
+
+	  <!--<dl class="row">-->
+        <!--<dt class="tit">-->
+          <!--<label>是否包邮</label>-->
+        <!--</dt>-->
+        <!--<dd class="opt">-->
+          <!--<div class="onoff">-->
+            <!--<label for="is_free_shipping1" class="cb-enable <if condition="$goodsInfo[is_free_shipping] eq 1">selected</if>">是</label>-->
+            <!--<label for="is_free_shipping0" class="cb-disable <if condition="$goodsInfo[is_free_shipping] eq 0">selected</if>">否</label>-->
+            <!--<input id="is_free_shipping1" name="is_free_shipping" value="1" type="radio" <if condition="$goodsInfo[is_free_shipping] eq 1"> checked="checked"</if>>-->
+            <!--<input id="is_free_shipping0" name="is_free_shipping" value="0" type="radio" <if condition="$goodsInfo[is_free_shipping] eq 0"> checked="checked"</if>>-->
+          <!--</div>-->
+          <!--<p class="notic"></p>-->
+        <!--</dd>-->
+      <!--</dl>-->
+
+
+
             <dl class="row">
                 <dt class="tit">
                     <label for="record_no">总库存</label>

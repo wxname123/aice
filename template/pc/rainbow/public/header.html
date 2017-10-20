@@ -210,9 +210,9 @@
 				<a href="{:U('Index/index')}">首页</a>
 			</li>
 			<!--手机城、珠宝、家电城、促销商品 ....   原来是在这里查出来的-->
-			<tpshop sql="SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` DESC" key="k" item='v'>
-				<li><a href="{$v[url]}" <if condition="$v[is_new] eq 1">target="_blank" </if> >{$v[name]}</a></li>
-			</tpshop>
+			<!--<tpshop sql="SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` DESC" key="k" item='v'>-->
+				<!--<li><a href="{$v[url]}" <if condition="$v[is_new] eq 1">target="_blank" </if> >{$v[name]}</a></li>-->
+			<!--</tpshop>-->
 		</ul>
 	</div>
 </div>

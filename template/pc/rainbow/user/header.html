@@ -8,36 +8,40 @@
 <div class="tpshop-tm-hander home-index-top p">
 	<div class="top-hander clearfix">
 		<div class="w1224 pr clearfix">
+
+
 			<div class="fl">
-			    <if condition="strtolower(ACTION_NAME) neq 'goodsinfo' ">
-                      <link rel="stylesheet" href="__STATIC__/css/location.css" type="text/css"><!-- 收货地址，物流运费 -->
-                      <div class="sendaddress pr fl">
-                          <span>送货至：</span>
-                          <!-- <span>深圳<i class="share-a_a1"></i></span>-->
-                          <span>
-                              <ul class="list1">
-                                  <li class="summary-stock though-line">
-                                      <div class="dd" style="border-right:0px;width:200px;">
-                                          <div class="store-selector add_cj_p">
-                                              <div class="text"><div></div><b></b></div>
-                                              <div onclick="$(this).parent().removeClass('hover')" class="close"></div>
-                                          </div>
-                                      </div>
-                                  </li>
-                              </ul>
-                          </span>
-                      </div>
-                      <script src="__STATIC__/js/location.js"></script>
-                </if>
+			    <!--<if condition="strtolower(ACTION_NAME) neq 'goodsinfo' ">-->
+                      <!--<link rel="stylesheet" href="__STATIC__/css/location.css" type="text/css">&lt;!&ndash; 收货地址，物流运费 &ndash;&gt;-->
+                      <!--<div class="sendaddress pr fl">-->
+                          <!--<span>送货至：</span>-->
+                          <!--&lt;!&ndash; <span>深圳<i class="share-a_a1"></i></span>&ndash;&gt;-->
+                          <!--<span>-->
+                              <!--<ul class="list1">-->
+                                  <!--<li class="summary-stock though-line">-->
+                                      <!--<div class="dd" style="border-right:0px;width:200px;">-->
+                                          <!--<div class="store-selector add_cj_p">-->
+                                              <!--<div class="text"><div></div><b></b></div>-->
+                                              <!--<div onclick="$(this).parent().removeClass('hover')" class="close"></div>-->
+                                          <!--</div>-->
+                                      <!--</div>-->
+                                  <!--</li>-->
+                              <!--</ul>-->
+                          <!--</span>-->
+                      <!--</div>-->
+                      <!--<script src="__STATIC__/js/location.js"></script>-->
+                <!--</if>-->
 				<div class="fl nologin">
 					<a class="red" href="{:U('Home/user/login')}">登录</a>
-					<a href="{:U('Home/user/reg')}">注册</a>
+					<!--<a href="{:U('Home/user/reg')}">注册</a>-->
 				</div>
 				<div class="fl islogin hide">
 					<a class="red userinfo" href="{:U('Home/user/index')}"></a>
 					<a  href="{:U('Home/user/logout')}"  title="退出" target="_self">安全退出</a>
 				</div>
 			</div>
+
+
 			<ul class="top-ri-header fr clearfix">
 				<li><a target="_blank" href="{:U('Home/Order/order_list')}">我的订单</a></li>
 				<li class="spacer"></li>

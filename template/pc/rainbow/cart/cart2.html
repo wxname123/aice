@@ -436,35 +436,56 @@
     function submit_order()
     {
 
-        if(ajax_return_status == 0)
-            return false;
-        ajax_return_status = 0;
+        //限定 只能让  submit_order  提交一次
+//        if(ajax_return_status == 0)
+//            return false;
+//
+//        ajax_return_status = 0;
+
         $.ajax({
-            type : "POST",
-            url:"{:U('Home/Cart/cart3')}",//+tab,
-            data : $('#cart2_form').serialize()+"&act=submit_order",// 你的formid
-            dataType: "json",
-            success: function(data){
-                if(data.status != '1')
-                {
-                    // alert(data.msg); //执行有误
-                    layer.alert(data.msg, {icon: 2});
-                    // 登录超时
-                    if(data.status == -100)
-                        location.href ="{:U('Home/User/login')}";
-
-                    ajax_return_status = 1; // 上一次ajax 已经返回, 可以进行下一次 ajax请求
-
-                    return false;
-                }
-                layer.msg('订单提交成功，正在跳转!', {
-                    icon: 1,   // 成功图标
-                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
-                }, function(){ // 关闭后执行的函数
-                    location.href = "/index.php?m=Home&c=Cart&a=cart4&order_id="+data.result; // 跳转到结算页
-                });
+            type:"POST" ,
+            url:"{:U('Home/User/judgeAuth')}" ,
+            data:{} ,
+            async:false   ,
+            dataType:"json" ,
+            success:function (data) {
+                 if(data.status == 1 ){
+                     layer.alert(data.msg, {icon: 5});
+                 }else{
+                     $.ajax({
+                         type : "POST",
+                         url:"{:U('Home/Cart/cart3')}",//+tab,
+                         data : $('#cart2_form').serialize()+"&act=submit_order",// 你的formid
+                         async:false   ,
+                         dataType: "json",
+                         success: function(data){
+                             if(data.status != '1')
+                             {
+                                 // alert(data.msg); //执行有误
+                                 layer.alert(data.msg, {icon: 2});
+                                 // 登录超时
+                                 if(data.status == -100)
+                                     location.href ="{:U('Home/User/login')}";
+                                 ajax_return_status = 1; // 上一次ajax 已经返回, 可以进行下一次 ajax请求
+                                 return false;
+                             }
+                             layer.msg('订单提交成功，正在跳转!', {
+                                 icon: 1,   // 成功图标
+                                 time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                             }, function(){ // 关闭后执行的函数
+                                 location.href = "/index.php?m=Home&c=Cart&a=cart4&order_id="+data.result; // 跳转到结算页
+                             });
+                         }
+                     });
+                 }
             }
         });
+
+
+
+
+
+
     }
 </script>
 </body>

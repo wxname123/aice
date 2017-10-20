@@ -57,31 +57,47 @@ class Cart extends Base {
         $cartLogic = new CartLogic();
         $userLogic = new  UsersLogic() ;
         $cartLogic->setUserId($this->user_id);
+
+        //先让用户登录
+        if($this->user_id == 0){
+            $this->redirect('Home/User/login') ;
+        }
+
         //根据用户编码获取到该用户是否认证通过的字段
         $resData =   $userLogic->getUserStatuBy($this->user_id) ;
 //        var_dump($resData) ;die ;
 
-        //先让用户登录
-        if($this->user_id == 0){
-                $this->redirect('Home/User/login') ;
-        }
-
         if($resData != NULL ){
             $this->assign('statu' , $resData['statu']) ;
-            $this->assign('review' , $resData['statu']) ;
+//            $this->assign('review' , $resData['review']) ;
             if($resData['statu'] == 0  &&  $resData['review'] == 0){
                 $this->assign('review' , 0) ;
-            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0 ){
+            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0  ){
                 $this->assign('review' , 1) ;
             }elseif ($resData['statu'] == 1  &&  $resData['review'] == 1 ){
                 $this->assign('review' , 2) ;
             }
+//            elseif ( $resData['statu'] == 0  &&   $resData['review'] == 2 ){
+//                $this->assign('review' , 0) ;
+//            }
         }else {
             $this->assign('review' , 3) ;
         }
-
         $cartList = $cartLogic->getCartList();//用户购物车
         $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
+//        var_dump($cartList[1]['goods_id']) ; die  ;
+
+
+        //便利   $cartList  ， 获取到购物车中每个商品的goods_id
+        $good_ids = [] ;
+        foreach ($cartList  as  $k=>$v ){
+            $good_ids[$k] = $v['goods_id'] ;
+            //保存到session中
+            session('good_ids', $good_ids);
+        }
+//        if(!empty($good_ids)){
+//                $this->assign('goods_ids', $good_ids) ;
+//        }
         $this->assign('userCartGoodsTypeNum', $userCartGoodsTypeNum);
         $this->assign('cartList', $cartList);//购物车列表
         return $this->fetch();
@@ -134,6 +150,10 @@ class Cart extends Base {
     function ajaxAddCart()
     {
         $user_id=$this->user_id;
+
+        $goods_id =  I('POST.goods_id');
+
+
         $map=array();
         $map=[
             'a.user_id'       => $user_id,
@@ -156,6 +176,21 @@ class Cart extends Base {
                 if(empty($goods_num)){
                     $this->ajaxReturn(['status'=>0,'msg'=>'购买商品数量不能为0','result'=>'']);
                 }
+
+                //如果用户下单的数量大于1， 也是不允许的
+                if($goods_num > 1)
+                    $this->ajaxReturn(['status'=>0,'msg'=>'目前只支持购买一辆车','result'=>'']);
+
+            //在用户下订单的时候，添加一个判断（每位用户只能添加一辆车）
+            if($user_id){
+                $cartData =   M('cart')->where('user_id', $user_id)->find();
+//                var_dump($cartData) ; die ;
+                if(!empty($cartData)){
+                    $this->ajaxReturn(['status'=>0,'msg'=>'您已经添加过商品，请先清空购物车中的商品','result'=>'']);
+                }
+            }
+
+
                 $cartLogic = new CartLogic();
                 $cartLogic->setUserId($this->user_id);
                 $cartLogic->setGoodsModel($goods_id);
@@ -164,6 +199,7 @@ class Cart extends Base {
                 }
                 $cartLogic->setGoodsBuyNum($goods_num);
                 $result = $cartLogic->addGoodsToCart();
+//                var_dump($result) ; die ;
                 $this->ajaxReturn($result);
             }
     }

@@ -26,18 +26,35 @@ class User extends Base {
         I('email') ? $condition['email'] = I('email') : false;
 //        $sort_order = I('order_by').' '.I('sort');
         $condition['statu'] = 1 ;
-        $condition['review'] = 0 ;
+        $condition['review'] =   0  ;
+
         $sort_order = 'update_time desc' ;
         $model = M('users');
+//        var_dump($condition) ; die ;
         $count = $model->where($condition)->count();
         $Page  = new AjaxPage($count,10);
         //  搜索条件下 分页赋值
         foreach($condition as $key=>$val) {
             $Page->parameter[$key]   =   urlencode($val);
         }
-
+        trace("yuliang");
+        trace($condition);
         $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
         $user_id_arr = get_arr_column($userList, 'user_id');
+//        var_dump( $userList) ; die;
+
+        //根据 $userList  中的  $user_id   去 cart表中查询出车型 和 车的价格
+        if(!empty($userList)){
+            foreach ($userList as $k=>$v ){
+                 $cartList =  M('cart')->where('user_id', $v['user_id'])->field('goods_name,goods_price')->find() ;
+                 if(!empty($cartList)){
+                        $userList[$k]['goods_name'] = $cartList['goods_name'];
+                        $userList[$k]['goods_price'] = $cartList['goods_price'];
+                 }
+            }
+        }
+
+
 
         $show = $Page->show();
         $this->assign('userList',$userList);
@@ -150,6 +167,34 @@ class User extends Base {
         return  $this->fetch() ;
     }
 
+
+    public  function  refuseCheck(){
+        $uid =   request()->get('id') ;
+        if($uid){
+            $res =  M('users')->where(array('user_id' => $uid))->save(array('review' => 0, 'statu' => 0)) ;
+            if($res){
+                $data = [
+                    'status' => 0 ,
+                    'msg'   =>  '拒绝成功'
+                ] ;
+                echo  json_encode($data , true ) ;
+            }else{
+                $data = [
+                    'status' => 1 ,
+                    'msg'   =>  '拒绝失败'
+                ] ;
+                echo  json_encode($data , true ) ;
+            }
+        }else{
+            $data = [
+                'status' => 2 ,
+                'msg'   =>  '用户不存在'
+            ] ;
+            echo  json_encode($data , true ) ;
+        }
+    }
+
+    //通过审核
     public  function agreeCheck(){
         $uid =  request()->get('id') ;
         if($uid){

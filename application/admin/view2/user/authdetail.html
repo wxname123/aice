@@ -115,7 +115,8 @@
             </dl>
 
             <input  hidden="hidden" name="user_id" value="{$idata['user_id']}">
-            <div class="bot"><a href="JavaScript:void(0);" onclick="AgreeCheck()" class="ncap-btn-big ncap-btn-green">审核通过</a></div>
+            <div class="bot"><a href="JavaScript:void(0);" onclick="AgreeCheck()" class="ncap-btn-big ncap-btn-green">审核通过</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="JavaScript:void(0);" onclick="RefuseCheck()" class="ncap-btn-big ncap-btn-green">拒绝通过</a></div>
+
         </div>
     </form>
 </div>
@@ -127,7 +128,6 @@
 
     function  AgreeCheck(){
          var  uid =   $('input[name=user_id]').val() ;
-
         layer.confirm('您确定要通过审核？', {
             btn: ['确定','取消'] //按钮
         }, function(){
@@ -158,6 +158,41 @@
                //取消
         });
     }
+
+
+    function  RefuseCheck(){
+        var  uid =   $('input[name=user_id]').val() ;
+        layer.confirm('您确定要拒绝审核？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+//            layer.close();
+            layer.closeAll() ;
+//            layer.msg('的确很重要', {icon: 1});
+            $.ajax({
+                dataType:'json' ,
+                url:'/Admin/User/refuseCheck',
+                data:{'id' : uid},
+                type:'get',
+                success:function (data) {
+                    if(data.status == 0){
+                        layer.close();
+//                        opener.location.reload() ;
+//                        layer.alert(data.msg, {icon: 6});
+//                        location.reload() ;
+
+                        window.location.href = '/Admin/User/memberAuth' ;
+                    }else if (data.status == 1){
+                        layer.alert(data.msg, {icon: 5});
+                    }else{
+                        layer.alert(data.msg, {icon: 5});
+                    }
+                }
+            });
+        }, function(){
+            //取消
+        });
+    }
+
 
 //    function  imgClic(obj){
 //         var img_id = obj.id ;

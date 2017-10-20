@@ -34,6 +34,7 @@ class Goods extends Base {
         $goodsLogic = new GoodsLogic();
         $goodsPromFactory = new GoodsPromFactory();
         $goods_id = I("get.id/d");
+
         $Goods = new \app\common\model\Goods();
         $goods = $Goods::get($goods_id);
         if(empty($goods) || ($goods['is_on_sale'] == 0)){
@@ -63,6 +64,10 @@ class Goods extends Base {
             $dispatching = $goodsLogic->getGoodsDispatching($goods['goods_id'], $region_id);
             $this->assign('dispatching', $dispatching);
         }
+
+//        if($goods_id){
+//            $this->assign('goods_id', $goods_id) ;
+//        }
         $this->assign('freight_free', $freight_free);// 全场满多少免运费
         $this->assign('spec_goods_price', json_encode($spec_goods_price,true)); // 规格 对应 价格 库存表
         $this->assign('navigate_goods',navigate_goods($goods_id,1));// 面包屑导航

@@ -73,6 +73,7 @@ class Order extends Base {
 
         $show = $Page->show();
         $order_str = "order_id DESC";
+
         $order_list = M('order')->order($order_str)->where($where)->bind($bind)->limit($Page->firstRow.','.$Page->listRows)->select();
 
         //获取订单商品
@@ -93,6 +94,8 @@ class Order extends Base {
                 $order_list[$k]['pre_sell_is_finished'] = -1;//没有参与预售的订单
             }
         }
+
+
         $this->assign('order_status',C('ORDER_STATUS'));
         $this->assign('shipping_status',C('SHIPPING_STATUS'));
         $this->assign('pay_status',C('PAY_STATUS'));
@@ -108,8 +111,8 @@ class Order extends Base {
      */
     public function order_detail(){
         $id = I('get.id/d');
-//        var_dump($id) ; die($id);
-        $map['order_id'] = $id;
+
+//        $map['order_id'] = $id;
         $map['user_id'] = $this->user_id;
         $order_info = M('order')->where($map)->find();
         if(!$order_info){
@@ -133,10 +136,10 @@ class Order extends Base {
         }
         //获取订单进度条
         $sql = "SELECT action_id,log_time,status_desc,order_status FROM ((SELECT * FROM __PREFIX__order_action WHERE order_id = :id AND status_desc <>'' ORDER BY action_id) AS a) GROUP BY status_desc ORDER BY action_id";
-        $bind['id'] = $id;
+        $bind['id'] = $id;          //  array(1) { ["id"]=> int(1517) }
         $items = DB::query($sql,$bind);
-        $items_count = count($items);
 
+        $items_count = count($items);
         $ids = $order_info['province'].','.$order_info['city'].','.$order_info['district'];
         $region_list = M('region')->where("id in (".$ids.")")->getField("id,name");
         $invoice_no = M('DeliveryDoc')->where("order_id", $id)->getField('invoice_no',true);
