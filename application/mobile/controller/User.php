@@ -144,6 +144,7 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+
     public function mission(){
         $user_id=$this->user_id;
         $map=[
