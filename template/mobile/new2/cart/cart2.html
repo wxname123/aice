@@ -91,108 +91,108 @@
                     </div>
                 </div>
             </div>
-            <div class="invoice list7">
-                <div class="myorder p">
-                    <div class="content30">
-                        <a class="remain" href="javascript:void(0);">
-                            <div class="order">
-                                <div class="fl">
-                                    <span>使用余额/积分</span>
-                                </div>
-                                <div class="fr">
-                                    <!--<i class="Mright"></i>-->
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="invoice list7">-->
+                <!--<div class="myorder p">-->
+                    <!--<div class="content30">-->
+                        <!--<a class="remain" href="javascript:void(0);">-->
+                            <!--<div class="order">-->
+                                <!--<div class="fl">-->
+                                    <!--<span>使用余额/积分</span>-->
+                                <!--</div>-->
+                                <!--<div class="fr">-->
+                                    <!--&lt;!&ndash;<i class="Mright"></i>&ndash;&gt;-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         <!--使用余额、积分-s-->
-            <div id="balance-li" class="invoice list7">
-                <div class="myorder p">
-                    <div class="content30">
-                        <label>
-                            <div class="incorise">
-                                <span>使用余额：</span>
-                                <input id="user_money" name="user_money"  type="text"   placeholder="可用余额为:{$user['user_money']}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=/^\d+\.?\d{0,2}$/.test(this.value) ? this.value : ''" />
-                                <input name="validate_bonus" type="button" value="使用" onClick="wield(this);" class="usejfye" />
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <div class="myorder p">
-                    <div class="content30">
-                        <label>
-                            <div class="incorise">
-                                <span>使用积分：</span>
-                                <input id="pay_points" name="pay_points" type="text"   placeholder="可用积分为:{$user['pay_points']}"  onpaste="this.value=this.value.replace(/[^\d]/g,'')" onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" />
-                                <input name="validate_bonus" type="button" value="使用" onClick="wield(this);" class="usejfye"/>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <if condition="empty($checkconpon)">
-                    <div class="myorder p">
-                        <div class="content30">
-                            <label>
-                                <div class="incorise">
-                                    <span>使用券码：</span>
-                                    <input id="couponCode" name="couponCode" type="text"   placeholder="填写优惠券券码"/>
-                                    <input name="validate_bonus" type="button" value="使用" onClick="wield(this);$('#coupon_div').hide();" class="usejfye"/>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </if>
-                <div class="myorder myorder-2 p" id="paypwd_view", style="display: none">
-                    <div class="content30">
-                        <label>
-                            <div class="incorise">
-                                <span>支付密码：</span>
-                                <input style="display:none" type="password" name="paypwd"/>
-                                <!--解决google浏览器识别text+password,自动填充已保存的账户密码-->
-                                <input type="password" id="paypwd" name="paypwd"  placeholder="请输入支付密码"/>
-                                <if condition="empty($user['paypwd'])">
-                                    <a class="go-set-password" href="{:U('Mobile/User/paypwd')}">去设置支付密码?</a>
-                                </if>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            </div>
+            <!--<div id="balance-li" class="invoice list7">-->
+                <!--<div class="myorder p">-->
+                    <!--<div class="content30">-->
+                        <!--<label>-->
+                            <!--<div class="incorise">-->
+                                <!--<span>使用余额：</span>-->
+                                <!--<input id="user_money" name="user_money"  type="text"   placeholder="可用余额为:{$user['user_money']}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=/^\d+\.?\d{0,2}$/.test(this.value) ? this.value : ''" />-->
+                                <!--<input name="validate_bonus" type="button" value="使用" onClick="wield(this);" class="usejfye" />-->
+                            <!--</div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="myorder p">-->
+                    <!--<div class="content30">-->
+                        <!--<label>-->
+                            <!--<div class="incorise">-->
+                                <!--<span>使用积分：</span>-->
+                                <!--<input id="pay_points" name="pay_points" type="text"   placeholder="可用积分为:{$user['pay_points']}"  onpaste="this.value=this.value.replace(/[^\d]/g,'')" onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" />-->
+                                <!--<input name="validate_bonus" type="button" value="使用" onClick="wield(this);" class="usejfye"/>-->
+                            <!--</div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<if condition="empty($checkconpon)">-->
+                    <!--<div class="myorder p">-->
+                        <!--<div class="content30">-->
+                            <!--<label>-->
+                                <!--<div class="incorise">-->
+                                    <!--<span>使用券码：</span>-->
+                                    <!--<input id="couponCode" name="couponCode" type="text"   placeholder="填写优惠券券码"/>-->
+                                    <!--<input name="validate_bonus" type="button" value="使用" onClick="wield(this);$('#coupon_div').hide();" class="usejfye"/>-->
+                                <!--</div>-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</if>-->
+                <!--<div class="myorder myorder-2 p" id="paypwd_view", style="display: none">-->
+                    <!--<div class="content30">-->
+                        <!--<label>-->
+                            <!--<div class="incorise">-->
+                                <!--<span>支付密码：</span>-->
+                                <!--<input style="display:none" type="password" name="paypwd"/>-->
+                                <!--&lt;!&ndash;解决google浏览器识别text+password,自动填充已保存的账户密码&ndash;&gt;-->
+                                <!--<input type="password" id="paypwd" name="paypwd"  placeholder="请输入支付密码"/>-->
+                                <!--<if condition="empty($user['paypwd'])">-->
+                                    <!--<a class="go-set-password" href="{:U('Mobile/User/paypwd')}">去设置支付密码?</a>-->
+                                <!--</if>-->
+                            <!--</div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         <!--使用余额、积分-e-->
         </div>
     </div>
 <!--支持配送,发票信息-s-->
 
 <!--优惠券-s-->
-    <div class="information_dr ma-to-20" id="coupon_div">
-        <div class="maleri30">
-            <div class="invoice list7">
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="{:U('mobile/User/checkcoupon',array('lid'=>$checkconpon.lid))}">
-                            <div class="order">
-                                <div class="fl">
-                                    <span>优惠券</span>
-                                    <span class="couponssl"><em>{:count($couponList)}</em>张可用</span>
-                                </div>
-                                <div class="fr">
-                                    <if condition="!empty($checkconpon)">
-                                        <span class="setalit">{$checkconpon.name}</span>
-                                        <input type="hidden" name="coupon_id"  value="{$checkconpon.lid}" />
-                                    <else/>
-                                        <span class="setalit">未使用</span>
-                                   </if>
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--<div class="information_dr ma-to-20" id="coupon_div">-->
+        <!--<div class="maleri30">-->
+            <!--<div class="invoice list7">-->
+                <!--<div class="myorder p">-->
+                    <!--<div class="content30">-->
+                        <!--<a href="{:U('mobile/User/checkcoupon',array('lid'=>$checkconpon.lid))}">-->
+                            <!--<div class="order">-->
+                                <!--<div class="fl">-->
+                                    <!--<span>优惠券</span>-->
+                                    <!--<span class="couponssl"><em>{:count($couponList)}</em>张可用</span>-->
+                                <!--</div>-->
+                                <!--<div class="fr">-->
+                                    <!--<if condition="!empty($checkconpon)">-->
+                                        <!--<span class="setalit">{$checkconpon.name}</span>-->
+                                        <!--<input type="hidden" name="coupon_id"  value="{$checkconpon.lid}" />-->
+                                    <!--<else/>-->
+                                        <!--<span class="setalit">未使用</span>-->
+                                   <!--</if>-->
+                                    <!--<i class="Mright"></i>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 <!--优惠券-e-->
 
 <!--卖家留言-s-->
@@ -213,26 +213,26 @@
                     <span class="fl">商品金额：</span>
                     <span class="fr red"><span>￥</span><span>{$cartPriceInfo['total_fee']}</span>元</span>
                 </p>
-                <p class="p">
-                    <span class="fl">配送费用：</span>
-                    <span class="fr red" ><span>￥</span><span id="postFee">0</span>元</span>
-                </p>
-                <p class="p">
-                    <span class="fl">使用优惠券：</span>
-                    <span class="fr red" ><span>-￥</span><span id="couponFee">0</span>元</span>
-                </p>
-                <p class="p">
-                    <span class="fl">使用积分：</span>
-                    <span class="fr red" ><span>-￥</span><span id="pointsFee">0</span>元</span>
-                </p>
-                <p class="p">
-                    <span class="fl">使用余额：</span>
-                    <span class="fr red" ><span>-￥</span><span id="balance">0</span>元</span>
-                </p>
-                <p class="p">
-                    <span class="fl">优惠活动：</span>
-                    <span class="fr red" ><span>-￥</span><span id="order_prom_amount">0</span>元</span>
-                </p>
+                <!--<p class="p">-->
+                    <!--<span class="fl">配送费用：</span>-->
+                    <!--<span class="fr red" ><span>￥</span><span id="postFee">0</span>元</span>-->
+                <!--</p>-->
+                <!--<p class="p">-->
+                    <!--<span class="fl">使用优惠券：</span>-->
+                    <!--<span class="fr red" ><span>-￥</span><span id="couponFee">0</span>元</span>-->
+                <!--</p>-->
+                <!--<p class="p">-->
+                    <!--<span class="fl">使用积分：</span>-->
+                    <!--<span class="fr red" ><span>-￥</span><span id="pointsFee">0</span>元</span>-->
+                <!--</p>-->
+                <!--<p class="p">-->
+                    <!--<span class="fl">使用余额：</span>-->
+                    <!--<span class="fr red" ><span>-￥</span><span id="balance">0</span>元</span>-->
+                <!--</p>-->
+                <!--<p class="p">-->
+                    <!--<span class="fl">优惠活动：</span>-->
+                    <!--<span class="fr red" ><span>-￥</span><span id="order_prom_amount">0</span>元</span>-->
+                <!--</p>-->
             </div>
         </div>
     </div>
@@ -245,7 +245,7 @@
             <a href="javascript:void(0)" onclick="submit_order()">提交订单</a>
         </div>
         <div class="fl">
-            <p><span class="pmo">应付金额：</span>￥<span id="payables"></span><span></span></p>
+            <p><span class="pmo">应付金额：</span>￥<span id="payables">{$cartPriceInfo['total_fee']}</span><span></span></p>
         </div>
     </div>
 <!--提交订单-e-->
@@ -280,26 +280,26 @@
     $(document).ready(function(){
         showPostName();
         //显示隐藏支付密码
-        $(document).on('change', '#pay_points,#user_money', function() {
-            var user_money = $.trim($('#user_money').val());
-            var pay_points = $.trim($('#pay_points').val());
-            if ((user_money !== '' && user_money >0) || (pay_points !== '' || pay_points >0)) {
-                $('#paypwd_view').show();
-            } else {
-                $('#paypwd_view').hide();
-            }
-        });
-        //有使用余额，积分就得用密码
-        if($('#user_money').val() > 0 || $('#pay_points').val() > 0){
-            $('#paypwd_view').show();
-        }
-        $('.radio .che').bind('click',function(){
-            //选择配送方式
-            $(this).addClass('check_t')
-                    .parent().parent().siblings('label').find('.che').removeClass('check_t');
-            //选择配送方式显示到支持配送栏
-            showPostName()
-        });
+//        $(document).on('change', '#pay_points,#user_money', function() {
+//            var user_money = $.trim($('#user_money').val());
+//            var pay_points = $.trim($('#pay_points').val());
+//            if ((user_money !== '' && user_money >0) || (pay_points !== '' || pay_points >0)) {
+//                $('#paypwd_view').show();
+//            } else {
+//                $('#paypwd_view').hide();
+//            }
+//        });
+//        //有使用余额，积分就得用密码
+//        if($('#user_money').val() > 0 || $('#pay_points').val() > 0){
+//            $('#paypwd_view').show();
+//        }
+//        $('.radio .che').bind('click',function(){
+//            //选择配送方式
+//            $(this).addClass('check_t')
+//                    .parent().parent().siblings('label').find('.che').removeClass('check_t');
+//            //选择配送方式显示到支持配送栏
+//            showPostName()
+//        });
         ajax_order_price(); // 计算订单价钱
     });
 
@@ -335,6 +335,7 @@
               $("#pointsFee").text(data.result.pointsFee);// 积分支付
                 $("#order_prom_amount").text(data.result.order_prom_amount);// 订单 优惠活动
                 $("#postFee").text(data.result.postFee); // 物流费
+
                 if(data.result.couponFee == null){
                     $("#couponFee").text(0);// 优惠券
                 }else{
@@ -363,20 +364,22 @@
                     if (data.status == -100)
                         location.href = "{:U('Mobile/User/login')}";
 
-                    ajax_return_status = 1; // 上一次ajax 已经返回, 可以进行下一次 ajax请求
+                       ajax_return_status = 1; // 上一次ajax 已经返回, 可以进行下一次 ajax请求
 
                     return false;
                 }
-                $("#postFee").text(data.result.postFee); // 物流费
-                if(data.result.couponFee == null){
-                    $("#couponFee").text(0);// 优惠券
-                }else{
-                    $("#couponFee").text(data.result.couponFee);// 优惠券
-                }
-                $("#balance").text(data.result.balance);// 余额
-                $("#pointsFee").text(data.result.pointsFee);// 积分支付
-                $("#payables").text(data.result.payables);// 应付
-                $("#order_prom_amount").text(data.result.order_prom_amount);// 订单 优惠活动
+//                $("#postFee").text(data.result.postFee); // 物流费
+
+//               if(data.result.couponFee == null){
+//                    $("#couponFee").text(0);// 优惠券
+//               }else{
+//                   $("#couponFee").text(data.result.couponFee);// 优惠券
+//                }
+//                $("#balance").text(data.result.balance);// 余额
+//                $("#pointsFee").text(data.result.pointsFee);// 积分支付
+//                $("#payables").text(data.result.payables);// 应付
+
+//                $("#order_prom_amount").text(data.result.order_prom_amount);// 订单 优惠活动
                 showErrorMsg('订单提交成功，跳转支付页面!');
                 location.href = "/index.php?m=Mobile&c=Cart&a=cart4&order_id=" + data.result;
             }
