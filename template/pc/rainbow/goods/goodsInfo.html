@@ -285,7 +285,8 @@
                                 <!--<li><span>品牌：</span><span>{$goods['brand_name']}</span></li>-->
                                 <li><span>货号：</span><span>{$goods.goods_sn}</span></li>
                                 <foreach name="goods_attr_list" item="v" key="k" >
-                                    <li><span>{$goods_attribute[$v[attr_id]]}：</span><span>{$v[attr_value]}</span></li>
+                                    <li><span>{$goods_attribute[$v[attr_id]]}：</span><span></span></li>
+                                    <!--<li><span>{$goods_attribute[$v[attr_id]]}：</span><span>{$v[attr_value]}</span></li>-->
                                 </foreach>
                             </ul>
                         </div>
