@@ -26,18 +26,35 @@ class User extends Base {
         I('email') ? $condition['email'] = I('email') : false;
 //        $sort_order = I('order_by').' '.I('sort');
         $condition['statu'] = 1 ;
-        $condition['review'] = 0 ;
+        $condition['review'] =   0  ;
+
         $sort_order = 'update_time desc' ;
         $model = M('users');
+//        var_dump($condition) ; die ;
         $count = $model->where($condition)->count();
         $Page  = new AjaxPage($count,10);
         //  搜索条件下 分页赋值
         foreach($condition as $key=>$val) {
             $Page->parameter[$key]   =   urlencode($val);
         }
-
+        trace("yuliang");
+        trace($condition);
         $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
         $user_id_arr = get_arr_column($userList, 'user_id');
+//        var_dump( $userList) ; die;
+
+        //根据 $userList  中的  $user_id   去 cart表中查询出车型 和 车的价格
+        if(!empty($userList)){
+            foreach ($userList as $k=>$v ){
+                 $cartList =  M('cart')->where('user_id', $v['user_id'])->field('goods_name,goods_price')->find() ;
+                 if(!empty($cartList)){
+                        $userList[$k]['goods_name'] = $cartList['goods_name'];
+                        $userList[$k]['goods_price'] = $cartList['goods_price'];
+                 }
+            }
+        }
+
+
 
         $show = $Page->show();
         $this->assign('userList',$userList);
@@ -105,14 +122,15 @@ class User extends Base {
             $third_leader = DB::query("select third_leader,count(1) as count  from __PREFIX__users where third_leader in(".  implode(',', $user_id_arr).")  group by third_leader");
             $third_leader = convert_arr_key($third_leader,'third_leader');
 
-
             //便利$userlist
             foreach($userList as  $k=>$v ){
-                $userList[$k]['mobile_id'] = $v['user_id'] + 32304580 ;
-                $userList[$k]['mobile_uid'] = $v['uid'] + 32304580 ;
+                if($v['uid'] == NULL ){
+                    $userList[$k]['mobile_uid'] = 0  ;
+                }else{
+                    $userList[$k]['mobile_uid'] = $v['uid'] + BUSINESS_ID_BASE ;
+                }
+                $userList[$k]['mobile_id'] = $v['user_id'] + BUSINESS_ID_BASE ;
             }
-
-
         }
 //        var_dump($userList) ; die ;
         $this->assign('first_leader',$first_leader);
@@ -149,6 +167,34 @@ class User extends Base {
         return  $this->fetch() ;
     }
 
+
+    public  function  refuseCheck(){
+        $uid =   request()->get('id') ;
+        if($uid){
+            $res =  M('users')->where(array('user_id' => $uid))->save(array('review' => 0, 'statu' => 0)) ;
+            if($res){
+                $data = [
+                    'status' => 0 ,
+                    'msg'   =>  '拒绝成功'
+                ] ;
+                echo  json_encode($data , true ) ;
+            }else{
+                $data = [
+                    'status' => 1 ,
+                    'msg'   =>  '拒绝失败'
+                ] ;
+                echo  json_encode($data , true ) ;
+            }
+        }else{
+            $data = [
+                'status' => 2 ,
+                'msg'   =>  '用户不存在'
+            ] ;
+            echo  json_encode($data , true ) ;
+        }
+    }
+
+    //通过审核
     public  function agreeCheck(){
         $uid =  request()->get('id') ;
         if($uid){
