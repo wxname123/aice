@@ -7,7 +7,6 @@
  */
 function AjaxAddCart(goods_id,num,to_catr)
 {
-
         // 如果有商品规格 说明是商品详情页提交
         if($("#buy_goods_form").length > 0){
                 $.ajax({
@@ -15,8 +14,7 @@ function AjaxAddCart(goods_id,num,to_catr)
                         url:"/index.php?m=Home&c=Cart&a=ajaxAddCart",
                         data : $('#buy_goods_form').serialize(),// 你的formid 搜索表单 序列化提交                        
 						dataType:'json',
-                        success: function(data){	
-						
+                        success: function(data){
 								if(data.status < 1)
 								{
 									layer.alert(data.msg, {icon: 2});
@@ -45,6 +43,7 @@ function AjaxAddCart(goods_id,num,to_catr)
                         }
                 });     
         }else{ // 否则可能是商品列表页 收藏页 等点击加入购物车的
+
                 $.ajax({
                         type : "POST",
                         url:"/index.php?m=Home&c=Cart&a=ajaxAddCart",
@@ -60,7 +59,7 @@ function AjaxAddCart(goods_id,num,to_catr)
 								    // 加入购物车有误
 								    if(data.status < 1)
 									{
-										layer.alert(data.msg, {icon: 2});
+										layer.alert(data.msg , {icon: 2});
 										return false;
 									}
 								    cart_num = parseInt($('#cart_quantity').html())+parseInt(num);

@@ -193,7 +193,8 @@ class UsersLogic extends Model
      * @param $password2 确认密码
      * @return array
      */
-    public function reg($username,$password,$password2, $push_id=0,$invite=array()){
+    public function reg($username,$password,$password2, $push_id=0,$invite=array(), $id_card=''){
+
     	$is_validated = 0 ;
         if(check_email($username)){
             $is_validated = 1;
@@ -223,6 +224,14 @@ class UsersLogic extends Model
         $map['password'] = encrypt($password);
         $map['reg_time'] = time();
         $map['first_leader'] = cookie('first_leader'); // 推荐人id
+
+
+        //根据username(如果是电话号码)，那么通过该号码我们可以找到其对应的user_id
+        if(!empty($invite)){
+            $map['uid'] = $invite['user_id'];
+            $map['id_card'] = $id_card ;
+        }
+
         // 如果找到他老爸还要找他爷爷他祖父等
         if($map['first_leader'])
         {
@@ -251,7 +260,8 @@ class UsersLogic extends Model
         $map['push_id'] = $push_id; //推送id
         $map['token'] = md5(time().mt_rand(1,999999999));
         $map['last_login'] = time();
-                
+
+
         $user_id = M('users')->insertGetId($map);
         if($user_id === false)
             return array('status'=>-1,'msg'=>'注册失败');

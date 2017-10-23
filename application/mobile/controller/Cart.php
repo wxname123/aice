@@ -159,6 +159,7 @@ class Cart extends MobileBase {
         $this->assign('shippingList', $shippingList); // 物流公司
         $this->assign('cartList', $cartList); // 购物车的商品
         $this->assign('cartPriceInfo', $cartPriceInfo); // 总计
+
         $this->assign('checkconpon', $checkconpon); // 使用的优惠券
         return $this->fetch();
     }
@@ -172,18 +173,22 @@ class Cart extends MobileBase {
             exit(json_encode(array('status'=>-100,'msg'=>"登录超时请重新登录!",'result'=>null))); // 返回结果状态
         }
         $address_id = I("address_id/d"); //  收货地址id
+
         $shipping_code =  I("shipping_code"); //  物流编号
         $invoice_title = I('invoice_title'); // 发票
-        $coupon_id =  I("coupon_id/d"); //  优惠券id
-        $couponCode =  I("couponCode"); //  优惠券代码
-        $pay_points =  I("pay_points/d",0); //  使用积分
-        $user_money =  I("user_money/f",0); //  使用余额
-        $user_note = trim(I('user_note'));   //买家留言
-        $paypwd =  I("paypwd",''); // 支付密码
+//        $coupon_id =  I("coupon_id/d"); //  优惠券id
+//        $couponCode =  I("couponCode"); //  优惠券代码
+//        $pay_points =  I("pay_points/d",0); //  使用积分
 
-        $user_money = $user_money ? $user_money : 0;
+//        $user_money =  I("user_money/f",0); //  使用余额
+//        var_dump($user_money) ; die ;
+        $user_note = trim(I('user_note'));   //买家留言
+//        $paypwd =  I("paypwd",''); // 支付密码
+
+//        $user_money = $user_money ? $user_money : 0;
         $cartLogic = new CartLogic();
         $cartLogic->setUserId($this->user_id);
+
         if($cartLogic->getUserCartOrderCount() == 0 ) {
             exit(json_encode(array('status'=>-2,'msg'=>'你的购物车没有选中商品','result'=>null))); // 返回结果状态
         }
@@ -191,9 +196,12 @@ class Cart extends MobileBase {
         if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
 
         $address = M('UserAddress')->where("address_id", $address_id)->find();
-        $order_goods = M('cart')->where(['user_id'=>$this->user_id,'selected'=>1])->select();
-        $result = calculate_price($this->user_id,$order_goods,$shipping_code,0,$address['province'],$address['city'],$address['district'],$pay_points,$user_money,$coupon_id,$couponCode);
 
+        $order_goods = M('cart')->where(['user_id'=>$this->user_id,'selected'=>1])->select();
+
+//        $result = calculate_price($this->user_id,$order_goods,$shipping_code,0,$address['province'],$address['city'],$address['district'],$pay_points,$user_money,$coupon_id,$couponCode);
+        $result = calculate_price($this->user_id,$order_goods);
+//        var_dump($result) ; die ;
         if($result['status'] < 0)
             exit(json_encode($result));
         // 订单满额优惠活动
@@ -203,10 +211,10 @@ class Cart extends MobileBase {
         $result['result']['order_prom_amount'] = $order_prom['order_prom_amount'] ;
 
         $car_price = array(
-            'postFee'      => $result['result']['shipping_price'], // 物流费
-            'couponFee'    => $result['result']['coupon_price'], // 优惠券
-            'balance'      => $result['result']['user_money'], // 使用用户余额
-            'pointsFee'    => $result['result']['integral_money'], // 积分支付
+//            'postFee'      => $result['result']['shipping_price'], // 物流费
+//            'couponFee'    => $result['result']['coupon_price'], // 优惠券
+//            'balance'      => $result['result']['user_money'], // 使用用户余额
+//            'pointsFee'    => $result['result']['integral_money'], // 积分支付
             'payables'     => $result['result']['order_amount'], // 应付金额
             'goodsFee'     => $result['result']['goods_price'],// 商品价格
             'order_prom_id' => $result['result']['order_prom_id'], // 订单优惠活动id
@@ -215,7 +223,7 @@ class Cart extends MobileBase {
 
         // 提交订单
         if($_REQUEST['act'] == 'submit_order') {
-            $pay_name = '';
+             $pay_name = '';
             if (!empty($pay_points) || !empty($user_money)) {
                 if ($this->user['is_lock'] == 1) {
                     exit(json_encode(array('status'=>-5,'msg'=>"账号异常已被锁定，不能使用余额支付！",'result'=>null))); // 用户被冻结不能使用余额支付
@@ -235,10 +243,14 @@ class Cart extends MobileBase {
                 $coupon_id = M('CouponList')->where("code", $couponCode)->getField('id');
             }
             $orderLogic = new OrderLogic();
-            $result = $orderLogic->addOrder($this->user_id,$address_id,$shipping_code,$invoice_title,$coupon_id,$car_price,$user_note,$pay_name); // 添加订单
+
+
+            $result = $orderLogic->addOrder($this->user_id,$invoice_title,$car_price,$user_note); // 添加订单
+//            var_dump($result) ; die ;
             exit(json_encode($result));
         }
         $return_arr = array('status'=>1,'msg'=>'计算成功','result'=>$car_price); // 返回结果状态
+
         exit(json_encode($return_arr));
     }
     /*
@@ -247,8 +259,10 @@ class Cart extends MobileBase {
     public function cart4(){
 
         $order_id = I('order_id/d');
+
         $order_where = ['user_id'=>$this->user_id,'order_id'=>$order_id];
         $order = M('Order')->where($order_where)->find();
+
         if($order['order_status'] == 3){
             $this->error('该订单已取消',U("Mobile/User/order_detail",array('id'=>$order_id)));
         }

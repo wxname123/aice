@@ -271,7 +271,7 @@ class OrderLogic
         //通过  user_id 获取到 tp_users 表里面的mobile
         $user_info =   M('users')->where('user_id' , $user_id)->field('mobile,nickname')->find();
 //        var_dump($user_info) ; die ;
-
+//        var_dump($user_info) ; die;
         $data = array(
             'order_sn'         => $order_sn, // 订单编号
             'user_id'          =>$user_id, // 用户id
