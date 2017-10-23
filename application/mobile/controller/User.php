@@ -1,16 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * 2015-11-21
- */
+
 namespace app\mobile\controller;
 
 use app\common\logic\CartLogic;
@@ -74,12 +63,29 @@ class User extends MobileBase
         //获取用户信息的数量
         $messageLogic = new MessageLogic();
         $user_message_count = $messageLogic->getUserMessageCount();
+
+        $map=[
+            'a.user_id'       => $user_id,
+            'a.order_status' => 2
+        ];
+        $order_str = "rec_id DESC";
+        $oder =  M('order a')
+                 ->join('order_goods b','a.order_id = b.order_id','LEFT')
+                 ->join('goods c','c.goods_id = b.goods_id','LEFT')
+                 ->where($map)
+                 ->order($order_str)
+                 ->find();
+        if(!empty($oder)) {
+               $this->assign('order',$oder);
+        }
+
         $this->assign('user_message_count', $user_message_count);
         $this->assign('level_name', $level_name);
         $this->assign('comment_count', $comment_count);
         $this->assign('user',$user['result']);
         return $this->fetch();
     }
+
 
 
     public function logout()
@@ -135,6 +141,64 @@ class User extends MobileBase
         $log_id = I('log_id/d',0);
         $detail = Db::name('account_log')->where(['log_id'=>$log_id])->find();
         $this->assign('detail',$detail);
+        return $this->fetch();
+    }
+
+
+    public function mission(){
+        $user_id=$this->user_id;
+        $map=[
+            'user_id'       => $user_id,
+            'order_status' => 2
+        ];
+        $order =  M('order')->where($map)->find();
+        //判断是否存在order表里
+        if(!empty($order)){
+            $order_id=array();
+            $order=$order['order_id'];
+            $order_id=[
+                'order_id' => $order
+            ];
+            $order_str = "rec_id DESC";
+            $order_list = M('order_goods a')
+                ->join('goods b','a.goods_id = b.goods_id','LEFT')
+                ->where($order_id)
+                ->order($order_str)
+                ->select();
+
+            //查询下级中的用户订单
+            $record  = M('users a ')->field('a.user_id')
+                ->where('uid','=',$user_id)
+                ->select();
+            $tmp = [] ;
+            if(!empty($record)){
+                foreach($record as $key=>$value){
+                    $num_id                    = $value['user_id'];
+                    $arr['a.user_id']           =  $num_id;
+                    $arr['a.order_status']          = 2;
+                    $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
+                        ->join('order_goods b','a.order_id = b.order_id','LEFT')
+                        ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
+                        ->join('users d' ,'d.user_id = a.user_id','LEFT')
+                        ->where($arr)
+                        ->find();
+                    if($number_order != null){
+                        $tmp[$key] = $number_order ;
+                        $complete=count($tmp);
+
+                    }
+                }
+            }
+        }
+        $this->assign('tmp',$tmp);
+        $this->assign('comolete',$complete);
+        return $this->fetch();
+    }
+
+    public function agent(){
+        $user_id=$this->user_id;
+        $number_order = M('users ')->where('uid','=',$user_id)->select();
+        $this->assign('number_order',$number_order);
         return $this->fetch();
     }
     
