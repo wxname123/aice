@@ -207,6 +207,22 @@ class Api extends Base {
           exit ('0');      
     }
 
+
+    /**
+     * 检测身份证号码是否已经存在
+     */
+    public function issetCard()
+    {
+        $id_card = I("id_card",'0');
+        $users = M('users')->where('id_card',$id_card)->find();
+
+        if($users)
+            exit ('1');
+        else
+            exit ('0');
+    }
+
+
     public function issetMobileOrEmail()
     {
         $mobile = I("mobile",'0');        
