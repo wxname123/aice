@@ -409,6 +409,7 @@ class Cart extends Base {
         }
         
         $return_arr = array('status'=>1,'msg'=>'计算成功','result'=>$car_price); // 返回结果状态
+
         exit(json_encode($return_arr));           
     }	
     /**
@@ -541,9 +542,9 @@ class Cart extends Base {
             $invoice_title = I('invoice_title'); // 发票
             $shipping_code =  I("shipping_code"); //  物流编号
             $address_id = I("address_id/d"); //  收货地址id
-            if(empty($address_id)){
-                exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
-            }
+//            if(empty($address_id)){
+//                exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+//            }
             if(empty($shipping_code)){
                 exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
             }

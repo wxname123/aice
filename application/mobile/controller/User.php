@@ -317,12 +317,57 @@ class User extends MobileBase
             //$this->verifyHandle('user_reg');
             $username = I('post.username', '');
             $password = I('post.password', '');
+            $id_card = I('post.id_card', '');
             $password2 = I('post.password2', '');
             //是否开启注册验证码机制
             $code = I('post.mobile_code', '');
             $scene = I('post.scene', 1);
 
+            $invite = I('invite');
+
             $session_id = session_id();
+
+
+            if($username == ''){
+                $data = [
+                    'status' => 0 ,
+                    'msg'    =>  '手机号不能为空' ,
+                ];
+                $this->ajaxReturn($data) ;
+            }
+
+            if($password == ''   ){
+                $data = [
+                    'status' => 0 ,
+                    'msg'    =>  '密码不能为空' ,
+                ];
+                $this->ajaxReturn($data) ;
+            }
+
+            if($password2 == ''){
+                $data = [
+                    'status' => 0 ,
+                    'msg'    =>  '确认密码不能为空' ,
+                ];
+                $this->ajaxReturn($data) ;
+            }
+
+            if($id_card == ''){
+                $data = [
+                    'status' => 0 ,
+                    'msg'    =>  '身份证号不能为空' ,
+                ];
+                $this->ajaxReturn($data) ;
+            }
+
+            if($invite  == ''){
+                $data = [
+                    'status' => 0 ,
+                    'msg'    =>  '推荐人手机号不能为空' ,
+                ];
+                $this->ajaxReturn($data) ;
+            }
+
 
             //是否开启注册验证码机制
             if(check_mobile($username)){
@@ -344,7 +389,7 @@ class User extends MobileBase
                     }
                 }
             }
-            $invite = I('invite');
+
             if(!empty($invite)){
             	$invite = get_user_info($invite,2);//根据手机号查找邀请人
             }
@@ -422,6 +467,7 @@ class User extends MobileBase
         $id = I('get.id/d');
         $map['order_id'] = $id;
         $map['user_id'] = $this->user_id;
+
         $order_info = M('order')->where($map)->find();
         $order_info = set_btn_order_status($order_info);  // 添加属性  包括按钮显示属性 和 订单状态显示属性
         if (!$order_info) {

@@ -186,6 +186,10 @@
                                 <br/>
                             <!--商品列表 end-->
                         </div>
+
+
+
+
                         <!--<div class="order-pro-total">-->
                             <!--<div class="fl wctmes">-->
                                 <!--<div class="syyouhui pa-to-15">-->
@@ -281,6 +285,11 @@
                                 <!--</div>-->
                             <!--</div>-->
                         <!--</div>-->
+
+
+
+
+
                     </div>
                     <div class="order-action-area te-al-ri">
                         <div class="woypdbe sc-acti-list">
@@ -295,20 +304,20 @@
 </div>
 
 <!-- 提示切换省份 -->
-<div id="changeProvince" style="display: none;">
-    <div class="mask mask-cs-05 mask-4">
-        <div class="mk-title">
-            <h3>温馨提示</h3>
-            <i data-x="1" class="mask-close-x changeAddrX"></i></div>
-        <div class="mk-adc">
-            <div class="cs-01"> 您目前所在的省份为<strong>上海</strong>，选择<strong>安徽省</strong>的收货地址后，您购买的商品及价格将发生变化。</div>
-            <div class="cs-03">
-                <button class="btn btn-red confirmChangeCity">切换省份</button>
-                <button class="btn mask-close-x changeAddrX" data-x="1">取消</button>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div id="changeProvince" style="display: none;">-->
+    <!--<div class="mask mask-cs-05 mask-4">-->
+        <!--<div class="mk-title">-->
+            <!--<h3>温馨提示</h3>-->
+            <!--<i data-x="1" class="mask-close-x changeAddrX"></i></div>-->
+        <!--<div class="mk-adc">-->
+            <!--<div class="cs-01"> 您目前所在的省份为<strong>上海</strong>，选择<strong>安徽省</strong>的收货地址后，您购买的商品及价格将发生变化。</div>-->
+            <!--<div class="cs-03">-->
+                <!--<button class="btn btn-red confirmChangeCity">切换省份</button>-->
+                <!--<button class="btn mask-close-x changeAddrX" data-x="1">取消</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!-- end 提示切换省份 -->
 <!-- 提示配送商品 -->
 <div id="sorryTipLayer" style="display:none;">
@@ -382,17 +391,17 @@
 
 
     // 切换收货地址
-    function swidth_address(obj) {
-        var province_id = $(obj).attr('data-province-id');
-        var city_id = $(obj).attr('data-city-id');
-        var district_id = $(obj).attr('data-district-id');
-        if (typeof($(obj).attr('data-province-id')) != 'undefined') {
-            ajax_pickup(province_id,city_id,district_id,0);
-        }
-        $(".order-address-list").removeClass('address_current');
-        $(obj).parent().parent().parent().parent().parent().addClass('address_current');
-        ajax_order_price(); // 计算订单价格
-    }
+//    function swidth_address(obj) {
+//        var province_id = $(obj).attr('data-province-id');
+//        var city_id = $(obj).attr('data-city-id');
+//        var district_id = $(obj).attr('data-district-id');
+//        if (typeof($(obj).attr('data-province-id')) != 'undefined') {
+//            ajax_pickup(province_id,city_id,district_id,0);
+//        }
+//        $(".order-address-list").removeClass('address_current');
+//        $(obj).parent().parent().parent().parent().parent().addClass('address_current');
+//        ajax_order_price(); // 计算订单价格
+//    }
     /**
      * 获取用户自提点和推荐自提点
      * @param type 1：用户自提点 ，0：用户自提点和推荐自提点
@@ -400,18 +409,18 @@
      * @param city_id 市
      * @param district_id 区
      */
-    function ajax_pickup(province_id, city_id, district_id,show) {
-        $.ajax({
-            type: 'GET',
-            url: "{:U('Home/Cart/ajaxPickup')}",//+tab,
-            data: {province_id: province_id, city_id: city_id, district_id: district_id,show:show},
-            success: function (data) {
-                $("#ajax_pickup").html('');
-                $("#ajax_pickup").append(data);
-                ajax_order_price();
-            }
-        });
-    }
+//    function ajax_pickup(province_id, city_id, district_id,show) {
+//        $.ajax({
+//            type: 'GET',
+//            url: "{:U('Home/Cart/ajaxPickup')}",//+tab,
+//            data: {province_id: province_id, city_id: city_id, district_id: district_id,show:show},
+//            success: function (data) {
+//                $("#ajax_pickup").html('');
+//                $("#ajax_pickup").append(data);
+//                ajax_order_price();
+//            }
+//        });
+//    }
     //更换自提点
     function replace_pickup(province_id, city_id, district_id) {
         var url = "/index.php?m=Home&c=Cart&a=replace_pickup&call_back=call_back_pickup&province_id="+province_id+"&city_id="+city_id+"&district_id="+district_id;
@@ -437,21 +446,21 @@
     {
 
         //限定 只能让  submit_order  提交一次
-//        if(ajax_return_status == 0)
-//            return false;
-//
-//        ajax_return_status = 0;
+        if(ajax_return_status == 0)
+            return false;
 
-        $.ajax({
-            type:"POST" ,
-            url:"{:U('Home/User/judgeAuth')}" ,
-            data:{} ,
-            async:false   ,
-            dataType:"json" ,
-            success:function (data) {
-                 if(data.status == 1 ){
-                     layer.alert(data.msg, {icon: 5});
-                 }else{
+        ajax_return_status = 0;
+
+//        $.ajax({
+////            type:"POST" ,
+////            url:"{:U('Home/User/judgeAuth')}" ,
+////            data:{} ,
+////            async:false   ,
+////            dataType:"json" ,
+////            success:function (data) {
+////                 if(data.status == 1 ){
+////                     layer.alert(data.msg, {icon: 5});
+////                 }else{
                      $.ajax({
                          type : "POST",
                          url:"{:U('Home/Cart/cart3')}",//+tab,
@@ -477,15 +486,9 @@
                              });
                          }
                      });
-                 }
-            }
-        });
-
-
-
-
-
-
+//                 }
+//            }
+//        });
     }
 </script>
 </body>

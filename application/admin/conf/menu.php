@@ -66,8 +66,11 @@ return	array(
 					array('name' => '商品属性', 'act'=>'goodsAttributeList', 'op'=>'Goods'),
 					array('name' => '评论列表', 'act'=>'index', 'op'=>'Comment'),
 					array('name' => '商品咨询', 'act'=>'ask_list', 'op'=>'Comment'),
+
                                     
 			)),
+
+
 			array('name' => '订单','child'=>array(
 					array('name' => '订单列表', 'act'=>'index', 'op'=>'Order'),
 					array('name' => '发货单', 'act'=>'delivery_list', 'op'=>'Order'),
@@ -89,6 +92,13 @@ return	array(
 					array('name' => '运营概览', 'act'=>'finance', 'op'=>'Report'),
 					array('name' => '平台支出记录','act'=>'expense_log','op'=>'Report'),
 			)),
+
+        array('name' => '微信','child' => array(
+            array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
+            array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
+            array('name' => '文本回复', 'act'=>'text', 'op'=>'Wechat'),
+            array('name' => '图文回复', 'act'=>'img', 'op'=>'Wechat'),
+        )),
 	)),
 		
 	'mobile'=>array('name'=>'模板','child'=>array(

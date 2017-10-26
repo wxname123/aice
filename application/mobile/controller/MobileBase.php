@@ -26,6 +26,7 @@ class MobileBase extends Controller {
      * 初始化操作
      */
     public function _initialize() {
+
         Session::start();
         header("Cache-control: private");  // history.back返回后输入框值丢失问题 参考文章 http://www.tp-shop.cn/article_id_1465.html  http://blog.csdn.net/qinchaoguang123456/article/details/29852881
         $this->session_id = session_id(); // 当前的 session_id
@@ -37,10 +38,12 @@ class MobileBase extends Controller {
             cookie('is_mobile','0',3600);
         
         $wx_qr = M('wx_user')->cache(true)->value('qr'); //获取微信配置
+
         $this->assign('wx_qr',$wx_qr);
-        
+
         //微信浏览器
         if(strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')){
+
             $user_temp = session('user');
             if (isset($user_temp['user_id']) && $user_temp['user_id']) {
                 $user = M('users')->where("user_id", $user_temp['user_id'])->find();
@@ -111,6 +114,7 @@ class MobileBase extends Controller {
     // 网页授权登录获取 OpendId
     public function GetOpenid()
     {
+
         if($_SESSION['openid'])
             return $_SESSION['openid'];
         //通过code获得openid

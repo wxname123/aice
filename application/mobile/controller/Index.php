@@ -17,6 +17,7 @@ use Think\Db;
 class Index extends MobileBase {
 
     public function index(){
+//        var_dump("abcd") ; die;
         /*
             //获取微信配置
             $wechat_list = M('wx_user')->select();
