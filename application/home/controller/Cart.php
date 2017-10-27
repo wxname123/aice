@@ -62,6 +62,45 @@ class Cart extends Base {
 //        var_dump($resData) ;die ;
 
         //先让用户登录
+
+//        if($this->user_id == 0){
+//            $this->redirect('Home/User/login') ;
+//        }
+
+        //根据用户编码获取到该用户是否认证通过的字段
+//        $resData =   $userLogic->getUserStatuBy($this->user_id) ;
+
+
+//        if($resData != NULL ){
+//            $this->assign('statu' , $resData['statu']) ;
+////            $this->assign('review' , $resData['review']) ;
+//            if($resData['statu'] == 0  &&  $resData['review'] == 0){
+//                $this->assign('review' , 0) ;
+//            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0  ){
+//                $this->assign('review' , 1) ;
+//            }elseif ($resData['statu'] == 1  &&  $resData['review'] == 1 ){
+//                $this->assign('review' , 2) ;
+//            }
+////            elseif ( $resData['statu'] == 0  &&   $resData['review'] == 2 ){
+////                $this->assign('review' , 0) ;
+////            }
+//        }else {
+//            $this->assign('review' , 3) ;
+//        }
+        $cartList = $cartLogic->getCartList();//用户购物车
+        $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
+//        var_dump($userCartGoodsTypeNum) ; die  ;
+
+
+        //便利   $cartList  ， 获取到购物车中每个商品的goods_id
+        $good_ids = [] ;
+        foreach ($cartList  as  $k=>$v ){
+            $good_ids[$k] = $v['goods_id'] ;
+            //保存到session中
+            session('good_ids', $good_ids);
+        }
+//        var_dump($cartList); die ;
+
         if($this->user_id == 0){
                 $this->redirect('Home/User/login') ;
         }
@@ -82,6 +121,7 @@ class Cart extends Base {
 
         $cartList = $cartLogic->getCartList();//用户购物车
         $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
+
         $this->assign('userCartGoodsTypeNum', $userCartGoodsTypeNum);
         $this->assign('cartList', $cartList);//购物车列表
         return $this->fetch();
@@ -363,7 +403,12 @@ class Cart extends Base {
             if(empty($coupon_id) && !empty($couponCode))
                $coupon_id = M('CouponList')->where("code", $couponCode)->getField('id');
             $orderLogic = new OrderLogic();
+
+            $result = $orderLogic->addOrder($this->user_id,$invoice_title,$car_price,$user_note,$pay_name); // 添加订单
+//            var_dump($result) ; die ;
+
             $result = $orderLogic->addOrder($this->user_id,$address_id,$shipping_code,$invoice_title,$coupon_id,$car_price,$user_note,$pay_name); // 添加订单
+
             exit(json_encode($result));            
         }
         

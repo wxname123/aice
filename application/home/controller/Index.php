@@ -10,6 +10,7 @@ use  app\home\model ;
 class Index extends Base {
     
     public function index(){
+
         // 如果是手机跳转到 手机模块
         if(isMobile()){
             redirect(U('Mobile/Index/index'));
@@ -36,7 +37,10 @@ class Index extends Base {
         	$cat_path = explode('_', $v['parent_id_path']);
         	$hot_cate[$cat_path[1]][] = $v;
         }
-        
+
+
+
+
         foreach ($this->cateTrre as $k=>$v){
             if($v['is_hot']==1){
         		$v['hot_goods'] = empty($hot_goods[$k]) ? '' : $hot_goods[$k];
@@ -49,14 +53,18 @@ class Index extends Base {
     }
 
 
-    public  function   wuxuan(){
+
+    public  function  yuliang(){
+        die("1234");
+        die("3456");
+    }
+
+    public  function  abc(){
         die("abcd");
     }
 
-    public  function  wu(){
-        die("1111");
-    }
  
+
     /**
      *  公告详情页
      */
