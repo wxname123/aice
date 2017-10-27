@@ -1,0 +1,403 @@
+[ 2017-10-25T00:35:37+08:00 ] ::1 ::1 GET /
+[ log ] localhost/ [运行时间：0.204000s][吞吐率：4.90req/s] [内存消耗：2,655.90kb] [文件加载：65]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'Hm_lvt_2d3bec321182f112000def10d27f6737=1505964967; province_id=1; city_id=2; district_id=3',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/home\lang\zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php ]
+[ info ] [ VIEW ] ./template/pc/rainbow/index\index.html [ array (
+  0 => 'action',
+  1 => 'template_now_time',
+  2 => 'goods_category_tree',
+  3 => 'brand_list',
+  4 => 'tpshop_config',
+  5 => 'cateList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_goods_category` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_goods_category` WHERE  (  is_show = 1 ) ORDER BY `sort_order` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_brand` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`parent_cat_id`,`logo`,`is_hot` FROM `tp_brand` WHERE  (  parent_cat_id>0 ) [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select a.goods_name,a.goods_id,a.shop_price,a.market_price,a.cat_id,b.parent_id_path,b.name from tp_goods as a left join tp_goods_category as b on a.cat_id=b.id where a.is_hot=1 and a.is_on_sale=1 order by a.sort [ RunTime:0.005000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_goods_category` WHERE  (  is_hot=1 and level=3 and is_show=1 ) [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_ad_position` [ RunTime:0.024000s ]
+[ sql ] [ SQL ] SELECT `position_id`,`position_name`,`ad_width`,`ad_height` FROM `tp_ad_position` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_ad` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=11  and enabled = 1 and start_time < 1508860800 and end_time > 1508860800  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=12  and enabled = 1 and start_time < 1508860800 and end_time > 1508860800  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=13  and enabled = 1 and start_time < 1508860800 and end_time > 1508860800  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=14  and enabled = 1 and start_time < 1508860800 and end_time > 1508860800  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_navigation` where is_show = 1 ORDER BY `sort` DESC [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=2  and enabled = 1 and start_time < 1508860800 and end_time > 1508860800  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=52  and enabled = 1 and start_time < 1508860800 and end_time > 1508860800  ) ORDER BY orderby desc LIMIT 2 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article_cat` where parent_id = 2 limit 5 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 7  and is_open=1 limit 5 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 87  and is_open=1 limit 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 41  and is_open=1 limit 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 90  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 89  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php:44]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php:44]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php:44]
+[ error ] [8]未定义数组索引: order[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:103]
+[ error ] [8]未定义数组索引: where[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:105]
+[ error ] [8]未定义数组索引: order[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:103]
+[ error ] [8]未定义数组索引: where[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:105]
+[ error ] [8]未定义数组索引: order[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:103]
+[ error ] [8]未定义数组索引: where[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:105]
+[ error ] [8]未定义数组索引: order[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:103]
+[ error ] [8]未定义数组索引: where[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:105]
+[ error ] [8]未定义数组索引: order[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:103]
+[ error ] [8]未定义数组索引: where[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:105]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:169]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:169]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:169]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:186]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:189]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:169]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:173]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:181]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:230]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:240]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:273]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:317]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:328]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:454]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:454]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:454]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:454]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:463]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:636]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:636]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:636]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:647]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:636]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:636]
+
+---------------------------------------------------------------
+[ 2017-10-25T00:35:38+08:00 ] ::1 ::1 GET /index.php?m=Home&c=Goods&a=getRegion
+[ log ] localhost/index.php?m=Home&c=Goods&a=getRegion [运行时间：0.455000s][吞吐率：2.20req/s] [内存消耗：2,861.32kb] [文件加载：61]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'Home',
+    1 => 'Goods',
+    2 => 'getRegion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'Hm_lvt_2d3bec321182f112000def10d27f6737=1505964967; province_id=1; city_id=2; district_id=3; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'm' => 'Home',
+  'c' => 'Goods',
+  'a' => 'getRegion',
+)
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/home\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ RUN ] app\home\controller\Goods->getRegion[ F:\phpStudy\WWW\TPshop\www\application\home\controller\Goods.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_region` [ RunTime:0.056000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `level` = 1 [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 1 ORDER BY id asc [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 338 ORDER BY id asc [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 636 ORDER BY id asc [ RunTime:0.041000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 3102 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 4670 ORDER BY id asc [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 5827 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 7531 ORDER BY id asc [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 8558 ORDER BY id asc [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 10543 ORDER BY id asc [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 10808 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 12596 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 14234 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 16068 ORDER BY id asc [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 17359 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 19280 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 21387 ORDER BY id asc [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 24022 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 25579 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 28240 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 30164 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 31563 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 31929 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 33007 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 37906 ORDER BY id asc [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 39556 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 41103 ORDER BY id asc [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 41877 ORDER BY id asc [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 43776 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 45286 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 45753 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 46047 ORDER BY id asc [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 47493 ORDER BY id asc [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 47494 ORDER BY id asc [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `tp_region` WHERE  `parent_id` = 47495 ORDER BY id asc [ RunTime:0.007000s ]
+[ error ] [8]未定义数组下标: 0[F:\phpStudy\WWW\TPshop\www\application\common\logic\GoodsLogic.php:491]
+[ error ] [8]未定义数组下标: 0[F:\phpStudy\WWW\TPshop\www\application\common\logic\GoodsLogic.php:491]
+[ error ] [8]未定义数组下标: 0[F:\phpStudy\WWW\TPshop\www\application\common\logic\GoodsLogic.php:491]
+
+---------------------------------------------------------------
+[ 2017-10-25T00:35:39+08:00 ] ::1 ::1 GET /index.php?m=Home&c=Cart&a=header_cart_list
+[ log ] localhost/index.php?m=Home&c=Cart&a=header_cart_list [运行时间：0.116000s][吞吐率：8.62req/s] [内存消耗：2,952.98kb] [文件加载：73]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'Home',
+    1 => 'Cart',
+    2 => 'header_cart_list',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'Hm_lvt_2d3bec321182f112000def10d27f6737=1505964967; province_id=1; city_id=2; district_id=3; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'referer' => 'http://localhost/',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => '*/*',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'm' => 'Home',
+  'c' => 'Cart',
+  'a' => 'header_cart_list',
+)
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/home\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\Cart->header_cart_list[ F:\phpStudy\WWW\TPshop\www\application\home\controller\Cart.php ]
+[ info ] [ VIEW ] ./template/pc/rainbow/cart\header_cart_list.html [ array (
+  0 => 'action',
+  1 => 'template_now_time',
+  2 => 'goods_category_tree',
+  3 => 'brand_list',
+  4 => 'tpshop_config',
+  5 => 'cartList',
+  6 => 'cartPriceInfo',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_cart` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_cart` WHERE  `session_id` = 'p45l3949h3qhrshcfqqc587052' [ RunTime:0.000000s ]
+[ error ] [8]Use of undefined constant goods_num - assumed 'goods_num'[F:\phpStudy\WWW\TPshop\www\runtime\temp\7537a0291d96d8d3ac283ca30ec1215a.php:49]
+
+---------------------------------------------------------------
