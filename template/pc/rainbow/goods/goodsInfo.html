@@ -213,9 +213,25 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="standard p">
                     <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
-                    <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                    <if condition="($statu == 0)">
+                        <a id="join_cart_now0" class="paybybill" href="javascript:;" onclick="SubmitCheck()">立即购买</a>
+                    <elseif condition="($statu == 1)">
+                        <a id="join_cart_now1" class="paybybill" href="javascript:;" onclick="unpassCheck()">立即购买</a>
+                    </elseif>
+                        <elseif condition="($statu == 2)">
+                            <a id="join_cart_now2" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                        </elseif>
+                        <elseif condition="($statu == 3)">
+                                <a id="join_cart_now3" class="paybybill" href="javascript:;" onclick="unselectIdentify">立即购买</a>
+                        </elseif>
+                        <else />
+                        <a id="join_cart_now4" class="paybybill" href="javascript:;" onclick="unlogin()">立即购买</a>
+                    </if>
+
+
                     <a id="join_cart" class="addcar" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,0);"><i class="sk"></i>加入购物车</a>
                     <a id="no_join_cart_now" class="paybybill" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed">立即购买</a>
                     <a id="no_join_cart" class="addcar" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed"><i class="sk"></i>加入购物车</a>
@@ -252,7 +268,7 @@
             </div>
             <div class="type_more ma-to-20">
                 <div class="type-top">
-                    <h2>推荐热卖222</h2>
+                    <h2>推荐热卖</h2>
                 </div>
                 <div class="tjhot-shoplist type-bot">
                     <tpshop sql="select goods_id,goods_name,shop_price from __PREFIX__goods where is_recommend=1 and is_on_sale = 1 order by goods_id desc limit 10" item="vo" key="k">
@@ -654,6 +670,27 @@
         $('#store_count').text(maxnum-num); //更新库存数量
         $('#number').val(num)
     }
+
+
+   function  SubmitCheck(){
+         location.href = "/index.php?m=Home&c=User&a=check";   //m=Home&c=User&a=check
+    }
+
+    //还没有通过验证
+    function  unpassCheck(){
+         layer.alert('您还没有通过管理员的认证！！！',{icon:5}) ;
+    }
+
+//  数据查询失败
+    function  unselectIdentify(){
+        layer.alert('未找到该用户信息！！！',{icon:5}) ;
+    }
+
+    //没有登录
+     function  unlogin(){
+            location.href = '/index.php?m=Home&c=User&a=login' ;
+     }
+
 
     //初始化商品价格库存
     function initGoodsPrice() {

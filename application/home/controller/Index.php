@@ -23,7 +23,6 @@ use  app\home\model ;
 class Index extends Base {
     
     public function index(){
-
         // 如果是手机跳转到 手机模块
         if(isMobile()){
             redirect(U('Mobile/Index/index'));

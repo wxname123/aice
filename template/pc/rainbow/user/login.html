@@ -175,11 +175,13 @@
             dataType : 'json',
             success : function(res){
                 if(res.status == 1){
-                    if(res.result.statu == 1 ){
+//                    if(res.result.statu == 1 ){
                         window.location.href = res.url;
-                    }else{
-                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
-                    }
+//                    }
+//                    else{
+//                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
+//                        showErrorMsg('网络失败，请刷新页面后重试');
+//                    }
                 }else{
                     showErrorMsg(res.msg);
                     verify();

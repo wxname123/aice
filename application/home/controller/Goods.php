@@ -23,9 +23,23 @@ use think\Db;
 use think\Cookie;
 class Goods extends Base {
 
+    public $user_id = 0;
+
     public function index(){
         return $this->fetch();
     }
+
+    public function _initialize()
+    {
+        parent::_initialize();
+
+        if(session('?user'))
+        {
+            $user = session('user');
+            $this->user_id = $user['user_id'];
+        }
+    }
+
 
    /**
     * 商品详情页
@@ -68,6 +82,34 @@ class Goods extends Base {
 //        if($goods_id){
 //            $this->assign('goods_id', $goods_id) ;
 //        }
+
+        //根据user_id查询出该用户通过认证
+
+        if($this->user_id > 0){
+            //已经登录
+            $udata =  M('users')->where('user_id' , $this->user_id)->field('review, statu')->find();
+//            var_dump($udata) ; die;
+            if(!empty($udata)){
+                if($udata['statu'] == '0' && $udata['review'] == '0'){
+                    //先提交资料页面
+                    $this->assign('statu', 0 );
+                }elseif ($udata['statu'] == '1'  &&  $udata['review'] == '0'){
+                    //还没有通过认证的界面
+                    $this->assign('statu', 1 );
+                }elseif ($udata['statu'] == '1'  &&  $udata['review'] == '1'){
+                    //直接跳转到下订单页面
+                    $this->assign('statu', 2 );
+                }
+            }else{
+                //查询数据失败
+                $this->assign('statu', 3);
+            }
+        }else{
+            //没有登录
+            $this->assign('statu', 4);
+        }
+
+
         $this->assign('freight_free', $freight_free);// 全场满多少免运费
         $this->assign('spec_goods_price', json_encode($spec_goods_price,true)); // 规格 对应 价格 库存表
         $this->assign('navigate_goods',navigate_goods($goods_id,1));// 面包屑导航
@@ -129,14 +171,15 @@ class Goods extends Base {
      * 商品列表页
      */
     public function goodsList(){ 
-        
+
         $key = md5($_SERVER['REQUEST_URI'].I('start_price').'_'.I('end_price'));
         $html = S($key);
         if(!empty($html))
         {
             return $html;
         }
-        
+
+
         $filter_param = array(); // 帅选数组                        
         $id = I('get.id/d',1); // 当前分类id
         $brand_id = I('get.brand_id',0);
@@ -199,6 +242,7 @@ class Goods extends Base {
         }
         // print_r($filter_menu);         
         $goods_category = M('goods_category')->where('is_show=1')->cache(true)->getField('id,name,parent_id,level'); // 键值分类数组
+
         $navigate_cat = navigate_goods($id); // 面包屑导航         
         $this->assign('goods_list',$goods_list);
         $this->assign('navigate_cat',$navigate_cat);
