@@ -33,14 +33,14 @@
                 <input type="hidden" name="order_by" value="user_id">
                 <input type="hidden" name="sort" value="desc">
                 <input type="hidden" name="mobile" value="" id="input-mobile" />
-                <input type="hidden" name="email" value="" id="input-email" />
+                <input type="hidden" name="nickname" value="" id="input-nickname" />
                 <!--分销时查看下级人数都有哪些-->
                 <input type="hidden" name="first_leader" value="{$_GET['first_leader']}">
                 <input type="hidden" name="second_leader" value="{$_GET['second_leader']}">
                 <input type="hidden" name="third_leader" value="{$_GET['third_leader']}">
                 <div class="sDiv">
                     <div class="sDiv2">
-                        <input type="text" id="search_key" size="30" class="qsbox" placeholder="手机或者邮箱...">
+                        <input type="text" id="search_key" size="30" class="qsbox" placeholder="昵称或者手机...">
                         <input type="submit" class="btn" onclick="ajax_get_table('search-form2',1)" value="搜索">
                     </div>
                 </div>
@@ -65,47 +65,15 @@
                         <th align="left" abbr="nickname" axis="col4" class="">
                             <div style="text-align: center; width: 150px;" class="">会员昵称</div>
                         </th>
-                        <th align="center" abbr="level" axis="col5" class="">
-                            <div style="text-align: center; width: 50px;" class="">会员等级</div>
+                        <th align="center" abbr="is_agent" axis="col5" class="">
+                            <div style="text-align: center; width: 50px;" class="">会员角色</div>
                         </th>
-                        <th align="center" abbr="total_amount" axis="col6" class="">
-                            <div style="text-align: center; width: 50px;" class="">累计消费</div>
-                        </th>
-                        <th align="center" abbr="email" axis="col6" class="">
-                            <div style="text-align: center; width: 60px;" class="">邮件地址</div>
-                        </th>
-
-
-                        <!--<th align="center" axis="col6" class="">-->
-                            <!--<div style="text-align: center; width: 30px;" class="">一级下线数</div>-->
-                        <!--</th>-->
-                        <!--<th align="center" axis="col6" class="">-->
-                            <!--<div style="text-align: center; width: 30px;" class="">二级下线数</div>-->
-                        <!--</th>-->
-                        <!--<th align="center" axis="col6" class="">-->
-                            <!--<div style="text-align: center; width: 30px;" class="">三级下线数</div>-->
-                        <!--</th>-->
-
-
-
-
-                        <th align="center" axis="col6" class="">
-                            <div style="text-align: center; width: 60px;" class="">上级ID</div>
-                        </th>
-
                         <th align="center" abbr="mobile" axis="col6" class="">
-                            <div style="text-align: center; width: 80px;" class="">手机号码</div>
-                        </th>
-                        <th align="center" abbr="user_money" axis="col6" class="">
-                            <div style="text-align: center; width: 60px;" class="">余额</div>
+                            <div style="text-align: center; width: 150px;" class="">手机号码</div>
                         </th>
 
                         <th align="center" abbr="pay_points" axis="col6" class="">
-                            <div style="text-align: center; width: 60px;" class="">积分</div>
-                        </th>
-
-                        <th align="center" abbr="pay_points" axis="col6" class="">
-                            <div style="text-align: center; width: 60px;" class="">推荐人手机ID</div>
+                            <div style="text-align: center; width: 80px;" class="">推荐人手机ID</div>
                         </th>
 
                         <th align="center" abbr="reg_time" axis="col6" class="">
@@ -126,14 +94,14 @@
             <div class="tDiv2">
                 <div class="fbutton">
                     <a href="{:U('User/add_user')}">
-                        <div class="add" title="添加会员">
-                            <span><i class="fa fa-plus"></i>添加会员</span>
+                        <div class="add" title="添加市代理">
+                            <span><i class="fa fa-plus"></i>添加市代理</span>
                         </div>
                     </a>
                 </div>
                 <div class="fbutton">
                     <a href="{:U('User/export_user')}">
-                        <div class="add" title="添加会员">
+                        <div class="add" title="添加市代理">
                             <span><i class="fa fa-share"></i>导出会员</span>
                         </div>
                     </a>
@@ -256,12 +224,12 @@
     function ajax_get_table(tab,page){
         var search_key = $.trim($('#search_key').val());
         if(search_key.length > 0){
-            if(checkEmail(search_key)){
-                $('#input-email').val(search_key);
+            if(checkname(search_key)){
+                $('#input-nickname').val(search_key);
             }else if(checkMobile(search_key)){
                 $('#input-mobile').val(search_key);
             }else{
-                layer.alert('请输入正确的邮箱或者手机号码', {icon: 2});
+                layer.alert('请输入正确的姓名、手机号码', {icon: 2});
             }
         }
         cur_page = page; //当前页面 保存为全局变量
@@ -274,6 +242,20 @@
                 $("#ajax_return").append(data);
             }
         });
+    }
+
+    /**
+     * 用户名格式判断
+     * @param idcar
+     * @returns {boolean}
+     */
+    function checkname(name) {
+        var  reg =/^[\u4e00-\u9fa5]+$/;
+        if(reg.test(name)){
+            return true;
+        }else{
+            return false;
+        };
     }
 
     //发送邮件

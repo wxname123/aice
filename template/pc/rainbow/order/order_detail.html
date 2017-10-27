@@ -209,24 +209,12 @@
                     </div>
                 </div>
                 <div class="spff">
-                    <h2>配送信息</h2>
-                    <div class="psbaowq">
-                        <p><span class="fircl">配送方式：</span><span class="lascl">{$order_info.shipping_name}</span></p>
-                        <p><span class="fircl">运费：</span><span class="lascl"><em>￥</em>{$order_info.shipping_price|default=0}</span></p>
-                        <p><span class="fircl">买家留言：</span><span class="lascl">{$order_info.user_note|default=''}</span></p>
-                    </div>
-                </div>
-                <div class="spff">
                     <h2>付款信息</h2>
                     <div class="psbaowq">
                         <p><span class="fircl">付款方式：</span><span class="lascl">{$order_info.pay_name}</span></p>
                         <p><span class="fircl">付款时间：</span><span class="lascl"><if condition="$order_info[pay_status] eq 1 or $order_info[pay_status] eq 2">{$order_info.pay_time|date='Y-m-d H:i:s',###}<else/>未支付</if></span></p>
                         <if condition="$order_info.order_prom_type neq 4">
                             <p><span class="fircl">商品总额：</span><span class="lascl"><em>￥</em>{$order_info.goods_price}</span></p>
-                            <p><span class="fircl">运费金额：</span><span class="lascl"><em>￥</em>{$order_info.shipping_price}</span></p>
-                            <p><span class="fircl">优惠券：</span><span class="lascl"><em>￥</em>{$order_info.coupon_price}</span></p>
-                            <p><span class="fircl">积分抵扣：</span><span class="lascl"><em>￥</em>{$order_info.integral_money}</span></p>
-                            <p><span class="fircl">订单优惠：</span><span class="lascl"><em>￥</em>{$order_info.order_prom_amount}</span></p>
                         </if>
                         <p><span class="fircl">余额支付：</span><span class="lascl"><em>￥</em>{$order_info.user_money}</span></p>
                         <!-- 预售商品 start -->

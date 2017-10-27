@@ -57,47 +57,31 @@ class Cart extends Base {
         $cartLogic = new CartLogic();
         $userLogic = new  UsersLogic() ;
         $cartLogic->setUserId($this->user_id);
-
-        //先让用户登录
-        if($this->user_id == 0){
-            $this->redirect('Home/User/login') ;
-        }
-
         //根据用户编码获取到该用户是否认证通过的字段
         $resData =   $userLogic->getUserStatuBy($this->user_id) ;
 //        var_dump($resData) ;die ;
 
+        //先让用户登录
+        if($this->user_id == 0){
+                $this->redirect('Home/User/login') ;
+        }
+
         if($resData != NULL ){
             $this->assign('statu' , $resData['statu']) ;
-//            $this->assign('review' , $resData['review']) ;
+            $this->assign('review' , $resData['statu']) ;
             if($resData['statu'] == 0  &&  $resData['review'] == 0){
                 $this->assign('review' , 0) ;
-            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0  ){
+            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0 ){
                 $this->assign('review' , 1) ;
             }elseif ($resData['statu'] == 1  &&  $resData['review'] == 1 ){
                 $this->assign('review' , 2) ;
             }
-//            elseif ( $resData['statu'] == 0  &&   $resData['review'] == 2 ){
-//                $this->assign('review' , 0) ;
-//            }
         }else {
             $this->assign('review' , 3) ;
         }
+
         $cartList = $cartLogic->getCartList();//用户购物车
         $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
-//        var_dump($cartList[1]['goods_id']) ; die  ;
-
-
-        //便利   $cartList  ， 获取到购物车中每个商品的goods_id
-        $good_ids = [] ;
-        foreach ($cartList  as  $k=>$v ){
-            $good_ids[$k] = $v['goods_id'] ;
-            //保存到session中
-            session('good_ids', $good_ids);
-        }
-//        if(!empty($good_ids)){
-//                $this->assign('goods_ids', $good_ids) ;
-//        }
         $this->assign('userCartGoodsTypeNum', $userCartGoodsTypeNum);
         $this->assign('cartList', $cartList);//购物车列表
         return $this->fetch();
@@ -150,11 +134,6 @@ class Cart extends Base {
     function ajaxAddCart()
     {
         $user_id=$this->user_id;
-
-        $goods_id =  I('POST.goods_id');
-
-
-        $map=array();
         $map=[
             'a.user_id'       => $user_id,
             'a.order_status' => 2
@@ -176,21 +155,6 @@ class Cart extends Base {
                 if(empty($goods_num)){
                     $this->ajaxReturn(['status'=>0,'msg'=>'购买商品数量不能为0','result'=>'']);
                 }
-
-                //如果用户下单的数量大于1， 也是不允许的
-                if($goods_num > 1)
-                    $this->ajaxReturn(['status'=>0,'msg'=>'目前只支持购买一辆车','result'=>'']);
-
-            //在用户下订单的时候，添加一个判断（每位用户只能添加一辆车）
-            if($user_id){
-                $cartData =   M('cart')->where('user_id', $user_id)->find();
-//                var_dump($cartData) ; die ;
-                if(!empty($cartData)){
-                    $this->ajaxReturn(['status'=>0,'msg'=>'您已经添加过商品，请先清空购物车中的商品','result'=>'']);
-                }
-            }
-
-
                 $cartLogic = new CartLogic();
                 $cartLogic->setUserId($this->user_id);
                 $cartLogic->setGoodsModel($goods_id);
@@ -199,7 +163,6 @@ class Cart extends Base {
                 }
                 $cartLogic->setGoodsBuyNum($goods_num);
                 $result = $cartLogic->addGoodsToCart();
-//                var_dump($result) ; die ;
                 $this->ajaxReturn($result);
             }
     }
@@ -335,34 +298,32 @@ class Cart extends Base {
      * ajax 获取订单商品价格 或者提交 订单
      */
     public function cart3(){
-//        var_dump($this->user_id) ; die ;
         if($this->user_id == 0){
             exit(json_encode(array('status'=>-100,'msg'=>"登录超时请重新登录!",'result'=>null))); // 返回结果状态
         }
-      //  $address_id = I("address_id/d"); //  收货地址id
-//        $shipping_code =  I("shipping_code"); //  物流编号
+        $address_id = I("address_id/d"); //  收货地址id
+        $shipping_code =  I("shipping_code"); //  物流编号        
         $invoice_title = I('invoice_title'); // 发票
-//        $coupon_id =  I("coupon_id/d"); //  优惠券id
-//        $couponCode =  I("couponCode"); //  优惠券代码
-//        $pay_points =  I("pay_points/d",0); //  使用积分
-//        $user_money =  I("user_money/f",0); //  使用余额
+        $coupon_id =  I("coupon_id/d"); //  优惠券id
+        $couponCode =  I("couponCode"); //  优惠券代码
+        $pay_points =  I("pay_points/d",0); //  使用积分
+        $user_money =  I("user_money/f",0); //  使用余额        
         $user_note =  I("user_note",''); // 用户留言
-//        $paypwd =  I("paypwd",''); // 支付密码
-//        $user_money = $user_money ? $user_money : 0;
+        $paypwd =  I("paypwd",''); // 支付密码
+        $user_money = $user_money ? $user_money : 0;
 
         $cartLogic = new CartLogic();
         $cartLogic->setUserId($this->user_id);
-
         if($cartLogic->getUserCartOrderCount() == 0){
             exit(json_encode(array('status'=>-2,'msg'=>'你的购物车没有选中商品','result'=>null))); // 返回结果状态
         }
-//        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
-//        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
+        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
 		
-//		$address = M('UserAddress')->where("address_id", $address_id)->find();
+		$address = M('UserAddress')->where("address_id", $address_id)->find();
 		$order_goods = M('cart')->where(['user_id'=>$this->user_id,'selected'=>1])->select();
-        $result = calculate_price($this->user_id,$order_goods);
-        if($result['status'] < 0) exit(json_encode($result));
+        $result = calculate_price($this->user_id,$order_goods,$shipping_code,0,$address['province'],$address['city'],$address['district'],$pay_points,$user_money,$coupon_id,$couponCode);
+		if($result['status'] < 0) exit(json_encode($result));      	
 		// 订单满额优惠活动		                
         $order_prom = get_order_promotion($result['result']['order_amount']);
         $result['result']['order_amount'] = $order_prom['order_amount'] ;
@@ -370,41 +331,39 @@ class Cart extends Base {
         $result['result']['order_prom_amount'] = $order_prom['order_prom_amount'] ;
         
         $car_price = array(
-//            'postFee'      => $result['result']['shipping_price'], // 物流费
-//            'couponFee'    => $result['result']['coupon_price'], // 优惠券
-//            'balance'      => $result['result']['user_money'], // 使用用户余额
-//            'pointsFee'    => $result['result']['integral_money'], // 积分支付
-//            'payables'     => number_format($result['result']['order_amount'], 2, '.', ''), // 应付金额
+            'postFee'      => $result['result']['shipping_price'], // 物流费
+            'couponFee'    => $result['result']['coupon_price'], // 优惠券            
+            'balance'      => $result['result']['user_money'], // 使用用户余额
+            'pointsFee'    => $result['result']['integral_money'], // 积分支付            
+            'payables'     => number_format($result['result']['order_amount'], 2, '.', ''), // 应付金额
             'goodsFee'     => $result['result']['goods_price'],// 商品价格            
-//            'order_prom_id' => $result['result']['order_prom_id'], // 订单优惠活动id
-//            'order_prom_amount' => $result['result']['order_prom_amount'], // 订单优惠活动优惠了多少钱
+            'order_prom_id' => $result['result']['order_prom_id'], // 订单优惠活动id
+            'order_prom_amount' => $result['result']['order_prom_amount'], // 订单优惠活动优惠了多少钱
         );
-
-//        var_dump($_REQUEST['act']) ; die ;
 
         // 提交订单
         if ($_REQUEST['act'] == 'submit_order') {
             $pay_name = '';
-//            if ($pay_points || $user_money) {
-//                if ($this->user['is_lock'] == 1) {
-//                    exit(json_encode(array('status'=>-5,'msg'=>"账号异常已被锁定，不能使用余额支付！",'result'=>null))); // 用户被冻结不能使用余额支付
-//                }
-//                if (empty($this->user['paypwd'])) {
-//                    exit(json_encode(array('status'=>-6,'msg'=>'请先设置支付密码','result'=>null)));
-//                }
-//                if (empty($paypwd)) {
-//                    exit(json_encode(array('status'=>-7,'msg'=>'请输入支付密码','result'=>null)));
-//                }
-//                if (encrypt($paypwd) !== $this->user['paypwd']) {
-//                    exit(json_encode(array('status'=>-8,'msg'=>'支付密码错误','result'=>null)));
-//                }
-//                $pay_name = $user_money ? '余额支付' : '积分兑换';
-//            }
+            if ($pay_points || $user_money) {
+                if ($this->user['is_lock'] == 1) {
+                    exit(json_encode(array('status'=>-5,'msg'=>"账号异常已被锁定，不能使用余额支付！",'result'=>null))); // 用户被冻结不能使用余额支付
+                }
+                if (empty($this->user['paypwd'])) {
+                    exit(json_encode(array('status'=>-6,'msg'=>'请先设置支付密码','result'=>null)));
+                }
+                if (empty($paypwd)) {
+                    exit(json_encode(array('status'=>-7,'msg'=>'请输入支付密码','result'=>null)));
+                }
+                if (encrypt($paypwd) !== $this->user['paypwd']) {
+                    exit(json_encode(array('status'=>-8,'msg'=>'支付密码错误','result'=>null)));
+                }
+                $pay_name = $user_money ? '余额支付' : '积分兑换';
+            }
             
-//            if(empty($coupon_id) && !empty($couponCode))
-//               $coupon_id = M('CouponList')->where("code", $couponCode)->getField('id');
+            if(empty($coupon_id) && !empty($couponCode))
+               $coupon_id = M('CouponList')->where("code", $couponCode)->getField('id');
             $orderLogic = new OrderLogic();
-            $result = $orderLogic->addOrder($this->user_id,$invoice_title,$car_price,$user_note,$pay_name); // 添加订单
+            $result = $orderLogic->addOrder($this->user_id,$address_id,$shipping_code,$invoice_title,$coupon_id,$car_price,$user_note,$pay_name); // 添加订单
             exit(json_encode($result));            
         }
         
@@ -421,6 +380,7 @@ class Cart extends Base {
      * 订单支付页面
      */
     public function cart4(){
+
         $order_id = I('order_id/d');
         $order_where = ['user_id'=>$this->user_id,'order_id'=>$order_id];
         $order = M('Order')->where($order_where)->find();
@@ -476,12 +436,7 @@ class Cart extends Base {
             {
                 $bankCodeList[$val['code']] = unserialize($val['bank_code']);        
             }                
-        }
-//        var_dump($order);
-
-//        if(!empty($order)){
-//            $this->assign('total_amount', $order['total_amount']) ;
-//        }
+        }                
         
         $bank_img = include APP_PATH.'home/bank.php'; // 银行对应图片        
         $this->assign('paymentList',$paymentList);        

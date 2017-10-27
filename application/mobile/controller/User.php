@@ -76,6 +76,30 @@ class User extends MobileBase
                  ->order($order_str)
                  ->find();
         if(!empty($oder)) {
+            $record = M('users a ')->field('a.user_id')
+                    ->where('uid','=',$user_id)
+                    ->select();
+            $tmp=[];
+            if(!empty($record)){
+                foreach ($record as $key =>$value){
+                    $num_id                       =   $value['user_id'];
+                    $arr['a.user_id']           =   $num_id;
+                    $arr['a.order_status']     =2;
+                    $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
+                                  ->join('order_goods b','a.order_id = b.order_id','LEFT')
+                                  ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
+                                  ->join('users d' ,'d.user_id = a.user_id','LEFT')
+                                  ->where($arr)
+                                  ->find();
+                    if($number_order != null){
+                        $tmp[$key]  = $number_order;
+                        $complete = count($tmp);
+                        $unfinish = $oder['mission'] - $complete;
+                    }
+                }
+            }
+               $this->assign('unfinish',$unfinish);
+               $this->assign('complete',$complete);
                $this->assign('order',$oder);
         }
 
@@ -303,7 +327,6 @@ class User extends MobileBase
      */
     public function reg()
     {
-
         if($this->user_id > 0) {
             $this->redirect(U('Mobile/User/index'));
 //            $this->ajaxReturn(['status'=>1,'msg'=>'您已注册']);
@@ -315,85 +338,44 @@ class User extends MobileBase
             $logic = new UsersLogic();
             //验证码检验
             //$this->verifyHandle('user_reg');
-            $username = I('post.username', '');
+            $mobile = I('post.mobile', '');
             $password = I('post.password', '');
-            $id_card = I('post.id_card', '');
             $password2 = I('post.password2', '');
+            $nickname  = I('post.nickname','');
+            $id_card   = I('post.id_card' ,'');
             //是否开启注册验证码机制
             $code = I('post.mobile_code', '');
             $scene = I('post.scene', 1);
 
-            $invite = I('invite');
 
             $session_id = session_id();
 
-
-            if($username == ''){
-                $data = [
-                    'status' => 0 ,
-                    'msg'    =>  '手机号不能为空' ,
-                ];
-                $this->ajaxReturn($data) ;
-            }
-
-            if($password == ''   ){
-                $data = [
-                    'status' => 0 ,
-                    'msg'    =>  '密码不能为空' ,
-                ];
-                $this->ajaxReturn($data) ;
-            }
-
-            if($password2 == ''){
-                $data = [
-                    'status' => 0 ,
-                    'msg'    =>  '确认密码不能为空' ,
-                ];
-                $this->ajaxReturn($data) ;
-            }
-
-            if($id_card == ''){
-                $data = [
-                    'status' => 0 ,
-                    'msg'    =>  '身份证号不能为空' ,
-                ];
-                $this->ajaxReturn($data) ;
-            }
-
-            if($invite  == ''){
-                $data = [
-                    'status' => 0 ,
-                    'msg'    =>  '推荐人手机号不能为空' ,
-                ];
-                $this->ajaxReturn($data) ;
-            }
-
-
             //是否开启注册验证码机制
-            if(check_mobile($username)){
+            if(check_mobile($mobile)){
                 if($reg_sms_enable){
                     //手机功能没关闭
-                    $check_code = $logic->check_validate_code($code, $username, 'phone', $session_id, $scene);
+                    $check_code = $logic->check_validate_code($code, $mobile, 'phone', $session_id, $scene);
                     if($check_code['status'] != 1){
                         $this->ajaxReturn($check_code);
                     }
                 }
             }
             //是否开启注册邮箱验证码机制
-            if(check_email($username)){
+            if(check_email($mobile)){
                 if($reg_smtp_enable){
                     //邮件功能未关闭
-                    $check_code = $logic->check_validate_code($code, $username);
+                    $check_code = $logic->check_validate_code($code, $mobile);
                     if($check_code['status'] != 1){
                         $this->ajaxReturn($check_code);
                     }
                 }
             }
-
+            $invite = I('invite');
             if(!empty($invite)){
             	$invite = get_user_info($invite,2);//根据手机号查找邀请人
             }
-            $data = $logic->reg($username, $password, $password2,0,$invite);
+
+            $data = $logic->reg($nickname,$mobile ,$password, $password2,0,$invite,$id_card);
             if ($data['status'] != 1)
                 $this->ajaxReturn($data['msg']);
             session('user', $data['result']);
@@ -467,7 +449,6 @@ class User extends MobileBase
         $id = I('get.id/d');
         $map['order_id'] = $id;
         $map['user_id'] = $this->user_id;
-
         $order_info = M('order')->where($map)->find();
         $order_info = set_btn_order_status($order_info);  // 添加属性  包括按钮显示属性 和 订单状态显示属性
         if (!$order_info) {

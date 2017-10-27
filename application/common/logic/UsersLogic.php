@@ -193,46 +193,47 @@ class UsersLogic extends Model
      * @param $password2 确认密码
      * @return array
      */
-    public function reg($username,$password,$password2, $push_id=0,$invite=array(), $id_card=''){
+    public function reg($nickname,$mobile,$password,$password2, $push_id=0,$invite=array(), $id_card=''){
 
     	$is_validated = 0 ;
-        if(check_email($username)){
-            $is_validated = 1;
-            $map['email_validated'] = 1;
-            $map['nickname'] = $map['email'] = $username; //邮箱注册
-        }
+//        if(check_email($username)){
+//            $is_validated = 1;
+//            $map['email_validated'] = 1;
+//            $map['nickname'] = $map['email'] = $username; //邮箱注册
+//        }
 
-        if(check_mobile($username)){
+        if(check_mobile($mobile)){
             $is_validated = 1;
             $map['mobile_validated'] = 1;
-            $map['nickname'] = $map['mobile'] = $username; //手机注册
+            $map['mobile'] = $mobile; //手机注册
         }
 
         if($is_validated != 1)
             return array('status'=>-1,'msg'=>'请用手机号或邮箱注册');
 
-        if(!$username || !$password)
+        if(!$nickname || !$password)
             return array('status'=>-1,'msg'=>'请输入用户名或密码');
 
         //验证两次密码是否匹配
         if($password2 != $password)
             return array('status'=>-1,'msg'=>'两次输入密码不一致');
         //验证是否存在用户名
-        if(get_user_info($username,1)||get_user_info($username,2))
-            return array('status'=>-1,'msg'=>'账号已存在');
+//        if(get_user_info($mobile,2)||get_user_info($id_card,1))
+//            return array('status'=>-1,'msg'=>'账号已存在');
 
         $map['password'] = encrypt($password);
         $map['reg_time'] = time();
         $map['first_leader'] = cookie('first_leader'); // 推荐人id
+        $map['nickname']     = $nickname;
+        $map['id_card'] = $id_card ;
 
 
         //根据username(如果是电话号码)，那么通过该号码我们可以找到其对应的user_id
         if(!empty($invite)){
             $map['uid'] = $invite['user_id'];
-            $map['id_card'] = $id_card ;
         }
 
-        // 如果找到他老爸还要找他爷爷他祖父等
+
         if($map['first_leader'])
         {
             $first_leader = M('users')->where("user_id", $map['first_leader'])->find();
@@ -260,7 +261,7 @@ class UsersLogic extends Model
         $map['push_id'] = $push_id; //推送id
         $map['token'] = md5(time().mt_rand(1,999999999));
         $map['last_login'] = time();
-
+        $map['nickname']     = $nickname;
 
         $user_id = M('users')->insertGetId($map);
         if($user_id === false)
@@ -355,7 +356,7 @@ class UsersLogic extends Model
             return array('status'=>-1,'msg'=>'请输入用户名');
 
         //一个用户只能使用一个身份证
-        if(get_user_info($data['id_card'],1))
+        if(get_user_info($data['id_card'],1) || get_user_info($data['mobile'],2))
             return array('status'=>-1,'msg'=>'账号已存在');
 
         if(empty($password))
@@ -375,7 +376,7 @@ class UsersLogic extends Model
         if(!preg_match("/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/", $data['id_card'])){
             return array('status'=>-1,'msg'=>'输入的身份证格式不对！请重新输入');
         }
-        if(!$data['district'])
+        if($data['district']== 0 || $data['district'] == '选择区域')
             return array('status'=>-1,'msg'=>'请填选所属区域');
 
         $user_id=M('users')->insertGetId($data);

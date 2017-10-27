@@ -16,7 +16,6 @@
             <div class="ds-in-bl search center" id="topcenter">
                 <span class="sxp">商品</span>
                 <span>详情</span>
-                <span>评论</span>
             </div>
             <div class="ds-in-bl menu">
                 <a href="javascript:void(0);"><img src="__STATIC__/images/class1.png" alt="菜单"></a>
@@ -60,12 +59,7 @@
                     <p class="confinetime" id="overTime"></p>
                 </div>
                 <p><span id="market_price_title">市场价：</span><span class="linethr">{$goods.market_price}</span></p>
-                <p>
-                    <if condition="$goods.prom_type neq 2">销量：<span>{$goods.sales_sum}</span></if>
-                    <span >
-                        当前库存：<span class="spec_store_count">{$goods.store_count}</span>
-                    </span>
-                </p>
+                <p><span style="color:#999999">任务数：</span><span class="red">{$goods.mission}</span></p>
             </div>
         </div>
     </div>
@@ -156,11 +150,8 @@
                 <a class="remain" href="javascript:void(0);">
                     <div class="order">
                         <div class="fl">
-                            <span class="firde">运费信息</span>
-                            <span id="shipping_freight"></span>
-                        </div>
-                        <div class="fr">
-                            <i class="Mright"></i>
+                            <span class="firde">提车手续费</span>
+                            <span >3000</span>
                         </div>
                     </div>
                 </a>
@@ -168,28 +159,13 @@
         </div>
         <div id="balance" class="chidno"></div>
         <!--运费-s-->
-        <div class="myorder p choise_num">
-            <div class="content30">
-                <a href="javascript:void(0)">
-                    <div class="order">
-                        <div class="fl">
-                            <span class="firde">已选</span>
-                            <span class="sel"></span>
-                        </div>
-                        <div class="fr">
-                            <i class="Mright"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
         <div class="myorder p">
             <div class="content30">
                 <a href="javascript:void(0)">
                     <div class="order">
                         <div class="fl">
                             <span class="firde">服务</span>
-                            <span>由商城自营发货并提供售后服务</span>
+                            <span>由生产厂家发货并提供售后服务</span>
                         </div>
                         <div class="fr">
                             <i class="Mright gt"></i>
@@ -198,64 +174,7 @@
                 </a>
             </div>
         </div>
-        <div class="myhearders myorder">
-            <div class="scgz descgz">
-                <ul>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <img src="__STATIC__/images/hdfk.png">
-                            <p>货到付款</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <img src="__STATIC__/images/qttk.png">
-                            <p>七天退款</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <img src="__STATIC__/images/ksd.png">
-                            <p>极速达</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--<div class="myorder p seedeadei">-->
-        <!--<div class="content30">-->
-        <!--<a href="javascript:void(0)">-->
-        <!--<div class="order">-->
-        <!--<div class="fl">-->
-        <!--<span class="firde red">查看商品详情</span>-->
-        <!--</div>-->
-        <!--<div class="fr">-->
-        <!--<i class="Mright"></i>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--</div>-->
-        <!--</div>-->
-        <div class="myorder p tbv">
-            <div class="content30">
-                <a href="javascript:void(0)">
-                    <div class="order">
-                        <div class="fl">
-                            <span class="firde">用户评价</span>
-                            <span>好评率<i>
-                                <if condition="!empty($commentStatistics.c1) and !empty($commentStatistics.c0)">
-                                    {:round($commentStatistics.c1/$commentStatistics.c0,3)*100}%
-                                    <else/>0</if>
-                            </i></span>
-                        </div>
-                        <div class="fr">
-                            <span><i>{$commentStatistics.c0}</i>人评论</span>
-                            <i class="Mright"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+
     </div>
     <div class="recommed p">
         <h2>为您推荐</h2>
@@ -304,6 +223,11 @@
                 <tr>
                     <th colspan="2">主体</th>
                 </tr>
+                <if condition="$goods_attr_list eq null">
+                    <td ><p>实际参数以商品车为准</p>
+                        <small style="color: #999999">(解释权归公司所有)</small>
+                    </td>
+                </if>
                 <foreach name="goods_attr_list" item="v" key="k" >
                     <tr>
                         <td>{$goods_attribute[$v[attr_id]]}</td>
@@ -316,38 +240,11 @@
 </div>
 <!--详情-e-->
 
-<!--评论列表-s-->
-<div class="xq_details" >
-    <div class="spxq-ggcs comment_de p"  style="display:none;">
-        <ul>
-            <!--1 全部 2好评 3 中评 4差评-->
-            <li class="red">全部评价 <br /><span ctype="1">{$commentStatistics.c0}</span></li>
-            <li>好评 <br /><span ctype="2">{$commentStatistics.c1}</span></li>
-            <li>中评 <br /><span ctype="3">{$commentStatistics.c2}</span></li>
-            <li>差评 <br /><span ctype="4">{$commentStatistics.c3}</span></li>
-            <li>有图 <br /><span ctype="5">{$commentStatistics.c4}</span></li>
-        </ul>
-    </div>
-    <!--评论列表-->
-    <div class="tab-con-wrapper my_comment_list" > </div>
-</div>
-<div class="comment_con p" id="seedetail">
-    <div class="score enkecor" onclick="seedeadei(this)">查看图文详情</div>
-</div>
-<!--评论列表-e-->
-
 <!--底部按钮-s-->
 <div class="podee">
     <div class="cart-concert-btm p">
         <div class="fl">
             <ul>
-                <li>
-                    <!--<a href="tencent://message/?uin={$tpshop_config['shop_info_qq']}&Site=TPshop商城&Menu=yes">-->
-                    <a href="tel:{$tpshop_config['shop_info_phone']}">
-                        <i></i>
-                        <p>客服</p>
-                    </a>
-                </li>
                 <li>
                     <a href="{:U('Mobile/Cart/index')}" >
                         <span id="tp_cart_info"></span>
@@ -399,7 +296,7 @@
                         <h2 class="similar-product-text">{$goods.goods_name}</h2>
                         <input type="hidden" id="goods_name" name="goods_id" value="{$goods.goods_id}">
                         <div class="price_or" id="goods_price"><span>￥</span><span>{$goods.shop_price}</span></div>
-                        <div class="dqkc_or"><span>剩余库存：</span><span id="spec_store_count">{$goods.store_count}</span></div>
+                        <div class="dqkc_or"><span>任务数：</span><span style="color: red">{$goods.mission}</span></div>
                     </div>
                     <div class="price_or fr">
                         <i class="xxgro"></i>
@@ -414,11 +311,9 @@
                     <p>数量</p>
                     <!--选择数量-->
                     <div class="plus">
-                        <span class="mp_minous" onclick="altergoodsnum(-1)">-</span>
                                 <span class="mp_mp">
-                        <input type="tel" class="num buyNum" id="number" residuenum="{$goods.store_count}" name="goods_num" value="1" min="1" max="{$goods.store_count}" onblur="altergoodsnum(0)">
+                        <input type="tel" class="num buyNum" id="number"  name="goods_num" value="1"   >
                                 </span>
-                        <span class="mp_plus" onclick="altergoodsnum(1)">+</span>
                     </div>
                 </div>
                 <if condition="$filter_spec neq ''">

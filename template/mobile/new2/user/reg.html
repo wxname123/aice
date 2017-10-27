@@ -14,7 +14,11 @@
     <form action="" method="post" id="regFrom" >
         <div class="content30">
             <div class="lsu boo wicheck">
-                <input type="text" name="username" id="username" value="" placeholder="请输入手机号"  class="c-form-txt-normal" onBlur="checkMobilePhone(this.value);">
+                <input type="text" name="nickname" id="nickname" value="" placeholder="请输入真实姓名"  class="c-form-txt-normal" onBlur="checkNickname(this.value);">
+                <span id="nickname_notice"></span>
+            </div>
+            <div class="lsu boo wicheck">
+                <input type="text" name="mobile" id="mobile" value="" placeholder="请输入手机号"  class="c-form-txt-normal" onBlur="checkMobilePhone(this.value);">
                 <span id="mobile_phone_notice"></span>
             </div>
             <div class="lsu boo wicheck">
@@ -25,10 +29,6 @@
                 <input type="password" id="password2" name="password2" value="" placeholder="确认密码" onBlur="check_confirm_password(this.value);">
                 <span id="confirm_password_notice"></span>
             </div>
-            <!--<div class="lsu boo zc_se">-->
-                <!--<input type="text"  value="" name="verify_code" placeholder="请输入验证码" >-->
-                <!--<img src="/index.php?m=Home&c=User&a=verify" id="verify_code_img" onclick="verify()">-->
-            <!--</div>-->
 
             <if condition="$regis_sms_enable eq 1">
                 <div class="lsu boo zc_se">
@@ -39,7 +39,7 @@
 
 
             <div class="lsu boo wicheck">
-                <input type="password" id="id_card" name="id_card" value="" placeholder="请输入身份证号码" onBlur="check_id_card(this.value);">
+                <input type="text" id="id_card" name="id_card" value="" placeholder="请输入身份证号码" onBlur="check_id_card(this.value);">
                 <span id="confirm_id_card"></span>
             </div>
 
@@ -77,6 +77,19 @@
         })
     }
     var flag = false;
+
+    //用户名验证
+    function  checkNickname(nickname) {
+        if(nickname ==''){
+            showErrorMsg('用户名不能为空');
+            flag = false;
+        }else if(checkname(nickname)){
+            flag = true;
+        }else{
+            showErrorMsg('* 用户名格式不正确');
+            flag = false;
+        }
+    }
     //手机验证
     function checkMobilePhone(mobile){
         if(mobile == ''){
@@ -138,7 +151,7 @@
     function   check_id_card(id_card){
         if(id_card == ''){
             showErrorMsg('身份证不能空');
-        }else if(checkCard(id_card)){
+        }else if(checkCar(id_card)){
             $.ajax({
                 type : "GET",
                 url:"/index.php?m=Home&c=Api&a=issetCard",//+tab,
@@ -158,6 +171,35 @@
 
         }else{
             showErrorMsg('身份证格式不正确');
+        }
+    }
+
+    /**
+     * 用户名格式判断
+     * @param idcar
+     * @returns {boolean}
+     */
+    function checkname(name) {
+        var  reg =/^[\u4e00-\u9fa5]+$/;
+        if(reg.test(name)){
+            return true;
+        }else{
+            return false;
+        };
+    }
+
+    /**
+     * 身份证格式判断
+     * @param idcar
+     * @returns {boolean}
+     */
+
+    function checkCar(idcar){
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(reg.test(idcar)){
+            return true;
+        }else{
+            return false;
         }
     }
 

@@ -92,7 +92,24 @@
                     <label for="member_sex1">男</label>
                     <input value="2" name="sex" id="member_sex2" type="radio" <if condition="$user['sex'] eq 2">checked</if>>
                     <label for="member_sex2">女</label>
-                    <span class="err"></span> </dd>
+                    <span class="err"></span>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>会员角色</label>
+                </dt>
+                <dd class="opt">
+                    <input value="0" name="is_agent" id="role_0" type="radio" <if condition="$user['is_agent'] eq 0">checked</if>>
+                    <label for="role_0">普通用户</label>
+                    <input value="1" name="is_agent" id="role_1" type="radio" <if condition="$user['is_agent'] eq 1">checked</if>>
+                    <label for="role_1">市代理</label>
+                    <input value="2" name="is_agent" id="role_2" type="radio" <if condition="$user['is_agent'] eq 2">checked</if>>
+                    <label for="role_2">区代理</label>
+                    <input value="2" name="is_agent" id="role_3" type="radio" <if condition="$user['is_agent'] eq 3">checked</if>>
+                    <label for="role_3">省代理</label>
+                    <span class="err"></span>
+                </dd>
             </dl>
             <dl class="row">
                 <dt class="tit">
@@ -123,6 +140,22 @@
                                 <li>
                                     <if condition='$user[first_leader] gt 0'>
                                         <a >{$user.first_leader}</a>
+                                        <else/>
+                                       <a style="color: red">暂无</a>
+                                    </if>
+                                </li>
+                            </ul>
+                        </span>
+                        <span class="span_1">
+                            <ul>
+                                <li>上一级名称</li>
+                            </ul>
+                        </span>
+                        <span class="span_1">
+                            <ul>
+                                <li>
+                                    <if condition='$user[first_leader] gt 0'>
+                                        <a >{$user.first_name}</a>
                                         <else/>
                                        <a style="color: red">暂无</a>
                                     </if>
