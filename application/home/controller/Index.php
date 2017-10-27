@@ -52,6 +52,10 @@ class Index extends Base {
     public  function   wuxuan(){
         die("abcd");
     }
+
+    public  function  wu(){
+        die("1111");
+    }
  
     /**
      *  公告详情页
