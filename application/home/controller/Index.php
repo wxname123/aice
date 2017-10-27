@@ -15,7 +15,6 @@ class Index extends Base {
             redirect(U('Mobile/Index/index'));
         }
 
-
         $hot_goods = $hot_cate = $cateList = array();
         $sql = "select a.goods_name,a.goods_id,a.shop_price,a.market_price,a.cat_id,b.parent_id_path,b.name from ".C('database.prefix')."goods as a left join ";
         $sql .= C('database.prefix')."goods_category as b on a.cat_id=b.id where a.is_hot=1 and a.is_on_sale=1 order by a.sort";//二级分类下热卖商品       
@@ -47,6 +46,11 @@ class Index extends Base {
         }
         $this->assign('cateList',$cateList);
         return $this->fetch();
+    }
+
+
+    public  function   wuxuan(){
+        die("abcd");
     }
  
     /**
