@@ -60,7 +60,7 @@ class Index extends Base {
     }
 
     public  function  abc(){
-
+        die("abcd");
     }
 
  
