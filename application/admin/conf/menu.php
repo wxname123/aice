@@ -15,6 +15,8 @@ return	array(
 				)),
 				array('name' => '会员','child'=>array(
 						array('name'=>'会员列表','act'=>'index','op'=>'User'),
+                        array('name' => '区代理列表', 'act'=>'area', 'op'=>'Report'),
+                        array('name' => '市代理列表', 'act'=>'agent', 'op'=>'Report'),
 						array('name'=>'会员等级','act'=>'levelList','op'=>'User'),
                         array('name'=>'会员认证','act'=>'memberAuth','op'=>'User'),
 						array('name'=>'充值记录','act'=>'recharge','op'=>'User'),
@@ -31,9 +33,6 @@ return	array(
 				array('name' => '文章','child'=>array(
 						array('name' => '文章列表', 'act'=>'articleList', 'op'=>'Article'),
 						array('name' => '文章分类', 'act'=>'categoryList', 'op'=>'Article'),
-						//array('name' => '帮助管理', 'act'=>'help_list', 'op'=>'Article'),
-						//array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
-						//array('name' => '公告管理', 'act'=>'notice_list', 'op'=>'Article'),
 						array('name' => '专题列表', 'act'=>'topicList', 'op'=>'Topic'),
 				)),
 				array('name' => '权限','child'=>array(
@@ -80,6 +79,13 @@ return	array(
 			        array('name' => '订单日志','act'=>'order_log','op'=>'Order'),
 			)),
 
+            array('name' => '微信','child' => array(
+                    array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
+                    array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
+                    array('name' => '文本回复', 'act'=>'text', 'op'=>'Wechat'),
+                    //array('name' => '图文回复', 'act'=>'img', 'op'=>'Wechat'),
+             )),
+
 			
 			array('name' => '统计','child' => array(
 					array('name' => '销售概况', 'act'=>'index', 'op'=>'Report'),
@@ -87,8 +93,6 @@ return	array(
 					array('name' => '会员排行', 'act'=>'userTop', 'op'=>'Report'),
 					array('name' => '销售明细', 'act'=>'saleList', 'op'=>'Report'),
 					array('name' => '会员统计', 'act'=>'user', 'op'=>'Report'),
-                    array('name' => '区代理列表', 'act'=>'area', 'op'=>'Report'),
-                    array('name' => '市代理列表', 'act'=>'agent', 'op'=>'Report'),
 					array('name' => '运营概览', 'act'=>'finance', 'op'=>'Report'),
 					array('name' => '平台支出记录','act'=>'expense_log','op'=>'Report'),
 			)),

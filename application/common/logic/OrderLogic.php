@@ -338,6 +338,7 @@ class OrderLogic
             $data2['give_integral']      = $goods['give_integral']; // 购买商品赠送积分
             $data2['prom_type']          = $val['prom_type']; // 0 普通订单,1 限时抢购, 2 团购 , 3 促销优惠
             $data2['prom_id']            = $val['prom_id']; // 活动id
+            $data2['mission']            = $goods['mission'];
             $order_goods_id              = M("OrderGoods")->insertGetId($data2);
             // 扣除商品库存  扣除库存移到 付完款后扣除
             //M('Goods')->where("goods_id = ".$val['goods_id'])->setDec('store_count',$val['goods_num']); // 商品减少库存

@@ -7,7 +7,6 @@
 	<meta name="description" content="{$tpshop_config['shop_info_store_desc']}" />
 	<link rel="stylesheet" type="text/css" href="__STATIC__/css/tpshop.css" />
 	<link rel="stylesheet" type="text/css" href="__STATIC__/css/myaccount.css" />
-	<link rel="shortcut  icon" type="image/x-icon" href="__STATIC__/images/favicon.ico" media="screen"  />
 	<script src="__STATIC__/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body class="bg-f5">
@@ -66,13 +65,16 @@
 							<li class="">
 								<a href="{:U('Home/User/mission')}">
 									<if condition="$order neq null">
-										<volist name="order" id="list">
 											<i class="icon-balance"></i>
 											<span>提车任务数</span>
 											<em class="mu-unit">&nbsp;台</em>
-											<em class="mu-num">{$list['mission']}</em>
+											<em class="mu-num">{$order['mission']}</em>
 											<i class="icon-ar"></i>
-										</volist>
+										<else/>
+										<i class="icon-balance"></i>
+										<span>提车任务数</span>
+										<em class="mu-unit">&nbsp;</em>
+										<em class="mu-num" style="color: red">暂无</em>
 									</if>
 								</a>
 							</li>
@@ -81,10 +83,15 @@
 							<li>
 								<if condition="$complete neq null">
 									<i class="icon-point"></i>
-									<span>已完成任务</span>
+									<span>已完成提车</span>
 									<em class="mu-unit">&nbsp;台</em>
 									<em class="mu-num">{$complete}</em>
 									<i class="icon-ar"></i>
+									<else/>
+									<i class="icon-balance"></i>
+									<span>已完成提车</span>
+									<em class="mu-unit">&nbsp;</em>
+									<em class="mu-num" style="color: red">暂无</em>
 								</if>
 							</li>
 						</ul>

@@ -67,31 +67,24 @@
             <div class="floor floor_order">
                 <ul>
                     <li>
-                        <a href="{:U('/Mobile/User/order_list',array('type'=>'WAITPAY'))}">
-                            <span>{$user.waitPay}</span>
+                        <a>
+                            <span>{$order.mission}</span>
                             <img src="__STATIC__/images/q1.png" alt="" />
-                            <p>待付款</p>
+                            <p>我的任务</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{:U('/Mobile/User/wait_receive',array('type'=>'WAITRECEIVE'))}">
-                            <span>{$user.waitReceive}</span>
-                            <img src="__STATIC__/images/q2.png" alt="" />
-                            <p>待收货</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{:U('Mobile/User/comment',array('status'=>0))}">
-                            <span>{$user.uncomment_count}</span>
+                        <a href="{:U('Mobile/User/mission')}">
+                            <span>{$complete}</span>
                             <img src="__STATIC__/images/q3.png" alt="" />
-                            <p>待评价</p>
+                            <p>已完成</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{:U('Mobile/User/return_goods_list',array('type'=>1))}">
-                            <span>{$user.return_count}</span>
-                            <img src="__STATIC__/images/q4.png" alt="" />
-                            <p>退款/退货</p>
+                        <a >
+                            <span>{$unfinish}</span>
+                            <img src="__STATIC__/images/q3.png" alt="" />
+                            <p>未完成</p>
                         </a>
                     </li>
                 </ul>
@@ -124,77 +117,20 @@
                             <p>余额</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="{:U('Mobile/User/coupon')}">
-                            <h2>{$user['coupon_count']}</h2>
-                            <p>优惠券</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{:U('Mobile/User/points_list')}">
-                            <h2>{$user['pay_points']}</h2>
-                            <p>积分</p>
-                        </a>
-                    </li>
                 </ul>
             </div>
             <!--资金管理-e-->
 
+
+
             <div class="floor list7 ma-to-20">
-                <if condition="$tpshop_config['distribut_switch'] eq 1">
-                    <div class="myorder p">
-                        <div class="content30">
-                            <a href="javascript:void(0);" onclick="alert('请购买商业正版哦!');">
-                                <div class="order">
-                                    <div class="fl">
-                                        <img src="__STATIC__/images/w1.png"/>
-                                        <span>我的分销</span>
-                                    </div>
-                                    <div class="fr">
-                                        <i class="Mright"></i>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </if>
                 <div class="myorder p">
                     <div class="content30">
-                        <a href="{:U('Mobile/User/comment',array('status'=>1))}">
+                        <a href="{:U('Mobile/User/agent')}">
                             <div class="order">
                                 <div class="fl">
-                                    <img src="__STATIC__/images/w2.png"/>
-                                    <span>我的评价</span>
-                                </div>
-                                <div class="fr">
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="{:U('Mobile/Goods/integralMall')}">
-                            <div class="order">
-                                <div class="fl">
-                                    <img src="__STATIC__/images/w5.png"/>
-                                    <span>积分商城</span>
-                                </div>
-                                <div class="fr">
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="{:U('Mobile/Activity/coupon_list')}">
-                            <div class="order">
-                                <div class="fl">
-                                    <img src="__STATIC__/images/w7.png"/>
-                                    <span>领券中心</span>
+                                    <img src="__STATIC__/images/w1.png"/>
+                                    <span>我的下级</span>
                                 </div>
                                 <div class="fr">
                                     <i class="Mright"></i>
@@ -233,69 +169,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!--
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="">
-                            <div class="order">
-                                <div class="fl">
-                                    <img src="__STATIC__/images/w3.png"/>
-                                    <span>我的预售</span>
-                                </div>
-                                <div class="fr">
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="">
-                            <div class="order">
-                                <div class="fl">
-                                    <img src="__STATIC__/images/w4.png"/>
-                                    <span>我的拼团</span>
-                                </div>
-                                <div class="fr">
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="">
-                            <div class="order">
-                                <div class="fl">
-                                    <img src="__STATIC__/images/w6.png"/>
-                                    <span>帮助中心</span>
-                                </div>
-                                <div class="fr">
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="myorder p">
-                    <div class="content30">
-                        <a href="">
-                            <div class="order">
-                                <div class="fl">
-                                    <img src="__STATIC__/images/w7.png"/>
-                                    <span>意见反馈</span>
-                                </div>
-                                <div class="fr">
-                                    <i class="Mright"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
         <div class="setting">

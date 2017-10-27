@@ -1,18 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tpshop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 个人学习免费, 如果商业用途务必到TPshop官网购买授权.
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * $Author: IT宇宙人 2015-08-10 $
- *
- */ 
+
 namespace app\home\controller;
 use think\Page;
 use think\Verify;
@@ -28,6 +15,7 @@ class Index extends Base {
         if(isMobile()){
             redirect(U('Mobile/Index/index'));
         }
+
         $hot_goods = $hot_cate = $cateList = array();
         $sql = "select a.goods_name,a.goods_id,a.shop_price,a.market_price,a.cat_id,b.parent_id_path,b.name from ".C('database.prefix')."goods as a left join ";
         $sql .= C('database.prefix')."goods_category as b on a.cat_id=b.id where a.is_hot=1 and a.is_on_sale=1 order by a.sort";//二级分类下热卖商品       
@@ -65,9 +53,17 @@ class Index extends Base {
     }
 
 
+
     public  function  yuliang(){
         die("1234");
+        die("3456");
     }
+
+    public  function  abc(){
+
+    }
+
+ 
 
     /**
      *  公告详情页
