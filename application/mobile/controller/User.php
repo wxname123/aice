@@ -375,7 +375,9 @@ class User extends MobileBase
             	$invite = get_user_info($invite,2);//根据手机号查找邀请人
             }
 
+
             $data = $logic->reg($nickname,$mobile ,$password, $password2,0,$invite,$id_card);
+
             if ($data['status'] != 1)
                 $this->ajaxReturn($data['msg']);
             session('user', $data['result']);

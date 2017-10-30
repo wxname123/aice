@@ -201,7 +201,6 @@ class UsersLogic extends Model
 //            $map['email_validated'] = 1;
 //            $map['nickname'] = $map['email'] = $username; //邮箱注册
 //        }
-
         if(check_mobile($mobile)){
             $is_validated = 1;
             $map['mobile_validated'] = 1;
@@ -218,8 +217,8 @@ class UsersLogic extends Model
         if($password2 != $password)
             return array('status'=>-1,'msg'=>'两次输入密码不一致');
         //验证是否存在用户名
-//        if(get_user_info($mobile,2)||get_user_info($id_card,1))
-//            return array('status'=>-1,'msg'=>'账号已存在');
+        if(get_user_info($mobile,2)||get_user_info($id_card,1))
+            return array('status'=>-1,'msg'=>'账号已存在');
 
         $map['password'] = encrypt($password);
         $map['reg_time'] = time();

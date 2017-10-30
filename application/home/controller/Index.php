@@ -53,16 +53,6 @@ class Index extends Base {
     }
 
 
-
-    public  function  yuliang(){
-        die("1234");
-        die("3456");
-    }
-
-    public  function  abc(){
-        die("abcd");
-    }
-
  
 
     /**
