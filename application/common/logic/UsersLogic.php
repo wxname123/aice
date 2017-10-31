@@ -207,8 +207,6 @@ class UsersLogic extends Model
             $map['mobile'] = $mobile; //手机注册
         }
 
-
-
         if($is_validated != 1)
             return array('status'=>-1,'msg'=>'请用手机号或邮箱注册');
 

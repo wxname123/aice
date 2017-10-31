@@ -149,6 +149,9 @@
 
     //身份证
     function   check_id_card(id_card){
+
+
+
         if(id_card == ''){
             showErrorMsg('身份证不能空');
         }else if(checkCar(id_card)){
@@ -168,7 +171,6 @@
                     }
                 }
             });
-
         }else{
             showErrorMsg('身份证格式不正确');
         }
@@ -195,7 +197,9 @@
      */
 
     function checkCar(idcar){
-        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        //var reg = "/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/";  // ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
+//        var  reg = '^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$' ;
+        var reg = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
         if(reg.test(idcar)){
             return true;
         }else{

@@ -19,6 +19,21 @@ use think\AjaxPage;
 use think\Page;
 use think\Db;
 class Goods extends MobileBase {
+
+    public $user_id = 0;
+
+    public  function  _initialize()
+    {
+        parent::_initialize();
+        if (session('?user')) {
+            $user = session('user');
+            $user = M('users')->where("user_id", $user['user_id'])->find();
+            session('user', $user);  //覆盖session 中的 user
+            $this->user = $user;
+            $this->user_id = $user['user_id'];
+        }
+    }
+
     public function index(){
        // $this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover,{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
         return $this->fetch();
@@ -175,6 +190,33 @@ class Goods extends MobileBase {
             $brnad = M('brand')->where("id", $goods['brand_id'])->find();
             $goods['brand_name'] = $brnad['name'];
         }
+
+
+        if($this->user_id > 0){
+            //已经登录
+            $udata =  M('users')->where('user_id' , $this->user_id)->field('review, statu')->find();
+//            var_dump($udata) ; die;
+            if(!empty($udata)){
+                if($udata['statu'] == '0' && $udata['review'] == '0'){
+                    //先提交资料页面
+                    $this->assign('statu', 0 );
+                }elseif ($udata['statu'] == '1'  &&  $udata['review'] == '0'){
+                    //还没有通过认证的界面
+                    $this->assign('statu', 1 );
+                }elseif ($udata['statu'] == '1'  &&  $udata['review'] == '1'){
+                    //直接跳转到下订单页面
+                    $this->assign('statu', 2 );
+                }
+            }else{
+                //查询数据失败
+                $this->assign('statu', 3);
+            }
+        }else{
+            //没有登录
+            $this->assign('statu', 4);
+        }
+
+
         $goods_images_list = M('GoodsImages')->where("goods_id", $goods_id)->select(); // 商品 图册
         $goods_attribute = M('GoodsAttribute')->getField('attr_id,attr_name'); // 查询属性
         $goods_attr_list = M('GoodsAttr')->where("goods_id", $goods_id)->select(); // 查询商品属性表

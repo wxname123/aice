@@ -50,6 +50,65 @@ class User extends MobileBase
         $this->assign('order_status_coment', $order_status_coment);
     }
 
+
+    /*
+ * 提交用户身份信息
+ * */
+    public  function   check(){
+        //拿到用户id
+        $user_id = $this->user_id  ;
+        return  $this->fetch() ;
+    }
+
+    public  function  check_submit(){
+
+        //文件大小必须小于 20 kb
+        if ((($_FILES["file_head"]["type"] == "image/gif")
+                || ($_FILES["file_head"]["type"] == "image/jpeg")
+                || ($_FILES["file_head"]["type"] == "image/pjpeg")) )
+//            && ($_FILES["file_head"]["size"] < 20000))
+        {
+            if ($_FILES["file_head"]["error"] > 0)
+            {
+                echo "Error: " . $_FILES["file"]["error"] . "<br />";
+            }
+            else
+            {
+                //截取年月日  , 返回一个存放了年月日的数组
+                $dateArr =   sub_year_month_day();
+                $sub_img_path = $dateArr[1] . '-' .$dateArr[2] ;
+                $img_path =  "public/upload/image/"  . $dateArr[0] . '/' .$sub_img_path ;
+
+
+                //判断文件夹是否存在
+                if(is_dir("public/upload/image/"  . $dateArr[0] )){
+                    if(!is_dir($img_path)){
+                        mkdir($img_path) ;
+                    }
+                }else{
+                    mkdir("public/upload/image/"  . $dateArr[0] ) ;
+                }
+
+                if(file_exists( $img_path . $_FILES["file_head"]["name"])){
+                    echo $_FILES["file_head"]["name"] . " already exists. ";
+                }else{
+                    move_uploaded_file($_FILES["file_head"]["tmp_name"] , $img_path . '/' . $_FILES["file_head"]["name"]) ;
+                }
+
+            }
+        }
+        else
+        {
+            var_dump($_FILES["file_head"]["error"] ) ;
+            echo "Invalid file";
+        }
+
+    }
+
+
+
+
+
     /*
      * 用户中心首页
      */

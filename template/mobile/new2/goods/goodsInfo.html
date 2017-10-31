@@ -262,6 +262,38 @@
                 <li class="r">
                     <a class="choise_num" style="display:block;" href="javascript:void(0);">立即购买</a>
                 </li>
+
+
+
+                <if condition="($statu == 0)">
+                    <li class="r">
+                        <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_SubmitCheck()">立即购买</a>
+                    </li>
+                    <elseif condition="($statu == 1)">
+                        <li class="r">
+                            <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unpassCheck()">立即购买</a>
+                        </li>
+                    </elseif>
+                    <elseif condition="($statu == 2)">
+                        <li class="r">
+                            <a class="pb_buy dis_btn" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                        </li>
+                    </elseif>
+                    <elseif condition="($statu == 3)">
+                        <li class="r">
+                            <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unselectIdentify">立即购买</a>
+                        </li>
+                    </elseif>
+                    <else />
+                    <li class="r">
+                        <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unlogin()">立即购买</a>
+                    </li>
+                </if>
+
+
+
+
+
             </ul>
         </div>
     </div>
@@ -392,6 +424,27 @@
             firstSpecRadio.parents('.choic-sel').find('a').eq(0).addClass('red');
         })
     }
+
+    function  mobile_SubmitCheck(){
+        location.href = "/index.php?m=mobile&c=User&a=Check";   //m=Home&c=User&a=check
+    }
+
+    //还没有通过验证
+    function  mobile_unpassCheck(){
+        layer.alert('您还没有通过管理员的认证！！！',{icon:5}) ;
+    }
+
+    //  数据查询失败
+    function  mobile_unselectIdentify(){
+        layer.alert('未找到该用户信息！！！',{icon:5}) ;
+    }
+
+    //没有登录
+    function  mobile_unlogin(){
+        location.href = '/index.php?m=Home&c=User&a=login&s=submit_goodinfo' ;
+    }
+
+
     //初始化商品价格库存
     function initGoodsPrice() {
         var goods_id = $('input[name="goods_id"]').val();
