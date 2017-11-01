@@ -192,7 +192,9 @@ class Goods extends MobileBase {
         }
 
 
+
         if($this->user_id > 0){
+
             //已经登录
             $udata =  M('users')->where('user_id' , $this->user_id)->field('review, statu')->find();
 //            var_dump($udata) ; die;

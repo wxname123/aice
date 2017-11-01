@@ -16,6 +16,7 @@ class User extends MobileBase
 
     public $user_id = 0;
     public $user = array();
+    public $userData = [] ;
 
     /*
     * 初始化操作
@@ -51,34 +52,158 @@ class User extends MobileBase
     }
 
 
-    /*
- * 提交用户身份信息
- * */
+
     public  function   check(){
         //拿到用户id
         $user_id = $this->user_id  ;
         return  $this->fetch() ;
     }
 
-    public  function  check_submit(){
+    public  function  ajax_submit(){
+        $base64_image_content = $_POST['img'];
+        $code = $_POST['code'];
 
+ //        var_dump($base64_image_content) ; die ;
+        if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64_image_content, $result)){
+            $type = $result[2]; //jpeg
+            $img = base64_decode(str_replace($result[1], '', $base64_image_content)); //返回文件流
+        }
+
+        $tmp_file = time(). '.' .$type;
+
+        //截取年月日  , 返回一个存放了年月日的数组
+        $dateArr =   sub_year_month_day();
+        $sub_img_path = $dateArr[1] . '-' .$dateArr[2] ;
+        $img_path =  "public/upload/image/"  . $dateArr[0] . '/' .$sub_img_path ;
+
+        //判断文件夹是否存在  ( 2017 )
+        if(is_dir("public/upload/image/"  . $dateArr[0] )){
+            if(!is_dir($img_path)){
+                mkdir($img_path) ;
+            }
+        }else{
+            mkdir("public/upload/image/"  . $dateArr[0] ) ;
+        }
+
+//        var_dump($tmp_file) ; die ;
+          $save_path = $img_path . '/' . $tmp_file ;
+          $result =  file_put_contents( $save_path , $img);
+          if($result){
+                M('users')->where('user_id' , $this->user_id)->save(['statu'=> 1 ]);
+          }
+//        var_dump($a) ; die ;
+//        move_uploaded_file($_FILES["file_head"]["tmp_name"] , $img_path . '/' . $_FILES["file_head"]["name"]) ;
+
+//        $im = imagecreatefromstring($img);
+//        imagejpeg ($im, $tmp_file);
+        $imgObj = M('image')->where('user_id' , $this->user_id)->field('license,identi_front,identi_back,credit_front,credit_back')->find() ;
+//        var_dump($imgObj) ; die ;
+        //在入库前先将对应的文件删除
+        switch ($code){
+            case  1 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['license'])){
+                    unlink($imgObj['license']) ;
+                }
+                $this->userData['license'] =  '/' . $save_path ;
+                break ;
+            case  2 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['identi_front'])){
+                    unlink($imgObj['identi_front']) ;
+                }
+                $this->userData['identi_front'] = '/' . $save_path ;
+                break ;
+            case  3 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['identi_back'])){
+                    unlink($imgObj['identi_back']) ;
+                }
+                $this->userData['identi_back'] = '/' . $save_path ;
+                break ;
+            case  4 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['credit_front'])){
+                    unlink($imgObj['credit_front']) ;
+                }
+                $this->userData['credit_front'] = '/' . $save_path ;
+                break ;
+            case  5 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['credit_back'])){
+                    unlink($imgObj['credit_back']) ;
+                }
+                $this->userData['credit_back'] = '/' . $save_path ;
+                break ;
+        }
+
+        //如果该用户在tp_image 表中已经存在，那么我们只需要更新，不存在才需要插入
+        // 查询该用户是否存在
+       if($imgObj == NULL ){
+            //用户不存在
+            $res = M('image')->save($this->userData);
+        }else{
+            //用户存在
+            $res = M('image')->where('user_id',$this->user_id)->save($this->userData);
+        }
+        return ajaxReturn($tmp_file);
+
+    }
+
+
+    function ajaxReturn($data = array(), $code = 0, $msg = 'success'){
+        $result =  array(
+            'result' => $data,
+            'ecd' => $code,
+            'msg' => $msg,
+        );
+        echo json_encode($result,JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+
+
+    public  function  check_submit(){
         //文件大小必须小于 20 kb
         if ((($_FILES["file_head"]["type"] == "image/gif")
                 || ($_FILES["file_head"]["type"] == "image/jpeg")
-                || ($_FILES["file_head"]["type"] == "image/pjpeg")) )
+                || ($_FILES["file_head"]["type"] == "image/pjpeg")
+                || ($_FILES["file_head"]["type"] == "image/jpg"))
+
+           &&  ($_FILES["file_license"]["type"] == "image/gif")
+                || ($_FILES["file_license"]["type"] == "image/jpeg")
+                || ($_FILES["file_license"]["type"] == "image/pjpeg")
+                || ($_FILES["file_license"]["type"] == "image/jpg")
+
+            &&   ($_FILES["file_head_back"]["type"] == "image/gif")
+                 || ($_FILES["file_head_back"]["type"] == "image/jpeg")
+                 || ($_FILES["file_head_back"]["type"] == "image/pjpeg")
+                 || ($_FILES["file_head_back"]["type"] == "image/jpg")
+
+           &&  ($_FILES["file_credit"]["type"] == "image/gif")
+               || ($_FILES["file_credit"]["type"] == "image/jpeg")
+               || ($_FILES["file_credit"]["type"] == "image/pjpeg")
+               || ($_FILES["file_credit"]["type"] == "image/jpg")
+
+            &&   ($_FILES["file_credit_back"]["type"] == "image/gif")
+                 || ($_FILES["file_credit_back"]["type"] == "image/jpeg")
+                 || ($_FILES["file_credit_back"]["type"] == "image/pjpeg")
+                 || ($_FILES["file_credit_back"]["type"] == "image/jpg")
+        )
 //            && ($_FILES["file_head"]["size"] < 20000))
         {
-            if ($_FILES["file_head"]["error"] > 0)
-            {
-                echo "Error: " . $_FILES["file"]["error"] . "<br />";
-            }
-            else
+//            var_dump("abcd") ; die ;
+            if(( $_FILES["file_head"]["error"] > 0)){
+                echo "Error: " . $_FILES["file_head"]["error"] . "<br />";
+            }elseif (( $_FILES["file_license"]["error"] > 0 )){
+                echo "Error: " . $_FILES["file_license"]["error"] . "<br />";
+            }elseif (( $_FILES["file_head_back"]["error"] > 0 )){
+                echo "Error: " . $_FILES["file_head_back"]["error"] . "<br />";
+            }elseif ( ( $_FILES["file_credit"]["error"] > 0 )){
+                echo "Error: " . $_FILES["file_credit"]["error"] . "<br />";
+            }elseif (( $_FILES["file_credit_back"]["error"] > 0 )){
+                echo "Error: " . $_FILES["file_credit_back"]["error"] . "<br />";
+            }else
             {
                 //截取年月日  , 返回一个存放了年月日的数组
                 $dateArr =   sub_year_month_day();
                 $sub_img_path = $dateArr[1] . '-' .$dateArr[2] ;
                 $img_path =  "public/upload/image/"  . $dateArr[0] . '/' .$sub_img_path ;
-
 
                 //判断文件夹是否存在
                 if(is_dir("public/upload/image/"  . $dateArr[0] )){
@@ -89,18 +214,46 @@ class User extends MobileBase
                     mkdir("public/upload/image/"  . $dateArr[0] ) ;
                 }
 
-                if(file_exists( $img_path . $_FILES["file_head"]["name"])){
-                    echo $_FILES["file_head"]["name"] . " already exists. ";
+//                if(file_exists( $img_path . $_FILES["file_head"]["name"])){
+//                    echo $_FILES["file_head"]["name"] . " already exists. ";
+//                }else{
+                     move_uploaded_file($_FILES["file_head"]["tmp_name"] , $img_path . '/' . $_FILES["file_head"]["name"]) ;
+//                     move_uploaded_file($_FILES["file_license"]["tmp_name"] , $img_path . '/' . $_FILES["file_license"]["name"]) ;
+//                     move_uploaded_file($_FILES["file_head_back"]["tmp_name"] , $img_path . '/' . $_FILES["file_head_back"]["name"]) ;
+//                     move_uploaded_file($_FILES["file_credit"]["tmp_name"] , $img_path . '/' . $_FILES["file_credit"]["name"]) ;
+//                     move_uploaded_file($_FILES["file_credit_back"]["tmp_name"] , $img_path . '/' . $_FILES["file_credit_back"]["name"]) ;
+//                }
+
+                $imgdata =  [
+                    'license'   =>   $img_path . '/' . $_FILES["file_license"]["name"] ,
+                    'identi_front'   =>   $img_path . '/' . $_FILES["file_head"]["name"] ,
+                    'identi_back'   =>   $img_path . '/' . $_FILES["file_head_back"]["name"] ,
+                    'credit_front'   =>   $img_path . '/' . $_FILES["file_credit"]["name"] ,
+                    'credit_back'   =>   $img_path . '/' . $_FILES["file_credit_back"]["name"] ,
+                ];
+
+                //数据入库
+//                M('image')->where('user_id' , $this->user_id)->save($imgdata) ;
+
+                $imgObj = M('image')->where('user_id' , $this->user_id)->find() ;
+                if($imgObj == NULL ){
+                    //用户不存在
+                    $res = M('image')->save($imgdata);
                 }else{
-                    move_uploaded_file($_FILES["file_head"]["tmp_name"] , $img_path . '/' . $_FILES["file_head"]["name"]) ;
+                    //用户存在
+                    $res = M('image')->where('user_id',$this->user_id)->save($imgdata);
                 }
 
+                if($res){
+                     //页面跳转
+                    $this->redirect('Index/index') ;
+                }
             }
         }
         else
         {
             var_dump($_FILES["file_head"]["error"] ) ;
-            echo "Invalid file";
+            echo "上传文件出错222";
         }
 
     }

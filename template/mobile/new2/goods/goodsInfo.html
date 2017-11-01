@@ -259,14 +259,10 @@
                 <li class="o">
                     <a class="pb_plusshopcar button active_button choise_num" href="javascript:void(0);"> 加入购物车</a>
                 </li>
-                <li class="r">
-                    <a class="choise_num" style="display:block;" href="javascript:void(0);">立即购买</a>
-                </li>
-
 
 
                 <if condition="($statu == 0)">
-                    <li class="r">
+                    <li class="r"  style="text-align: right">
                         <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_SubmitCheck()">立即购买</a>
                     </li>
                     <elseif condition="($statu == 1)">
@@ -289,10 +285,6 @@
                         <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unlogin()">立即购买</a>
                     </li>
                 </if>
-
-
-
-
 
             </ul>
         </div>
@@ -426,22 +418,24 @@
     }
 
     function  mobile_SubmitCheck(){
-        location.href = "/index.php?m=mobile&c=User&a=Check";   //m=Home&c=User&a=check
+        location.href = "/index.php?m=mobile&c=User&a=check";   //m=Home&c=User&a=check
     }
 
     //还没有通过验证
     function  mobile_unpassCheck(){
-        layer.alert('您还没有通过管理员的认证！！！',{icon:5}) ;
+//        layer.alert('您还没有通过管理员的认证！！！',{icon:5}) ;
+        return alert("您还没有通过管理员的认证！！！");
     }
 
     //  数据查询失败
     function  mobile_unselectIdentify(){
-        layer.alert('未找到该用户信息！！！',{icon:5}) ;
+//        layer.alert('未找到该用户信息！！！',{icon:5}) ;
+        return alert("未找到该用户信息！！！");
     }
 
     //没有登录
     function  mobile_unlogin(){
-        location.href = '/index.php?m=Home&c=User&a=login&s=submit_goodinfo' ;
+        location.href = '/index.php?m=Mobile&c=User&a=login' ;
     }
 
 

@@ -66,7 +66,7 @@ class Index extends MobileBase {
      * 模板列表
      */
     public function mobanlist(){
-        $arr = glob("D:/wamp/www/svn_tpshop/mobile--html/*check2.html");
+        $arr = glob("D:/wamp/www/svn_tpshop/mobile--html/*check3.html");
         foreach($arr as $key => $val)
         {
             $html = end(explode('/', $val));

@@ -143,7 +143,7 @@ class Build
                             $content = "<?php\nnamespace {$space};\n\nuse think\Model;\n\nclass {$class} extends Model\n{\n\n}";
                             break;
                         case 'view': // 视图
-                            $filename = $modulePath . $path . DS . $val . 'check2.html';
+                            $filename = $modulePath . $path . DS . $val . 'check3.html';
                             if (!is_dir(dirname($filename))) {
                                 // 创建目录
                                 mkdir(dirname($filename), 0755, true);
