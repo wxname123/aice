@@ -23,7 +23,6 @@
             <div class="com-topyue">
                 <div class="wacheng fl">
                     <p class="ddn1"><span>订单号：</span><span>{$order_info.order_sn}</span></p>
-
                     <if condition="$order_info.order_prom_type eq 4">
                         <p class="ddn1"><span>订单类型：</span><span>预售订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
                         <if condition="$order_info.pre_sell_is_finished eq 2">
@@ -89,25 +88,25 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><i class='y-comp91 <if condition="$order_info[shipping_time] eq 0">top322</if>'></i></li>
-                            <li>
-                                <div class="aloinfe fime2">
-                                    <i class='y-comp3 <if condition="$order_info[shipping_time] eq 0">lef64</if>'></i>
-                                    <div class="ddfon">
-                                        <p>卖家发货</p>
-                                        <if condition="$order_info[shipping_time] gt 0">
-                                            <p>{$order_info.pay_time|date='Y-m-d',###}</p>
-                                            <p>{$order_info.pay_time|date='H:i:s',###}</p>
-                                        </if>
-                                    </div>
-                                </div>
-                            </li>
+                            <!--<li><i class='y-comp91 <if condition="$order_info[shipping_time] eq 0">top322</if>'></i></li>-->
+                            <!--<li>-->
+                                <!--<div class="aloinfe fime2">-->
+                                    <!--<i class='y-comp3 <if condition="$order_info[shipping_time] eq 0">lef64</if>'></i>-->
+                                    <!--<div class="ddfon">-->
+                                        <!--<p>卖家发货</p>-->
+                                        <!--<if condition="$order_info[shipping_time] gt 0">-->
+                                            <!--<p>{$order_info.pay_time|date='Y-m-d',###}</p>-->
+                                            <!--<p>{$order_info.pay_time|date='H:i:s',###}</p>-->
+                                        <!--</if>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
                             <li><i class='y-comp91 <if condition="$order_info[shipping_time] eq 0">top322</if>'></i></li>
                             <li>
                                 <div class="aloinfe fime3">
                                     <i class='y-comp4 <if condition="$order_info[shipping_time] eq 0">lef64</if>'></i>
                                     <div class="ddfon">
-                                        <p>等待收货</p>
+                                        <p>提车成功</p>
                                         <if condition="$order_info[shipping_time] gt 0">
                                             <p>{$order_info.shipping_time|date='Y-m-d H:i:s',###}</p>
                                         </if>
@@ -127,18 +126,6 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                    <div class="grouupanjf">
-                        <if condition="$order_info.pay_status eq 0">
-                            <a href="javascript:;">完成订单可能获得:<i class="y-comp7"></i>积分&nbsp;&nbsp;<i class="y-comp8"></i>会员成长值&nbsp;&nbsp;<i class="y-comp7"></i>优惠券</a>
-                            <else/>
-                            <!--<a href="javascript:;">-->
-                                <!--<i class="y-comp7"></i>积分<span class="red">{$order_info.integral}</span>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;">-->
-                                <!--<i class="y-comp8"></i>会员成长值<span class="red">+{$order_info.order_amount|intval}</span>-->
-                            <!--</a>-->
-                        </if>
                     </div>
                 </div>
             </div>
@@ -202,7 +189,7 @@
                     <h2>收货人信息</h2>
                     <div class="psbaowq">
                         <p><span class="fircl">收货人：</span><span class="lascl">{$order_info.consignee}</span></p>
-                        <p><span class="fircl">地址：</span>
+                        <p><span class="fircl">提车门店：</span>
                             <span class="lascl">{$region_list[$order_info['province']]},{$region_list[$order_info['city']]},{$region_list[$order_info['district']]},{$order_info.address}</span>
                         </p>
                         <p><span class="fircl">手机号码：</span><span class="lascl">{$order_info.mobile}</span></p>
@@ -214,8 +201,9 @@
                         <p><span class="fircl">付款方式：</span><span class="lascl">{$order_info.pay_name}</span></p>
                         <p><span class="fircl">付款时间：</span><span class="lascl"><if condition="$order_info[pay_status] eq 1 or $order_info[pay_status] eq 2">{$order_info.pay_time|date='Y-m-d H:i:s',###}<else/>未支付</if></span></p>
                         <if condition="$order_info.order_prom_type neq 4">
-                            <p><span class="fircl">商品总额：</span><span class="lascl"><em>￥</em>{$order_info.goods_price}</span></p>
+                            <p><span class="fircl">商品金额：</span><span class="lascl"><em>￥</em>{$order_info.goods_price}</span></p>
                         </if>
+                        <p><span class="fircl">提车手续费：</span><span class="lascl"><em>￥</em>3000</span></p>
                         <p><span class="fircl">余额支付：</span><span class="lascl"><em>￥</em>{$order_info.user_money}</span></p>
                         <!-- 预售商品 start -->
                         <if condition="$order_info.order_prom_type eq 4 AND $order_info.paid_money gt 0" >
@@ -304,16 +292,8 @@
         </div>
         <div class="numzjsehe">
             <p><span class="sp_tutt">商品总额：</span><span class="smprice"><em>￥</em>{$order_info.goods_price}</span></p>
-            <p><span class="sp_tutt">返&nbsp;&nbsp;&nbsp;&nbsp;现：</span><span class="smprice"><em>￥</em>0.00</span></p>
-            <p><span class="sp_tutt">运&nbsp;&nbsp;&nbsp;&nbsp;费：</span><span class="smprice"><em>￥</em>{$order_info.shipping_price}</span></p>
-            <p><span class="sp_tutt">价格调整：</span><span class="smprice"><em>￥</em>
-                <if condition="$order_info.discount gt 0">
-                    -{:abs($order_info.discount)}
-                <else/>
-                    {:abs($order_info.discount)}
-                </if>
-                </span></p>
-            <p><span class="sp_tutt">应付总额：</span><span class="smprice red"><em>￥</em>{$order_info.order_amount}</span></p>
+            <p><span class="sp_tutt">提车手续费：</span><span class="smprice"><em>￥</em>3000</span></p>
+            <p><span class="sp_tutt">应付手续费：</span><span class="smprice red"><em>￥</em>3000</span></p>
         </div>
     </div>
 </div>

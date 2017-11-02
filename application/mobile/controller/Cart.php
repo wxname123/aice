@@ -104,7 +104,6 @@ class Cart extends MobileBase {
     public function cart2()
     {
         $address_id = I('address_id/d');
-
         $cartLogic = new CartLogic();
         $cid = I('cid/d');
         if($this->user_id == 0){
@@ -115,7 +114,6 @@ class Cart extends MobileBase {
         } else {
             $address = M('user_address')->where(['user_id'=>$this->user_id,'is_default'=>1])->find();
         }
-
         if(empty($address)){
             header("Location: ".U('Mobile/User/add_address',array('source'=>'cart2')));
             exit;
@@ -194,7 +192,7 @@ class Cart extends MobileBase {
         if($cartLogic->getUserCartOrderCount() == 0 ) {
             exit(json_encode(array('status'=>-2,'msg'=>'你的购物车没有选中商品','result'=>null))); // 返回结果状态
         }
-//        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
         if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
 
         $address = M('UserAddress')->where("address_id", $address_id)->find();
@@ -225,10 +223,6 @@ class Cart extends MobileBase {
 
         // 提交订单
         if($_REQUEST['act'] == 'submit_order') {
-            //获取到address_id
-            $address_id =   request()->post('address_id') ;
-//            cookie('address_id', $address_id);
-
              $pay_name = '';
             if (!empty($pay_points) || !empty($user_money)) {
                 if ($this->user['is_lock'] == 1) {
@@ -252,18 +246,7 @@ class Cart extends MobileBase {
 
 
             $result = $orderLogic->addOrder($this->user_id,$invoice_title,$car_price,$user_note); // 添加订单
-//            var_dump($result['result']) ; die ;
-            if($result['result']){
-                 //先根据address_id在tp_user_address表中查询出区域，再根据order_id插入到tp_order表中
-                $addrData =   M('user_address')->where('address_id',$address_id)->field('province, city,district')->find();
-                if(!empty($addrData)){
-                      $orderAddr['province'] = $addrData['province'];
-                      $orderAddr['city'] = $addrData['city'];
-                      $orderAddr['district'] = $addrData['district'];
-                      M('order')->where('order_id',$result['result'])->save($orderAddr);
-                }
-            }
-
+//            var_dump($result) ; die ;
             exit(json_encode($result));
         }
         $return_arr = array('status'=>1,'msg'=>'计算成功','result'=>$car_price); // 返回结果状态
@@ -367,13 +350,6 @@ class Cart extends MobileBase {
             ->join('order_goods b','a.order_id = b.order_id')
             ->where($map)
             ->find();
-
-        $cart =   M('cart')->where('user_id', $this->user_id)->find() ;
-
-        if($cart){
-            $this->ajaxReturn(['status'=>-1,'msg'=>'请先清空购物车','result'=>'']);
-        }
-
         if($oder['mission']>0){
             $this->ajaxReturn(['status'=>-1,'msg'=>'还有未完成的任务,不能进行再次购买','result'=>'']);
         }
@@ -455,9 +431,9 @@ class Cart extends MobileBase {
             $invoice_title = I('invoice_title'); // 发票
             $shipping_code =  I("shipping_code"); //  物流编号
             $address_id = I("address_id/d"); //  收货地址id
-//            if(empty($address_id)){
-//                exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
-//            }
+            if(empty($address_id)){
+                exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+            }
             if(empty($shipping_code)){
                 exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
             }

@@ -312,7 +312,9 @@
                                     </div>
                                     <div class="price-tag">
                                         <span class="now"><em class="li_xfo">￥</em><em>{$v[shop_price]}</em></span>
-                                        <span class="old"><em>￥</em><em>{$v[market_price]}</em></span>
+                                        <if condition="$v['market_price'] neq 0.00">
+                                            <span class="old"><em>￥</em><em>{$v[market_price]}</em></span>
+                                        </if>
                                     </div>
                                     <div class="shop_name2">
                                         <a href="{:U('/Home/Goods/goodsInfo',array('id'=>$v[goods_id]))}">

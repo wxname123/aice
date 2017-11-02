@@ -1,3 +1,0 @@
-<?php
-//000000086400[{"rec_id":1783,"order_id":1518,"goods_id":146,"goods_name":"\u8363\u5a01","goods_sn":"TP6541","goods_num":1,"market_price":"275689.00","goods_price":"265888.00","cost_price":"26000.00","member_goods_price":"233981.44","give_integral":0,"spec_key":"","spec_key_name":"","bar_code":"","is_comment":0,"prom_type":0,"prom_id":0,"is_send":0,"delivery_id":0,"sku":"","mission":0},{"rec_id":1784,"order_id":1518,"goods_id":144,"goods_name":"\u5965\u8feaA4L","goods_sn":"TP0045","goods_num":1,"market_price":"37.49","goods_price":"21.89","cost_price":"0.00","member_goods_price":"19.26","give_integral":0,"spec_key":"","spec_key_name":"","bar_code":"","is_comment":0,"prom_type":0,"prom_id":0,"is_send":0,"delivery_id":0,"sku":"","mission":0}]
-?>

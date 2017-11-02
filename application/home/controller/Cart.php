@@ -1,17 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tpshop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * $Author: IT宇宙人 2015-08-10 $
- *
- */ 
+
  
 namespace app\home\controller; 
 use app\common\logic\UserAddressLogic;
@@ -62,45 +50,6 @@ class Cart extends Base {
 //        var_dump($resData) ;die ;
 
         //先让用户登录
-
-//        if($this->user_id == 0){
-//            $this->redirect('Home/User/login') ;
-//        }
-
-        //根据用户编码获取到该用户是否认证通过的字段
-//        $resData =   $userLogic->getUserStatuBy($this->user_id) ;
-
-
-//        if($resData != NULL ){
-//            $this->assign('statu' , $resData['statu']) ;
-////            $this->assign('review' , $resData['review']) ;
-//            if($resData['statu'] == 0  &&  $resData['review'] == 0){
-//                $this->assign('review' , 0) ;
-//            }elseif ($resData['statu'] == 1 &&  $resData['review'] == 0  ){
-//                $this->assign('review' , 1) ;
-//            }elseif ($resData['statu'] == 1  &&  $resData['review'] == 1 ){
-//                $this->assign('review' , 2) ;
-//            }
-////            elseif ( $resData['statu'] == 0  &&   $resData['review'] == 2 ){
-////                $this->assign('review' , 0) ;
-////            }
-//        }else {
-//            $this->assign('review' , 3) ;
-//        }
-        $cartList = $cartLogic->getCartList();//用户购物车
-        $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
-//        var_dump($userCartGoodsTypeNum) ; die  ;
-
-
-        //便利   $cartList  ， 获取到购物车中每个商品的goods_id
-        $good_ids = [] ;
-        foreach ($cartList  as  $k=>$v ){
-            $good_ids[$k] = $v['goods_id'] ;
-            //保存到session中
-            session('good_ids', $good_ids);
-        }
-//        var_dump($cartList); die ;
-
         if($this->user_id == 0){
                 $this->redirect('Home/User/login') ;
         }
@@ -121,7 +70,6 @@ class Cart extends Base {
 
         $cartList = $cartLogic->getCartList();//用户购物车
         $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
-
         $this->assign('userCartGoodsTypeNum', $userCartGoodsTypeNum);
         $this->assign('cartList', $cartList);//购物车列表
         return $this->fetch();
@@ -338,6 +286,7 @@ class Cart extends Base {
      * ajax 获取订单商品价格 或者提交 订单
      */
     public function cart3(){
+
         if($this->user_id == 0){
             exit(json_encode(array('status'=>-100,'msg'=>"登录超时请重新登录!",'result'=>null))); // 返回结果状态
         }
@@ -357,8 +306,8 @@ class Cart extends Base {
         if($cartLogic->getUserCartOrderCount() == 0){
             exit(json_encode(array('status'=>-2,'msg'=>'你的购物车没有选中商品','result'=>null))); // 返回结果状态
         }
-        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
-        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
+//        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+//        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
 		
 		$address = M('UserAddress')->where("address_id", $address_id)->find();
 		$order_goods = M('cart')->where(['user_id'=>$this->user_id,'selected'=>1])->select();
@@ -380,6 +329,7 @@ class Cart extends Base {
             'order_prom_id' => $result['result']['order_prom_id'], // 订单优惠活动id
             'order_prom_amount' => $result['result']['order_prom_amount'], // 订单优惠活动优惠了多少钱
         );
+        var_dump($car_price);
 
         // 提交订单
         if ($_REQUEST['act'] == 'submit_order') {
@@ -403,17 +353,11 @@ class Cart extends Base {
             if(empty($coupon_id) && !empty($couponCode))
                $coupon_id = M('CouponList')->where("code", $couponCode)->getField('id');
             $orderLogic = new OrderLogic();
-
-            $result = $orderLogic->addOrder($this->user_id,$invoice_title,$car_price,$user_note,$pay_name); // 添加订单
-//            var_dump($result) ; die ;
-
             $result = $orderLogic->addOrder($this->user_id,$address_id,$shipping_code,$invoice_title,$coupon_id,$car_price,$user_note,$pay_name); // 添加订单
-
-            exit(json_encode($result));            
+            exit(json_encode($result));
         }
         
         $return_arr = array('status'=>1,'msg'=>'计算成功','result'=>$car_price); // 返回结果状态
-
         exit(json_encode($return_arr));           
     }	
     /**
@@ -542,9 +486,9 @@ class Cart extends Base {
             $invoice_title = I('invoice_title'); // 发票
             $shipping_code =  I("shipping_code"); //  物流编号
             $address_id = I("address_id/d"); //  收货地址id
-//            if(empty($address_id)){
-//                exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
-//            }
+            if(empty($address_id)){
+                exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+            }
             if(empty($shipping_code)){
                 exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
             }

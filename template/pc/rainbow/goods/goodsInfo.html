@@ -118,8 +118,10 @@
                             </li>
                         </ul>
                         <ul>
+                            <if condition="$goods['market_price'] neq 0.00">
                             <li class="jaj"><span id="market_price_title">官方价：</span></li>
                             <li class="though-line"><span><em>￥</em><span id="market_price">{$goods.market_price}</span></span></li>
+                            </if>
                         </ul>
                         <ul id="activity_title_div" style="display: none">
                             <li class="jaj"><span id="activity_label"></span></li>
@@ -134,25 +136,21 @@
                 <div class="standard p">
                     <!-- 收货地址，物流运费 -start-->
                     <ul class="list1">
-                        <li class="jaj"><span>配&nbsp;&nbsp;送：</span></li>
                         <li class="summary-stock though-line">
                             <div class="dd shd_address">
-                                <!--<div class="addrID"><div></div><b></b></div>-->
-                                <div class="store-selector add_cj_p">
-                                    <div class="text" style="width: 150px;"><div></div><b></b></div>
-                                    <div onclick="$(this).parent().removeClass('hover')" class="close"></div>
-                                </div>
-                                <span id="dispatching_msg" <if condition="$dispatching[status] neq 1">style="display: none;"</if>>可发货</span>
-                                <select id="dispatching_select" <empty name="$dispatching[result]">style="display: none;"</empty>>
-                                <volist name="$dispatching[result]" id="patching">
-                                    <option>{$patching.shipping_name} ￥{$patching.freight}</option>
-                                </volist>
-                                </select>
                             </div>
                         </li>
                     </ul>
                     <script src="__STATIC__/js/location.js"></script>
                     <!-- 收货地址，物流运费 -end-->
+                </div>
+                <div class="standard">
+                    <ul class="p">
+                        <li class="jaj"><span>手续费：</span></li>
+                        <li class="lawir">
+                            3000
+                        </li>
+                    </ul>
                 </div>
                 <div class="standard p">
                     <ul>
@@ -205,26 +203,10 @@
                         </li>
                     </ul>
                 </div>
-
                 <div class="standard p">
                     <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
-                    <if condition="($statu == 0)">
-                        <a id="join_cart_now0" class="paybybill" href="javascript:;" onclick="SubmitCheck()">立即购买</a>
-                    <elseif condition="($statu == 1)">
-                        <a id="join_cart_now1" class="paybybill" href="javascript:;" onclick="unpassCheck()">立即购买</a>
-                    </elseif>
-                        <elseif condition="($statu == 2)">
-                            <a id="join_cart_now2" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
-                        </elseif>
-                        <elseif condition="($statu == 3)">
-                                <a id="join_cart_now3" class="paybybill" href="javascript:;" onclick="unselectIdentify">立即购买</a>
-                        </elseif>
-                        <else />
-                        <a id="join_cart_now4" class="paybybill" href="javascript:;" onclick="unlogin()">立即购买</a>
-                    </if>
-
-
-                    <a id="join_cart" class="addcar" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,0);"><i class="sk"></i>加入购物车</a>
+                    <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                    <!--<a id="join_cart" class="addcar" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,0);"><i class="sk"></i>加入购物车</a>-->
                     <a id="no_join_cart_now" class="paybybill" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed">立即购买</a>
                     <a id="no_join_cart" class="addcar" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed"><i class="sk"></i>加入购物车</a>
                 </div>
@@ -516,27 +498,6 @@
         $('#store_count').text(maxnum-num); //更新库存数量
         $('#number').val(num)
     }
-
-
-   function  SubmitCheck(){
-         location.href = "/index.php?m=Home&c=User&a=Check";   //m=Home&c=User&a=check
-    }
-
-    //还没有通过验证
-    function  unpassCheck(){
-         layer.alert('您还没有通过管理员的认证！！！',{icon:5}) ;
-    }
-
-//  数据查询失败
-    function  unselectIdentify(){
-        layer.alert('未找到该用户信息！！！',{icon:5}) ;
-    }
-
-    //没有登录
-     function  unlogin(){
-            location.href = '/index.php?m=Home&c=User&a=login&s=submit_goodinfo' ;
-     }
-
 
     //初始化商品价格库存
     function initGoodsPrice() {

@@ -34,7 +34,8 @@ class Article extends Base {
         $this->assign('article_able_id',$this->article_able_id);
     }
 
-    public function categoryList(){
+    public function categoryList()
+    {
         $ArticleCat = new ArticleCatLogic(); 
         $cat_list = $ArticleCat->article_cat_list(0, 0, false);
         $type_arr = array('系统默认','系统帮助','系统公告');

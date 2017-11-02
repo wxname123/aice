@@ -1,11 +1,11 @@
 <include file="public/header" title="登录"  body=""/>
 <include file="public/header_nav" title="登录"  href="javascript:history.back(-1);"/>
 <div class="flool loginsignup2">
-<!--LOGO-->
+    <!--LOGO-->
     <img src="__STATIC__/images/logo-login.png" alt="LOGO"/>
 </div>
 <div class="loginsingup-input">
-<!--登录表单-s-->
+    <!--登录表单-s-->
     <form  id="loginform" method="post"  >
         <input type="hidden" name="referurl" id="referurl" value="{$referurl}">
         <div class="content30">
@@ -19,11 +19,11 @@
                 <i></i>
             </div>
             <notempty name="first_login">
-            <div class="lsu test">
-                <span>请输入验证码</span>
-                <input type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码"/>
-                <img  id="verify_code_img" src="{:U('Mobile/User/verify')}" onClick="verify()"/>
-            </div>
+                <div class="lsu test">
+                    <span>请输入验证码</span>
+                    <input type="text" name="verify_code" style="width: 5rem" id="verify_code" value="" placeholder="请输入验证码"/>
+                    <img  id="verify_code_img"  style="width: 3.7rem"  src="{:U('Mobile/User/verify')}" onClick="verify()"/>
+                </div>
             </notempty>
             <div class="lsu submit">
                 <input type="button"  value="提交"  onclick="submitverify()" class="btn_big1"  />
@@ -42,46 +42,46 @@
             </div>
         </div>
     </form>
-<!--登录表单-e-->
+    <!--登录表单-e-->
 </div>
 
 <!--第三方登陆-s-->
 <div class="thirdlogin">
-        <!--<h4>第三方登陆</h4>-->
-        <ul>
-<tpshop sql="select * from __PREFIX__plugin where type='login' AND status = 1" item="v" key="k">
-    <!--<if condition="$v['code'] eq 'weixin' AND is_weixin() neq 1">-->
-        <!--<li>-->
+    <!--<h4>第三方登陆</h4>-->
+    <ul>
+        <tpshop sql="select * from __PREFIX__plugin where type='login' AND status = 1" item="v" key="k">
+            <!--<if condition="$v['code'] eq 'weixin' AND is_weixin() neq 1">-->
+            <!--<li>-->
             <!--<a class="ta-weixin" href="{:U('LoginApi/login',array('oauth'=>'weixin'))}" target="_blank" title="weixin">-->
-                <!--<div class="icon">-->
-                    <!--<img src="__STATIC__/images/wechat.png"/>-->
-                    <!--<p>微信登陆</p>-->
-                <!--</div>-->
+            <!--<div class="icon">-->
+            <!--<img src="__STATIC__/images/wechat.png"/>-->
+            <!--<p>微信登陆</p>-->
+            <!--</div>-->
             <!--</a>-->
-        <!--</li>-->
-    <!--</if>-->
-    <if condition="$v['code'] eq 'alipay' AND is_alipay() neq 1">
-        <li>
-            <a href="{:U('LoginApi/login',array('oauth'=>'alipay'))}">
-                <div class="icon">
-                    <!--<img src="__STATIC__/images/alpay.png"/>-->
-                    <!--<p>支付宝</p>-->
-                </div>
-            </a>
-        </li>
-    </if>
-    <if condition="$v['code'] eq 'qq' AND is_qq() neq 1">
-        <li>
-            <a class="ta-qq" href="{:U('LoginApi/login',array('oauth'=>'qq'))}" target="_blank" title="QQ">
-                <div class="icon">
-                    <!--<iconimg src="__STATIC__/images/qq.png"/>-->
-                    <!--<p>qq登陆</p>-->
-                </div>
-            </a>
-        </li>
-    </if>
-</tpshop>
-        </ul>
+            <!--</li>-->
+            <!--</if>-->
+            <if condition="$v['code'] eq 'alipay' AND is_alipay() neq 1">
+                <li>
+                    <a href="{:U('LoginApi/login',array('oauth'=>'alipay'))}">
+                        <div class="icon">
+                            <!--<img src="__STATIC__/images/alpay.png"/>-->
+                            <!--<p>支付宝</p>-->
+                        </div>
+                    </a>
+                </li>
+            </if>
+            <if condition="$v['code'] eq 'qq' AND is_qq() neq 1">
+                <li>
+                    <a class="ta-qq" href="{:U('LoginApi/login',array('oauth'=>'qq'))}" target="_blank" title="QQ">
+                        <div class="icon">
+                            <!--<img src="__STATIC__/images/qq.png"/>-->
+                            <!--<p>qq登陆</p>-->
+                        </div>
+                    </a>
+                </li>
+            </if>
+        </tpshop>
+    </ul>
 </div>
 <!--第三方登陆-e-->
 
@@ -92,7 +92,7 @@
 
     //复选框状态
     function remember(obj){
-         var che= $(obj).attr("class");
+        var che= $(obj).attr("class");
         if(che == 'che check_t'){
             $("#autologin").prop('checked',false);
         }else{
@@ -155,17 +155,17 @@
             }
         })
     }
-        //切换密码框的状态
-        $(function(){
-            $('.loginsingup-input .lsu i').click(function(){
-                $(this).toggleClass('eye');
-                if ($(this).hasClass('eye')) {
-                    $(this).siblings('input').attr('type','text')
-                } else{
-                    $(this).siblings('input').attr('type','password')
-                }
-            });
-        })
-    </script>
+    //切换密码框的状态
+    $(function(){
+        $('.loginsingup-input .lsu i').click(function(){
+            $(this).toggleClass('eye');
+            if ($(this).hasClass('eye')) {
+                $(this).siblings('input').attr('type','text')
+            } else{
+                $(this).siblings('input').attr('type','password')
+            }
+        });
+    })
+</script>
 </body>
 </html>

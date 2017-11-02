@@ -355,7 +355,7 @@ class Goods extends Base {
                 $Goods->isUpdate(true)->save(); // 写入数据到数据库
                 // 修改商品后购物车的商品价格也修改一下
                 M('cart')->where("goods_id = $goods_id and spec_key = ''")->save(array(
-                    'market_price' => I('market_price'), //市场价
+                    'market_price' => I('market_price'), //官方价
                     'goods_price' => I('shop_price'), // 本店价
                     'member_goods_price' => I('shop_price'), // 会员折扣价
                 ));

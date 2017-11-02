@@ -245,6 +245,8 @@ class MobileBase extends Controller {
         $buff = trim($buff, "&");
         return $buff;
     }
+
+
     public function ajaxReturn($data){
         exit(json_encode($data));
     }

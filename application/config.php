@@ -17,11 +17,8 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
-
-    'app_trace'              => true     , //false
-
     'app_trace'              => false   , //false
     // 应用模式状态
     'app_status'             => '',
@@ -36,7 +33,7 @@ return [
     // 默认输出类型
     'default_return_type'    => 'html',
     // 默认AJAX 数据返回格式,可选json xml ...
-    'default_ajax_return'    => 'json',
+    'default_ajax_return'    => 'html',
     // 默认JSONP格式返回的处理方法
     'default_jsonp_handler'  => 'jsonpReturn',
     // 默认JSONP处理方法
@@ -98,7 +95,7 @@ return [
     // 路由配置文件（支持配置多个）
     'route_config_file'      => ['route'],
     // 是否强制使用路由
-    'url_route_must'         => false ,
+    'url_route_must'         => false,
     // 域名部署
     'url_domain_deploy'      => false,
     // 域名根，如thinkphp.cn
@@ -162,7 +159,7 @@ return [
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
-    'exception_handle'       => 'app\lib\exception\ExceptionHandle',
+    'exception_handle'       => '',
 
     // +----------------------------------------------------------------------
     // | 日志设置

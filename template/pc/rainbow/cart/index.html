@@ -63,14 +63,7 @@
                                         <th align="center" valign="middle" colspan="2">商品</th>
                                         <th align="center" valign="middle">官方指导价（元）</th>
                                         <th align="center" valign="middle">爱车送销售价（元）</th>
-<<<<<<< HEAD
-                                        <!--<if condition="($user[discount] neq 1) and ($user[discount] neq null)">-->
-                                            <!--<th align="center" valign="middle">会员折扣价</th>-->
-                                        <!--</if>-->
-=======
->>>>>>> dd01d0ec6c9294d4e63f0a75cc17a45b6e505262
-                                        <th align="center" valign="middle">数量</th>
-                                        <th align="center" valign="middle">小计（元）</th>
+                                        <th align="center" valign="middle">提车手续费（元）</th>
                                         <th align="center" valign="middle">操作</th>
                                     </tr>
                                     <volist name="cartList" id="cart">
@@ -93,16 +86,15 @@
                                             </td>
                                             <td style="border-left:0px" align="center" valign="middle"><span>￥{$cart.market_price}</span></td>
                                             <td style="border-left:0px" align="center" valign="middle" id="cart_{$cart.id}_goods_price"><span>￥{$cart.goods_price}</span></td>
+                                            <td style="border-left:0px" align="center" valign="middle"><span>￥3000</span></td>
 
-                                            <td align="center" valign="middle" class="quantity-form">
-                                                <div class="sc-stock-area">
-                                                    <div class="stock-area">
-                                                            <input class="wi43 fl" name="changeQuantity_{$cart['id']}" type="text" id="changeQuantity_{$cart['id']}" value="{$cart['goods_num']}">
-                                                    </div>
-                                                    <em class="red" style="display: none">库存不足</em>
-                                                </div>
-                                            </td>
-                                            <td align="center" valign="middle" id="cart_{$cart.id}_market_price">￥{$cart.goods_fee}</td>
+                                            <!--<td align="center" valign="middle" class="quantity-form">-->
+                                                <!--<div class="sc-stock-area">-->
+                                                    <!--<div class="stock-area">-->
+                                                            <!--<input class="wi43 fl" name="changeQuantity_{$cart['id']}" type="text" id="changeQuantity_{$cart['id']}" value="{$cart['goods_num']}">-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</td>-->
                                             <td align="center" valign="middle"><a class="gwc-gb deleteGoods" data-cart-id="{$cart['id']}" href="javascript:void(0);"></a></td>
                                         </tr>
                                     </volist>
@@ -113,30 +105,24 @@
                                     <tr>
                                         <td class="pa-le-28 gwx-xm-dwz">
                                             <label >
-                                                <input type="checkbox" class="checkCart checkCartAll"/>&nbsp;&nbsp;&nbsp;&nbsp;全选
+                                                <input type="checkbox" class="checkCart checkCartAll"/>
                                             </label>
-                                            <a href="javascript:void(0);" id="removeGoods">删除选中商品</a>
+                                            <a href="javascript:void(0);" id="removeGoods"></a>
                                         </td>
-                                        <td width="190" align="right">已选择：</td>
-                                        <td width="69" align="right" id="goods_num">{$total_price.total_fee}件商品</td>
+                                        <td width="190" align="right"></td>
+                                        <td width="69" align="right" id="goods_num"></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
-                                        <td width="190" align="right">共节省：</td>
-                                        <td width="69" align="right" id="goods_fee">￥{$total_price.cut_fee}</td>
-                                        <td>&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;</td>
-                                        <td width="190" align="right">合计（不含运费）：</td>
-                                        <td width="69" align="right" id="total_fee"><em>￥{$total_price.total_fee }</em></td>
+                                        <td width="190" align="right">支付提车手续费：</td>
+                                        <td width="69" align="right" id="commission"><em>￥3000</em></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="sc-acti-list ma-to-20 "> <a class="gwc-jxgw" href="javascript:history.go(-1);">继续购物</a>
-                                          <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">去结算</a>
+                                          <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">去提车</a>
                             </div>
                         </notempty>
                         </div>

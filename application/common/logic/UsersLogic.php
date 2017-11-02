@@ -35,7 +35,7 @@ class UsersLogic extends Model
         if(!$mobile || !$password)
             $result= array('status'=>0,'msg'=>'请填写账号或密码');
         $user = M('users')->where("mobile",$mobile)->find();
-        if(!$user){
+        if(empty($user)){
             $result = array('status'=>-1,'msg'=>'账号不存在!');
         }elseif(encrypt($password) != $user['password']){
             $result = array('status'=>-2,'msg'=>'密码错误!');
@@ -196,30 +196,40 @@ class UsersLogic extends Model
     public function reg($nickname,$mobile,$password,$password2, $push_id=0,$invite=array(), $id_card=''){
 
     	$is_validated = 0 ;
-//        if(check_email($username)){
+
+//        if(check_mobile($mobile)){
 //            $is_validated = 1;
-//            $map['email_validated'] = 1;
-//            $map['nickname'] = $map['email'] = $username; //邮箱注册
+//            $map['mobile_validated'] = 1;
+//            $map['mobile'] = $mobile; //手机注册
 //        }
-        if(check_mobile($mobile)){
-            $is_validated = 1;
-            $map['mobile_validated'] = 1;
-            $map['mobile'] = $mobile; //手机注册
-        }
 
-        if($is_validated != 1)
-            return array('status'=>-1,'msg'=>'请用手机号或邮箱注册');
+        if(!$nickname )
+            return array('status'=>-1,'msg'=>'用户名不能为空');
 
-        if(!$nickname || !$password)
-            return array('status'=>-1,'msg'=>'请输入用户名或密码');
+        if(!$mobile)
+            return array('status'=>-1,'msg'=>'手机号不能为空');
+        //验证是否存在用户名
+        if(get_user_info($mobile,2))
+            return array('status'=>-1,'msg'=>'手机号码已存在');
+
+        if(!$password)
+            return array('status'=>-1,'msg'=>'密码不能为空');
+
+        if(!$id_card)
+            return array('status'=>-1,'msg'=>'身份证信息不能为空');
+        if(get_user_info($id_card,1))
+            return array('status'=>-1,'msg'=>'身份证号码已存在');
 
         //验证两次密码是否匹配
         if($password2 != $password)
             return array('status'=>-1,'msg'=>'两次输入密码不一致');
-        //验证是否存在用户名
-        if(get_user_info($mobile,2)||get_user_info($id_card,1))
-            return array('status'=>-1,'msg'=>'账号已存在');
 
+
+
+
+
+
+        $map['mobile'] = $mobile;
         $map['password'] = encrypt($password);
         $map['reg_time'] = time();
         $map['first_leader'] = cookie('first_leader'); // 推荐人id
@@ -230,8 +240,9 @@ class UsersLogic extends Model
         //根据username(如果是电话号码)，那么通过该号码我们可以找到其对应的user_id
         if(!empty($invite)){
             $map['uid'] = $invite['user_id'];
+        }else{
+            return array('status'=>-1,'msg'=>'推荐人号码不能为空');
         }
-
 
         if($map['first_leader'])
         {
@@ -1005,7 +1016,7 @@ class UsersLogic extends Model
         }
         return $res;
     }
-     
+
     
     /**
      * @time 2016/09/01

@@ -30,12 +30,12 @@
                 <span id="confirm_password_notice"></span>
             </div>
 
-            <if condition="$regis_sms_enable eq 1">
-                <div class="lsu boo zc_se">
-                    <input type="text" id="mobile_code" value="" name="mobile_code" placeholder="请输入短信验证码" >
-                    <a rel="mobile" onClick="sendcode(this)">获取短信验证码</a>
-                </div>
-            </if>
+            <!--<if condition="$regis_sms_enable eq 1">-->
+                <!--<div class="lsu boo zc_se">-->
+                    <!--<input type="text" id="mobile_code" value="" name="mobile_code" placeholder="请输入短信验证码" >-->
+                    <!--<a rel="mobile" onClick="sendcode(this)">获取短信验证码</a>-->
+                <!--</div>-->
+            <!--</if>-->
 
 
             <div class="lsu boo wicheck">
@@ -68,6 +68,7 @@
             dataType:'JSON',
             data:$('#regFrom').serialize(),
             success:function(data){
+                console.log();
                 if(data.status == 1){
                     location.href='/index.php/Mobile/User/index';
                 }else{
@@ -149,16 +150,12 @@
 
     //身份证
     function   check_id_card(id_card){
-
-
-
         if(id_card == ''){
             showErrorMsg('身份证不能空');
         }else if(checkCar(id_card)){
             $.ajax({
                 type : "GET",
                 url:"/index.php?m=Home&c=Api&a=issetCard",//+tab,
-//			url:"{:U('Mobile/User/comment',array('status'=>$_GET['status']),'')}/is_ajax/1/p/"+page,//+tab,
                 data :{id_card:id_card},// 你的formid 搜索表单 序列化提交
                 success: function(data)
                 {
@@ -171,6 +168,7 @@
                     }
                 }
             });
+
         }else{
             showErrorMsg('身份证格式不正确');
         }
@@ -197,13 +195,21 @@
      */
 
     function checkCar(idcar){
-        //var reg = "/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/";  // ^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
-//        var  reg = '^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$' ;
-        var reg = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
-        if(reg.test(idcar)){
-            return true;
-        }else{
-            return false;
+        var val =  $.trim(idcar);
+        if(val.length == 15){
+            var reg=/^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}[0-9Xx]$/;
+            if(reg.test(val)){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(val.length == 18){
+            var reg=/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+            if(reg.test(val)){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
