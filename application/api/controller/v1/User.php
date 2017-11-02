@@ -12,11 +12,11 @@ use  app\lib\exception\ParameterException ;
 
 class User  extends   Base {
   public  function  a(){
-
+      die("测试用的，记得删除该方法");
   }
 
   public  function  aa(){
-
+      die("测试用的，记得删除该方法");
   }
 //    用户注册接口
     public  function  regist(){
@@ -96,7 +96,7 @@ class User  extends   Base {
 
 
     public   function bb(){
-
+        die("测试用的，记得删除该方法");
     }
 
 //    用户登录接口
