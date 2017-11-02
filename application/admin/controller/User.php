@@ -116,7 +116,7 @@ class User extends Base {
             $third_leader = DB::query("select third_leader,count(1) as count  from __PREFIX__users where third_leader in(".  implode(',', $user_id_arr).")  group by third_leader");
             $third_leader = convert_arr_key($third_leader,'third_leader');
 
-            //便利$userlist
+            //遍历$userlist
             foreach($userList as  $k=>$v ){
                 if($v['uid'] == NULL ){
                     $userList[$k]['mobile_uid'] = 0  ;
@@ -257,10 +257,11 @@ class User extends Base {
         }
 
         $user_data = M('users')
-            ->where(" user_id = {$user['user_id']}")
-            ->find();
+                    ->where(" user_id = {$user['user_id']}")
+                    ->find();
         $ar['user_id'] =$user_data['uid'];
         $us = M('users')->where($ar)->find();
+        $user['mobile']        =$us['mobile'];
         $user['first_leader'] =$us['user_id'];
         $user['first_name']  = $us['nickname'];
         $user['first_lower'] = M('users')->where("uid = {$user['user_id']}")->count();

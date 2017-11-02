@@ -128,7 +128,6 @@
             $.ajax({
                 type : "GET",
                 url:"/index.php?m=Home&c=Api&a=issetMobile",//+tab,
-//			url:"{:U('Mobile/User/comment',array('status'=>$_GET['status']),'')}/is_ajax/1/p/"+page,//+tab,
                 data :{mobile:mobile},// 你的formid 搜索表单 序列化提交
                 success: function(data)
                 {
@@ -155,7 +154,6 @@
             $.ajax({
                 type : "GET",
                 url:"/index.php?m=Home&c=Api&a=issetCard",//+tab,
-//			url:"{:U('Mobile/User/comment',array('status'=>$_GET['status']),'')}/is_ajax/1/p/"+page,//+tab,
                 data :{id_card:id_card},// 你的formid 搜索表单 序列化提交
                 success: function(data)
                 {
@@ -188,20 +186,20 @@
         };
     }
 
-    /**
-     * 身份证格式判断
-     * @param idcar
-     * @returns {boolean}
-     */
-
-    function checkCar(idcar){
-        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-        if(reg.test(idcar)){
-            return true;
-        }else{
-            return false;
-        }
-    }
+//    /**
+//     * 身份证格式判断
+//     * @param idcar
+//     * @returns {boolean}
+//     */
+//
+//    function checkCar(idcar){
+//        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+//        if(reg.test(idcar)){
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    }
 
     //密码
     function check_password(password) {
