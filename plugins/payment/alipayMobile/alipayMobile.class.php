@@ -73,7 +73,7 @@ class alipayMobile extends Model
                         "input_charset" =>strtolower('utf-8'), //字符编码格式 目前支持utf-8
                         "cacert"	=>  getcwd().'\\cacert.pem',
                         "transport"	=> 'http', // //访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http                        
-                        "service" => 'alipay.wap.create.direct.pay.by.user',   // // 产品类型，无需修改                
+                        "model" => 'alipay.wap.create.direct.pay.by.user',   // // 产品类型，无需修改                
                         "payment_type"  => "1", // 支付类型 ，无需修改
                         "_input_charset"=> trim(strtolower($this->alipay_config['input_charset'])), //字符编码格式 目前支持 gbk 或 utf-8
                         "out_trade_no"	=> $order['order_sn'], //商户订单号
@@ -87,7 +87,7 @@ class alipayMobile extends Model
             {            
                 $parameter["paymethod"] = 'bankPay'; // 若要使用纯网关，取值必须是bankPay（网银支付）。如果不设置，默认为directPay（余额支付）。
                 $parameter["defaultbank"] = $config_value['bank_code'];
-                $parameter["service"] = 'create_direct_pay_by_user';
+                $parameter["model"] = 'create_direct_pay_by_user';
             }        
             //建立请求
             require_once("lib/alipay_submit.class.php");            
