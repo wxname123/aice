@@ -1,0 +1,1831 @@
+[ 2017-11-02T16:34:52+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.073000s][吞吐率：13.70req/s] [内存消耗：2,353.07kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '0022cbd3-89e9-4bbb-fc64-2113b767e763',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` INNER JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.003000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:35:46+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.074000s][吞吐率：13.51req/s] [内存消耗：2,354.77kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'd1ff488f-b3d6-7fb2-aafd-14a748c4b56a',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:35:59+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.070000s][吞吐率：14.29req/s] [内存消耗：2,353.05kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'e376f128-b809-ac3b-c5ff-f6ab919b5dee',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` RIGHT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:36:05+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.069000s][吞吐率：14.49req/s] [内存消耗：2,354.77kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'd32d1a40-3c7c-c65e-e38f-30db3c74faef',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.003000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:36:33+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.069000s][吞吐率：14.49req/s] [内存消耗：2,354.80kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '05ad4b52-95cf-4b6b-06da-2358b8c39dce',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:36:49+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.072000s][吞吐率：13.89req/s] [内存消耗：2,354.80kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a3e4ec56-e08d-8729-aeb1-ea6c19e7383c',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:36:57+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.067000s][吞吐率：14.93req/s] [内存消耗：2,354.82kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '7a95559d-7bda-39ca-8c09-982aa595866c',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:37:24+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.066000s][吞吐率：15.15req/s] [内存消耗：2,126.78kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'fdab5845-564b-2b5f-7d84-2a9ba5e0ffad',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] UPDATE `tp_users`  SET `password`='5d0a4ac000dcef063cf529d951809915'  WHERE  `mobile` = '17765119187' [ RunTime:0.009000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:37:28+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.061000s][吞吐率：16.39req/s] [内存消耗：2,476.53kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '670f4e20-bc3b-ff8e-299a-27d270d84ed3',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:111]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:37:34+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.063000s][吞吐率：15.87req/s] [内存消耗：2,478.30kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'fe952735-7fa9-9208-d466-a76b0142bb07',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang321',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '5d0a4ac000dcef063cf529d951809915' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:37:43+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.064000s][吞吐率：15.63req/s] [内存消耗：2,126.75kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'e970f1b3-be14-ac1d-c686-79d164bae659',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] UPDATE `tp_users`  SET `password`='5d0a4ac000dcef063cf529d951809915'  WHERE  `mobile` = '17765119187' [ RunTime:0.009000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:39:48+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.064000s][吞吐率：15.62req/s] [内存消耗：2,223.08kb] [文件加载：57]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '03675e8f-245f-ae07-fc17-730d47ba66d5',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.010000s ]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:295]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:295]
+[ error ] [8]未定义数组下标: 0[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:295]
+[ error ] [0]查询表达式错误:[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:319]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:40:05+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.072000s][吞吐率：13.89req/s] [内存消耗：2,223.29kb] [文件加载：57]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '31cf1327-97de-fb59-6a32-3bf72d5d708d',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.013000s ]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:295]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:295]
+[ error ] [8]未定义数组下标: 0[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:295]
+[ error ] [0]查询表达式错误:[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\db\Builder.php:319]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:40:28+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.067000s][吞吐率：14.93req/s] [内存消耗：2,128.95kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '1eb03e30-64a4-6aed-477a-349ea76bcaf0',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:41:18+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.059000s][吞吐率：16.95req/s] [内存消耗：2,128.95kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '41666bba-8440-48c9-d558-ae409837a279',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T16:41:29+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.053000s][吞吐率：18.87req/s] [内存消耗：2,128.80kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '311983c9-6538-f901-a4dc-3c581f974df5',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119178',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119178' LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:22:36+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.055000s][吞吐率：18.18req/s] [内存消耗：2,252.70kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'e8d9a2d0-598a-1627-7537-3051e2923ca6',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119178',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119178' LIMIT 1 [ RunTime:0.001000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:140]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:22:52+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.066000s][吞吐率：15.15req/s] [内存消耗：2,129.31kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '042cbde3-b988-4094-30d0-000148172d11',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] UPDATE `tp_users`  SET `password`='5d0a4ac000dcef063cf529d951809915'  WHERE  `mobile` = '17765119187' [ RunTime:0.010000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:23:12+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.052000s][吞吐率：19.23req/s] [内存消耗：2,129.61kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '11a4b7eb-34b8-7777-1a7d-d5d78846b219',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:23:32+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.054000s][吞吐率：18.52req/s] [内存消耗：2,129.59kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '58f77897-6ebf-9bf8-2563-0cd7495a5058',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:26:18+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.065000s][吞吐率：15.38req/s] [内存消耗：2,253.80kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'daf0db8c-15dd-15bf-7e50-963d686ddf72',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.011000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.003000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:139]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:26:25+08:00 ] ::1 ::1 POST /api/v1/user/password/reset
+[ log ] localhost/api/v1/user/password/reset [运行时间：0.068000s][吞吐率：14.71req/s] [内存消耗：2,253.82kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'eacb0e97-38d2-f634-af92-17eda985ff85',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '92',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'newpassword' => 'yuliang123',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] UPDATE `tp_users`  SET `password`='694c863ddb17207828a6b0666ba41b3f'  WHERE  `mobile` = '17765119187' [ RunTime:0.010000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:155]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:26:30+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.058000s][吞吐率：17.24req/s] [内存消耗：2,478.76kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '4efb0d9a-4ed7-bacf-f13c-63e912141d66',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang321',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '5d0a4ac000dcef063cf529d951809915' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:111]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:26:34+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.060000s][吞吐率：16.67req/s] [内存消耗：2,480.51kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'c7573531-e728-e03e-6bf8-f71c191ebd2e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:45:08+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.075000s][吞吐率：13.33req/s] [内存消耗：2,480.51kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'c9b81abb-e6e2-c8d3-e18f-03181e82eb3f',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.003000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:46:34+08:00 ] ::1 ::1 POST /
+[ log ] localhost/ [运行时间：0.175000s][吞吐率：5.71req/s] [内存消耗：2,499.52kb] [文件加载：64]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '500f5ff3-86e4-7d2b-381c-a1f7350cd733',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+)
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/home\lang\zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Index->index[ F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php ]
+[ info ] [ VIEW ] ./template/pc/rainbow/index\index.html [ array (
+  0 => 'action',
+  1 => 'template_now_time',
+  2 => 'goods_category_tree',
+  3 => 'brand_list',
+  4 => 'tpshop_config',
+  5 => 'cateList',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_goods_category` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_goods_category` WHERE  (  is_show = 1 ) ORDER BY `sort_order` [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_brand` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`parent_cat_id`,`logo`,`is_hot` FROM `tp_brand` WHERE  (  parent_cat_id>0 ) [ RunTime:0.001000s ]
+[ sql ] [ SQL ] select a.goods_name,a.goods_id,a.shop_price,a.market_price,a.cat_id,b.parent_id_path,b.name from tp_goods as a left join tp_goods_category as b on a.cat_id=b.id where a.is_hot=1 and a.is_on_sale=1 order by a.sort [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_goods_category` WHERE  (  is_hot=1 and level=3 and is_show=1 ) [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_ad` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=11  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=12  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=13  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=14  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_navigation` where is_show = 1 ORDER BY `sort` DESC [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=2  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200  ) ORDER BY orderby desc LIMIT 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=52  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200  ) ORDER BY orderby desc LIMIT 2 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] select * from `tp_article_cat` where parent_id = 2 limit 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 7  and is_open=1 limit 5 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 87  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 41  and is_open=1 limit 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 90  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 89  and is_open=1 limit 5 [ RunTime:0.001000s ]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php:32]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php:32]
+[ error ] [8]未定义数组下标: 1[F:\phpStudy\WWW\TPshop\www\application\home\controller\Index.php:32]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:168]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:238]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:238]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:238]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:168]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:238]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:168]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant parent_id - assumed 'parent_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:185]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:188]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:238]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant level - assumed 'level'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:168]
+[ error ] [8]Use of undefined constant id - assumed 'id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]Use of undefined constant mobile_name - assumed 'mobile_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:172]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]未定义数组索引: hot_cate[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:180]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:229]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:238]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:239]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant url - assumed 'url'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant is_new - assumed 'is_new'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant name - assumed 'name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:272]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:326]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:326]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:326]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:326]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:316]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:326]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:327]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:453]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:453]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:453]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:453]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:462]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:635]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:635]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:635]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:646]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:635]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\cbc4878247a674ab13a32ff91702a43d.php:635]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:49:02+08:00 ] 192.168.1.160 192.168.1.160 POST /api/v1/user/login
+[ log ] 192.168.1.160/api/v1/user/login [运行时间：0.063000s][吞吐率：15.87req/s] [内存消耗：2,480.16kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '2ab3b41e-2376-b042-139c-a01b6dc44014',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
+[ 2017-11-02T17:55:23+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.056000s][吞吐率：17.86req/s] [内存消耗：2,480.62kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '0200e804-6154-cfbf-7559-5247b7cdf03f',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:11:14+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.039000s][吞吐率：25.64req/s] [内存消耗：1,658.90kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundarym2kEJyInH7TqW32j',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => 'c4db2bd9-ec40-8ca0-9ead-2d92cfda3b11',
+  'content-length' => '583',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '&quot;17718397309&quot;',
+  'nickname' => '&quot;fansan&quot;',
+  'password' => '&quot;123456&quot;',
+  'recond_mobile' => '&quot;17718397309&quot;',
+  'id_card' => '&quot;35082119940907001X&quot;',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:11:27+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.036000s][吞吐率：27.78req/s] [内存消耗：1,658.67kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryabhbiNdU0FYgq2qR',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => 'ec028662-db72-6b33-b3af-631e6b01fd20',
+  'content-length' => '579',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'nickname' => '&quot;fansan&quot;',
+  'password' => '&quot;123456&quot;',
+  'recond_mobile' => '17718397309',
+  'id_card' => '&quot;35082119940907001X&quot;',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:11:40+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,658.42kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryV9AJylaNm8BRBtZf',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => 'c805123c-feda-ea0c-c29a-e1572bcd4280',
+  'content-length' => '573',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'nickname' => 'fansan',
+  'password' => '123456',
+  'recond_mobile' => '17718397309',
+  'id_card' => '35082119940907001X',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:11:49+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.057000s][吞吐率：17.54req/s] [内存消耗：2,254.02kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryMDocFOvVsrB6MFPh',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => '9638b103-5acc-879b-67ff-3b54133a2195',
+  'content-length' => '573',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'nickname' => 'fansan',
+  'password' => '123456',
+  'recond_mobile' => '17718397300',
+  'id_card' => '35082119940907001X',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `id_card` = '35082119940907001X' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `mobile` = '17718397309' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `tp_users` WHERE  `mobile` = '17718397300' LIMIT 1 [ RunTime:0.001000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:56]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:12:08+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.066000s][吞吐率：15.15req/s] [内存消耗：2,254.02kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryS8CPJmJ30p8mbilA',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => 'cb6c0fa6-aedb-d040-18e6-ce74c0becab3',
+  'content-length' => '573',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '13459791360',
+  'nickname' => 'fansan',
+  'password' => '123456',
+  'recond_mobile' => '17718397309',
+  'id_card' => '35082119940907001X',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `id_card` = '35082119940907001X' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `mobile` = '13459791360' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `tp_users` WHERE  `mobile` = '17718397309' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:56]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:12:33+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.063000s][吞吐率：15.87req/s] [内存消耗：2,256.92kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundarySHybNHfYxtsWCHxo',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => '760a2c54-86e7-4e73-df32-b7c49364e0ef',
+  'content-length' => '573',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'nickname' => 'fansan',
+  'password' => '123456',
+  'recond_mobile' => '17765119187',
+  'id_card' => '35082119940907001X',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `id_card` = '35082119940907001X' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `mobile` = '17718397309' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] INSERT INTO `tp_users` (`password` , `nickname` , `uid` , `mobile` , `reg_time` , `id_card`) VALUES ('519475228fe35ad067744465c42a19b2' , 'fansan' , 2601 , '17718397309' , 1509617553 , '35082119940907001X') [ RunTime:0.000000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:75]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:12:37+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/regist
+[ log ] 192.168.1.160/api/v1/user/regist [运行时间：0.051000s][吞吐率：19.61req/s] [内存消耗：2,274.04kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryfsEd2UWdiBVYPL4x',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => '70a9d3cd-38d1-4a37-f010-66d2f58d4384',
+  'content-length' => '573',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'nickname' => 'fansan',
+  'password' => '123456',
+  'recond_mobile' => '17765119187',
+  'id_card' => '35082119940907001X',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `id_card` = '35082119940907001X' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:35]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:13:36+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/login
+[ log ] 192.168.1.160/api/v1/user/login [运行时间：0.066000s][吞吐率：15.15req/s] [内存消耗：2,479.99kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryfbL7n5yxmxRiST2D',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => 'd6079821-2e20-d20b-a617-7e8855384df7',
+  'content-length' => '249',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'password' => '123456',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.005000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17718397309'  AND `u`.`password` = '519475228fe35ad067744465c42a19b2' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:14:50+08:00 ] 192.168.1.160 192.168.1.143 POST /api/v1/user/password/reset
+[ log ] 192.168.1.160/api/v1/user/password/reset [运行时间：0.058000s][吞吐率：17.24req/s] [内存消耗：2,253.28kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'reset',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'content-type' => 'multipart/form-data; boundary=----WebKitFormBoundaryO8jnGoUHi0B9p0co',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'postman-token' => 'd8958732-52ba-816f-f9cc-c474812252f2',
+  'content-length' => '350',
+  'connection' => 'close',
+  'host' => '192.168.1.160',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17718397309',
+  'newpassword' => '654321',
+  'vcode' => '888888',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->reset[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `password` FROM `tp_users` WHERE  `mobile` = '17718397309' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] UPDATE `tp_users`  SET `password`='8f211db3510f8f80c72d0bbe498e6b4d'  WHERE  `mobile` = '17718397309' [ RunTime:0.008000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:155]
+
+---------------------------------------------------------------
+[ 2017-11-02T18:22:34+08:00 ] ::1 ::1 POST /api/v1/user/login
+[ log ] localhost/api/v1/user/login [运行时间：0.058000s][吞吐率：17.24req/s] [内存消耗：2,480.62kb] [文件加载：60]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b5bfd88d-f2f5-b45b-db58-d986d8aba897',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '63',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->login[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `u`.`user_id`,`u`.`mobile`,`u`.`sex`,`u`.`birthday`,`u`.`nickname`,`u`.`statu`,`u`.`id_card`,`u`.`mission`,`u`.`is_agent`,`u`.`is_distribut`,`u`.`uid`,u2.nickname  recom_name FROM `tp_users` `u` LEFT JOIN `tp_users` `u2` ON `u2`.`user_id`=`u`.`uid` WHERE  `u`.`mobile` = '17765119187'  AND `u`.`password` = '694c863ddb17207828a6b0666ba41b3f' LIMIT 1 [ RunTime:0.002000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:104]
+
+---------------------------------------------------------------
