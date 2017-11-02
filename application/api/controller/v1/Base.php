@@ -9,6 +9,10 @@ class  Base  extends  Controller {
 
     public    $post= null ;
 
+      public  function  b(){
+
+      }
+
         public   function  _initialize()
         {
             parent::_initialize();

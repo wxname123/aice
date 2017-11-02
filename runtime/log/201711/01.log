@@ -1,0 +1,3829 @@
+[ 2017-11-01T16:35:02+08:00 ] ::1 ::1 POST /user/register
+[ log ] localhost/user/register [运行时间：0.027000s][吞吐率：37.04req/s] [内存消耗：1,321.27kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '4186e0ef-1cab-5f2e-b93c-150bf971bc8a',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T16:35:29+08:00 ] ::1 ::1 POST /user/register
+[ log ] localhost/user/register [运行时间：0.088000s][吞吐率：11.36req/s] [内存消耗：1,532.75kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '30fdc44b-68e8-996b-7143-8fe793b406b6',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ RUN ] app\api\controller\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:17:10+08:00 ] ::1 ::1 POST /user/register
+[ log ] localhost/user/register [运行时间：0.025000s][吞吐率：40.00req/s] [内存消耗：1,323.24kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'register',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '02f7960d-980a-07cf-1a7b-7deae371faa0',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:25:06+08:00 ] ::1 ::1 POST /api/v1/user/register
+[ log ] localhost/api/v1/user/register [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,326.03kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '4ef843dd-85f2-6a76-df76-e996bc3c7bbf',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:32:07+08:00 ] ::1 ::1 POST /api/v1/user/register
+[ log ] localhost/api/v1/user/register [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,325.32kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'v1',
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '3b86a55b-37f2-7043-52c7-3e9aa3c7a737',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:32:27+08:00 ] ::1 ::1 POST /index.php/api/v1/user/register
+[ log ] localhost/index.php/api/v1/user/register [运行时间：0.026000s][吞吐率：38.46req/s] [内存消耗：1,322.26kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'v1',
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '366acc90-e327-21f0-90cf-6adc1e41bf94',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:34:22+08:00 ] ::1 ::1 POST /api/v1/user/register
+[ log ] localhost/api/v1/user/register [运行时间：0.028000s][吞吐率：35.71req/s] [内存消耗：1,325.32kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'v1',
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '321a6585-2cd9-3a3d-be0a-c7551f72a16c',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:35:31+08:00 ] ::1 ::1 POST /api/v1/user/register
+[ log ] localhost/api/v1/user/register [运行时间：0.027000s][吞吐率：37.04req/s] [内存消耗：1,325.32kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'v1',
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '0abd6192-81b8-de8d-5eb8-1ac5e0d4c413',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:35:59+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,325.30kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'v1',
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '73c67770-4712-2967-bc2c-baef6152c948',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:36:20+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,324.01kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1',
+    2 => 'user',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '67d8124c-4ccf-d8f1-c354-1a381a55aff2',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:36:27+08:00 ] ::1 ::1 POST /user/regist
+[ log ] localhost/user/regist [运行时间：0.324000s][吞吐率：3.09req/s] [内存消耗：2,601.11kb] [文件加载：61]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => NULL,
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'ec876abe-d356-90f8-bd1f-0b2af2d2b0fc',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/home\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.056000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_config` [ RunTime:0.064000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_config` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_goods_category` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_goods_category` WHERE  (  is_show = 1 ) ORDER BY `sort_order` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_brand` [ RunTime:0.019000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`parent_cat_id`,`logo`,`is_hot` FROM `tp_brand` WHERE  (  parent_cat_id>0 ) [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-11-01T17:36:27+08:00 ] ::1 ::1 GET /Home/User/login.html
+[ log ] localhost/Home/User/login.html [运行时间：0.168000s][吞吐率：5.95req/s] [内存消耗：2,795.87kb] [文件加载：66]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'Home',
+    1 => 'User',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'is_mobile=0; PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'postman-token' => 'ec876abe-d356-90f8-bd1f-0b2af2d2b0fc',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/home\lang\zh-cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\home\controller\User->login[ F:\phpStudy\WWW\TPshop\www\application\home\controller\User.php ]
+[ info ] [ VIEW ] ./template/pc/rainbow/user\login.html [ array (
+  0 => 'action',
+  1 => 'template_now_time',
+  2 => 'goods_category_tree',
+  3 => 'brand_list',
+  4 => 'tpshop_config',
+  5 => 'navigate_user',
+  6 => 'referurl',
+) ]
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组索引: login[F:\phpStudy\WWW\TPshop\www\application\home\common.php:27]
+[ error ] [8]未定义数组索引: order[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:103]
+[ error ] [8]未定义数组索引: where[F:\phpStudy\WWW\TPshop\www\thinkphp\library\think\template\taglib\Cx.php:105]
+[ error ] [8]Use of undefined constant position - assumed 'position'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:59]
+[ error ] [8]Use of undefined constant pid - assumed 'pid'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:59]
+[ error ] [8]Use of undefined constant ad_link - assumed 'ad_link'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:68]
+[ error ] [8]Use of undefined constant ad_code - assumed 'ad_code'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:69]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:69]
+[ error ] [8]未定义数组索引: title[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:69]
+[ error ] [8]Use of undefined constant style - assumed 'style'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:69]
+[ error ] [8]未定义数组索引: style[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:69]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:150]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:150]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:150]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant article_id - assumed 'article_id'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant title - assumed 'title'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:161]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:150]
+[ error ] [8]Use of undefined constant cat_name - assumed 'cat_name'[F:\phpStudy\WWW\TPshop\www\runtime\temp\4d211d6c10e983bcc646672bdfad1382.php:150]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_ad` [ RunTime:0.026000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_ad` WHERE  (  pid=9  and enabled = 1 and start_time < 1509526800 and end_time > 1509526800  ) ORDER BY orderby desc LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] select * from `tp_article_cat` where parent_id = 2 limit 5 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 7  and is_open=1 limit 5 [ RunTime:0.003000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 87  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 41  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 90  and is_open=1 limit 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] select * from `tp_article` where cat_id = 89  and is_open=1 limit 5 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-11-01T17:36:49+08:00 ] ::1 ::1 POST /user/regist
+[ log ] localhost/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,323.55kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'regist',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '8e7c99e3-f90d-77a5-e902-229fdaa24fdd',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:37:24+08:00 ] ::1 ::1 POST /api/user/regist
+[ log ] localhost/api/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,533.34kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b0fed951-1a70-6081-cd0c-651efcb53c4d',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ RUN ] app\api\controller\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:39:07+08:00 ] ::1 ::1 POST /api/user/regist
+[ log ] localhost/api/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,532.54kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'regist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'e5e36a84-f5f3-09cb-c2f4-cb9191dc2aa7',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ RUN ] app\api\controller\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:39:13+08:00 ] ::1 ::1 POST /api/user/regist
+[ log ] localhost/api/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,532.54kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'regist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b54e31d7-e8e9-ebcc-d89a-98716d3093c0',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ RUN ] app\api\controller\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:42:14+08:00 ] ::1 ::1 POST /api/user/regist
+[ log ] localhost/api/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,532.54kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'regist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'bed93b07-d2cd-a745-57e4-35cafd578e6f',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ RUN ] app\api\controller\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:42:30+08:00 ] ::1 ::1 POST /api/user/regist
+[ log ] localhost/api/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,473.60kb] [文件加载：41]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'regist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '543690f6-3863-7041-6f19-1ac14f317802',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ RUN ] app\api\controller\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:47:53+08:00 ] ::1 ::1 POST /api/user/regist
+[ log ] localhost/api/user/regist [运行时间：0.026000s][吞吐率：38.46req/s] [内存消耗：1,324.48kb] [文件加载：38]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'regist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'f763f65d-be54-3eb4-6337-6bb199152e47',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+)
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T17:48:05+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.040000s][吞吐率：25.00req/s] [内存消耗：1,345.25kb] [文件加载：40]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '94cfff13-cbfa-021c-2a3e-6ce9c1386f66',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\controller\Base' not found[F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:8]
+
+---------------------------------------------------------------
+[ 2017-11-01T17:48:32+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,534.66kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2; is_mobile=0',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'af7b42f6-048c-c930-3640-c2809b6271e9',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T18:46:32+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,534.41kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b06bedab-37bb-c28b-534e-e6f35e9cc96a',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T18:52:14+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.036000s][吞吐率：27.78req/s] [内存消耗：1,610.95kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a90c07a3-bdf5-d13e-c817-e202c211e212',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\validate\Request' not found[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:13]
+
+---------------------------------------------------------------
+[ 2017-11-01T18:53:10+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.036000s][吞吐率：27.78req/s] [内存消耗：1,612.73kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'bbd2bf10-27a0-30e7-a404-6403443f2578',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\validate\ParameterExecption' not found[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:21]
+
+---------------------------------------------------------------
+[ 2017-11-01T18:57:51+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,612.77kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'cf8c3a06-f39b-88a5-2404-05bdd20f9006',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\validate\ParameterExecption' not found[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:21]
+
+---------------------------------------------------------------
+[ 2017-11-01T18:59:43+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.042000s][吞吐率：23.81req/s] [内存消耗：1,612.73kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '13788db2-7506-3f33-2506-686372c7843d',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\validate\ParameterExecption' not found[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:21]
+
+---------------------------------------------------------------
+[ 2017-11-01T18:59:52+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.041000s][吞吐率：24.39req/s] [内存消耗：1,612.73kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '807b91f0-fb25-59ec-b103-fba75383c80d',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\validate\ParameterExecption' not found[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:21]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:00:16+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,612.76kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '6ad3d05f-64f9-7fd3-4e5f-9818dd2e271d',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Class 'app\api\validate\ParameterExecption' not found[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:22]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:01:12+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,609.03kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'cb502667-de63-5788-6255-322aedcb96f5',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:24]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:01:29+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.039000s][吞吐率：25.64req/s] [内存消耗：1,609.03kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '4231da6e-d20b-4dcc-c633-b9f69c9a420e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:24]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:02:52+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.039000s][吞吐率：25.64req/s] [内存消耗：1,609.29kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '836a53c1-b1bb-5319-5ce4-6b994a056fbe',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:24]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:03:18+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,509.27kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '526834bc-d630-ff20-453c-404c61cedce0',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:03:35+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,508.50kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '4302b605-2069-3ed7-37b7-fb9a1f386834',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:04:09+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,508.52kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b6d32873-8a2a-5bb1-dec6-f584406b0c85',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:04:42+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,509.27kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '74000f2c-5f38-ee8b-5e03-e985e25fa007',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:04:48+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,508.97kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '45788974-39db-f484-f05b-a6895385d038',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:16:53+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.037000s][吞吐率：27.03req/s] [内存消耗：1,609.09kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '7c40435b-5516-0b2f-e7b4-1add82c666bc',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191879',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:24]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:19:26+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,544.77kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '341de0d9-51cf-89dc-a6b2-f6629cd9f86b',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191879',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:19:46+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,544.77kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '71b7d1b6-33ce-0159-49cf-444c46a59838',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '139',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '1776511918791',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:22:54+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,508.16kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'd510208f-f7df-d170-b2b1-e9c9beb8b4bc',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191879',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:07+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,509.27kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '8cb26aa9-8a5d-37e2-b53b-12b7da175411',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191879',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:12+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,509.00kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '894ce0fc-7045-9b22-54b6-b22ebbbd8ed4',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:15+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,509.28kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '176efc7d-451d-7095-0112-4314ad662d75',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '128',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:19+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,508.97kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'ea0cfa69-3f93-ab7c-6b5f-77112cb39902',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:31+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,566.50kb] [文件加载：45]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '06c64fd9-6768-d4a8-8673-37b581e1dff4',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:34+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,566.50kb] [文件加载：45]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '6e66f0f8-dc4e-a0bf-f1a9-f03933323209',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:23:36+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,609.03kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b270d8ed-da74-b4c5-e8de-eb4417029cfd',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:24]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:24:16+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,544.55kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'fc3b0d7e-4025-caf8-a3c6-fbd793267d2e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:24:34+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,609.41kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '7d2d4e56-f50f-9d5b-e7cb-b1dffcbadfe7',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:24:48+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,544.95kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '32b91361-1c4d-2f1e-821e-30c65f5bb3d2',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:26:04+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,545.09kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a4eace4b-1e32-c8fa-596f-63aa79adc636',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:27:11+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,640.84kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'ea55ea40-29c4-1cee-0b0e-ee9cb0d5f1bf',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1]Wrong parameters for Exception([string $exception [, long $code [, Exception $previous = NULL]]])[F:\phpStudy\WWW\TPshop\www\application\lib\exception\BaseException.php:19]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:27:35+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,609.05kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '15d545cb-3adb-cf60-e5bb-d61a77ec5f9e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:27:46+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,609.05kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a52c70b3-7271-85eb-9f92-2d2590f4a816',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:29:40+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,609.05kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '781af83c-ca9e-8f51-8219-6916e371667e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:30:00+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,609.05kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'e1da15b4-aef8-b853-0aab-28119492b6a9',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:30:44+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,609.04kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '972c6f26-de2b-fe8b-670e-828f69d0df89',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:31:30+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.035000s][吞吐率：28.57req/s] [内存消耗：1,609.41kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '0ddada57-a033-e2fb-9c85-73aaa0661c52',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:35:11+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.040000s][吞吐率：25.00req/s] [内存消耗：1,645.63kb] [文件加载：52]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '372b5a8e-9968-b3cd-fed0-ce1c849d03ce',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+[ error ] [1]Class 'app\lib\exception\Request' not found[F:\phpStudy\WWW\TPshop\www\application\lib\exception\ExceptionHandle.php:34]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:35:49+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.073000s][吞吐率：13.70req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '91ad0d9e-e2e8-78a0-2d17-6e36d22317f0',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:45:36+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,576.42kb] [文件加载：48]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '910da124-6bbe-c94a-fbaf-bd0f43f614f2',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:45:45+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '0c374388-9d79-b7ba-cb06-e6f4e6cddca9',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:47:02+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.039000s][吞吐率：25.64req/s] [内存消耗：1,545.09kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'ef7a3324-6517-f42a-a735-8aec75c368e4',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:47:11+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.028000s][吞吐率：35.71req/s] [内存消耗：1,545.11kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '5d3bb126-4574-62ca-0656-60677779e7cb',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:49:05+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.036000s][吞吐率：27.78req/s] [内存消耗：1,545.09kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b7e5a6a5-8020-f493-8d12-4ad2d996377c',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:49:44+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'c467e74d-9984-fced-6301-cf21e352b0a4',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:49:57+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '429d107f-ba02-38c2-61bf-3b386f49c332',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:50:09+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '3dfad97a-0152-52c1-2f4a-5cf7471afe62',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [4001][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:50:23+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a9b3e580-3158-5bd3-7686-058c1532208f',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [4001][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:50:30+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'b8683257-38e8-eb17-1ac9-fca35431b249',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:50:48+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,589.48kb] [文件加载：48]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'cd306460-d0f4-c523-5244-64d5a54df248',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:50:57+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.030000s][吞吐率：33.33req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a8b36167-80d8-d383-9c64-6666b2f327b6',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:51:12+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'c46c8849-ce43-4f7b-7d3c-0a429d13b9ad',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [300][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:51:23+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '08195f4a-2967-49d3-49b8-a72f0236331a',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [301][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:51:32+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '7541646c-919a-96e6-e255-ce77badb4f62',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [351][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:51:39+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,630.85kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'fd273a2c-0c76-118d-b973-2170c7f58c41',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '177651191871',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:55:25+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,566.52kb] [文件加载：45]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'df6b8487-2b3e-976c-71ab-195f25eb9482',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T19:55:54+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,629.87kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '61749699-d8f0-2f16-e529-be365d010e78',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '11102379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:59:44+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,630.47kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'd3935829-b1f3-8d7c-ffeb-602f52c38b71',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '11102379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T19:59:49+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,507.01kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '0cf7234b-4355-a0ff-6580-927147d0f2cb',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:03:23+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.027000s][吞吐率：37.04req/s] [内存消耗：1,507.20kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'eee4ee71-b1bb-2c0a-60fb-9113cb096202',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:07:34+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.037000s][吞吐率：27.03req/s] [内存消耗：1,630.27kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '3177744e-1792-dcf7-85ad-fb6ae6242cde',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '136',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:07:56+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,566.45kb] [文件加载：45]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'a2a8474a-da84-fd11-bc58-2e6c2775df6e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:08:26+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,630.70kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '87bd9899-cc2e-6232-403d-e4ab10523345',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '107',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:08:46+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.028000s][吞吐率：35.71req/s] [内存消耗：1,566.45kb] [文件加载：45]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '53d51986-d966-a7d0-251f-cd4d8a2cf247',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:09:36+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.055000s][吞吐率：18.18req/s] [内存消耗：2,147.95kb] [文件加载：56]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '3321edb2-371f-0e3b-0dfc-c8bc35cba4d2',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ error ] [2]Illegal string offset 'mobile'[F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:22]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:10:07+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,508.38kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '1f7c98b5-ba87-4cb8-9d55-344a0620b156',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:10:19+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.029000s][吞吐率：34.48req/s] [内存消耗：1,508.80kb] [文件加载：43]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'f6d0910d-620c-a0d3-a8a3-0a1fefccff27',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:10:33+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.145000s][吞吐率：6.90req/s] [内存消耗：2,128.97kb] [文件加载：50]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'fec2983e-1198-96ad-2f9a-23e91b7b03ac',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.018000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.043000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.042000s ]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:12:33+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.071000s][吞吐率：14.08req/s] [内存消耗：2,240.27kb] [文件加载：57]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'e958d0be-9c87-181f-ae9f-e2c7aebf4c96',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.013000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.003000s ]
+[ error ] [1]Class 'app\api\controller\v1\ParameterException' not found[F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:12:48+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.067000s][吞吐率：14.93req/s] [内存消耗：2,247.11kb] [文件加载：58]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '53bdf0ab-7180-f902-965b-35883d1a979a',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '137',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '15602379547',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=tpshop;host=localhost;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `tp_users` [ RunTime:0.015000s ]
+[ sql ] [ SQL ] SELECT * FROM `tp_users` WHERE  `mobile` = '17765119187' LIMIT 1 [ RunTime:0.003000s ]
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php:24]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:13:18+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,631.80kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '3252a718-8e14-3a2b-595e-7bfec74a2628',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '156023795471',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:14:11+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.033000s][吞吐率：30.30req/s] [内存消耗：1,546.08kb] [文件加载：46]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => 'f6a74d56-6d16-6da5-8964-05bbc83e689a',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '156023795471',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-11-01T20:15:18+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.034000s][吞吐率：29.41req/s] [内存消耗：1,589.41kb] [文件加载：49]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '67797789-ece3-5a8d-9c7a-7c371e5cec53',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '156023795471',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组下标: 0[F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:25]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:15:41+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.031000s][吞吐率：32.26req/s] [内存消耗：1,631.80kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '74da8a69-49c3-893f-c69b-81691c643a9c',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '156023795471',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------
+[ 2017-11-01T20:16:34+08:00 ] ::1 ::1 POST /api/v1/user/regist
+[ log ] localhost/api/v1/user/regist [运行时间：0.032000s][吞吐率：31.25req/s] [内存消耗：1,631.80kb] [文件加载：51]
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] F:\phpStudy\WWW\TPshop\www/application/lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1.User',
+    2 => 'regist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=7icmon8m9pus602cv99baj9dc2',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'content-type' => 'application/json',
+  'postman-token' => '1f370a50-b3ac-bb8d-a25b-f7b98f8cd35e',
+  'origin' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+  'cache-control' => 'no-cache',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+  'content-length' => '138',
+  'connection' => 'close',
+  'host' => 'localhost',
+)
+[ info ] [ PARAM ] array (
+  'mobile' => '17765119187',
+  'nickname' => '于晓亮',
+  'password' => 'yuliang123',
+  'recond_mobile' => '156023795471',
+  'version' => 'v1',
+)
+[ info ] [ RUN ] app\api\controller\v1\User->regist[ F:\phpStudy\WWW\TPshop\www\application\api\controller\v1\User.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [400][F:\phpStudy\WWW\TPshop\www\application\api\validate\BaseValidate.php:26]
+
+---------------------------------------------------------------

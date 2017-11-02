@@ -1,16 +1,15 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:38:"./template/pc/rainbow/index\index.html";i:1507883317;s:40:"./template/pc/rainbow/public\header.html";i:1507883317;s:40:"./template/pc/rainbow/public\footer.html";i:1507883317;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:38:"./template/pc/rainbow/index\index.html";i:1509106519;s:40:"./template/pc/rainbow/public\header.html";i:1508395267;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>首页-<?php echo $tpshop_config['shop_info_store_title']; ?></title>
+    <title>首页</title>
     <meta name="keywords" content="<?php echo $tpshop_config['shop_info_store_keyword']; ?>"/>
     <meta name="description" content="<?php echo $tpshop_config['shop_info_store_desc']; ?>"/>
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css"/>
     <script src="__STATIC__/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="__PUBLIC__/js/global.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="__PUBLIC__/static/images/favicon.ico" media="screen"/>
 </head>
 <body class="gray_f5">
 <!--header-s-->
@@ -22,20 +21,20 @@
 				<?php if(strtolower(ACTION_NAME) != 'goodsinfo'): ?>
 					<link rel="stylesheet" href="__STATIC__/css/location.css" type="text/css"><!-- 收货地址，物流运费 -->
 					<div class="sendaddress pr fl">
-						<span>送货至：</span>
+						<!--<span>送货至：</span>-->
 						<!-- <span>深圳<i class="share-a_a1"></i></span>-->
-						<span>
-                              <ul class="list1">
-                                  <li class="summary-stock though-line">
-                                      <div class="dd" style="border-right:0px;width:200px;">
-                                          <div class="store-selector add_cj_p">
-                                              <div class="text"><div></div><b></b></div>
-                                              <div onclick="$(this).parent().removeClass('hover')" class="close"></div>
-                                          </div>
-                                      </div>
-                                  </li>
-                              </ul>
-                          </span>
+						<!--<span>-->
+                              <!--<ul class="list1">-->
+                                  <!--<li class="summary-stock though-line">-->
+                                      <!--<div class="dd" style="border-right:0px;width:200px;">-->
+                                          <!--<div class="store-selector add_cj_p">-->
+                                              <!--<div class="text"><div></div><b></b></div>-->
+                                              <!--<div onclick="$(this).parent().removeClass('hover')" class="close"></div>-->
+                                          <!--</div>-->
+                                      <!--</div>-->
+                                  <!--</li>-->
+                              <!--</ul>-->
+                          <!--</span>-->
 					</div>
 					<script src="__STATIC__/js/location.js"></script>
 				<?php endif; ?>
@@ -197,7 +196,7 @@
 									</div>
 								</div>
 								<div class="advertisement_down">
-									<?php $pid =10+$kr;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507885200 and end_time > 1507885200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
+									<?php $pid =10+$kr;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -260,7 +259,7 @@ foreach($result as $key=>$v3):
 				<a href="<?php echo U('Index/index'); ?>">首页</a>
 			</li>
 			<!--手机城、珠宝、家电城、促销商品 ....   原来是在这里查出来的-->
-			<?php
+			<!--<?php
                                    
                                 $md5_key = md5("SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` DESC");
                                 $result_name = $sql_result_v = S("sql_".$md5_key);
@@ -269,9 +268,9 @@ foreach($result as $key=>$v3):
                                     $result_name = $sql_result_v = \think\Db::query("SELECT * FROM `__PREFIX__navigation` where is_show = 1 ORDER BY `sort` DESC"); 
                                     S("sql_".$md5_key,$sql_result_v,86400);
                                 }    
-                              foreach($sql_result_v as $k=>$v): ?>
-				<li><a href="<?php echo $v[url]; ?>" <?php if($v[is_new] == 1): ?>target="_blank" <?php endif; ?> ><?php echo $v[name]; ?></a></li>
-			<?php endforeach; ?>
+                              foreach($sql_result_v as $k=>$v): ?>-->
+				<!--<li><a href="<?php echo $v[url]; ?>" <?php if($v[is_new] == 1): ?>target="_blank" <?php endif; ?> ><?php echo $v[name]; ?></a></li>-->
+			<!--<?php endforeach; ?>-->
 		</ul>
 	</div>
 </div>
@@ -284,7 +283,7 @@ foreach($result as $key=>$v3):
 <!--header-e-->
 <div id="myCarousel" class="carousel clearfix">
 	<ul class="carousel-inner">
-        <?php $pid =2;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507885200 and end_time > 1507885200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
+        <?php $pid =2;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("5")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -421,7 +420,7 @@ foreach($result as $key=>$v1):
 		})
 	</script>
 	<div class="banner-right-box">
-	<?php $pid =52;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507885200 and end_time > 1507885200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("2")->select();
+	<?php $pid =52;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("2")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -485,7 +484,7 @@ foreach($result as $key=>$vb):
 	</div>
 	<div class="floor-main">
 		<div class="floor-brand">
-			<?php $pid =10+$k;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507885200 and end_time > 1507885200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
+			<?php $pid =10+$k;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -525,7 +524,7 @@ foreach($result as $key=>$vl):
     }
     ?>
 			<a class="brand-big" href="<?php echo $vl[ad_link]; ?>"><img class="w-100" src="<?php echo $vl[ad_code]; ?>" alt="<?php echo $vl[title]; ?>" /></a>
-			<?php endforeach; $pid =20+$k;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1507885200 and end_time > 1507885200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
+			<?php endforeach; $pid =20+$k;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1509361200 and end_time > 1509361200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -677,6 +676,11 @@ foreach($result as $key=>$vs):
 	<a class="slidebar-item ico-slidebar1" target="_blank" href="tencent://message/?uin=<?php echo $tpshop_config['shop_info_qq2']; ?>&amp;Site=TPshop商城&amp;Menu=yes" >
 		<div class="sbar-hover-txt">客服服务</div>
 	</a>
+
+	<a class="slidebar-item ico-slidebar1" target="_blank" href="tencent://message/?uin=<?php echo $tpshop_config['shop_info_qq']; ?>&amp;Site=TPshop商城&amp;Menu=yes" >
+		<div class="sbar-hover-txt">客服服务</div>
+	</a>
+
 	<a class="slidebar-item ico-slidebar2" target="_blank" href="javascript:;" >
 		<div class="sbar-hover-txt">关注微信</div>
 		<div class="sbar-hover-pic">

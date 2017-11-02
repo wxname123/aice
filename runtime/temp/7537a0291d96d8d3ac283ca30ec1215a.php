@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:48:"./template/pc/rainbow/cart\header_cart_list.html";i:1507883317;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:48:"./template/pc/rainbow/cart\header_cart_list.html";i:1509106519;}*/ ?>
 <?php if(empty($cartList) || (($cartList instanceof \think\Collection || $cartList instanceof \think\Paginator ) && $cartList->isEmpty())): ?>
 	<!--为空时-s-->
 	<div class="empty-c">
@@ -12,9 +12,6 @@
 		 	<?php if(is_array($cartList) || $cartList instanceof \think\Collection || $cartList instanceof \think\Paginator): $i = 0; $__LIST__ = $cartList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$cart): $mod = ($i % 2 );++$i;?>
 				<div class="c-store" >
 					<div class="c-store-tt"><?php echo date("Y-m-d H:i:s",$cart['add_time']); ?></div>
-					<!--<div class="c-sale-b">-->
-						<!--<span class="i">[满减]</span>满299元减50元-->
-					<!--</div>-->
 					<div class="c-item clearfix">
 						<div class="del js_delete" onclick="header_cart_del(<?php echo $cart[id]; ?>);">×</div>
 						<a href="<?php echo U('Home/Goods/goodsInfo',array('id'=>$cart[goods_id])); ?>" class="goods-pic fl">
@@ -22,12 +19,6 @@
 						</a>
 						<div class="goods-cont fl">
 							<a href="<?php echo U('Home/Goods/goodsInfo',array('id'=>$cart[goods_id])); ?>" class="goods-name"><?php echo $cart[goods_name]; ?></a>
-							<!--数额加减-->
-							   <!--<p class="num fl js_mini_num">-->
-								   <!--<a href="javascript:void(0);" class="reduce reduce_gray fl"></a>-->
-								   <!--<input type="text" autocomplete="off" value="1">-->
-								   <!--<a href="javascript:void(0);" class="add  fr"></a>-->
-							   <!--</p>-->
 							<p class="num fl">*<?php echo $cart[goods_num]; ?>件</p>
 							<p class="red fr">￥<?php echo $cart[member_goods_price]; ?></p>
 						</div>

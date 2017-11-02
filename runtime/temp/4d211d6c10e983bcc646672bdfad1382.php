@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\login.html";i:1507889029;s:40:"./template/pc/rainbow/public\footer.html";i:1507883317;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:37:"./template/pc/rainbow/user\login.html";i:1509443000;s:40:"./template/pc/rainbow/public\footer.html";i:1506391063;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
 <div class="loginsum_main" style="background: #bf1919;">
     <div class="w1224 p">
         <div class="advertisement">
-            <?php $pid =9;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1508119200 and end_time > 1508119200 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
+            <?php $pid =9;$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < 1509526800 and end_time > 1509526800 ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("1")->select();
 if(is_array($ad_position) && !in_array($pid,array_keys($ad_position)) && $pid)
 {
   M("ad_position")->insert(array(
@@ -108,53 +108,6 @@ foreach($result as $k=>$v):
                         </div>
                     </div>
                 </form>
-                <div class="layel3">
-                    <div class="contactsty">
-                        <div class="tecant_c">
-                            <ul>
-                                <?php
-                                   
-                                $md5_key = md5("select * from __PREFIX__plugin where type='login' AND status = 1");
-                                $result_name = $sql_result_v = S("sql_".$md5_key);
-                                if(empty($sql_result_v))
-                                {                            
-                                    $result_name = $sql_result_v = \think\Db::query("select * from __PREFIX__plugin where type='login' AND status = 1"); 
-                                    S("sql_".$md5_key,$sql_result_v,86400);
-                                }    
-                              foreach($sql_result_v as $k=>$v): if($v['code'] == 'weixin'): ?>
-                                        <li class="spacer"></li>
-                                        <li>
-                                            <a class="justclix" href="<?php echo U('LoginApi/login',array('oauth'=>'weixin')); ?>" title="weixin">
-                                                <i class="judgp co_wechat"></i>
-                                                <span>微信</span>
-                                            </a>
-                                        </li>
-                                    <?php endif; if($v['code'] == 'qq'): ?>
-                                        <li class="spacer"></li>
-                                        <li>
-                                            <a class="justclix" href="<?php echo U('LoginApi/login',array('oauth'=>'qq')); ?>" title="QQ">
-                                                <i class="judgp co_qq"></i>
-                                                <span>QQ</span>
-                                            </a>
-                                        </li>
-                                    <?php endif; if($v['code'] == 'alipay'): ?>
-                                        <li>
-                                            <a class="justclix" href="<?php echo U('LoginApi/login',array('oauth'=>'alipay')); ?>" title="支付宝">
-                                                <i class="judgp co_alipay"></i>
-                                                <span>支付宝</span>
-                                            </a>
-                                        </li>
-                                    <?php endif; endforeach; ?>
-                            </ul>
-                        </div>
-                        <div class="register_c">
-                            <a class="justclix" href="<?php echo U('Home/User/reg'); ?>">
-                                <i class="judgp co_register"></i>
-                                <span>立即注册</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -279,11 +232,13 @@ foreach($result as $k=>$v):
             dataType : 'json',
             success : function(res){
                 if(res.status == 1){
-                    if(res.result.statu == 1 ){
+//                    if(res.result.statu == 1 ){
                         window.location.href = res.url;
-                    }else{
-                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
-                    }
+//                    }
+//                    else{
+//                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
+//                        showErrorMsg('网络失败，请刷新页面后重试');
+//                    }
                 }else{
                     showErrorMsg(res.msg);
                     verify();
@@ -316,7 +271,7 @@ foreach($result as $k=>$v):
     function showErrorMsg(msg){
         layer.alert(msg, {icon: 2});
 //        $('.msg-err').show();
-//        $('.J-errorMsg')check2.html(msg);
+//        $('.J-errorMsg')check3.html(msg);
     }
 
     function verify(){
