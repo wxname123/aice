@@ -14,6 +14,10 @@ class User  extends   Base {
   public  function  a(){
 
   }
+
+  public  function  aa(){
+
+  }
 //    用户注册接口
     public  function  regist(){
         if(request()->isPost()){
