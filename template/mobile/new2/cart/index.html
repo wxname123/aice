@@ -59,11 +59,9 @@
                                 </p>
                                 <!--加减数量-->
                                 <div class="plus fr get_mp">
-                                    <span class="mp_minous">-</span>
                                     <span class="mp_mp">
-                                        <input name="changeQuantity_{$cart['id']}" type="text" id="changeQuantity_{$cart['id']}" value="{$cart['goods_num']}" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" class="input-num"/>
+                                        <input name="changeQuantity_{$cart['id']}"  id="changeQuantity_{$cart['id']}" value="{$cart['goods_num']}"  class="input-num"/>
                                     </span>
-                                    <span class="mp_plus">+</span>
                                 </div>
                                 <p class="sc_pri fr" style="display: none">库存不足
                                     <input  type="hidden" name="goods_num[{$v.id}]"  value="0"  class="input-num" />

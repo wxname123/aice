@@ -46,23 +46,6 @@
                         <!--<h3 style="margin-top:30px">自提点</h3>-->
                         <div id="ajax_pickup"><!--ajax 返回自提点--></div>
                     </div>
-                    <div class="con-y-info ma-bo-35 con-h">
-                        <h3>发票信息<em>(请谨慎选择发票抬头，订单出库后不能修改)</em></h3>
-
-                        <div class="order-invoice-list">
-                            <ul>
-                                <li>
-                                    <div class="invoice-main fl"><label for="dw">发票抬头:</label></div>
-                                    <div class="invoice-sub fl">
-                                        <label class="inv-label">
-                                            <input class="officdw" type="text" name="invoice_title" placeholder="XXX单位 或 XX个人"/>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <p class="tips"><em>注意：</em>如果商品由第三方卖家销售，发票内容由其卖家决定，发票由卖家开具并寄出</p>
-                    </div>
                 </div>
                 <div class="sc-area">
                     <div class="dt-order-area">
@@ -114,71 +97,6 @@
                                                     </tr>
                                                 </if>
                                             </foreach>
-                                            <!--<tr>-->
-                                                <!--<td colspan="4"><span class="span_ored">优惠券:</span>-->
-                                                    <!--<input type="radio" onclick="ajax_order_price();" value="1" checked="" name="couponTypeSelect"-->
-                                                           <!--class="radio vam ma-ri-10">-->
-
-                                                    <!--<select onchange="ajax_order_price();" class="vam ou-no" id="coupon_id" name="coupon_id">-->
-                                                        <!--<option value="0">选择优惠券</option>-->
-                                                        <!--<foreach name="couponList" item="v3">-->
-                                                            <!--<option value="{$v3['id']}">{$v3['name']}</option>-->
-                                                        <!--</foreach>-->
-                                                    <!--</select>-->
-                                                    <!--&nbsp;&nbsp;&nbsp;-->
-                                                    <!--<input type="radio" onclick="ajax_order_price();" value="2" name="couponTypeSelect" class="radio vam ma-ri-10">-->
-                                                    <!--<input type="text" placeholder="请输入优惠券代码" class="texter vam span-150 ma-ri-10 he18 li-he-18" name="couponCode">-->
-                                                    <!--<input type="button" onclick="ajax_order_price();" value="使用"-->
-                                                           <!--class="button-style-disabled-4 button-action-use-disabled te-al ou-no vam">-->
-                                                <!--</td>-->
-                                                <!--<td rowspan="1" class="tr-subtotal te-al">-->
-                                                    <!--<p>-￥<b id="coupon_price">0</b></p>-->
-                                                <!--</td>-->
-                                            <!--</tr>-->
-                                            <!--<tr>-->
-                                                <!--<td colspan="4">-->
-                                                    <!--<span class="span_ored">选择物流:</span>-->
-                                                    <!--<select onchange="ajax_order_price();" class="vam ou-no" name="shipping_code">-->
-                                                        <!--<foreach name="shippingList" item="v4" key="k4">-->
-                                                            <!--<option value="{$v4.code}"  >{$v4.name}</option>-->
-                                                        <!--</foreach>-->
-                                                    <!--</select>-->
-                                                <!--</td>-->
-                                                <!--<td rowspan="1" class="tr-subtotal te-al">-->
-                                                    <!--<p>￥<b id="shipping_price">0</b></p>-->
-                                                <!--</td>-->
-                                            <!--</tr>-->
-                                            <!--<tr>-->
-                                                <!--<td colspan="4"><span class="span_ored">商家活动：</span></td>-->
-                                                <!--<td rowspan="1" class="tr-subtotal te-al">-->
-                                                    <!--<p>-￥<b id="store_order_prom_amount_{$v[store_id]}">0</b></p>-->
-                                                <!--</td>-->
-                                            <!--</tr>-->
-                                            <!--<tr>-->
-                                                <!--<td colspan="4"><span class="span_ored">积分抵扣：</span></td>-->
-                                                <!--<td rowspan="1" class="tr-subtotal te-al">-->
-                                                    <!--<p>-￥<b id="store_point_count_{$v[store_id]}">0</b></p>-->
-                                                <!--</td>-->
-                                            <!--</tr>-->
-                                            <!--<tr>-->
-                                                <!--<td colspan="4"><span class="span_ored">余额抵扣：</span></td>-->
-                                                <!--<td rowspan="1" class="tr-subtotal te-al">-->
-                                                    <!--<p>-￥<b id="store_balance_{$v[store_id]}">0</b></p>-->
-                                                <!--</td>-->
-                                            <!--</tr>-->
-                                            <!--<tr>-->
-                                                <!--<td colspan="4"><span class="span_ored">店铺合计(含运费)：</span></td>-->
-                                                <!--<td rowspan="1" class="tr-subtotal te-al">-->
-                                                    <!--<p>￥<b id="store_order_amount_{$v[store_id]}">0</b></p>-->
-                                                <!--</td>-->
-                                            <!--</tr>-->
-                                                <tr>
-                                                    <td colspan="5">
-                                                    <span class="span_ored">给卖家留言:</span>
-                                                <input class="span_text texter tapassa" type="text" name="user_note" onkeyup="checkfilltextarea('.tapassa','50')" />
-                                                <span class="xianzd"><em id="zero">50</em>/50</span>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -186,101 +104,6 @@
                                 <br/>
                             <!--商品列表 end-->
                         </div>
-                        <!--<div class="order-pro-total">-->
-                            <!--<div class="fl wctmes">-->
-                                <!--<div class="syyouhui pa-to-15">-->
-                                    <!--<div class="duoxuk">-->
-                                        <!--<label class="fo-fa-ta">使用优惠券:</label>&nbsp;&nbsp;注：优惠券每次只能使用一张，不可多张混合使用-->
-                                    <!--</div>-->
-                                    <!--<div class="byicd">-->
-                                        <!--<div class="zhiwfnka">-->
-                                            <!--<table border="0" cellpadding="0" cellspacing="0">-->
-                                                <!--<tbody>-->
-                                                <!--<tr>-->
-                                                    <!--<td>-->
-                                                        <!--<label class="fo-fa-ta">余额支付:</label>-->
-                                                        <!--<input type="text" id="user_money" name="user_money" class="texter vam span-150 ma-ri-10 he18 li-he-18" placeholder="请输入使用余额" onkeyup="this.value=/^\d+\.?\d{0,2}$/.test(this.value) ? this.value : ''"/>-->
-                                                        <!--<input type="button" class="button-style-disabled-4 button-action-use-disabled te-al ou-no vam" value="使用" onClick="wield(this);"/> 您的可用余额 ¥ {$user['user_money']}-->
-                                                    <!--</td>-->
-                                                <!--</tr>-->
-                                                <!--<tr>-->
-                                                    <!--<td>-->
-                                                        <!--<label class="fo-fa-ta">积分支付:</label>-->
-                                                        <!--<input type="text" id="pay_points" name="pay_points" class="texter vam span-150 ma-ri-10 he18 li-he-18" placeholder="请输入使用积分" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"/>-->
-
-                                                        <!--<input type="button" class="button-style-disabled-4 button-action-use-disabled te-al ou-no vam" value="使用" onClick="wield(this);"/>-->
-                                                        <!--<?php echo tpCache('shopping.point_rate');?>-->
-                                                        <!--积分抵 1元 &nbsp;&nbsp; 您的可用积分 {$user['pay_points']} 分-->
-                                                    <!--</td>-->
-                                                <!--</tr>-->
-                                                <!--<input style="display:none" type="password" name="paypwd"/>-->
-                                                <!--&lt;!&ndash;解决google浏览器识别text+password,自动填充已保存的账户密码&ndash;&gt;-->
-                                                <!--<tr>-->
-                                                    <!--<td>-->
-                                                        <!--<label class="fo-fa-ta" for="paypwd">支付密码:</label>-->
-                                                        <!--<input type="password" id="paypwd" name="paypwd" class="texter vam span-150 ma-ri-10 he18 li-he-18" placeholder="请输入支付密码"/>-->
-                                                        <!--<if condition="empty($user.paypwd)">-->
-                                                            <!--请先<a href="{:U('User/paypwd')}" class="red">设置支付密码</a>-->
-                                                        <!--</if>-->
-                                                    <!--</td>-->
-                                                <!--</tr>-->
-                                                <!--</tbody>-->
-                                            <!--</table>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="fr wcnhy">-->
-                                <!--<div class="fzoubddv">-->
-                                    <!--<table width="100%" border="0" cellpadding="0" cellspacing="0">-->
-                                        <!--<tbody>-->
-                                        <!--<tr>-->
-                                            <!--<td class="tal">商品总金额：</td>-->
-                                            <!--<td class="tar">&nbsp;¥&nbsp;-->
-                                                <!--<em id="totalFee">{$cartPriceInfo.total_fee}</em>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr>-->
-                                            <!--<td class="tal">运费：</td>-->
-                                            <!--<td class="tar">&nbsp;¥&nbsp;-->
-                                                <!--<em id="postFee">0.00</em>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr>-->
-                                            <!--<td class="tal">使用优惠券：</td>-->
-                                            <!--<td class="tar">-&nbsp;¥&nbsp;-->
-                                                <!--<em><span id="couponFee">0.00</span> </em>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr>-->
-                                            <!--<td class="tal">使用积分：</td>-->
-                                            <!--<td class="tar">-&nbsp;¥&nbsp;-->
-                                                <!--<em><span id="pointsFee">0.00</span> </em>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr>-->
-                                            <!--<td class="tal">订单优惠：</td>-->
-                                            <!--<td class="tar">-&nbsp;¥&nbsp;-->
-                                                <!--<em><span id="order_prom_amount">0.00</span> </em>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr>-->
-                                            <!--<td class="tal">使用余额:</td>-->
-                                            <!--<td class="tar">-&nbsp;¥&nbsp;-->
-                                                <!--<em><span id="balance">0.00</span> </em>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
-                                        <!--</tbody>-->
-                                    <!--</table>-->
-                                    <!--<p class="yifje-order">-->
-		                            	<!--<span class="p-subtotal-price"> 应付金额：-->
-		                                    <!--<b class="total">¥</b>-->
-		                                    <!--<b class="total" id="payables">0.00</b>-->
-		                                <!--</span>-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
                     </div>
                     <div class="order-action-area te-al-ri">
                         <div class="woypdbe sc-acti-list">
@@ -461,7 +284,7 @@
                          success: function(data){
                              if(data.status != '1')
                              {
-                                 // alert(data.msg); //执行有误
+                                  //alert(data.msg); //执行有误
                                  layer.alert(data.msg, {icon: 2});
                                  // 登录超时
                                  if(data.status == -100)

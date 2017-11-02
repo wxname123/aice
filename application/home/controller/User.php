@@ -87,12 +87,11 @@ class User extends Base{
             ];
             $order_str = "rec_id DESC";
             //查询购买成功之后订单里的任务数
-            $order = M('order_goods a')
+            $oder = M('order_goods a')
                 ->join('goods b','a.goods_id = b.goods_id','LEFT')
                 ->where($order_id)
                 ->order($order_str)
-                ->select();
-
+                ->find();
             //查询下级中的用户订单
             $record  = M('users a ')->field('a.user_id')
                 ->where('uid','=',$user_id)
@@ -102,6 +101,7 @@ class User extends Base{
                 foreach($record as $key=>$value){
                     $num_id                    = $value['user_id'];
                     $arr['a.user_id']           =  $num_id;
+                    $arr['a.order_status']     =   2;
                     $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
                         ->join('order_goods b','a.order_id = b.order_id','LEFT')
                         ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
@@ -118,9 +118,18 @@ class User extends Base{
         }
 
         $this->assign('complete',$complete);
-        $this->assign('order',$order);
+        $this->assign('order',$oder);
         $this->assign('level',$level);
         $this->assign('user',$user);
+        return $this->fetch();
+    }
+
+    public function userList(){
+        $user_id=$this->user_id;
+        $order_list = M('users ')
+            ->where('uid','=',$user_id)
+            ->select();
+        $this->assign('order',$order_list);
         return $this->fetch();
     }
 
@@ -242,6 +251,7 @@ class User extends Base{
     }
     
     public function do_login(){
+        var_dump($_POST);
 //        $username = trim(I('post.username'));
         $mobile = trim(I('post.mobile'));
         $password = trim(I('post.password'));
@@ -255,7 +265,6 @@ class User extends Base{
         }
     	         
     	$logic = new UsersLogic();
-//    	$res = $logic->login($username,$password);
     	$res = $logic->login($mobile,$password);
 
 

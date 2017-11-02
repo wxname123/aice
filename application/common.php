@@ -1,16 +1,4 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * $Author: IT宇宙人 2015-08-10 $
- * 为兼容以前的Thinkphp3.2老用户习惯, 用TP5助手函数实现 M( ) D( ) U( ) S( )等单字母函数
- */
 use think\Db;
 /**
  * tpshop检验登陆
@@ -755,6 +743,7 @@ function orderStatusDesc($order_id = 0, $order = array())
  */
 function orderBtn($order_id = 0, $order = array())
 {
+
     if(empty($order))
         $order = M('Order')->where("order_id", $order_id)->find();
     /**
@@ -791,8 +780,10 @@ function orderBtn($order_id = 0, $order = array())
     // 非货到付款
     else
     {
+
         if($order['pay_status'] == 0 && $order['order_status'] == 0) // 待支付
         {
+
             $btn_arr['pay_btn'] = 1; // 去支付按钮
             $btn_arr['cancel_btn'] = 1; // 取消按钮
         }
@@ -827,6 +818,7 @@ function orderBtn($order_id = 0, $order = array())
     }
     
     if($order['order_status'] == 3 && ($order['pay_status'] == 1 || $order['pay_status'] == 4)){
+
     	$btn_arr['cancel_info'] = 1; // 取消订单详情
     }
 
@@ -839,6 +831,7 @@ function orderBtn($order_id = 0, $order = array())
  */
 function set_btn_order_status($order)
 {
+
     $order_status_arr = C('ORDER_STATUS_DESC');
     $order['order_status_code'] = $order_status_code = orderStatusDesc(0, $order); // 订单状态显示给用户看的
     $order['order_status_desc'] = $order_status_arr[$order_status_code];

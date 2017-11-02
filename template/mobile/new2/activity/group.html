@@ -218,34 +218,13 @@
 </div>
 <!--详情-e-->
 
-<!--评论列表-s-->
-    <div class="xq_details" >
-    <div class="spxq-ggcs comment_de p"  style="display:none;">
-        <ul>
-            <!--1 全部 2好评 3 中评 4差评-->
-            <li class="red">全部评价 <br /><span ctype="1">{$commentStatistics.c0}</span></li>
-            <li>好评 <br /><span ctype="2">{$commentStatistics.c1}</span></li>
-            <li>中评 <br /><span ctype="3">{$commentStatistics.c2}</span></li>
-            <li>差评 <br /><span ctype="4">{$commentStatistics.c3}</span></li>
-            <li>有图 <br /><span ctype="5"></span></li>
-        </ul>
-    </div>
-    <!--评论列表-->
-    <div class="tab-con-wrapper my_comment_list" > </div>
-</div>
-<!--评论列表-e-->
+
 
 <!--底部按钮-s-->
     <div class="podee">
     <div class="cart-concert-btm p">
         <div class="fl">
             <ul>
-                <li>
-                    <a href="tel:{$tpshop_config['shop_info_phone']}">
-                        <i></i>
-                        <p>客服</p>
-                    </a>
-                </li>
                 <li>
                     <a href="{:U('Mobile/Cart/index')}" >
                         <span id="tp_cart_info"></span>
@@ -321,11 +300,9 @@
                     <p>数量</p>
                     <!--选择数量-->
                     <div class="plus">
-                        <span class="mp_minous" onclick="altergoodsnum(-1)">-</span>
                                 <span class="mp_mp">
-                        <input type="text" class="num" id="number" name="goods_num" value="1" max="{$group_buy_info.goods_num-$group_buy_info[buy_num]}" onblur="altergoodsnum(0)">
+                        <input   id="number" name="goods_num" value="1"  >
                                 </span>
-                        <span class="mp_plus" onclick="altergoodsnum(1)">+</span>
                     </div>
                 </div>
                 <!--- 商品属性 -->

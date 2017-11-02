@@ -49,7 +49,7 @@
             <ul>
                 <!--广告表-->
                 <adv pid ="9" limit="5" item="v">
-                    <li><a href="{$v.ad_link}">
+                    <li><a >
                         <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}" alt="">
                     </a></li>
                 </adv>
@@ -65,30 +65,6 @@
                 <span>
                     <img src="__STATIC__/images/icon_03.png" alt="全部分类" /><br />
                     <span>全部分类</span>
-                </span>
-            </a>
-            <a href="{:U('Goods/integralMall')}">
-                <span>
-                    <img src="__STATIC__/images/icon_05.png" alt="积分商城" /><br />
-                    <span>积分商城</span>
-                </span>
-            </a>
-            <a href="{:U('Goods/brandstreet')}">
-                <span>
-                    <img src="__STATIC__/images/icon_07.png" alt="品牌街" /><br />
-                    <span>品牌街</span>
-                </span>
-            </a>
-            <a href="{:U('Activity/promote_goods')}">
-                <span>
-                    <img src="__STATIC__/images/icon_09.png" alt="优惠活动" /><br />
-                    <span>优惠活动</span>
-                </span>
-            </a>
-            <a href="{:U('Activity/group_list')}">
-                <span>
-                    <img src="__STATIC__/images/icon_15.png" alt="团购" /><br />
-                    <span>团购</span>
                 </span>
             </a>
             <a href="{:U('User/order_list')}">
@@ -111,111 +87,24 @@
                     <span>个人中心</span>
                 </span>
             </a>
+
         </nav>
     </div>
     <!--菜单-end-->
 
-    <!--秒杀-start-->
-    <div class="floor secondkill">
-        <div class="content">
-            <div class="time p">
-                <div class="djs lightning fl">
-                    <span class="add">秒杀</span>
-                    <span class="red" id="">{:date('H',$start_time)}点场</span>
-                    <span class="hms"></span>
-                </div>
-                <div class="xsxl fr">
-                    <a href="{:U('Mobile/Activity/flash_sale_list')}">
-                        <span>限时限量<img src="__STATIC__/images/or.png" alt="" /></span>
-                    </a>
-                </div>
-            </div>
-            <div class="shop p">
-                <if condition="count($flash_sale_list) eq nll">
-                    <div style="text-align: center;">暂无抢购商品。。。。</div>
-                </if>
-                <foreach name="flash_sale_list" item="v">
-                    <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id],'item_id'=>$v[item_id]))}">
-                        <div class="timerBox shopnum">
-                            <img src="{$v[goods_id]|goods_thum_images=200,200}"/>
-                            <p>￥<span>{$v[price]}</span>元</p>
-                        </div>
-                    </a>
-                </foreach>
-            </div>
-        </div>
-    </div>
-    <!--秒杀-end-->
 
     <!--广告位-start-->
     <div class="banner ma-to-20">
         <adv limit="1" item="v" pid="400">
-            <a href="{$v.ad_link}">
-            <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}"/>
+            <a >
+            <img src="{$v[ad_code]}" title="{$v[title]}" style="
+
+            {$v[style]}"/>
             </a>
         </adv>
     </div>
-    <div class="floor advertisement">
-        <div class="content">
-            <div class="le lefhe fl">
-                <adv  limit="1" item="v" pid="301">
-                    <a href="{$v.ad_link}">
-                        <div class="td">
-                            <img src="{$v[ad_code]}">
-                        </div>
-                    </a>
-                </adv>
-                <adv  limit="1" item="v" pid="302">
-                    <a href="{$v.ad_link}">
-                        <div class="td">
-                            <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}">
-                        </div>
-                    </a>
-                </adv>
-            </div>
-            <div class="le re fr">
-                <adv  limit="1" item="v" pid="300">
-                    <a href="{$v.ad_link}">
-                        <div class="td">
-                            <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}">
-                        </div>
-                    </a>
-                </adv>
 
-            </div>
-        </div>
-    </div>
     <!--广告位-end-->
-
-    <!--新品上市-start-->
-    <div class="floor newshop">
-        <div class="banner">
-            <img src="__STATIC__/images/ind_22.jpg" alt="新品上市"/>
-        </div>
-        <div class="advertisement">
-            <div class="content">
-                <div class="le re fl">
-                    <adv  limit="1" item="v" pid="303">
-                        <a href="{$v[ad_link]}" >
-                            <div class="td">
-                                <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}"/>
-                            </div>
-                        </a>
-                    </adv>
-                </div>
-                <div class="le lefhe fr">
-                    <adv  limit="2" item="v" pid="304">
-                        <a href="{$v[ad_link]}" >
-                            <div class="td">
-                                <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}"/>
-                            </div>
-                        </a>
-                    </adv>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--新品上市-end-->
 
     <!--热销商品-start-->
     <div class="floor hotshop index_hot">
@@ -226,7 +115,7 @@
             <div class="bloc hottop">
                 <adv  limit="1" item="v" pid="305">
                     <div class="le fl">
-                        <a href="{$v[ad_link]}" >
+                        <a  >
                             <div class="td">
                                 <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}"/>
                             </div>
@@ -235,7 +124,7 @@
                 </adv>
                 <adv  limit="1" item="v" pid="306">
                     <div class="le fr">
-                        <a href="{$v[ad_link]}" >
+                        <a >
                             <div class="td">
                                 <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}"/>
                             </div>
@@ -246,7 +135,7 @@
             <div class="bloc">
                 <div class="le foura">
                     <adv  limit="4" item="v" pid="307">
-                        <a href="{$v[ad_link]}" >
+                        <a href="" >
                             <img src="{$v[ad_code]}" title="{$v[title]}" style="{$v[style]}"/>
                         </a>
                     </adv>

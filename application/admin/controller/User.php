@@ -85,7 +85,7 @@ class User extends Base {
         // 搜索条件
         $condition = array();
         I('mobile') ? $condition['mobile'] = I('mobile') : false;
-        I('email') ? $condition['email'] = I('email') : false;
+        I('nickname') ? $condition['nickname']  = I('nickname')  : false;
 
         I('first_leader') && ($condition['first_leader'] = I('first_leader')); // 查看一级下线人有哪些
         I('second_leader') && ($condition['second_leader'] = I('second_leader')); // 查看二级下线人有哪些
@@ -100,12 +100,6 @@ class User extends Base {
             $Page->parameter[$key]   =   urlencode($val);
         }
         $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
-
-
-        $user_id_arr = get_arr_column($userList, 'user_id');
-//        var_dump($user_id_arr) ; die ;
-
-
 
         $user_id_arr = get_arr_column($userList, 'user_id');
 
@@ -254,8 +248,13 @@ class User extends Base {
             {   $mobile = trim($_POST['mobile']);
                 $c = M('users')->where("user_id != $uid and mobile = '$mobile'")->count();
                 $c && exit($this->error('手机号不得和已有用户重复'));
-            }            
-            
+            }
+
+            if(!empty($_POST['leader_mobile'])){
+                $leader_mobile =trim($_POST['leader_mobile']);
+                $c= M('users') ->where('mobile','=',$leader_mobile)->find();
+                $_POST['uid']  = $c['user_id'];
+            }
             $row = M('users')->where(array('user_id'=>$uid))->save($_POST);
             if($row)
                 exit($this->success('修改成功'));
@@ -267,8 +266,9 @@ class User extends Base {
             ->find();
         $ar['user_id'] =$user_data['uid'];
         $us = M('users')->where($ar)->find();
+        $user['leader_mobile'] = $us['mobile'];
         $user['first_leader'] =$us['user_id'];
-
+        $user['first_name']  = $us['nickname'];
         $user['first_lower'] = M('users')->where("uid = {$user['user_id']}")->count();
         $this->assign('user',$user);
 

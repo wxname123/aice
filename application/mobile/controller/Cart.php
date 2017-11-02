@@ -337,9 +337,22 @@ class Cart extends MobileBase {
      */
     function ajaxAddCart()
     {
+        $user_id=$this->user_id;
+        $map=[
+            'a.user_id'       => $user_id,
+            'a.order_status' => 2
+        ];
         $goods_id = I("goods_id/d"); // 商品id
         $goods_num = I("goods_num/d");// 商品数量
         $item_id = I("item_id/d"); // 商品规格id
+
+        $oder =  M('order  a')
+            ->join('order_goods b','a.order_id = b.order_id')
+            ->where($map)
+            ->find();
+        if($oder['mission']>0){
+            $this->ajaxReturn(['status'=>-1,'msg'=>'还有未完成的任务,不能进行再次购买','result'=>'']);
+        }
         if(empty($goods_id)){
             $this->ajaxReturn(['status'=>-1,'msg'=>'请选择要购买的商品','result'=>'']);
         }
