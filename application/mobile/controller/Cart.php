@@ -367,6 +367,13 @@ class Cart extends MobileBase {
             ->join('order_goods b','a.order_id = b.order_id')
             ->where($map)
             ->find();
+
+        $cart =   M('cart')->where('user_id', $this->user_id)->find() ;
+
+        if($cart){
+            $this->ajaxReturn(['status'=>-1,'msg'=>'请先清空购物车','result'=>'']);
+        }
+
         if($oder['mission']>0){
             $this->ajaxReturn(['status'=>-1,'msg'=>'还有未完成的任务,不能进行再次购买','result'=>'']);
         }

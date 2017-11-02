@@ -47,7 +47,7 @@ $alipay_config['transport']    = 'http';
 $alipay_config['payment_type'] = "1";
 		
 // 产品类型，无需修改
-$alipay_config['service'] = "alipay.wap.create.direct.pay.by.user";
+$alipay_config['model'] = "alipay.wap.create.direct.pay.by.user";
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 

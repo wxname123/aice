@@ -152,10 +152,10 @@ class System extends Base
      */
       public function ClearGoodsHtml(){
             $goods_id = I('goods_id');            
-            if(unlink("./Application/Runtime/Html/Home_Goods_goodsInfo_{$goods_id}check2.html"))
+            if(unlink("./Application/Runtime/Html/Home_Goods_goodsInfo_{$goods_id}check3.html"))
             {
                 // 删除静态文件                
-                $html_arr = glob("./Application/Runtime/Html/Home_Goods*check2.html");
+                $html_arr = glob("./Application/Runtime/Html/Home_Goods*check3.html");
                 foreach ($html_arr as $key => $val)
                 {            
                     strstr($val,"Home_Goods_ajax_consult_{$goods_id}") && unlink($val); // 商品咨询缓存
@@ -185,7 +185,7 @@ class System extends Base
      */
       public function ClearAritcleHtml(){
             $article_id = I('article_id');            
-            unlink("./Application/Runtime/Html/Index_Article_detail_{$article_id}check2.html"); // 清除文章静态缓存
+            unlink("./Application/Runtime/Html/Index_Article_detail_{$article_id}check3.html"); // 清除文章静态缓存
             unlink("./Application/Runtime/Html/Doc_Index_article_{$article_id}_api.html"); // 清除文章静态缓存
             unlink("./Application/Runtime/Html/Doc_Index_article_{$article_id}_phper.html"); // 清除文章静态缓存
             unlink("./Application/Runtime/Html/Doc_Index_article_{$article_id}_android.html"); // 清除文章静态缓存

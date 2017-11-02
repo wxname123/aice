@@ -149,7 +149,7 @@ class AlipaySign {
         $params['notify_url'] = $this->notifyUrl;
 
         // 服务接口名称， 固定值
-        $params['service'] = "mobile.securitypay.pay";
+        $params['model'] = "mobile.securitypay.pay";
 
         // 支付类型， 固定值
         $params['payment_type'] = "1";

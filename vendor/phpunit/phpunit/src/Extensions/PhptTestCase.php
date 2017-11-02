@@ -30,7 +30,7 @@ class PHPUnit_Extensions_PhptTestCase implements PHPUnit_Framework_Test, PHPUnit
         'disable_functions=',
         'display_errors=1',
         'docref_root=',
-        'docref_ext=check2.html',
+        'docref_ext=check3.html',
         'error_append_string=',
         'error_prepend_string=',
         'error_reporting=-1',

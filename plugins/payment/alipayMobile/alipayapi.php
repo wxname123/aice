@@ -47,7 +47,7 @@ require_once("lib/alipay_submit.class.php");
 
 //构造要请求的参数数组，无需改动
 $parameter = array(
-		"service"       => $alipay_config['service'],
+		"model"       => $alipay_config['model'],
 		"partner"       => $alipay_config['partner'],
 		"seller_id"  => $alipay_config['seller_id'],
 		"payment_type"	=> $alipay_config['payment_type'],

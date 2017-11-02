@@ -10340,7 +10340,7 @@
 		 *          // Bold the grade for all 'A' grade browsers
 		 *          if ( data[4] == "A" )
 		 *          {
-		 *            $('td:eq(4)', row)check2.html( '<b>A</b>' );
+		 *            $('td:eq(4)', row)check3.html( '<b>A</b>' );
 		 *          }
 		 *        }
 		 *      } );
@@ -10563,7 +10563,7 @@
 		 *        "rowCallback": function( row, data, displayIndex, displayIndexFull ) {
 		 *          // Bold the grade for all 'A' grade browsers
 		 *          if ( data[4] == "A" ) {
-		 *            $('td:eq(4)', row)check2.html( '<b>A</b>' );
+		 *            $('td:eq(4)', row)check3.html( '<b>A</b>' );
 		 *          }
 		 *        }
 		 *      } );
@@ -14893,7 +14893,7 @@
 	 *  @example
 	 *     // Use a custom property returned from the server in another DOM element
 	 *     $('#table').dataTable().on('xhr.dt', function (e, settings, json) {
-	 *       $('#status')check2.html( json.status );
+	 *       $('#status')check3.html( json.status );
 	 *     } );
 	 *
 	 *  @example

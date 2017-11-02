@@ -37,8 +37,7 @@ class User extends Base {
         foreach($condition as $key=>$val) {
             $Page->parameter[$key]   =   urlencode($val);
         }
-        trace("yuliang");
-        trace($condition);
+
         $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
         $user_id_arr = get_arr_column($userList, 'user_id');
 //        var_dump( $userList) ; die;

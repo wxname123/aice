@@ -63,7 +63,7 @@ class alipay extends Model
                  );
             //构造要请求的参数数组，无需改动
             $parameter = array(
-                        "service" => $service[$this->alipay_config['alipay_pay_method']],   // 1 使用担保交易接口  2 使用即时到帐交易接口 
+                        "model" => $service[$this->alipay_config['alipay_pay_method']],   // 1 使用担保交易接口  2 使用即时到帐交易接口 
                         "partner" => trim($this->alipay_config['partner']),
                         "seller_email" => trim($this->alipay_config['seller_email']),
                         "payment_type"	=> 1, // 默认值为：1（商品购买）。
@@ -79,7 +79,7 @@ class alipay extends Model
             {            
                 $parameter["paymethod"] = 'bankPay'; // 若要使用纯网关，取值必须是bankPay（网银支付）。如果不设置，默认为directPay（余额支付）。
                 $parameter["defaultbank"] = $config_value['bank_code'];
-                $parameter["service"] = 'create_direct_pay_by_user';
+                $parameter["model"] = 'create_direct_pay_by_user';
             }        
             //建立请求
             require_once("lib/alipay_submit.class.php");            

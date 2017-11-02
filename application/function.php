@@ -435,6 +435,16 @@ function check_telephone($mobile){
     return false;
 }
 
+/*
+ * 截取年月日  , 返回一个存放了年月日的数组
+ * */
+function sub_year_month_day(){
+      $date_str =  date("Y-m-d") ;
+      $date_arr =  explode("-" , $date_str) ;
+      return  $date_arr ;
+}
+
+
 /**
  * 检查邮箱地址格式
  * @param $email 邮箱地址
