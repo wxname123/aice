@@ -11,7 +11,13 @@ use  app\lib\exception\ParameterException ;
 //use   app\common\model;
 
 class User  extends   Base {
+  public  function  a(){
+      die("测试用的，记得删除该方法");
+  }
 
+  public  function  aa(){
+      die("测试用的，记得删除该方法");
+  }
 //    用户注册接口
     public  function  regist(){
         if(request()->isPost()){
@@ -89,6 +95,9 @@ class User  extends   Base {
     }
 
 
+    public   function bb(){
+        die("测试用的，记得删除该方法");
+    }
 
 //    用户登录接口
     public   function  login(){
