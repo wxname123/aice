@@ -1,3 +1,0 @@
-<?php
-//000000086400[{"goods_name":"\u5965\u8feaA4L","goods_id":144,"shop_price":"21.89","market_price":"37.49","cat_id":120,"parent_id_path":"0_1_17_120","name":"1.7-2L"},{"goods_name":"\u8363\u5a01eRX5 \u4e92\u8054\u5c0a\u8d35\u65d7\u8230\u7248","goods_id":145,"shop_price":"235900.00","market_price":"235900.00","cat_id":13,"parent_id_path":"0_1_13","name":"\u80fd\u6e90"},{"goods_name":"\u8363\u5a01","goods_id":146,"shop_price":"265888.00","market_price":"275689.00","cat_id":109,"parent_id_path":"0_1_14_109","name":"\u5408\u8d44"}]
-?>
