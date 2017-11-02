@@ -11,7 +11,9 @@ use  app\lib\exception\ParameterException ;
 //use   app\common\model;
 
 class User  extends   Base {
+  public  function  a(){
 
+  }
 //    用户注册接口
     public  function  regist(){
         if(request()->isPost()){
