@@ -31,10 +31,12 @@ require_once("lib/alipay_submit.class.php");
         //必填
         //必填，页面跳转同步通知页面路径
         $return_url = "http://e.99soubao.com/plugins/login/alipay/return_url.php";
-        //需http://格式的完整路径，不允许加?id=123这类自定义参数
+        //需http://格式的完整路径，不允许加?id=123这类自定义参数
+
         //防钓鱼时间戳
         $anti_phishing_key = "";
-        //若要使用请调用类文件submit中的query_timestamp函数
+        //若要使用请调用类文件submit中的query_timestamp函数
+
         //客户端的IP地址
         $exter_invoke_ip = "";
         //非局域网的外网IP地址，如：221.0.0.1
@@ -44,7 +46,7 @@ require_once("lib/alipay_submit.class.php");
 
 //构造要请求的参数数组，无需改动
 $parameter = array(
-		"service" => "alipay.auth.authorize",
+		"model" => "alipay.auth.authorize",
 		"partner" => trim($alipay_config['partner']),
 		"target_service"	=> $target_service,
 		"return_url"	=> $return_url,

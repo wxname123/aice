@@ -459,6 +459,7 @@ class CartLogic extends Model
         if($selected != 0){
             $cartWhere['selected'] = 1;
         }
+
         $cartList = $cart->with('promGoods,goods')->where($cartWhere)->select();  // 获取购物车商品
         $cartCheckAfterList = $this->checkCartList($cartList);
 //        $cartCheckAfterList = $cartList;

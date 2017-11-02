@@ -1,5 +1,5 @@
-<include file="/public/layout" />
 
+<include file="/public/layout" />
 <script src="__PUBLIC__/js/pc_common.js"></script>
 
 <!--物流配置 css -start-->
@@ -296,22 +296,13 @@
 
         $.ajax({
             dataType:'json' ,
-            url:'/Home/User/aticleHandle',
+            url:'Home/User/actionHandle',
             data:{'id':good_id ,'license':license,'identi_front':identi_front,'identi_back':identi_back,'credit_front':credit_front ,'credit_back':credit_back },
             type:'post',
             success:function (data) {
                 if(data.status == 0){
-//                     $.ajax({
-//                         type : "POST",
-////                         url:"/index.php?m=Home&c=Cart&a=cart2",
-//                         url:"/Home/Cart/cart2",
-////                         data : $('#buy_goods_form').serialize(),// 你的formid 搜索表单 序列化提交
-//                         data : {},// 你的formid 搜索表单 序列化提交
-//                         dataType:'json',
-//                         success:function (data) {
-                             location.href = "/index.php?m=Home&c=Cart&a=cart2";
-//                         }
-//                     }) ;
+//                             location.href = "/index.php?m=Home&c=Index&a=index";
+
                 }else{
                     layer.alert(data.msg, {icon:5}) ;
                 }

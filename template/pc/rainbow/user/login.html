@@ -133,11 +133,13 @@
             dataType : 'json',
             success : function(res){
                 if(res.status == 1){
-                    if(res.result.statu == 1 ){
+//                    if(res.result.statu == 1 ){
                         window.location.href = res.url;
-                    }else{
-                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
-                    }
+//                    }
+//                    else{
+//                        window.location.href =  '/index.php?m=Home&c=User&a=Check' ;
+//                        showErrorMsg('网络失败，请刷新页面后重试');
+//                    }
                 }else{
                     showErrorMsg(res.msg);
                     verify();
@@ -170,7 +172,7 @@
     function showErrorMsg(msg){
         layer.alert(msg, {icon: 2});
 //        $('.msg-err').show();
-//        $('.J-errorMsg')check2.html(msg);
+//        $('.J-errorMsg')check3.html(msg);
     }
 
     function verify(){

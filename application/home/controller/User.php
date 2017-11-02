@@ -40,16 +40,6 @@ class User extends Base{
         			'forget_pwd','check_captcha','check_username','send_validate_code', // 'Check'
         	);
         	if(!in_array(ACTION_NAME,$nologin)){
-
-//        	    if($this->user_id == 0){
-//                    //截取 ?  后面的字符串
-//                    $count =   strpos( $_SERVER['HTTP_REFERER'],'?') ;
-//                    $sub_str =   substr($_SERVER['HTTP_REFERER'], $count+1) ;
-//
-//                    if($sub_str == "m=Home&c=Cart&a=index"){
-//                          $this->redirect('Home/User/Check') ;
-//                    }
-//                }
                 $this->redirect('Home/User/login');
         		exit;
         	}
@@ -269,7 +259,6 @@ class User extends Base{
 
 
     	if($res['status'] == 1){
-
     		$res['url'] =  urldecode(I('post.referurl'));
     		session('user',$res['result']);
     		setcookie('user_id',$res['result']['user_id'],null,'/');
@@ -1113,8 +1102,8 @@ class User extends Base{
        //拿到用户id
         $user_id = $this->user_id  ;
         //获取到订单编码
-        $good_id =  request()->get('id') ;   //  input('get.')
 //        var_dump($good_id) ; die ;
+        $good_id =  request()->get('id') ;   //  input('get.')
         $info = [] ;
         $this->assign('info', $info) ;
         $this->assign('good_id', $good_id) ;
@@ -1366,6 +1355,7 @@ class User extends Base{
      */
     public function return_goods_info()
     {
+
         $id = I('id/d',0);
         $return_goods = M('return_goods')->where(['id'=>$id,'user_id'=>$this->user_id])->find();
         if(empty($return_goods)) $this->error('参数错误');

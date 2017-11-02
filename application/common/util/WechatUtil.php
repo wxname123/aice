@@ -24,6 +24,7 @@ class WechatUtil
     
     public function __construct($config)
     {
+        $config['appid'] = 'wx3c845d1ef98f2f00' ;
         $this->config = $config;
     }
     

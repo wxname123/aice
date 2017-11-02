@@ -251,6 +251,7 @@ class Validate
      */
     public function check($data, $rules = [], $scene = '')
     {
+
         $this->error = [];
 
         if (empty($rules)) {

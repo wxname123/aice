@@ -118,7 +118,7 @@ class PHP_CodeCoverage_Report_HTML
                     mkdir($dir, 0777, true);
                 }
 
-                $file->render($node, $target . $id . 'check2.html');
+                $file->render($node, $target . $id . 'check3.html');
             }
         }
 

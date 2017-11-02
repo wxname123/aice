@@ -20,8 +20,20 @@
 //    //'goodsInfo/[:id]' => ['Home/Goods/goodsInfo',['method' => 'get', 'ext' => 'html'],'cache'=>3600]
 //    //Home/Goods/goodsInfo/id/104.html
 //];
-//use think\Route;
+use think\Route;
 // 注册路由到index模块的News控制器的read操作
-//Route::get('goodsInfo/:id','home/goods/goodsInfo',['cache'=>['Home/Goods/goodsInfo',300]]);// 访问方式 http://www.tpshop2.0.com/goodsInfo/77.html
+//Route::get('goodsInfo/:id','api/goods/goodsInfo',['cache'=>['Home/Goods/goodsInfo',300]]);// 访问方式 http://www.tpshop2.0.com/goodsInfo/77.html
+
+Route::post('api/:version/user/regist','api/:version.User/regist');// 访问方式 http://www.tpshop2.0.com/goodsInfo/77.html
+Route::post('api/:version/user/login','api/:version.User/login');
+Route::post('api/:version/user/password/reset','api/:version.User/reset');
+
+//短信验证码接口还没有写  post
+
+
+
 
 // http://www.tpshop2.0.com/home/goods/goodsInfo/id/77.html
+
+
+

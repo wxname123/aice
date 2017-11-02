@@ -32,7 +32,7 @@ class UpgradeLogic extends Model
         $this->app_path = dirname($_SERVER['SCRIPT_FILENAME']).'/'; // 当前项目路径
         $this->version_txt_path = $this->app_path.'application/admin/conf/version.php'; // 版本文件路径
         $this->curent_version = file_get_contents($this->version_txt_path); // 记录版本的常量文件         	        
-        $this->service_url = "http://service.tp-shop.cn/index.php?m=Home&c=Index&a=checkVersionTp5";
+        $this->service_url = "http://model.tp-shop.cn/index.php?m=Home&c=Index&a=checkVersionTp5";
         //$this->service_url = "http://service.tp-shop.cn/index.php?m=Home&c=Index&a=checkVersionTp52";
         
    }       
@@ -174,7 +174,7 @@ class UpgradeLogic extends Model
                 'mac'=>'0002', // 用户网卡信息用于区分用户唯一标识
                 'serial_number'=>SERIALNUMBER,
                 );        
-         $url = "http://service.tp-shop.cn/index.php?m=Home&c=Index&a=upgradeLog&".http_build_query($vaules);              
+         $url = "http://model.tp-shop.cn/index.php?m=Home&c=Index&a=upgradeLog&".http_build_query($vaules);
          file_get_contents($url);                    
     }
 } 

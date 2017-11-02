@@ -218,7 +218,7 @@ class RequestCore
     /**
      * Constructs a new instance of this class.
      *
-     * @param string $url (Optional) The URL to request or service endpoint to query.
+     * @param string $url (Optional) The URL to request or model endpoint to query.
      * @param string $proxy (Optional) The faux-url to use for proxy settings. Takes the following format: `proxy://user:pass@hostname:port`
      * @param array $helpers (Optional) An associative array of classnames to use for request, and response functionality. Gets passed in automatically by the calling class.
      * @return $this A reference to the current instance.

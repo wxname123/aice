@@ -112,18 +112,22 @@ class Order extends Base {
     public function order_detail(){
         $id = I('get.id/d');
 
-//        $map['order_id'] = $id;
+        $map['order_id'] = $id;
         $map['user_id'] = $this->user_id;
         $order_info = M('order')->where($map)->find();
+
         if(!$order_info){
             $this->error('没有获取到订单信息');
             exit;
         }
+//        var_dump($order_info) ; die ;
         $order_info = set_btn_order_status($order_info);  // 添加属性  包括按钮显示属性 和 订单状态显示属性
+
         //获取订单商品
         $model = new UsersLogic();
         $data = $model->get_order_goods($order_info['order_id']);
         $order_info['goods_list'] = $data['result'];
+
         if($order_info['order_prom_type'] == 4){
             $pre_sell_item =  M('goods_activity')->where(array('act_id'=>$order_info['order_prom_id']))->find();
             $pre_sell_item = array_merge($pre_sell_item,unserialize($pre_sell_item['ext_info']));
@@ -144,6 +148,7 @@ class Order extends Base {
         $region_list = M('region')->where("id in (".$ids.")")->getField("id,name");
         $invoice_no = M('DeliveryDoc')->where("order_id", $id)->getField('invoice_no',true);
         $order_info['invoice_no'] = implode(' , ', $invoice_no);
+
         //获取订单操作记录
         $order_action = M('order_action')->where(array('order_id'=>$id))->select();
         $this->assign('order_status',C('ORDER_STATUS'));
@@ -155,6 +160,11 @@ class Order extends Base {
         $this->assign('active','order_list');
         return $this->fetch();
     }
+
+
+
+
+
 
     public function del_order()
     {

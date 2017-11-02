@@ -45,7 +45,7 @@ class alipay extends Model{
 		
 
 		$this->parameter = array(
-			"service" => "alipay.auth.authorize",
+			"model" => "alipay.auth.authorize",
 			"partner" => trim($config['alipay_partner']),
 			"target_service"	=> $this->target_service,
 			"return_url"	=> $this->return_url,

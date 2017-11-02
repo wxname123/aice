@@ -538,7 +538,7 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
         $classes = $tokens->getClasses();
         unset($tokens);
 
-        $link = $this->getId() . 'check2.html#';
+        $link = $this->getId() . 'check3.html#';
 
         foreach ($classes as $className => $class) {
             $this->classes[$className] = array(
@@ -585,7 +585,7 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
         $traits = $tokens->getTraits();
         unset($tokens);
 
-        $link = $this->getId() . 'check2.html#';
+        $link = $this->getId() . 'check3.html#';
 
         foreach ($traits as $traitName => $trait) {
             $this->traits[$traitName] = array(
@@ -632,7 +632,7 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
         $functions = $tokens->getFunctions();
         unset($tokens);
 
-        $link = $this->getId() . 'check2.html#';
+        $link = $this->getId() . 'check3.html#';
 
         foreach ($functions as $functionName => $function) {
             $this->functions[$functionName] = array(

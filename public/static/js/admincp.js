@@ -88,7 +88,7 @@
                 }
             });
         } else {
-            var _name = $this.prev()check2.html();
+            var _name = $this.prev()check3.html();
             $.getJSON('index.php?act=common&op=common_operations', {type : 'add', value : _value}, function(data){
                 if (data) {
                     $this.parent().addClass('selected');
