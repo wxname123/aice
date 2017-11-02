@@ -91,6 +91,10 @@ class User  extends   Base {
     }
 
 
+    public   function bb(){
+
+    }
+
 //    用户登录接口
     public   function  login(){
         (  new  UserLoginValidate() )->goCheck() ;
