@@ -257,6 +257,7 @@ class OrderLogic
 	 */
     public function addOrder($user_id,$shipping_code,$invoice_title, $car_price,$user_note='',$pay_name='')
     {
+
         // 仿制灌水 1天只能下 50 单  // select * from `tp_order` where user_id = 1  and order_sn like '20151217%'
         //$order_count = M('Order')->where("user_id",$user_id)->where('order_sn', 'like', date('Ymd')."%")->count(); // 查找购物车商品总数量
         //if($order_count >= 50)
@@ -284,7 +285,6 @@ class OrderLogic
             'user_note'        =>$user_note, // 用户下单备注
             'pay_name'         =>$pay_name,//支付方式，可能是余额支付或积分兑换，后面其他支付方式会替换
         );
-
         $data['order_id'] = $order_id = M("Order")->insertGetId($data);
 //        var_dump($data) ; die ;
         $order = $data;//M('Order')->where("order_id", $order_id)->find();
@@ -303,10 +303,9 @@ class OrderLogic
 
         // 1插入order_goods 表
         $cartList = M('Cart')->where(['user_id'=>$user_id,'selected'=>1])->select();
-
         foreach($cartList as $key => $val)
         {
-            $goods = M('goods')->where("goods_id", $val['goods_id'])->cache(true,TPSHOP_CACHE_TIME)->find();
+            $goods = M('goods')->where("goods_id", $val['goods_id'])->find();
             $data2['order_id']           = $order_id; // 订单id
             $data2['goods_id']           = $val['goods_id']; // 商品id
             $data2['goods_name']         = $val['goods_name']; // 商品名称
@@ -326,28 +325,6 @@ class OrderLogic
             // 扣除商品库存  扣除库存移到 付完款后扣除
             //M('Goods')->where("goods_id = ".$val['goods_id'])->setDec('store_count',$val['goods_num']); // 商品减少库存
         }
-
-        // 如果应付金额为0  可能是余额支付 + 积分 + 优惠券 这里订单支付状态直接变成已支付
-//        if($data['order_amount'] == 0)
-//        {
-//            update_pay_status($order['order_sn']);
-//        }
-
-        // 2修改优惠券状态
-//        if($coupon_id > 0){
-//            $data3['uid'] = $user_id;
-//            $data3['order_id'] = $order_id;
-//            $data3['use_time'] = time();
-//            $data3['status'] = 1;
-//            M('CouponList')->where("id", $coupon_id)->save($data3);
-//            $cid = M('CouponList')->where("id", $coupon_id)->getField('cid');
-//            M('Coupon')->where("id", $cid)->setInc('use_num'); // 优惠券的使用数量加一
-//        }
-        // 3 扣除积分 扣除余额
-//        if($car_price['pointsFee']>0)
-//            M('Users')->where("user_id", $user_id)->setDec('pay_points',($car_price['pointsFee'] * tpCache('shopping.point_rate'))); // 消费积分
-//        if($car_price['balance']>0)
-//            M('Users')->where("user_id", $user_id)->setDec('user_money',$car_price['balance']); // 抵扣余额
         // 4 删除已提交订单商品
         M('Cart')->where(['user_id' => $user_id,'selected' => 1])->delete();
 

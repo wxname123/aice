@@ -292,13 +292,15 @@
                                  ajax_return_status = 1; // 上一次ajax 已经返回, 可以进行下一次 ajax请求
 
                                  return false;
+                             }else if(data.status ==1)
+                             {
+                                 layer.msg('订单提交成功，正在跳转!', {
+                                     icon: 1,   // 成功图标
+                                     time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                                 }, function(){ // 关闭后执行的函数
+                                     location.href = "/index.php?m=Home&c=Cart&a=cart4&order_id="+data.result; // 跳转到结算页
+                                 });
                              }
-                             layer.msg('订单提交成功，正在跳转!', {
-                                 icon: 1,   // 成功图标
-                                 time: 2000 //2秒关闭（如果不配置，默认是3秒）
-                             }, function(){ // 关闭后执行的函数
-                                 location.href = "/index.php?m=Home&c=Cart&a=cart4&order_id="+data.result; // 跳转到结算页
-                             });
                          }
                      });
                  }
