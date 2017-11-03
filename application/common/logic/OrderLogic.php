@@ -255,7 +255,7 @@ class OrderLogic
 	 * @param string $user_note|用户备注
 	 * @return array
 	 */
-    public function addOrder($user_id,$invoice_title, $car_price,$user_note='',$pay_name='')
+    public function addOrder($user_id,$shipping_code,$invoice_title, $car_price,$user_note='',$pay_name='')
     {
         // 仿制灌水 1天只能下 50 单  // select * from `tp_order` where user_id = 1  and order_sn like '20151217%'
         //$order_count = M('Order')->where("user_id",$user_id)->where('order_sn', 'like', date('Ymd')."%")->count(); // 查找购物车商品总数量
@@ -276,28 +276,11 @@ class OrderLogic
             'order_sn'         => $order_sn, // 订单编号
             'user_id'          =>$user_id, // 用户id
             'consignee'        =>$user_info['nickname'], // 收货人
-//            'province'         =>$address['province'],//'省份id',
-//            'city'             =>$address['city'],//'城市id',
-//            'district'         =>$address['district'],//'县',
-//            'twon'             =>$address['twon'],// '街道',
-//            'address'          =>$address['address'],//'详细地址',
             'mobile'           =>$user_info['mobile'],//'手机',
-//            'zipcode'          =>$address['zipcode'],//'邮编',
-//            'email'            =>$address['email'],//'邮箱',
-//            'shipping_code'    =>$shipping_code,//'物流编号',
-//            'shipping_name'    =>$shipping['name'], //'物流名称',                为照顾新手开发者们能看懂代码，此处每个字段加于详细注释
             'invoice_title'    =>$invoice_title, //'发票抬头',
             'goods_price'      =>$car_price['goodsFee'],//'商品价格',
-//            'shipping_price'   =>$car_price['postFee'],//'物流价格',
-//            'user_money'       =>$car_price['balance'],//'使用余额',
-//            'coupon_price'     =>$car_price['couponFee'],//'使用优惠券',
-//            'integral'         =>($car_price['pointsFee'] * tpCache('shopping.point_rate')), //'使用积分',
-//            'integral_money'   =>$car_price['pointsFee'],//'使用积分抵多少钱',
             'total_amount'     =>$car_price['goodsFee'] ,// 订单总额
-//            'order_amount'     =>$car_price['payables'],//'应付款金额',
             'add_time'         =>time(), // 下单时间
-//            'order_prom_id'    =>$car_price['order_prom_id'],//'订单优惠活动id',
-//            'order_prom_amount'=>$car_price['order_prom_amount'],//'订单优惠活动优惠了多少钱',
             'user_note'        =>$user_note, // 用户下单备注
             'pay_name'         =>$pay_name,//支付方式，可能是余额支付或积分兑换，后面其他支付方式会替换
         );

@@ -998,20 +998,20 @@ class User extends Base{
     //判断用户是否已经通过身份验证
     public   function  judgeAuth(){
         $user_id = $this->user_id ;
-        if(request()->isPost()){
+        if($user_id){
              $review = M('users')->where('user_id', $user_id)->getField('review') ;
              if($review != '1'){
                   $data = [
                       'msg' =>  '您还没有通过审核，请耐心等待后台管理员通过审核' ,
                       'status' => 1 ,
                   ];
-                  echo  json_encode($data,true ) ;
+                  return  json_encode($data,true ) ;
              }else{
                  $data = [
                      'msg' =>  '您已经通过审核' ,
                      'status' => 0 ,
                  ];
-                 echo  json_encode($data,true ) ;
+                 return  json_encode($data,true ) ;
              }
         }
     }
