@@ -121,8 +121,8 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="sc-acti-list ma-to-20 "> <a class="gwc-jxgw" href="javascript:history.go(-1);">继续购物</a>
-                                          <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">去提车</a>
+                            <div class="sc-acti-list ma-to-20 ">
+                                <a class="gwc-qjs" href="javascript:void(0)" data-url="{:U('Home/Cart/cart2')}">立即提车</a>
                             </div>
                         </notempty>
                         </div>
@@ -149,7 +149,7 @@
                                             <em>¥</em>
                                             <span  class="ng-binding">{$v[shop_price]}</span>
                                         </div>
-                                        <button class="btn add2cart" type="button" onclick="javascript:AjaxAddCart({$v.goods_id},1,0);">加入购物车</button>
+                                        <button class="btn add2cart" type="button" onclick="javascript:AjaxAddCart({$v.goods_id},1,1);">立即提车</button>
                                     </li>
                                 </tpshop>
                             </ul>

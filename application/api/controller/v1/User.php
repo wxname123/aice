@@ -31,6 +31,8 @@ class User  extends   Base {
               throw  $e ;
           }
 
+
+
           //查询该身份证号码是否已经存在
            $card =  M('users')->where('id_card', $postdata['id_card'])->find() ;
            if(!empty($card)){

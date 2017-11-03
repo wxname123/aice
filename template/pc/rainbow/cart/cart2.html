@@ -254,7 +254,7 @@
     }
 
 
-    // 提交订单
+    //
     ajax_return_status = 1;
     function submit_order()
     {
@@ -267,8 +267,8 @@
 
         $.ajax({
             type:"POST" ,
-            url:"{:U('Home/User/judgeAuth')}" ,
-            data:{} ,
+            url:"/index.php?m=Home&c=User&a=judgeAuth" ,
+            data:{},
             async:false   ,
             dataType:"json" ,
             success:function (data) {
@@ -279,17 +279,18 @@
                          type : "POST",
                          url:"{:U('Home/Cart/cart3')}",//+tab,
                          data : $('#cart2_form').serialize()+"&act=submit_order",// 你的formid
-                         async:false   ,
                          dataType: "json",
                          success: function(data){
                              if(data.status != '1')
                              {
-                                  //alert(data.msg); //执行有误
+                                 // alert(data.msg); //执行有误
                                  layer.alert(data.msg, {icon: 2});
                                  // 登录超时
                                  if(data.status == -100)
                                      location.href ="{:U('Home/User/login')}";
+
                                  ajax_return_status = 1; // 上一次ajax 已经返回, 可以进行下一次 ajax请求
+
                                  return false;
                              }
                              layer.msg('订单提交成功，正在跳转!', {
