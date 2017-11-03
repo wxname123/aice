@@ -225,7 +225,95 @@ class User extends MobileBase
         $this->assign('number_order',$number_order);
         return $this->fetch();
     }
-    
+
+
+    public  function  ajax_submit(){
+        $base64_image_content = $_POST['img'];
+        $code = $_POST['code'];
+
+        //        var_dump($base64_image_content) ; die ;
+        if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64_image_content, $result)){
+            $type = $result[2]; //jpeg
+            $img = base64_decode(str_replace($result[1], '', $base64_image_content)); //返回文件流
+        }
+
+        $tmp_file = time(). '.' .$type;
+
+        //截取年月日  , 返回一个存放了年月日的数组
+        $dateArr =   sub_year_month_day();
+        $sub_img_path = $dateArr[1] . '-' .$dateArr[2] ;
+        $img_path =  "public/upload/image/"  . $dateArr[0] . '/' .$sub_img_path ;
+
+        //判断文件夹是否存在  ( 2017 )
+        if(is_dir("public/upload/image/"  . $dateArr[0] )){
+            if(!is_dir($img_path)){
+                mkdir($img_path) ;
+            }
+        }else{
+            mkdir("public/upload/image/"  . $dateArr[0] ) ;
+        }
+
+//        var_dump($tmp_file) ; die ;
+        $save_path = $img_path . '/' . $tmp_file ;
+        $result =  file_put_contents( $save_path , $img);
+        if($result){
+            M('users')->where('user_id' , $this->user_id)->save(['statu'=> 1 ]);
+        }
+//        var_dump($a) ; die ;
+//        move_uploaded_file($_FILES["file_head"]["tmp_name"] , $img_path . '/' . $_FILES["file_head"]["name"]) ;
+
+//        $im = imagecreatefromstring($img);
+//        imagejpeg ($im, $tmp_file);
+        $imgObj = M('image')->where('user_id' , $this->user_id)->field('license,identi_front,identi_back,credit_front,credit_back')->find() ;
+//        var_dump($imgObj) ; die ;
+        //在入库前先将对应的文件删除
+        switch ($code){
+            case  1 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['license'])){
+                    unlink($imgObj['license']) ;
+                }
+                $this->userData['license'] = '/' . $save_path ;
+                break ;
+            case  2 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['identi_front'])){
+                    unlink($imgObj['identi_front']) ;
+                }
+                $this->userData['identi_front'] = '/' . $save_path ;
+                break ;
+            case  3 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['identi_back'])){
+                    unlink($imgObj['identi_back']) ;
+                }
+                $this->userData['identi_back'] = '/' . $save_path ;
+                break ;
+            case  4 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['credit_front'])){
+                    unlink($imgObj['credit_front']) ;
+                }
+                $this->userData['credit_front'] = '/' . $save_path ;
+                break ;
+            case  5 :
+                if(!empty($imgObj)  &&   file_exists($imgObj['credit_back'])){
+                    unlink($imgObj['credit_back']) ;
+                }
+                $this->userData['credit_back'] = '/' . $save_path ;
+                break ;
+        }
+
+        //如果该用户在tp_image 表中已经存在，那么我们只需要更新，不存在才需要插入
+        // 查询该用户是否存在
+        if($imgObj == NULL ){
+            //用户不存在
+            $res = M('image')->save($this->userData);
+        }else{
+            //用户存在
+            $res = M('image')->where('user_id',$this->user_id)->save($this->userData);
+        }
+        return ajaxReturn($tmp_file);
+
+    }
+
+
     /**
      * 优惠券
      */

@@ -122,6 +122,7 @@
 				})
 			})
 			function delimg(file,t){
+
 				$.get(
 						"/index.php?m=Admin&c=Uploadify&a=delupload",{action:"del", filename:file},function(){}
 				);

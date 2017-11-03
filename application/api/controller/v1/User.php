@@ -3,21 +3,17 @@
 
 namespace app\api\controller\v1 ;
 
+use app\api\validate\IDMustBeInteger;
 use app\api\validate\UserLoginValidate;
 use app\api\validate\UserRegistValidate;
 use app\api\validate\UserResetValidate;
 use  app\lib\exception\ParameterException ;
 
-//use   app\common\model;
+
+
 
 class User  extends   Base {
-  public  function  a(){
-      die("测试用的，记得删除该方法");
-  }
 
-  public  function  aa(){
-      die("测试用的，记得删除该方法");
-  }
 //    用户注册接口
     public  function  regist(){
         if(request()->isPost()){
@@ -175,6 +171,87 @@ class User  extends   Base {
             throw  $e ;
         }
      }
+
+//     上传图像
+    public  function uploadimg(){
+        $user_id =   request()->get('user_id') ;
+
+        (new  IDMustBeInteger())->goCheck() ;
+
+        $file  =   request()->file('image') ;
+
+
+        if($file  != NULL ){
+
+            $id  =  M('users')->where('user_id' , $user_id)->getField('user_id');
+            if($id == NULL ){
+                $e = new  ParameterException(array(
+                    'msg' => '该用户不存在' ,
+                    'errorCode' => '391011',
+                ));
+                throw  $e ;
+            }
+
+            $dateArr =   sub_year_month_day();
+            $yearpath = "public/upload/head_pic/" . $dateArr[0] ;
+
+            //判断文件夹是否存在  ( 2017 )
+
+            if(!is_dir($yearpath)){
+                mkdir($yearpath);
+            }
+
+            $info =  $file->move($yearpath) ;
+            $logo =  str_replace('\\', '/',$info->getSaveName()) ;
+            $path =   '/' . $yearpath . '/' . $logo ;
+
+
+
+            //删除数据库中原有的图片， 上传新的图片
+            $head_pic_url =  M('users')->where('user_id' , $user_id)->getField('head_pic');
+            if($head_pic_url != ""){
+
+                unlink(substr($head_pic_url, 1)) ;
+            }
+
+
+            $res =   M('users')->where('user_id' , $user_id)->save(['head_pic' => $path]) ;
+
+            if($res){
+                //图片上传成功
+                $e = new  ParameterException(array(
+                    'msg' => '图片上传成功' ,
+                    'errorCode' => '0',
+                    'datas' =>  BASE_PATH  . $path  ,
+                ));
+                throw  $e ;
+            }else{
+                //图片上传失败
+                $e = new  ParameterException(array(
+                    'msg' => '图片上传失败' ,
+                    'errorCode' => '391010',
+                ));
+                throw  $e ;
+            }
+
+        }else{
+            //请选择文件上传
+            $e = new  ParameterException(array(
+                'msg' => [
+                    'image'  =>  '请选择要上传的图片',
+                ],
+                'errorCode' => '1000',
+            ));
+            throw  $e ;
+        }
+
+      }
+
+
+//      获取广告页接口
+    public  function  getadlist(){
+
+    }
 
 }
 
