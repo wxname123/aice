@@ -438,16 +438,16 @@ class User extends MobileBase
 
 //
 //            $statusLogic = new \app\common\logic\SmsLogic;
-//            $isok= $statusLogic->identity($nickname, $id_card);
-//            $a=substr($isok,strpos($isok,'{'));
-//            $result = json_decode($a,true);
-//            if($result !=null){
-//                if($result['result']['isok'] == false){
-//                    $this->ajaxReturn(['status'=>-1,'msg'=>'身份信息不符合，请填写真实信息']);
-//                }
-//            }else{
-//                $this->ajaxReturn(['status'=>-1,'msg'=>'身份认证调用失败']);
-//            }
+            $isok=  identity($nickname, $id_card);
+            $a=substr($isok,strpos($isok,'{'));
+            $result = json_decode($a,true);
+            if($result !=null){
+                if($result['result']['isok'] == false){
+                    $this->ajaxReturn(['status'=>-1,'msg'=>'身份信息不符合，请填写真实信息']);
+                }
+            }else{
+                $this->ajaxReturn(['status'=>-1,'msg'=>'身份认证调用失败']);
+            }
 
 
             $session_id = session_id();
