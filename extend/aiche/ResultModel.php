@@ -12,10 +12,7 @@ class  ResultModel {
     //数据
     public $data ;
 
-    public function __construct()
-    {
-        
-    }
+
 
     public function resultData($data=null, $code=1, $msg="success"){
         $this->code = $code;
