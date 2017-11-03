@@ -70,6 +70,7 @@ class Cart extends Base {
 
         $cartList = $cartLogic->getCartList();//用户购物车
         $userCartGoodsTypeNum = $cartLogic->getUserCartGoodsTypeNum();//获取用户购物车商品总数
+
         $this->assign('userCartGoodsTypeNum', $userCartGoodsTypeNum);
         $this->assign('cartList', $cartList);//购物车列表
         return $this->fetch();
@@ -131,9 +132,13 @@ class Cart extends Base {
                 ->join('order_goods b','a.order_id = b.order_id')
                 ->where($map)
                 ->find();
+        $goods_num = Db::name('cart')->where(['user_id' => $this->user_id])->find();
+        if($goods_num['goods_num'] >=1){
+            $this->ajaxReturn(['status'=>0,'msg'=>'你有未支付的订单请删除后再提车','result'=>'']);
+        }
         if($oder['mission'] > 0){
             $this->ajaxReturn(['status'=>0,'msg'=>'你有未完成的任务不能进行再次购买','result'=>'']);
-            }else{
+        }else{
                 $goods_id = I("goods_id/d"); // 商品id
                 $goods_num = I("goods_num/d");// 商品数量
                 $item_id = I("item_id/d"); // 商品规格id
