@@ -1318,3 +1318,32 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
     $total_address .= $address ?: '';
     return $total_address;
 }
+
+
+
+ function identity($nickname,$id_card){
+    $host = "http://aliyunverifyidcard.haoservice.com";
+    $path = "/idcard/VerifyIdcardv2";
+    $method = "GET";
+    $appcode = "79b3fff30fbac5339376f6a1fab59ef3";
+    $headers = array();
+    array_push($headers, "Authorization:APPCODE " . $appcode);
+    $querys = "cardNo=$id_card&realName=$nickname";
+    $bodys = "";
+    $url = $host  . $path . "?" . $querys;
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_FAILONERROR, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HEADER, true);
+    if (1 == strpos("$".$host, "https://"))
+    {
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    }
+    $response=curl_exec($curl);
+    return $response;
+}
