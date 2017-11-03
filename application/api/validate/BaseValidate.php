@@ -75,7 +75,7 @@ class  BaseValidate extends  Validate{
 
 
     /*身份证号码检查接口函数  --- start  */
-    protected   function  isIdentify($value, $rule='', $data='', $field=''){
+    protected   function  isIdentify_2($value, $rule='', $data='', $field=''){
         if(strlen($value) == 15 || strlen($value) == 18){
             if(strlen($value) == 15){
                 $idcard = $this->idcard_15to18($value);
@@ -90,7 +90,7 @@ class  BaseValidate extends  Validate{
         }
     }
 
-    protected  function idcard_15to18($idcard){
+    protected  function idcard_15to18_2($idcard){
         if (strlen($idcard) != 15){
             return false;
         }else{// 如果身份证顺序码是996 997 998 999，这些是为百岁以上老人的特殊编码
@@ -105,7 +105,7 @@ class  BaseValidate extends  Validate{
     }
 
 
-    function idcard_checksum18($idcard){
+    function idcard_checksum18_2($idcard){
         if (strlen($idcard) != 18){ return false; }
         $idcard_base = substr($idcard, 0, 17);
         if ($this->idcard_verify_number($idcard_base) != strtoupper(substr($idcard, 17, 1))){
@@ -116,7 +116,7 @@ class  BaseValidate extends  Validate{
     }
 
 
-    function idcard_verify_number($idcard_base){
+    function idcard_verify_number_2($idcard_base){
         if (strlen($idcard_base) != 17){
             return false;
         }

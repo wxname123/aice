@@ -20,8 +20,83 @@ class User  extends   Base {
              //根据   推荐人号码  找到推荐人uid
 //            var_dump($this->post['recond_mobile']) ; die ;
 
-          (new UserRegistValidate() )->goCheck() ;
+//          (new UserRegistValidate() )->goCheck() ;
           $postdata = request()->post() ;
+
+          if(!isset($postdata['nickname'])  ||  !isset($postdata['mobile'])  || !isset($postdata['password'])  ||  !isset($postdata['recond_mobile'])  ||  !isset($postdata['id_card'])  ){
+              $e = new  ParameterException(array(
+                  'msg' => '缺少必填参数' ,
+                  'errorCode' => '391016',
+              ));
+              throw  $e ;
+          }
+
+            if(!isAppNotEmpty($postdata['mobile'])){
+                $e = new  ParameterException(array(
+                    'msg' => '手机号码不能为空' ,
+                    'errorCode' => '391020',
+                ));
+                throw  $e ;
+            }
+
+            if(!isAppNotEmpty($postdata['recond_mobile'])){
+                $e = new  ParameterException(array(
+                    'msg' => '手机号码不能为空' ,
+                    'errorCode' => '391020',
+                ));
+                throw  $e ;
+            }
+
+          if(!isAppNotEmpty($postdata['nickname'])){
+              $e = new  ParameterException(array(
+                  'msg' => '用户名不能为空' ,
+                  'errorCode' => '391017',
+              ));
+              throw  $e ;
+          }
+
+            if(!isAppNotEmpty($postdata['password'])){
+                $e = new  ParameterException(array(
+                    'msg' => '密码不能为空' ,
+                    'errorCode' => '391015',
+                ));
+                throw  $e ;
+            }
+
+            if(!isAppNotEmpty($postdata['id_card'])){
+                $e = new  ParameterException(array(
+                    'msg' => '身份证号码不能为空' ,
+                    'errorCode' => '391018',
+                ));
+                throw  $e ;
+            }
+
+            if(!isIdentify($postdata['id_card'])){
+                $e = new  ParameterException(array(
+                    'msg' => '身份证号码格式错误' ,
+                    'errorCode' => '391019',
+                ));
+                throw  $e ;
+            }
+
+          if(!isAppMobile($postdata['mobile'])){
+              $e = new  ParameterException(array(
+                  'msg' => '手机号码格式不正确' ,
+                  'errorCode' => '391014',
+              ));
+              throw  $e ;
+          }
+
+
+
+          $ismobile =   isAppMobile($postdata['mobile']) ;
+          if(!$ismobile){
+              $e = new  ParameterException(array(
+                  'msg' => '手机号码格式不正确' ,
+                  'errorCode' => '391014',
+              ));
+              throw  $e ;
+          }
 
           if($postdata['mobile'] == $postdata['recond_mobile']){
               $e = new  ParameterException(array(
@@ -116,21 +191,35 @@ class User  extends   Base {
     }
 
 
-    public   function bb(){
-        die("测试用的，记得删除该方法");
-    }
 
 //    用户登录接口
     public   function  login(){
 
-        (  new  UserLoginValidate() )->goCheck() ;
+//        (  new  UserLoginValidate() )->goCheck() ;
 
         $postdata =   request()->post() ;
 
+         $isMobile =  isAppMobile($postdata['mobile']) ;
+         if($isMobile ==  false ){
+             $e = new  ParameterException(array(
+                 'msg' => '手机格式不正确' ,
+                 'errorCode' => '391014',
+             ));
+             throw  $e ;
+         }
+
+
+         if(!isAppNotEmpty($postdata['password'])){
+             $e = new  ParameterException(array(
+                 'msg' => '密码不能为空' ,
+                 'errorCode' => '391014',
+             ));
+             throw  $e ;
+         }
+
+
         //根据 手机号码  ， 密码  去查询数据
-
          $uModel =  model('User') ;
-
          $data =  $uModel->identiMobilePass($postdata) ;
 
         if($data != NULL ){
@@ -152,8 +241,9 @@ class User  extends   Base {
 
 //    更换密码
     public  function  reset(){
-        (new  UserResetValidate())->goCheck() ;
+       // (new  UserResetValidate())->goCheck() ;
         $postdata = request()->post() ;
+
         //先把 验证码写死
         if($postdata['vcode'] != "888888"){
             $e = new  ParameterException(array(
@@ -162,6 +252,35 @@ class User  extends   Base {
             ));
             throw  $e ;
         }
+
+
+
+        if(!isAppNotEmpty($postdata['newpassword'])){
+            $e = new  ParameterException(array(
+                'msg' => '密码不能为空' ,
+                'errorCode' => '391015',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppNotEmpty($postdata['mobile'])){
+            $e = new  ParameterException(array(
+                'msg' => '手机号码不能为空' ,
+                'errorCode' => '391020',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppMobile($postdata['mobile'])){
+            $e = new  ParameterException(array(
+                'msg' => '手机号码格式不正确' ,
+                'errorCode' => '391014',
+            ));
+            throw  $e ;
+        }
+
+
+
 
         $password =  encrypt($postdata['newpassword']) ;
 
@@ -203,12 +322,31 @@ class User  extends   Base {
     public  function uploadimg(){
         $user_id =   request()->get('user_id') ;
 
-        (new  IDMustBeInteger())->goCheck() ;
+        //(new  IDMustBeInteger())->goCheck() ;
 
         $file  =   request()->file('image') ;
 
 
-        if($file  != NULL ){
+        if($file == NULL ){
+            $e = new  ParameterException(array(
+                'msg' => '上传图片不能为空' ,
+                'errorCode' => '391021',
+            ));
+            throw  $e ;
+        }
+
+        if(!isAppPositiveInteger($user_id)){
+            $e = new  ParameterException(array(
+                'msg' => '用户编码必须为正整数' ,
+                'errorCode' => '391022',
+            ));
+            throw  $e ;
+        }
+
+
+
+
+
 
             $id  =  M('users')->where('user_id' , $user_id)->getField('user_id');
             if($id == NULL ){
@@ -260,24 +398,7 @@ class User  extends   Base {
                 ));
                 throw  $e ;
             }
-
-        }else{
-            //请选择文件上传
-            $e = new  ParameterException(array(
-                'msg' => [
-                    'image'  =>  '请选择要上传的图片',
-                ],
-                'errorCode' => '1000',
-            ));
-            throw  $e ;
-        }
-
       }
-
-
-
-
-
 
 }
 
