@@ -16,8 +16,9 @@ class  BaseValidate extends  Validate{
             $params = $request->param() ;
 
             $result = $this->batch()->check($params) ;
-//            var_dump($result) ; die ;
+
             if(!$result){
+
 //            抛出自定义异常
                 $e = new  ParameterException() ;
                 $e->msg = $this->error ;
@@ -35,6 +36,7 @@ class  BaseValidate extends  Validate{
 //            $error = $this->error ;
 //            throw  new  Exception($error) ;
             }else{
+
                 return  true ;
             }
 //

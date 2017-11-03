@@ -27,7 +27,7 @@ class  ExceptionHandle  extends  Handle{
                 return  parent::render($e);
             }
 
-            $this->code = 500 ;
+//            $this->code = 500 ;
             $this->msg = '服务器内部错误' ;
             $this->errorCode = 999 ;
 //            日志记录
