@@ -28,7 +28,9 @@ Route::post('api/:version/user/regist','api/:version.User/regist');// 访问方�
 Route::post('api/:version/user/login','api/:version.User/login');
 Route::post('api/:version/user/password/reset','api/:version.User/reset');
 Route::post('api/:version/user/:user_id/uploadimg','api/:version.User/uploadimg');
-Route::post('api/:version/user/getadlist','api/:version.User/getadlist');
+Route::get('api/:version/ad/getadlist','api/:version.Ad/getadlist');
+Route::get('api/:version/ad/getad','api/:version.Ad/getad');   //获取启动页广告
+
 
 
 //短信验证码接口还没有写  post

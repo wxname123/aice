@@ -17,7 +17,7 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true ,
     // 应用Trace
     'app_trace'              => false   , //false
     // 应用模式状态
@@ -159,7 +159,7 @@ return [
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle     app\lib\exception\ExceptionHandle
-    'exception_handle'       => '',
+    'exception_handle'       => 'app\lib\exception\ExceptionHandle',
 
     // +----------------------------------------------------------------------
     // | 日志设置

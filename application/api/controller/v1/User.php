@@ -97,6 +97,7 @@ class User  extends   Base {
 
 //    用户登录接口
     public   function  login(){
+
         (  new  UserLoginValidate() )->goCheck() ;
 
         $postdata =   request()->post() ;
@@ -104,6 +105,7 @@ class User  extends   Base {
         //根据 手机号码  ， 密码  去查询数据
 
          $uModel =  model('User') ;
+
          $data =  $uModel->identiMobilePass($postdata) ;
 
         if($data != NULL ){
@@ -248,10 +250,9 @@ class User  extends   Base {
       }
 
 
-//      获取广告页接口
-    public  function  getadlist(){
 
-    }
+
+
 
 }
 
