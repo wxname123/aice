@@ -241,7 +241,6 @@ class User extends Base{
     }
     
     public function do_login(){
-        var_dump($_POST);
 //        $username = trim(I('post.username'));
         $mobile = trim(I('post.mobile'));
         $password = trim(I('post.password'));

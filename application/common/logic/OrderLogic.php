@@ -257,6 +257,7 @@ class OrderLogic
 	 */
     public function addOrder($user_id,$shipping_code,$invoice_title, $car_price,$user_note='',$pay_name='')
     {
+
         // 仿制灌水 1天只能下 50 单  // select * from `tp_order` where user_id = 1  and order_sn like '20151217%'
         //$order_count = M('Order')->where("user_id",$user_id)->where('order_sn', 'like', date('Ymd')."%")->count(); // 查找购物车商品总数量
         //if($order_count >= 50)
@@ -284,7 +285,6 @@ class OrderLogic
             'user_note'        =>$user_note, // 用户下单备注
             'pay_name'         =>$pay_name,//支付方式，可能是余额支付或积分兑换，后面其他支付方式会替换
         );
-
         $data['order_id'] = $order_id = M("Order")->insertGetId($data);
 //        var_dump($data) ; die ;
         $order = $data;//M('Order')->where("order_id", $order_id)->find();

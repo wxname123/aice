@@ -285,51 +285,56 @@ class Cart extends Base {
     /**
      * ajax 获取订单商品价格 或者提交 订单
      */
-    public function cart3(){
-        if($this->user_id == 0){
-            exit(json_encode(array('status'=>-100,'msg'=>"登录超时请重新登录!",'result'=>null))); // 返回结果状态
+    public function cart3()
+    {
+        if ($this->user_id == 0) {
+            exit(json_encode(array('status' => -100, 'msg' => "登录超时请重新登录!", 'result' => null))); // 返回结果状态
         }
         $address_id = I("address_id/d"); //  收货地址id
-        $shipping_code =  I("shipping_code"); //  物流编号
+        $shipping_code = I("shipping_code"); //  物流编号
         $invoice_title = I('invoice_title'); // 发票
-        $coupon_id =  I("coupon_id/d"); //  优惠券id
-        $couponCode =  I("couponCode"); //  优惠券代码
-        $pay_points =  I("pay_points/d",0); //  使用积分
-        $user_money =  I("user_money/f",0); //  使用余额
-        $user_note =  I("user_note",''); // 用户留言
-        $paypwd =  I("paypwd",''); // 支付密码
+        $coupon_id = I("coupon_id/d"); //  优惠券id
+        $couponCode = I("couponCode"); //  优惠券代码
+        $pay_points = I("pay_points/d", 0); //  使用积分
+        $user_money = I("user_money/f", 0); //  使用余额
+        $user_note = I("user_note", ''); // 用户留言
+        $paypwd = I("paypwd", ''); // 支付密码
         $user_money = $user_money ? $user_money : 0;
 
         $cartLogic = new CartLogic();
         $cartLogic->setUserId($this->user_id);
-        if($cartLogic->getUserCartOrderCount() == 0){
-            exit(json_encode(array('status'=>-2,'msg'=>'你的购物车没有选中商品','result'=>null))); // 返回结果状态
+        if ($cartLogic->getUserCartOrderCount() == 0) {
+            exit(json_encode(array('status' => -2, 'msg' => '你的购物车没有选中商品', 'result' => null))); // 返回结果状态
         }
 //        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
 //        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
-        $order_goods = M('cart')->where(['user_id'=>$this->user_id,'selected'=>1])->select();
-        $result = calculate_price($this->user_id,$order_goods,0,$pay_points,$user_money,$coupon_id,$couponCode);
-        if($result['status'] < 0) exit(json_encode($result));
+        $order_goods = M('cart')->where(['user_id' => $this->user_id, 'selected' => 1])->select();
+        $result = calculate_price($this->user_id, $order_goods, 0, $pay_points, $user_money, $coupon_id, $couponCode);
+        if ($result['status'] < 0) exit(json_encode($result));
         // 订单满额优惠活动
         $order_prom = get_order_promotion($result['result']['order_amount']);
-        $result['result']['order_amount'] = $order_prom['order_amount'] ;
-        $result['result']['order_prom_id'] = $order_prom['order_prom_id'] ;
-        $result['result']['order_prom_amount'] = $order_prom['order_prom_amount'] ;
+        $result['result']['order_amount'] = $order_prom['order_amount'];
+        $result['result']['order_prom_id'] = $order_prom['order_prom_id'];
+        $result['result']['order_prom_amount'] = $order_prom['order_prom_amount'];
 
         $car_price = array(
-            'postFee'      => $result['result']['shipping_price'], // 物流费
-            'couponFee'    => $result['result']['coupon_price'], // 优惠券
-            'balance'      => $result['result']['user_money'], // 使用用户余额
-            'pointsFee'    => $result['result']['integral_money'], // 积分支付
-            'payables'     => number_format($result['result']['order_amount'], 2, '.', ''), // 应付金额
-            'goodsFee'     => $result['result']['goods_price'],// 商品价格
+            'postFee' => $result['result']['shipping_price'], // 物流费
+            'couponFee' => $result['result']['coupon_price'], // 优惠券
+            'balance' => $result['result']['user_money'], // 使用用户余额
+            'pointsFee' => $result['result']['integral_money'], // 积分支付
+            'payables' => number_format($result['result']['order_amount'], 2, '.', ''), // 应付金额
+            'goodsFee' => $result['result']['goods_price'],// 商品价格
             'order_prom_id' => $result['result']['order_prom_id'], // 订单优惠活动id
             'order_prom_amount' => $result['result']['order_prom_amount'], // 订单优惠活动优惠了多少钱
         );
+        if ($_REQUEST['act'] == 'submit_order') {
+            $orderLogic = new OrderLogic();
+            $result = $orderLogic->addOrder($this->user_id,$shipping_code,$invoice_title, $car_price,$user_note='',$pay_name=''); // 添加订单
+            exit(json_encode($result));
+        }
+            $return_arr = array('status' => 1, 'msg' => '计算成功', 'result' => $car_price); // 返回结果状态
+            exit(json_encode($return_arr));
 
-
-        $return_arr = array('status'=>1,'msg'=>'计算成功','result'=>$car_price); // 返回结果状态
-        exit(json_encode($return_arr));
     }
     /**
      * ajax 获取订单商品价格 或者提交 订单
