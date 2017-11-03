@@ -1320,12 +1320,14 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
 }
 
 
-
+/*
+ *  @return  boolean
+ * */
  function identity($nickname,$id_card){
     $host = "http://aliyunverifyidcard.haoservice.com";
     $path = "/idcard/VerifyIdcardv2";
     $method = "GET";
-    $appcode = "79b3fff30fbac5339376f6a1fab59ef3";
+    $appcode = "ed8f501add704b4cb7714819c8326ec1";
     $headers = array();
     array_push($headers, "Authorization:APPCODE " . $appcode);
     $querys = "cardNo=$id_card&realName=$nickname";
@@ -1345,5 +1347,5 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     }
     $response=curl_exec($curl);
-    return $response;
+    return $response ;
 }

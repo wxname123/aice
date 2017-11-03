@@ -64,6 +64,29 @@ class User  extends   Base {
                 throw  $e ;
             }
 
+            //验证身份证信息
+            if(config('app_debug') == false){
+                $validator = identity($postdata['nickname'], $postdata['id_card']) ;
+                $validate_info =substr($validator,strpos($validator,'{'));
+                $validate_info =   json_decode($validate_info, true ) ;
+                if($validate_info !=null){
+                    if($validate_info['result']['isok'] == false){
+                        $e = new  ParameterException(array(
+                            'msg' => '身份信息不符合，请填写真实信息' ,
+                            'errorCode' => '391012',
+                        ));
+                        throw  $e ;
+                    }
+                }else{
+                    $e = new  ParameterException(array(
+                        'msg' => '身份认证失败' ,
+                        'errorCode' => '391013',
+                    ));
+                    throw  $e ;
+                }
+            }
+
+
 
           //执行 用户注册的逻辑
             $map['password'] =   encrypt(request()->post('password')) ;
