@@ -27,6 +27,9 @@ use think\Route;
 Route::post('api/:version/user/regist','api/:version.User/regist');// 访问方式 http://www.tpshop2.0.com/goodsInfo/77.html
 Route::post('api/:version/user/login','api/:version.User/login');
 Route::post('api/:version/user/password/reset','api/:version.User/reset');
+Route::post('api/:version/user/:user_id/uploadimg','api/:version.User/uploadimg');
+Route::post('api/:version/user/getadlist','api/:version.User/getadlist');
+
 
 //短信验证码接口还没有写  post
 

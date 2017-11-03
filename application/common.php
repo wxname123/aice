@@ -1,4 +1,6 @@
 <?php
+
+
 use think\Db;
 /**
  * tpshop检验登陆
