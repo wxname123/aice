@@ -281,13 +281,9 @@
 								<div class="J_btn_statu">
 									<div class="p-num">
 										<input class="J_input_val" id="number_{$v.goods_id}" type="text" value="1">
-										<p class="act">
-											<a href="javascript:void(0);" onClick="goods_add({$v.goods_id});" class="litt-zzyl1"></a>
-											<a href="javascript:void(0);" onClick="goods_cut({$v.goods_id});"  class="litt-zzyl2"></a>
-										</p>
 									</div>
 									<div class="p-btn">
-										<a href="javascript:void(0);" onclick="AjaxAddCart({$v[goods_id]},$('#number_'+{$v.goods_id}).val(),0);">加入购物车</a>
+										<a href="javascript:void(0);" onclick="AjaxAddCart({$v[goods_id]},$('#number_'+{$v.goods_id}).val(),1);">立即提车</a>
 									</div>
 								</div>
 							</div>
