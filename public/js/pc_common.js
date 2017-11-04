@@ -5,7 +5,7 @@
  * @form_id  商品详情页所在的 form表单
  * @to_catr 加入购物车后再跳转到 购物车页面 默认不跳转 1 为跳转
  */
- function AjaxAddCart(goods_id,num,to_catr)
+ function  AjaxAddCart(goods_id,num,to_catr)
  {
      // 如果有商品规格 说明是商品详情页提交
      if($("#buy_goods_form").length > 0){
@@ -55,24 +55,12 @@
                  {
                      location.href = "/index.php?m=Home&c=Goods&a=goodsInfo&id="+goods_id;
                  }
-                 else
-                 {
                      // 加入购物车有误
-                     if(data.status < 1)
+
+                 if(to_catr == 1)  //直接购买
                      {
-                         layer.alert(data.msg, {icon: 2});
-                         return false;
+                         location.href = "/index.php?m=Home&c=Cart&a=index";
                      }
-                     cart_num = parseInt($('#cart_quantity').html())+parseInt(num);
-                     $('#cart_quantity').html(cart_num)
-                     layer.open({
-                         type: 2,
-                         title: '温馨提示',
-                         skin: 'layui-layer-rim', //加上边框
-                         area: ['490px', '386px'], //宽高
-                         content:"/index.php?m=Home&c=Goods&a=open_add_cart"
-                     });
-                 }
              }
          });
      }

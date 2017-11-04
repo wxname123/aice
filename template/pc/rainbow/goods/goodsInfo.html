@@ -98,23 +98,12 @@
             <input type="hidden" name="item_id" value="{$Request.param.item_id}"/><!-- 商品规格id -->
             <div class="detail-ggsl">
                 <h1>{$goods.goods_name}</h1>
-                <div class="presale-time" style="display: none">
-                    <div class="pre-icon fl">
-                        <span class="ys"><i class="detai-ico"></i><span id="activity_type">抢购活动</span></span>
-                    </div>
-                    <div class="pre-icon fr">
-                        <span class="per" style="display: none"><i class="detai-ico"></i><em id="order_user_num">0</em>人预定</span>
-                        <span class="ti" id="activity_time"><i class="detai-ico"></i>剩余时间：<span id="overTime"></span></span>
-                        <span class="ti" id="prom_detail"></span>
-                    </div>
-                </div>
                 <div class="shop-price-cou">
                     <div class="shop-price-le">
                         <ul>
                             <li class="jaj"><span id="goods_price_title">商城价：</span></li>
                             <li>
-                                            <span class="bigpri_jj" id="goods_price"><em>￥</em>
-                                            </span>
+                                <span class="bigpri_jj" id="goods_price"><em>￥</em></span>
                             </li>
                         </ul>
                         <ul>
@@ -128,8 +117,8 @@
                             <li><span id="activity_title" style="color: #df3033;background: 0 0;border: 1px solid #df3033;padding: 2px 3px;"></span></li>
                         </ul>
                         <ul>
-                                <li class="jaj ls4" ><span>任务数：</span></li>
-                                <li><span class="fullminus">{$goods.mission}</span></li>
+                            <li class="jaj ls4" ><span>任务数：</span></li>
+                            <li><span class="fullminus">{$goods.mission}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -147,9 +136,7 @@
                 <div class="standard">
                     <ul class="p">
                         <li class="jaj"><span>手续费：</span></li>
-                        <li class="lawir">
-                            3000
-                        </li>
+                        <li class="lawir">3000</li>
                     </ul>
                 </div>
                 <div class="standard p">
@@ -205,9 +192,9 @@
                 </div>
                 <div class="standard p">
                     <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
-                    <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                    <a id="join_cart_now" class="paybybill" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即提车</a>
                     <!--<a id="join_cart" class="addcar" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,0);"><i class="sk"></i>加入购物车</a>-->
-                    <a id="no_join_cart_now" class="paybybill" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed">立即购买</a>
+                    <a id="no_join_cart_now" class="paybybill" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed">立即提车·</a>
                     <a id="no_join_cart" class="addcar" style="display:none;background: #ebebeb;color: #999;cursor: not-allowed"><i class="sk"></i>加入购物车</a>
                 </div>
             </div>

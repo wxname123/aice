@@ -159,7 +159,7 @@ class OrderLogic extends Model
         		$btn['confirm'] = '确认';
         	}elseif($os == 1 && $ps == 1 && ($ss == 0 || $ss == 2)){
         		$btn['cancel'] = '取消确认';
-        		$btn['delivery'] = '去发货';
+        		$btn['delivery'] = '确认提车';
         	}
         } 
                
