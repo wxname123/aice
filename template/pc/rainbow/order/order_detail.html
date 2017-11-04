@@ -45,7 +45,7 @@
                         <!--<a class="ddn3" href="">评价</a>-->
                     </if>
                     <if condition="$order_info.receive_btn eq 1 ">
-                        <a class="ddn3" style="margin-top:20px;" href="javascript:;" onclick="order_confirm({$order_info['order_id']})">确认收货</a>
+                        <a class="ddn3" style="margin-top:20px;" href="javascript:;" onclick="order_confirm({$order_info['order_id']})">确认提车</a>
                     </if>
                     <if condition="$order_info.cancel_btn eq 1">
                         <if condition="$order_info[pay_status] eq 0">
@@ -130,59 +130,59 @@
                 </div>
             </div>
         </div>
-        <if condition="$order_info['shipping_status'] eq 1">
-            <div class="home-main reseting ma-to-20">
-                <div class="com-topyue">
-                    <div class="wacheng fl">
-                        <div class="shioeboixe">
-                            <div class="sohstyle p">
-                                <div class="odjpyes">
-                                    <img src="__STATIC__/images/kuaidi-1.jpg"/>
-                                </div>
-                                <div class="osnhptek">
-                                    <p><span>送货方式：</span><span>{$order_info.shipping_name}</span></p>
-                                    <p><span>快递单号：</span><span>{$order_info.invoice_no}</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="wacheng2 fr">
-                        <div class="listchatu">
-                            <ul id="express_info">
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script>
-                queryExpress();
-                function queryExpress()
-                {
-                    var shipping_code = "{$order_info['shipping_code']}";
-                    var invoice_no = "{$order_info['invoice_no']}";
-                    $.ajax({
-                        type : "GET",
-                        dataType: "json",
-                        url:"/index.php?m=Home&c=Api&a=queryExpress&shipping_code="+shipping_code+"&invoice_no="+invoice_no,//+tab,
-                        success: function(data){
-                            var html = '';
-                            if(data.status == 200){
-                                $.each(data.data, function(i,n){
-                                    if(i == 0){
-                                        html += "<li class='first'><i class='node-icon'></i><span class='time'>"+n.time+"</span><span class='txt'>"+n.context+"</span></li>";
-                                    }else{
-                                        html += "<li><i class='node-icon'></i><span class='time'>"+n.time+"</span><span class='txt'>"+n.context+"</span></li>";
-                                    }
-                                });
-                            }else{
-                                html += "<li class='first'><i class='node-icon'></i><span class='txt'>"+data.message+"</span></li>";
-                            }
-                            $("#express_info").html(html);
-                        }
-                    });
-                }
-            </script>
-        </if>
+        <!--<if condition="$order_info['shipping_status'] eq 1">-->
+            <!--<div class="home-main reseting ma-to-20">-->
+                <!--<div class="com-topyue">-->
+                    <!--<div class="wacheng fl">-->
+                        <!--<div class="shioeboixe">-->
+                            <!--<div class="sohstyle p">-->
+                                <!--<div class="odjpyes">-->
+                                    <!--<img src="__STATIC__/images/kuaidi-1.jpg"/>-->
+                                <!--</div>-->
+                                <!--<div class="osnhptek">-->
+                                    <!--<p><span>送货方式：</span><span>{$order_info.shipping_name}</span></p>-->
+                                    <!--<p><span>快递单号：</span><span>{$order_info.invoice_no}</span></p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="wacheng2 fr">-->
+                        <!--<div class="listchatu">-->
+                            <!--<ul id="express_info">-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<script>-->
+                <!--queryExpress();-->
+                <!--function queryExpress()-->
+                <!--{-->
+                    <!--var shipping_code = "{$order_info['shipping_code']}";-->
+                    <!--var invoice_no = "{$order_info['invoice_no']}";-->
+                    <!--$.ajax({-->
+                        <!--type : "GET",-->
+                        <!--dataType: "json",-->
+                        <!--url:"/index.php?m=Home&c=Api&a=queryExpress&shipping_code="+shipping_code+"&invoice_no="+invoice_no,//+tab,-->
+                        <!--success: function(data){-->
+                            <!--var html = '';-->
+                            <!--if(data.status == 200){-->
+                                <!--$.each(data.data, function(i,n){-->
+                                    <!--if(i == 0){-->
+                                        <!--html += "<li class='first'><i class='node-icon'></i><span class='time'>"+n.time+"</span><span class='txt'>"+n.context+"</span></li>";-->
+                                    <!--}else{-->
+                                        <!--html += "<li><i class='node-icon'></i><span class='time'>"+n.time+"</span><span class='txt'>"+n.context+"</span></li>";-->
+                                    <!--}-->
+                                <!--});-->
+                            <!--}else{-->
+                                <!--html += "<li class='first'><i class='node-icon'></i><span class='txt'>"+data.message+"</span></li>";-->
+                            <!--}-->
+                            <!--$("#express_info").html(html);-->
+                        <!--}-->
+                    <!--});-->
+                <!--}-->
+            <!--</script>-->
+        <!--</if>-->
         <div class="home-main ma-to-20">
             <div class="rshrinfmas">
                 <div class="spff">
@@ -327,7 +327,7 @@
     }
     //确定收货
     function order_confirm(order_id){
-        layer.confirm("你确定收到货了吗?",{
+        layer.confirm("你确定提车了吗?",{
             btn:['确定','取消']
         },function(){
             $.ajax({

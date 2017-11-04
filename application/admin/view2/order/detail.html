@@ -206,9 +206,10 @@ a.green:hover { color: #FFF; background-color: #1BBC9D; border-color: #16A086; }
 	        </dt>
 	        <dd class="opt" style="margin-left:10px">
 	         	<foreach name="button" item="vo" key="k">
+                    <?php var_dump( $k); ?>
                		<if condition="$k eq 'pay_cancel'">
                			<a class="ncap-btn-big ncap-btn-green" href="javascript:void(0)" data-url="{:U('Order/pay_cancel',array('order_id'=>$order['order_id']))}" onclick="pay_cancel(this)">{$vo}</a>
-               		<elseif condition="$k eq 'delivery'"/>                                                 
+               		<elseif condition="$k eq 'delivery'"/>
                			<a class="ncap-btn-big ncap-btn-green" href="{:U('Order/delivery_info',array('order_id'=>$order['order_id']))}">{$vo}</a>
                		<elseif condition="$k eq 'refund'"/>
                		<else/>

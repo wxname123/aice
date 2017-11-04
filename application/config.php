@@ -301,8 +301,8 @@ return [
         'WAITPAY' => '待支付',
         'WAITSEND'=>'待发货',
         'PORTIONSEND'=>'部分发货',
-        'WAITRECEIVE'=>'待收货',
-        'WAITCCOMMENT'=> '待评价',
+        'WAITRECEIVE'=>'确认提车',
+        'WAITCCOMMENT'=> '完成',
         'CANCEL'=> '已取消',
         'FINISH'=> '已完成', //
         'CANCELLED'=> '已作废'
