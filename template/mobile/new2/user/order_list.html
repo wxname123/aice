@@ -72,11 +72,6 @@
                                     <div class="qxatten  wiconfine">
                                         <p class="weight"><span>数量</span>&nbsp;<span>{$good[goods_num]}</span></p>
                                     </div>
-                                    <div class="buttondde">
-                                        <if condition="($list[return_btn] eq 1) and ($good[is_send] lt 2)">
-                                            <a href="{:U('Mobile/User/return_goods',['rec_id'=>$good['rec_id']])}">申请售后</a>
-                                        </if>
-                                    </div>
                                 </div>
                                 </a>
                             </div>
@@ -101,13 +96,7 @@
                             </if>
                         </if>
                         <if condition="$list.receive_btn eq 1">
-                            <a class="shop-rebuy paysoon" onclick="orderConfirm({$list.order_id})">确认收货</a>
-                        </if>
-                        <if condition="$list.comment_btn eq 1">
-                            <a class="shop-rebuy" href="{:U('/Mobile/User/comment')}">评价</a>
-                        </if>
-                        <if condition="$list.shipping_btn eq 1">
-                            <a class="shop-rebuy" class="shop-rebuy" href="{:U('Mobile/User/express',array('order_id'=>$list['order_id']))}">查看物流</a>
+                            <a class="shop-rebuy paysoon" onclick="orderConfirm({$list.order_id})">确认提车</a>
                         </if>
                     </div>
                 </div>

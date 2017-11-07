@@ -1,5 +1,5 @@
-
 <include file="/public/layout" />
+
 <script src="__PUBLIC__/js/pc_common.js"></script>
 
 <!--物流配置 css -start-->
@@ -141,29 +141,29 @@
 
         <!--身份证上传-->
         <div class="ncap-form-default tab_div_1">
-        <dl class="row">
-            <dt class="tit">
-                <label>身份证正面上传</label>
-            </dt>
+            <dl class="row">
+                <dt class="tit">
+                    <label>身份证正面上传</label>
+                </dt>
 
-            <dd class="opt">
-                <div class="input-file-show">
+                <dd class="opt">
+                    <div class="input-file-show">
             <span class="show">
                 <a id="img_b" target="_blank" class="nyroModal" rel="gal" href="{$info.identi_front}">
                     <i id="img_input_b" class="fa fa-picture-o" onMouseOver="layer.tips('<img src={$info.identi_front}>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
                 </a>
             </span>
-                    <span class="type-file-box">
+                        <span class="type-file-box">
                 <input type="text" id="identi_front" name="identi_front" value="{$info.identi_front}" class="type-file-text">
                 <input type="button" name="button" id="button1-b" value="选择上传..." class="type-file-button">
                 <input class="type-file-file" onClick="GetUploadify(1,'','image','img_call_back_b')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
             </span>
-                </div>
-                <span class="err"></span>
-                <p class="notic">请上传图片格式文件</p>
-            </dd>
-        </dl>
-</div>
+                    </div>
+                    <span class="err"></span>
+                    <p class="notic">请上传图片格式文件</p>
+                </dd>
+            </dl>
+        </div>
 
         <div class="ncap-form-default tab_div_1">
             <dl class="row">
@@ -296,12 +296,13 @@
 
         $.ajax({
             dataType:'json' ,
-            url:'Home/User/actionHandle',
+            url:'/Home/User/actionHandle',
             data:{'id':good_id ,'license':license,'identi_front':identi_front,'identi_back':identi_back,'credit_front':credit_front ,'credit_back':credit_back },
             type:'post',
             success:function (data) {
                 if(data.status == 0){
-//                             location.href = "/index.php?m=Home&c=Index&a=index";
+                    layer.alert('您的身份认证已提交至管理员审核，请耐心等待审核结果！！！') ;
+                    location.href = "/index.php?m=Home&c=Index&a=index";
 
                 }else{
                     layer.alert(data.msg, {icon:5}) ;
@@ -316,10 +317,10 @@
      * 以下是图片上传方法
      */
     // 上传商品图片成功回调函数
-//    function call_back(fileurl_tmp){
-//        $("#original_img").val(fileurl_tmp);
-//        $("#original_img2").attr('href', fileurl_tmp);
-//    }
+    //    function call_back(fileurl_tmp){
+    //        $("#original_img").val(fileurl_tmp);
+    //        $("#original_img2").attr('href', fileurl_tmp);
+    //    }
 
     function img_call_back(fileurl_tmp)
     {

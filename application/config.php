@@ -260,9 +260,8 @@ return [
         5 => '已作废',
     ],
     'SHIPPING_STATUS' => array(
-        0 => '未发货',
-        1 => '已发货',
-        2 => '部分发货'
+        0 => '未提车',
+        1 => '已提车',
     ),
     'PAY_STATUS' => array(
         0 => '未支付',
@@ -299,7 +298,7 @@ return [
     
     'ORDER_STATUS_DESC' => [
         'WAITPAY' => '待支付',
-        'WAITSEND'=>'待发货',
+        'WAITSEND'=>'待提车',
         'PORTIONSEND'=>'部分发货',
         'WAITRECEIVE'=>'确认提车',
         'WAITCCOMMENT'=> '完成',

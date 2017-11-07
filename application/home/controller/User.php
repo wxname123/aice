@@ -1504,6 +1504,56 @@ class User extends Base{
         return $this->fetch('user/ajax_message_notice');
     }
 
+
+    public  function  actionHandle(){
+        $good_id =  request()->post('good_id') ;
+        $license =  request()->post('license') ;
+        $identi_front =  request()->post('identi_front') ;
+        $identi_back =  request()->post('identi_back') ;
+        $credit_front =  request()->post('credit_front') ;
+        $credit_back =  request()->post('credit_back') ;
+
+        $tmp = [
+            'user_id' => $this->user_id ,
+            'license' => $license ,
+            'identi_front'  =>  $identi_front,
+            'identi_back'  =>  $identi_back,
+            'credit_front'  =>  $credit_front,
+            'credit_back'  =>  $credit_back,
+        ];
+
+        $imgdata =  M('image')->where('user_id', $this->user_id)->find() ;
+
+        if(empty($imgdata)){
+            $res =   M('image')->save($tmp) ;
+        }else{
+            $res =  M('image')->where('user_id',$this->user_id)->save($tmp);
+        }
+
+        if($this->user_id > 0 ){
+            M('users')->where('user_id', $this->user_id)->save(['statu' => 1]) ;
+        }else{
+            //  please   login
+        }
+
+
+        if($res){
+            $data = [
+                'status'  =>  0 ,
+                'msg'   => 'success',
+            ];
+            echo  json_encode($data, true ) ;
+        }else{
+            $data = [
+                'status'  =>  1 ,
+                'msg'   => 'failed',
+            ];
+            echo  json_encode($data, true ) ;
+        }
+
+    }
+
+
     /**
      * 支付密码
      * @return mixed

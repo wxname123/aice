@@ -256,33 +256,31 @@
         </div>
         <div class="fr">
             <ul>
-                <li class="o">
-                    <a class="pb_plusshopcar button active_button choise_num" href="javascript:void(0);"> 加入购物车</a>
+                <li >
+                    <a class="pb_plusshopcar button active_button choise_num" href="javascript:;" ></a>
                 </li>
-
-
                 <if condition="($statu == 0)">
-                    <li class="r"  style="text-align: right">
-                        <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_SubmitCheck()">立即购买</a>
+                    <li class="r" >
+                        <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_SubmitCheck()">立即提车</a>
                     </li>
                     <elseif condition="($statu == 1)">
                         <li class="r">
-                            <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unpassCheck()">立即购买</a>
+                            <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unpassCheck()">立即提车</a>
                         </li>
                     </elseif>
                     <elseif condition="($statu == 2)">
                         <li class="r">
-                            <a class="pb_buy dis_btn" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买</a>
+                            <a class="pb_buy dis_btn" href="javascript:;" onclick="AjaxAddCart({$goods.goods_id},1,1);">立即提车</a>
                         </li>
                     </elseif>
                     <elseif condition="($statu == 3)">
                         <li class="r">
-                            <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unselectIdentify">立即购买</a>
+                            <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unselectIdentify">立即提车</a>
                         </li>
                     </elseif>
                     <else />
                     <li class="r">
-                        <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unlogin()">立即购买</a>
+                        <a  class="pb_buy dis_btn" href="javascript:;" onclick="mobile_unlogin()">立即提车</a>
                     </li>
                 </if>
 
@@ -359,8 +357,7 @@
     </div>
     </div>
     <div class="plusshopcar-buy p">
-        <a class="pb_plusshopcar button active_button dis_btn" href="javascript:void(0);" onClick="AjaxAddCart({$goods.goods_id},1,0);">加入购物车</a>
-        <a class="pb_buy dis_btn" href="javascript:void(0);"  onclick="AjaxAddCart({$goods.goods_id},1,1);">立即购买 </a>
+        <a class="pb_plusshopcar button active_button dis_btn" href="javascript:void(0);"  onclick="AjaxAddCart({$goods.goods_id},1,1);">立即提车 </a>
     </div>
     </div>
 </form>
@@ -423,13 +420,11 @@
 
     //还没有通过验证
     function  mobile_unpassCheck(){
-//        layer.alert('您还没有通过管理员的认证！！！',{icon:5}) ;
         return alert("您还没有通过管理员的认证！！！");
     }
 
     //  数据查询失败
     function  mobile_unselectIdentify(){
-//        layer.alert('未找到该用户信息！！！',{icon:5}) ;
         return alert("未找到该用户信息！！！");
     }
 

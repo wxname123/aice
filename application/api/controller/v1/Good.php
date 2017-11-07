@@ -25,7 +25,6 @@ class   Good  extends  Base{
 
       $datas =  $goodModel->getHotList($page, $per_page);
 
-
       if(!empty($datas)){
           foreach ($datas as $k=>$v ){
                 if($v != ""){
