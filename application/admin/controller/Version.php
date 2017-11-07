@@ -24,7 +24,9 @@ class Version extends Base
     }
 
     public function ajaxindex(){
-        $ver = M('version')->find() ;
+        $count = M('version')->count();
+        $Page  = new AjaxPage($count,10);
+        $ver = M('version')->limit($Page->firstRow.','.$Page->listRows)->select() ;
         $this->assign('ver',$ver);
         return $this->fetch();
     }
