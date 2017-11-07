@@ -41,7 +41,7 @@
         <div class="layout after-ta order-ha">
             <div class="erhuh">
                 <i class="icon-succ"></i>
-                <h3>订单提交成功，请您尽快付款！</h3>
+                <h3>订单提交成功，请您尽快付款！<?php var_dump($order['total_amount']);?></h3>
                 <p class="succ-p">
                     <if condition="$master_order_sn neq ''">
                         订单号：&nbsp;&nbsp;{$master_order_sn}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;

@@ -376,6 +376,10 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+    public function check(){
+        return $this->fetch();
+    }
+
     /**
      * 登录
      */

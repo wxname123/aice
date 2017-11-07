@@ -1,16 +1,4 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * $Author: IT宇宙人 2015-08-10 $
- */
 namespace app\mobile\controller;
 use app\common\logic\CartLogic;
 use app\common\logic\GoodsActivityLogic;
@@ -173,27 +161,24 @@ class Cart extends MobileBase {
             exit(json_encode(array('status'=>-100,'msg'=>"登录超时请重新登录!",'result'=>null))); // 返回结果状态
         }
         $address_id = I("address_id/d"); //  收货地址id
-
-        $shipping_code =  I("shipping_code"); //  物流编号
+        $shipping_code = I("shipping_code"); //  物流编号
         $invoice_title = I('invoice_title'); // 发票
-//        $coupon_id =  I("coupon_id/d"); //  优惠券id
-//        $couponCode =  I("couponCode"); //  优惠券代码
-//        $pay_points =  I("pay_points/d",0); //  使用积分
+        $coupon_id = I("coupon_id/d"); //  优惠券id
+        $couponCode = I("couponCode"); //  优惠券代码
+        $pay_points = I("pay_points/d", 0); //  使用积分
+        $user_money = I("user_money/f", 0); //  使用余额
+        $user_note = I("user_note", ''); // 用户留言
+        $paypwd = I("paypwd", ''); // 支付密码
+        $user_money = $user_money ? $user_money : 0;
 
-//        $user_money =  I("user_money/f",0); //  使用余额
-//        var_dump($user_money) ; die ;
-        $user_note = trim(I('user_note'));   //买家留言
-//        $paypwd =  I("paypwd",''); // 支付密码
-
-//        $user_money = $user_money ? $user_money : 0;
         $cartLogic = new CartLogic();
         $cartLogic->setUserId($this->user_id);
 
         if($cartLogic->getUserCartOrderCount() == 0 ) {
             exit(json_encode(array('status'=>-2,'msg'=>'你的购物车没有选中商品','result'=>null))); // 返回结果状态
         }
-        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
-        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
+//        if(!$address_id) exit(json_encode(array('status'=>-3,'msg'=>'请先填写收货人信息','result'=>null))); // 返回结果状态
+//        if(!$shipping_code) exit(json_encode(array('status'=>-4,'msg'=>'请选择物流信息','result'=>null))); // 返回结果状态
 
         $address = M('UserAddress')->where("address_id", $address_id)->find();
 
@@ -211,10 +196,10 @@ class Cart extends MobileBase {
         $result['result']['order_prom_amount'] = $order_prom['order_prom_amount'] ;
 
         $car_price = array(
-//            'postFee'      => $result['result']['shipping_price'], // 物流费
-//            'couponFee'    => $result['result']['coupon_price'], // 优惠券
-//            'balance'      => $result['result']['user_money'], // 使用用户余额
-//            'pointsFee'    => $result['result']['integral_money'], // 积分支付
+            'postFee'      => $result['result']['shipping_price'], // 物流费
+            'couponFee'    => $result['result']['coupon_price'], // 优惠券
+            'balance'      => $result['result']['user_money'], // 使用用户余额
+            'pointsFee'    => $result['result']['integral_money'], // 积分支付
             'payables'     => $result['result']['order_amount'], // 应付金额
             'goodsFee'     => $result['result']['goods_price'],// 商品价格
             'order_prom_id' => $result['result']['order_prom_id'], // 订单优惠活动id
@@ -222,33 +207,12 @@ class Cart extends MobileBase {
         );
 
         // 提交订单
-        if($_REQUEST['act'] == 'submit_order') {
-             $pay_name = '';
-            if (!empty($pay_points) || !empty($user_money)) {
-                if ($this->user['is_lock'] == 1) {
-                    exit(json_encode(array('status'=>-5,'msg'=>"账号异常已被锁定，不能使用余额支付！",'result'=>null))); // 用户被冻结不能使用余额支付
-                }
-                if (empty($this->user['paypwd'])) {
-                    exit(json_encode(array('status'=>-6,'msg'=>'请先设置支付密码','result'=>null)));
-                }
-                if (empty($paypwd)) {
-                    exit(json_encode(array('status'=>-7,'msg'=>'请输入支付密码','result'=>null)));
-                }
-                if (encrypt($paypwd) !== $this->user['paypwd']) {
-                    exit(json_encode(array('status'=>-8,'msg'=>'支付密码错误','result'=>null)));
-                }
-                $pay_name = $user_money ? '余额支付' : '积分兑换';
-            }
-            if(empty($coupon_id) && !empty($couponCode)){
-                $coupon_id = M('CouponList')->where("code", $couponCode)->getField('id');
-            }
-            $orderLogic = new OrderLogic();
 
-
-            $result = $orderLogic->addOrder($this->user_id,$invoice_title,$car_price,$user_note); // 添加订单
-//            var_dump($result) ; die ;
-            exit(json_encode($result));
-        }
+            if ($_REQUEST['act'] == 'submit_order') {
+                $orderLogic = new OrderLogic();
+                $result = $orderLogic->addOrder($this->user_id,$shipping_code,$invoice_title, $car_price,$user_note='',$pay_name=''); // 添加订单
+                exit(json_encode($result));
+            }
         $return_arr = array('status'=>1,'msg'=>'计算成功','result'=>$car_price); // 返回结果状态
 
         exit(json_encode($return_arr));
@@ -350,6 +314,11 @@ class Cart extends MobileBase {
             ->join('order_goods b','a.order_id = b.order_id')
             ->where($map)
             ->find();
+
+        $goods_num = Db::name('cart')->where(['user_id' => $this->user_id])->find();
+        if($goods_num['goods_num'] >=1){
+            $this->ajaxReturn(['status'=>0,'msg'=>'你有未支付的订单请删除后再提车','result'=>'']);
+        }
         if($oder['mission']>0){
             $this->ajaxReturn(['status'=>-1,'msg'=>'还有未完成的任务,不能进行再次购买','result'=>'']);
         }
