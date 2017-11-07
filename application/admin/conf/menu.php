@@ -12,6 +12,7 @@ return	array(
 						array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 						array('name'=>'清除缓存','act'=>'cleanCache','op'=>'System'),
 						array('name'=>'自提点','act'=>'index','op'=>'Pickup'),
+                        array('name'=>'版本控制','act'=>'index','op'=>'version'),
 				)),
 				array('name' => '会员','child'=>array(
 						array('name'=>'会员列表','act'=>'index','op'=>'User'),
