@@ -36,6 +36,8 @@ Route::get('api/:version/good/:good_id/getdetails','api/:version.Good/getdetails
 Route::get('api/:version/attr/:good_id/getattr','api/:version.Attr/getattr');   //获取商品属性接口
 Route::get('api/:version/order/:user_id/getlist','api/:version.Order/getOrderList');   //获取用户订单列表接口
 Route::get('api/:version/order/:rec_id/getorderdetail','api/:version.Order/getOrderDetail');   //查询订单详情接口
+Route::get('api/:version/region/getlist','api/:version.Region/getRegionList');   //获取地区列表
+Route::get('api/:version/version/:type/checkversion','api/:version.Version/checkVersion');   //版本检测接口
 
 
 
