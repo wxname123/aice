@@ -3,6 +3,7 @@
 namespace   app\api\controller\v1 ;
 
 use  app\lib\exception\ParameterException ;
+use  think\Config ;
 
 class  Region  extends  Base {
 
