@@ -105,7 +105,23 @@ class  Order  extends   Base{
          }
 
          $orderModel =   model('Order');
-         $orderModel->getDetailBy($rec_id) ;
+         $orderData =   $orderModel->getDetailBy($rec_id) ;
+//         var_dump($orderData) ; die ;
+         if(!empty($orderData)){
+             $e = new  ParameterException(array(
+                 'msg' => 'success' ,
+                 'errorCode' => '0',
+                 'datas'  =>  $orderData  ,
+             ));
+             throw  $e ;
+         }else{
+             $e = new  ParameterException(array(
+                 'msg' => 'success' ,
+                 'errorCode' => '0',
+                 'datas'  =>  null   ,
+             ));
+             throw  $e ;
+         }
     }
 
 }

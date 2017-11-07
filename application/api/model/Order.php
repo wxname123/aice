@@ -52,16 +52,15 @@ class  Order  extends  Model {
      *  return Array
      * */
     public  function   getDetailBy($rec_id){
-//           return  Db::table('tp_order')
-//                                ->alias('o')
-//                                ->where('o.order_id' , $order_id)
-//                                ->join('tp_users u', 'u.user_id = o.user_id', 'left')
-//                                ->field('o.order_id,u.user_id ,  o.user_id, u.nickname,u.mobile,   ')
-//                                ->find() ;
-//            return   Db::table('tp_order_goods')
-//                            ->alias('og')
-//                            ->where('rec_id' ,  $rec_id )
-//                            ->
+            return   Db::table('tp_order_goods')
+                            ->alias('og')
+                            ->where('rec_id' ,  $rec_id )
+                            ->join('tp_order o', 'o.order_id = og.order_id', 'left')
+                            ->join('tp_goods g', 'g.goods_id = og.goods_id', 'left')
+                            ->field('og.rec_id, og.order_id, og.goods_id, og.goods_num,og.goods_price,
+                                      FROM_UNIXTIME( o.add_time , "%Y-%m-%d %H:%i:%s")  add_time , o.shipping_price, order_status ,
+                                      g.goods_name  ')
+                            ->find();
 
     }
 
