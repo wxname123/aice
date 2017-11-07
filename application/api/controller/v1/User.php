@@ -231,7 +231,7 @@ class User  extends   Base {
         }else{
             $e = new  ParameterException(array(
                 'msg' => '手机号或密码错误' ,
-                'errorCode' => '0',
+                'errorCode' => '391007',
                 'datas'  =>  $data
             ));
             throw  $e ;

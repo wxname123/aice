@@ -25,6 +25,31 @@ define('ORDER_COUNT', 20 ) ;
          }
      }
 
+     /*
+      *  传入UE 编辑之后的数据  ， 例如：&lt;p&gt;&lt;img src=&quot;/public/upload/goods/2016/01-13/5695bd6ddd3f5.jpg&quot; style=&quot;float:none;&quot; title=&quot;428_428_1443086923441.jpg&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/public/upload/goods/2016/01-13/5695bd6deed8b.jpg&quot; style=&quot;float:none;&quot; title=&quot;428_428_1443086925858.jpg&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/public/upload/goods/2016/01-13/5695bd6e11704.jpg&quot; style=&quot;float:none;&quot; title=&quot;428_428_1443086930218.jpg&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+      *  返回 转义之后，根据正则 获取的src 属性(数组)
+      * */
+     function  getSrcImg($content){
+
+//         preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$content,$match);
+
+        preg_match_all('/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i' , $content , $matchs);
+
+//         preg_match('/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i',$content,$match);
+//         var_dump( $matchs[0][1] );  die ;
+
+         $return_arr = [] ;
+         foreach ($matchs[0]  as $k=>$v ){
+             $str_arr  =   explode(" ", $v ) ;
+//             var_dump($a[1]) ; die ;
+              $src_str =  substr($str_arr[1], 5) ;
+             $src_str = substr($src_str , 0, -1) ;
+            $return_arr[$k] =  $src_str ;
+         }
+        return  $return_arr ;
+     }
+
+
      function isAppPositiveInteger($value, $rule='', $data='', $field='')
       {
         if (is_numeric($value) && is_int($value + 0) && ($value + 0) > 0) {

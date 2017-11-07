@@ -26,4 +26,46 @@ class  Order  extends  Model {
                                        ->select();
 
     }
+
+    /*
+     *  根据用户编码查询该用户的订单信息
+     *   @param    $user_id   int  :  用户编码
+     *   @return   Array
+     * */
+    public  function  getListBy($user_id , $page , $per_page ){
+        $page = $page * $per_page ;
+        return      Db::table('tp_order')
+                    ->alias('o')
+                    ->where('user_id'  , $user_id)
+                    ->join('tp_order_goods og', 'og.order_id = o.order_id', 'left')
+                    ->join('tp_goods g', 'og.goods_id = g.goods_id', 'left')
+                    ->field('o.order_id,og.rec_id , og.goods_id ,g.goods_name  , concat( "'.BASE_PATH.'" ,g.original_img)  original_img  ,  o.order_sn, o.order_status, o.shipping_status,FROM_UNIXTIME( o.add_time , "%Y-%m-%d %H:%i:%s")  add_time , o.goods_price ,
+                                o.shipping_price , o.total_amount, og.goods_num')
+                    ->page($page, $per_page)
+                    ->select();
+
+    }
+
+    /*
+     *  根据订单编码 查询出该订单的详细信息
+     *  @param    $rec_id   int   :   订单商品编码
+     *  return Array
+     * */
+    public  function   getDetailBy($rec_id){
+//           return  Db::table('tp_order')
+//                                ->alias('o')
+//                                ->where('o.order_id' , $order_id)
+//                                ->join('tp_users u', 'u.user_id = o.user_id', 'left')
+//                                ->field('o.order_id,u.user_id ,  o.user_id, u.nickname,u.mobile,   ')
+//                                ->find() ;
+//            return   Db::table('tp_order_goods')
+//                            ->alias('og')
+//                            ->where('rec_id' ,  $rec_id )
+//                            ->
+
+    }
+
+
+
+
 }

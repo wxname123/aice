@@ -31,7 +31,11 @@ Route::post('api/:version/user/:user_id/uploadimg','api/:version.User/uploadimg'
 Route::get('api/:version/ad/getadlist','api/:version.Ad/getadlist');
 Route::get('api/:version/ad/getad','api/:version.Ad/getad');   //获取启动页广告
 Route::get('api/:version/order/getnews','api/:version.Order/getnews');   //获取最新快报接口
-Route::get('api/:version/good/gethots','api/:version.Good/gethots');   //获取最新快报接口
+Route::get('api/:version/good/gethots','api/:version.Good/gethots');   //获取热门推荐接口
+Route::get('api/:version/good/:good_id/getdetails','api/:version.Good/getdetails');   //获取商品详情接口
+Route::get('api/:version/attr/:good_id/getattr','api/:version.Attr/getattr');   //获取商品属性接口
+Route::get('api/:version/order/:user_id/getlist','api/:version.Order/getOrderList');   //获取用户订单列表接口
+Route::get('api/:version/order/:rec_id/getorderdetail','api/:version.Order/getOrderDetail');   //查询订单详情接口
 
 
 
