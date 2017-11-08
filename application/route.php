@@ -44,7 +44,8 @@ Route::get('api/:version/category/gettopcategory','api/:version.Category/getTopC
 Route::get('api/:version/category/:cat_id/getgoodlist','api/:version.Category/getCatGoodsList');   //获取汽车整车顶级分类接口
 Route::get('api/:version/category/:cat_id/getgoodlist','api/:version.Category/getCatGoodsList');   //获取汽车整车顶级分类接口
 Route::get('api/:version/good/getrecomlist','api/:version.Good/getRecomList');   //获取精品推荐列表接口
-
+Route::get('api/:version/brand/getbrandlist','api/:version.Brand/getBrandList');   //查询所有品牌列表接口
+Route::get('api/:version/good/:brand_id/getbrandgoods','api/:version.Good/getbrandgoods');   //查询某个品牌下所有的商品列表
 
 
 

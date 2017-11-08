@@ -142,6 +142,50 @@ class   Good  extends  Base{
 
     }
 
+    /*
+     *  根据 品牌 查询所有的商品
+     *   @param    $brand_id   int    :   品牌编码
+     *   return   Array
+     * */
+    public  function  getbrandgoods($brand_id, $page= 0 , $per_page = 10 ){
+        $pageInter =   isPageInteger($page) ;
+        $perpageInter = isPageInteger($per_page) ;
+        if( !( $pageInter  &&  $perpageInter )){
+            $e = new  ParameterException(array(
+                'msg' => '分页参数必须为整数' ,
+                'errorCode' => '391022',
+            ));
+            throw  $e ;
+        }
+
+             $is_b_Inter =   isAppPositiveInteger($brand_id) ;
+             if(!$is_b_Inter){
+                 $e = new  ParameterException(array(
+                     'msg' => '参数必须为正整数' ,
+                     'errorCode' => '391023',
+                 ));
+                 throw  $e ;
+              }
+
+             $gModel =   model('Good')  ;
+             $gData =  $gModel->getGoodsBy($brand_id , $page , $per_page) ;
+             if(!empty($gData)){
+                 $e = new  ParameterException(array(
+                     'msg' => 'success' ,
+                     'errorCode' => '0',
+                     'datas' =>  $gData ,
+                 ));
+                 throw  $e ;
+             }else{
+                 $e = new  ParameterException(array(
+                     'msg' => 'success' ,
+                     'errorCode' => '0',
+                     'datas' =>  null  ,
+                 ));
+                 throw  $e ;
+             }
+    }
+
 }
 
 

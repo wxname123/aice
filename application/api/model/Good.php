@@ -56,6 +56,20 @@ class   Good  extends  Model{
                             ->select() ;
    }
 
+   /*
+    *   根据品牌编码 获取 商品列表
+    *   @param   $brand_id    int   :   品牌编码
+    *   return   Array
+    * */
+   public  function    getGoodsBy($brand_id , $page, $per_page ){
+          $page = $page *  $per_page ;
+           return   Db::table('tp_goods')
+                        ->alias('g')
+                        ->where('brand_id', $brand_id)
+                        ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , CONCAT("'.BASE_PATH.'" , g.original_img ) original_img')
+                        ->page($page ,$per_page)
+                        ->select() ;
+   }
 
 
 }
