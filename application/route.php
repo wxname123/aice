@@ -39,6 +39,13 @@ Route::get('api/:version/order/:rec_id/getorderdetail','api/:version.Order/getOr
 Route::get('api/:version/region/getlist','api/:version.Region/getRegionList');   //获取地区列表
 Route::get('api/:version/version/:type/checkversion','api/:version.Version/checkVersion');   //版本检测接口
 
+//汽车列表  接口
+Route::get('api/:version/category/gettopcategory','api/:version.Category/getTopCategory');   //获取汽车整车顶级分类接口
+Route::get('api/:version/category/:cat_id/getgoodlist','api/:version.Category/getCatGoodsList');   //获取汽车整车顶级分类接口
+Route::get('api/:version/category/:cat_id/getgoodlist','api/:version.Category/getCatGoodsList');   //获取汽车整车顶级分类接口
+Route::get('api/:version/good/getrecomlist','api/:version.Good/getRecomList');   //获取精品推荐列表接口
+
+
 
 
 //短信验证码接口还没有写  post

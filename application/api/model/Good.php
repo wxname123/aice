@@ -42,6 +42,22 @@ class   Good  extends  Model{
     }
 
 
+   /*
+    *  获取精品推荐列表数据
+    * */
+   public  function getRecomList($page, $per_page){
+          $page = $page * $per_page ;
+          return   Db::table('tp_goods')
+                            ->alias('g')
+                            ->where('is_recommend', 1)
+                            ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , CONCAT("'.BASE_PATH.'" , g.original_img ) original_img')
+                            ->limit($page, $per_page)
+                            ->order('g.shop_price desc')
+                            ->select() ;
+   }
+
+
+
 }
 
 

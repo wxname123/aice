@@ -5,7 +5,7 @@ namespace   app\api\controller\v1 ;
 use  app\lib\exception\ParameterException ;
 
 class   Good  extends  Base{
-
+//  获取热门商品
     public  function   gethots($page=0 , $per_page=10){
 
         $goodModel =   model('Good');
@@ -101,6 +101,44 @@ class   Good  extends  Base{
                 ));
                 throw  $e ;
             }
+
+    }
+
+
+    /*
+     *  获取精品推荐列表接口
+     * */
+    public  function  getRecomList($page=0, $per_page=10 ){
+
+        $pageInter =   isPageInteger($page) ;
+        $perpageInter = isPageInteger($per_page) ;
+
+        if( !( $pageInter  &&  $perpageInter )){
+            $e = new  ParameterException(array(
+                'msg' => '分页参数必须为整数' ,
+                'errorCode' => '391022',
+            ));
+            throw  $e ;
+        }
+
+          $goodModel =   model('Good');
+
+          $goodList =   $goodModel->getRecomList($page , $per_page) ;
+
+          if(!empty($goodList)){
+              $e = new  ParameterException(array(
+                  'msg' => 'success' ,
+                  'errorCode' => '0',
+                  'datas' =>  $goodList ,
+              ));
+              throw  $e ;
+          }else{
+              $e = new  ParameterException(array(
+                  'msg' => 'success' ,
+                  'errorCode' => '0',
+              ));
+              throw  $e ;
+          }
 
     }
 
