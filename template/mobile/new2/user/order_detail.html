@@ -88,14 +88,6 @@
                 <span class="fl">支付方式</span>
                 <span class="fr">{$order_info.pay_name}</span>
             </p>
-            <p class="p">
-                <span class="fl">配送方式</span>
-                <span class="fr">{$order_info.shipping_name}</span>
-            </p>
-            <p class="p">
-                <span class="fl">买家留言</span>
-                <span class="fr">{$order_info.user_note}</span>
-            </p>
         </div>
     </div>
 </div>
@@ -108,26 +100,6 @@
             <p class="p">
                 <span class="fl">商品总价</span>
                 <span class="fr"><span>￥</span><span>{$order_info.goods_price}</span>元</span>
-            </p>
-            <p class="p">
-                <span class="fl">运费</span>
-                <span class="fr"><span>￥</span><span>{$order_info.shipping_price}</span>元</span>
-            </p>
-            <p class="p">
-                <span class="fl">优惠券</span>
-                <span class="fr"><span>-￥</span><span>{$order_info.coupon_price}</span>元</span>
-            </p>
-            <p class="p">
-                <span class="fl">积分</span>
-                <span class="fr"><span>-￥</span><span>{$order_info.integral_money}</span>元</span>
-            </p>
-            <p class="p">
-                <span class="fl">余额</span>
-                <span class="fr"><span>-￥</span><span>{$order_info.user_money}</span>元</span>
-            </p>
-            <p class="p">
-                <span class="fl">活动优惠</span>
-                <span class="fr"><span>-￥</span><span>{$order_info.order_prom_amount}</span>元</span>
             </p>
             <p class="p">
                 <span class="fl">实付金额</span>
@@ -172,13 +144,7 @@
             <a>{$order_info.order_status_desc}</a>
         </if>
         <if condition="$order_info.receive_btn eq 1">
-            <a href="{:U('Mobile/User/order_confirm',array('id'=>$order_info['order_id']))}">收货确认</a>
-        </if>
-        <if condition="$order_info.shipping_btn eq 1">
-            <a href="{:U('Mobile/User/express',array('order_id'=>$order_info['order_id']))}" >查看物流</a>
-        </if>
-        <if condition="$order_info.order_prom_type eq 4 AND $order_info.pay_status eq 2 AND $order_info.pre_sell_is_finished eq 1 AND (time() egt $order_info.pre_sell_retainage_start AND time() elt $order_info.pre_sell_retainage_end)">
-            <a class="ddn3" style="margin-top:20px;" href="{:U('/Home/Cart/cart4',array('order_id'=>$order_info[order_id]))}'">支付尾款</a>
+            <a href="{:U('Mobile/User/order_confirm',array('id'=>$order_info['order_id']))}">提车确认</a>
         </if>
     </div>
 </div>

@@ -143,6 +143,7 @@ class Cart extends Base {
                 $goods_id = I("goods_id/d"); // 商品id
                 $goods_num = I("goods_num/d");// 商品数量
                 $item_id = I("item_id/d"); // 商品规格id
+
                 if(empty($goods_id)){
                     $this->ajaxReturn(['status'=>0,'msg'=>'请选择要购买的商品','result'=>'']);
                 }
