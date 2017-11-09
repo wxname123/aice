@@ -47,6 +47,11 @@ Route::get('api/:version/good/getrecomlist','api/:version.Good/getRecomList');  
 Route::get('api/:version/brand/getbrandlist','api/:version.Brand/getBrandList');   //查询所有品牌列表接口
 Route::get('api/:version/good/:brand_id/getbrandgoods','api/:version.Good/getbrandgoods');   //查询某个品牌下所有的商品列表
 
+//任务接口
+Route::get('api/:version/task/:user_id/gettasklist','api/:version.Task/getTaskList');   //查询任务列表
+Route::get('api/:version/user/:user_id/task/:task_id/getdetail','api/:version.Task/getDetail');   //查询任务详情
+
+
 
 
 //短信验证码接口还没有写  post
