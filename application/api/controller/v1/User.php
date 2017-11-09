@@ -10,8 +10,6 @@ use app\api\validate\UserResetValidate;
 use  app\lib\exception\ParameterException ;
 
 
-
-
 class User  extends   Base {
 
 //    用户注册接口
@@ -79,7 +77,7 @@ class User  extends   Base {
                 throw  $e ;
             }
 
-          if(!isAppMobile($postdata['mobile'])){
+            if(!isAppMobile($postdata['mobile'])){
               $e = new  ParameterException(array(
                   'msg' => '手机号码格式不正确' ,
                   'errorCode' => '391014',
@@ -170,6 +168,7 @@ class User  extends   Base {
             $map['mobile'] = $postdata['mobile'];
             $map['reg_time'] = time() ;
             $map['id_card'] = $postdata['id_card'] ;
+            $map['token'] = md5(time().mt_rand(1,999999999));
 
             //数据入库
             $res =    M('users')->save($map);
@@ -220,6 +219,7 @@ class User  extends   Base {
         //根据 手机号码  ， 密码  去查询数据
          $uModel =  model('User') ;
          $data =  $uModel->identiMobilePass($postdata) ;
+//        var_dump($data) ;die ;
 
         if($data != NULL ){
             $e = new  ParameterException(array(

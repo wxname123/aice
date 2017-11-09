@@ -50,6 +50,42 @@ class User extends MobileBase
         $this->assign('order_status_coment', $order_status_coment);
     }
 
+
+    /**
+     * 登录
+     */
+    public function do_login()
+    {
+        $username = trim(I('post.username'));
+        $password = trim(I('post.password'));
+        //验证码验证
+        if (isset($_POST['verify_code'])) {
+            $verify_code = I('post.verify_code');
+            $verify = new Verify();
+            if (!$verify->check($verify_code, 'user_login')) {
+                $res = array('status' => 0, 'msg' => '验证码错误');
+                exit(json_encode($res));
+            }
+        }
+        $logic = new UsersLogic();
+        $res = $logic->login($username, $password);
+        if ($res['status'] == 1) {
+            $res['url'] = urldecode(I('post.referurl'));
+            session('user', $res['result']);
+            setcookie('user_id', $res['result']['user_id'], null, '/');
+            setcookie('is_distribut', $res['result']['is_distribut'], null, '/');
+            $nickname = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
+            setcookie('uname', urlencode($nickname), null, '/');
+            setcookie('cn', 0, time() - 3600, '/');
+            $cartLogic = new CartLogic();
+            $cartLogic->setUserId($res['result']['user_id']);
+            $cartLogic->doUserLoginHandle();// 用户登录后 需要对购物车 一些操作
+//            $cartLogic->login_cart_handle($this->session_id, $res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
+        }
+        exit(json_encode($res));
+    }
+
+
     /*
      * 用户中心首页
      */
@@ -380,39 +416,7 @@ class User extends MobileBase
         return $this->fetch();
     }
 
-    /**
-     * 登录
-     */
-    public function do_login()
-    {
-        $username = trim(I('post.username'));
-        $password = trim(I('post.password'));
-        //验证码验证
-        if (isset($_POST['verify_code'])) {
-            $verify_code = I('post.verify_code');
-            $verify = new Verify();
-            if (!$verify->check($verify_code, 'user_login')) {
-                $res = array('status' => 0, 'msg' => '验证码错误');
-                exit(json_encode($res));
-            }
-        }
-        $logic = new UsersLogic();
-        $res = $logic->login($username, $password);
-        if ($res['status'] == 1) {
-            $res['url'] = urldecode(I('post.referurl'));
-            session('user', $res['result']);
-            setcookie('user_id', $res['result']['user_id'], null, '/');
-            setcookie('is_distribut', $res['result']['is_distribut'], null, '/');
-            $nickname = empty($res['result']['nickname']) ? $username : $res['result']['nickname'];
-            setcookie('uname', urlencode($nickname), null, '/');
-            setcookie('cn', 0, time() - 3600, '/');
-            $cartLogic = new CartLogic();
-            $cartLogic->setUserId($res['result']['user_id']);
-            $cartLogic->doUserLoginHandle();// 用户登录后 需要对购物车 一些操作
-//            $cartLogic->login_cart_handle($this->session_id, $res['result']['user_id']);  //用户登录后 需要对购物车 一些操作
-        }
-        exit(json_encode($res));
-    }
+
 
     /**
      *  注册
