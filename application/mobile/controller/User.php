@@ -94,54 +94,18 @@ class User extends MobileBase
         $user_id =$this->user_id;
         $logic = new UsersLogic();
         $user = $logic->get_info($user_id); //当前登录用户信息
-        $comment_count = M('comment')->where("user_id", $user_id)->count();   // 我的评论数
         $level_name = M('user_level')->where("level_id", $this->user['level'])->getField('level_name'); // 等级名称
         //获取用户信息的数量
         $messageLogic = new MessageLogic();
         $user_message_count = $messageLogic->getUserMessageCount();
 
-        $map=[
-            'a.user_id'       => $user_id,
-            'a.order_status' => 2
-        ];
-        $order_str = "rec_id DESC";
-        $oder =  M('order a')
-                 ->join('order_goods b','a.order_id = b.order_id','LEFT')
-                 ->join('goods c','c.goods_id = b.goods_id','LEFT')
-                 ->where($map)
-                 ->order($order_str)
-                 ->find();
-        if(!empty($oder)) {
-            $record = M('users a ')->field('a.user_id')
-                    ->where('uid','=',$user_id)
-                    ->select();
-            $tmp=[];
-            if(!empty($record)){
-                foreach ($record as $key =>$value){
-                    $num_id                       =   $value['user_id'];
-                    $arr['a.user_id']           =   $num_id;
-                    $arr['a.order_status']     =2;
-                    $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
-                                  ->join('order_goods b','a.order_id = b.order_id','LEFT')
-                                  ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
-                                  ->join('users d' ,'d.user_id = a.user_id','LEFT')
-                                  ->where($arr)
-                                  ->find();
-                    if($number_order != null){
-                        $tmp[$key]  = $number_order;
-                        $complete = count($tmp);
-                        $unfinish = $oder['mission'] - $complete;
-                    }
-                }
-            }
-               $this->assign('unfinish',$unfinish);
-               $this->assign('complete',$complete);
-               $this->assign('order',$oder);
-        }
+        $complete=M('user_task')->where('user_id','=',$user_id)->find();
+        $unfinish = $complete['task_number'] - $complete['complete_number'];
 
+        $this->assign('unfinish',$unfinish);
+        $this->assign('complete',$complete);
         $this->assign('user_message_count', $user_message_count);
         $this->assign('level_name', $level_name);
-        $this->assign('comment_count', $comment_count);
         $this->assign('user',$user['result']);
         return $this->fetch();
     }
@@ -207,25 +171,6 @@ class User extends MobileBase
 
     public function mission(){
         $user_id=$this->user_id;
-        $map=[
-            'user_id'       => $user_id,
-            'order_status' => 2
-        ];
-        $order =  M('order')->where($map)->find();
-        //判断是否存在order表里
-        if(!empty($order)){
-            $order_id=array();
-            $order=$order['order_id'];
-            $order_id=[
-                'order_id' => $order
-            ];
-            $order_str = "rec_id DESC";
-            $order_list = M('order_goods a')
-                ->join('goods b','a.goods_id = b.goods_id','LEFT')
-                ->where($order_id)
-                ->order($order_str)
-                ->select();
-
             //查询下级中的用户订单
             $record  = M('users a ')->field('a.user_id')
                 ->where('uid','=',$user_id)
@@ -249,7 +194,6 @@ class User extends MobileBase
                     }
                 }
             }
-        }
         $this->assign('tmp',$tmp);
         $this->assign('comolete',$complete);
         return $this->fetch();

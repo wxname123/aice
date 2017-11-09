@@ -126,7 +126,6 @@ class User extends Base{
     public function mission(){
         $user_id=$this->user_id;
         $complete=M('user_task')->where('user_id','=',$user_id)->find();
-
         //查询下级中的用户订单
         $record  = M('users a ')->field('a.user_id')
                 ->where('uid','=',$user_id)
