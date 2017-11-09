@@ -64,11 +64,11 @@
 							</li>
 							<li class="">
 								<a href="{:U('Home/User/mission')}">
-									<if condition="$order neq null">
+									<if condition="$complete neq null">
 											<i class="icon-balance"></i>
 											<span>提车任务数</span>
 											<em class="mu-unit">&nbsp;台</em>
-											<em class="mu-num">{$order['mission']}</em>
+											<em class="mu-num">{$complete['task_number']}</em>
 											<i class="icon-ar"></i>
 										<else/>
 										<i class="icon-balance"></i>
@@ -85,7 +85,7 @@
 									<i class="icon-point"></i>
 									<span>已完成提车</span>
 									<em class="mu-unit">&nbsp;台</em>
-									<em class="mu-num">{$complete}</em>
+									<em class="mu-num">{$complete['complete_number']}</em>
 									<i class="icon-ar"></i>
 									<else/>
 									<i class="icon-balance"></i>

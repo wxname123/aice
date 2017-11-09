@@ -59,56 +59,14 @@ class User extends Base{
 
         $logic = new UsersLogic();
         $user = $logic->get_info($this->user_id);
+        $user_id=$this->user_id;
         $user = $user['result'];
         $level = M('user_level')->select();
         $level = convert_arr_key($level,'level_id');
-        $user_id=$this->user_id;
-        $map=array();
-        $map=[
-            'user_id'       => $user_id,
-            'order_status' => 2
-        ];
-        $oder =  M('order')->where($map)->find();
-        if(!empty($oder)){
-            $order_id=array();
-            $der=$oder['order_id'];
-            $order_id=[
-                'order_id' => $der
-            ];
-            $order_str = "rec_id DESC";
-            //查询购买成功之后订单里的任务数
-            $oder = M('order_goods a')
-                ->join('goods b','a.goods_id = b.goods_id','LEFT')
-                ->where($order_id)
-                ->order($order_str)
-                ->find();
-            //查询下级中的用户订单
-            $record  = M('users a ')->field('a.user_id')
-                ->where('uid','=',$user_id)
-                ->select();
-            $tmp = [] ;
-            if(!empty($record)){
-                foreach($record as $key=>$value){
-                    $num_id                    = $value['user_id'];
-                    $arr['a.user_id']           =  $num_id;
-                    $arr['a.order_status']     =   2;
-                    $number_order = M('order a')->field('a.confirm_time,c.goods_name,d.nickname')
-                        ->join('order_goods b','a.order_id = b.order_id','LEFT')
-                        ->join('goods c' ,'c.goods_id = b.goods_id','LEFT')
-                        ->join('users d' ,'d.user_id = a.user_id','LEFT')
-                        ->where($arr)
-                        ->find();
-                    if($number_order != null){
-                        $tmp[$key] = $number_order ;
-                        $complete = count($tmp);
 
-                    }
-                }
-            }
-        }
-
+        $complete=M('user_task')->where('user_id','=',$user_id)->find();
+        var_dump($complete);
         $this->assign('complete',$complete);
-        $this->assign('order',$oder);
         $this->assign('level',$level);
         $this->assign('user',$user);
         return $this->fetch();
