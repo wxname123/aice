@@ -60,6 +60,11 @@
                 </div>
                 <p><span id="market_price_title">市场价：</span><span class="linethr">{$goods.market_price}</span></p>
                 <p><span style="color:#999999">任务数：</span><span class="red">{$goods.mission}</span></p>
+                <p>
+                    <if condition="$var eq 2">
+                    <span style="color:#999999;font-size: 5px">(年末车辆价格浮动较大,平台价格为年初所定,仅供参考)</span>
+                    </if>
+                </p>
             </div>
         </div>
     </div>

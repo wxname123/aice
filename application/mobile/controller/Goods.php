@@ -173,6 +173,18 @@ class Goods extends MobileBase {
         C('TOKEN_ON',true);        
         $goodsLogic = new GoodsLogic();
         $goods_id = I("get.id/d");
+
+        $cat_id = M('goods')->where('goods_id','=',$goods_id)->getField('cat_id');
+        $cat_list =  M('goods_category')->getField('id,parent_id,level');
+        $cat_level_arr[$cat_list[$goods_id]['level']] = $cat_id;
+        // 找出他老爸
+        $parent_id = $cat_list[$cat_id]['parent_id'];
+        // 找出他爷爷
+        $grandpa_id = $cat_list[$parent_id]['parent_id'];
+        if($grandpa_id > 0)
+            $var = $grandpa_id;
+
+
         $goodsModel = new \app\common\model\Goods();
         $goods = $goodsModel::get($goods_id);
         if(empty($goods) || ($goods['is_on_sale'] == 0)){
@@ -231,6 +243,7 @@ class Goods extends MobileBase {
         $user_id = cookie('user_id');
         $collect = M('goods_collect')->where(array("goods_id"=>$goods_id ,"user_id"=>$user_id))->count();
         $goods_collect_count = M('goods_collect')->where(array("goods_id"=>$goods_id))->count(); //商品收藏数
+        $this->assign('var', $var);
         $this->assign('collect',$collect);
         $this->assign('commentStatistics',$commentStatistics);//评论概览
         $this->assign('goods_attribute',$goods_attribute);//属性值     

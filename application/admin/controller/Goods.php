@@ -1,17 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * Author: IT宇宙人     
- * Date: 2015-09-09
- */
+
 namespace app\admin\controller;
 use app\admin\logic\GoodsLogic;
 use app\admin\logic\SearchWordLogic;
@@ -295,6 +283,7 @@ class Goods extends Base {
         $Goods = new \app\admin\model\Goods();
         $goods_id = I('goods_id');
         $type = $goods_id > 0 ? 2 : 1; // 标识自动验证时的 场景 1 表示插入 2 表示更新
+
         //ajax提交验证
         if ((I('is_ajax') == 1) && IS_POST) {
             // 数据验证
@@ -351,6 +340,7 @@ class Goods extends Base {
                 $Goods->price_ladder = '';
             }
 
+
             if ($type == 2) {
                 $Goods->isUpdate(true)->save(); // 写入数据到数据库
                 // 修改商品后购物车的商品价格也修改一下
@@ -359,11 +349,20 @@ class Goods extends Base {
                     'goods_price' => I('shop_price'), // 本店价
                     'member_goods_price' => I('shop_price'), // 会员折扣价
                 ));
+                M('task')->where("good_id = $goods_id")->save(array(
+                    'number' => I('mission'), // 任务数量
+                ));
             } else {
                 $Goods->save(); // 写入数据到数据库
                 $goods_id = $insert_id = $Goods->getLastInsID();
+                $a=[
+                    'good_id' => $goods_id,
+                    'number'   => I('mission'),
+                ];
+                M('task')->save($a);
             }
             $Goods->afterSave($goods_id);
+
             $GoodsLogic->saveGoodsAttr($goods_id, I('goods_type')); // 处理商品 属性
             $return_arr = array(
                 'status' => 1,
@@ -374,6 +373,8 @@ class Goods extends Base {
         }
 
         $goodsInfo = M('Goods')->where('goods_id=' . I('GET.id', 0))->find();
+
+        $mission = M('task')->where('good_id='.I('GET.id',0))->find();
         if ($goodsInfo['price_ladder']) {
             $goodsInfo['price_ladder'] = unserialize($goodsInfo['price_ladder']);
         }
@@ -386,6 +387,7 @@ class Goods extends Base {
         $plugin_shipping = M('plugin')->where(array('type' => array('eq', 'shipping')))->select();//插件物流
         $shipping_area = D('Shipping_area')->getShippingArea();//配送区域
         $goods_shipping_area_ids = explode(',', $goodsInfo['shipping_area_ids']);
+        $this->assign('mission', $mission);
         $this->assign('goods_shipping_area_ids', $goods_shipping_area_ids);
         $this->assign('shipping_area', $shipping_area);
         $this->assign('plugin_shipping', $plugin_shipping);
