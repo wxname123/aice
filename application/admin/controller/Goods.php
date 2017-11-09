@@ -283,6 +283,7 @@ class Goods extends Base {
         $Goods = new \app\admin\model\Goods();
         $goods_id = I('goods_id');
         $type = $goods_id > 0 ? 2 : 1; // 标识自动验证时的 场景 1 表示插入 2 表示更新
+
         //ajax提交验证
         if ((I('is_ajax') == 1) && IS_POST) {
             // 数据验证
@@ -339,6 +340,7 @@ class Goods extends Base {
                 $Goods->price_ladder = '';
             }
 
+
             if ($type == 2) {
                 $Goods->isUpdate(true)->save(); // 写入数据到数据库
                 // 修改商品后购物车的商品价格也修改一下
@@ -347,11 +349,20 @@ class Goods extends Base {
                     'goods_price' => I('shop_price'), // 本店价
                     'member_goods_price' => I('shop_price'), // 会员折扣价
                 ));
+                M('task')->where("good_id = $goods_id")->save(array(
+                    'number' => I('mission'), // 任务数量
+                ));
             } else {
                 $Goods->save(); // 写入数据到数据库
                 $goods_id = $insert_id = $Goods->getLastInsID();
+                $a=[
+                    'good_id' => $goods_id,
+                    'number'   => I('mission'),
+                ];
+                M('task')->save($a);
             }
             $Goods->afterSave($goods_id);
+
             $GoodsLogic->saveGoodsAttr($goods_id, I('goods_type')); // 处理商品 属性
             $return_arr = array(
                 'status' => 1,
@@ -362,6 +373,8 @@ class Goods extends Base {
         }
 
         $goodsInfo = M('Goods')->where('goods_id=' . I('GET.id', 0))->find();
+
+        $mission = M('task')->where('good_id='.I('GET.id',0))->find();
         if ($goodsInfo['price_ladder']) {
             $goodsInfo['price_ladder'] = unserialize($goodsInfo['price_ladder']);
         }
@@ -374,6 +387,7 @@ class Goods extends Base {
         $plugin_shipping = M('plugin')->where(array('type' => array('eq', 'shipping')))->select();//插件物流
         $shipping_area = D('Shipping_area')->getShippingArea();//配送区域
         $goods_shipping_area_ids = explode(',', $goodsInfo['shipping_area_ids']);
+        $this->assign('mission', $mission);
         $this->assign('goods_shipping_area_ids', $goods_shipping_area_ids);
         $this->assign('shipping_area', $shipping_area);
         $this->assign('plugin_shipping', $plugin_shipping);

@@ -14,9 +14,9 @@ function ajax_submit_form(form_id,submit_url){
                 type : "POST",
                 url  : submit_url,
                 data : $('#'+form_id).serialize(),// 你的formid                
-                error: function(request) {
-                        alert("服务器繁忙, 请联系管理员!");
-                },
+                // error: function(request) {
+                //         alert("服务器繁忙, 请联系管理员!");
+                // },
                 success: function(v) {
                     before_request = 1; // 标识ajax 请求已经返回
                     var v =  eval('('+v+')');
