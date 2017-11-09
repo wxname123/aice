@@ -418,8 +418,8 @@ class GoodsLogic extends Model
             return array();
         
         $cat_list =  M('goods_category')->getField('id,parent_id,level');
-        $cat_level_arr[$cat_list[$cat_id]['level']] = $cat_id;
 
+        $cat_level_arr[$cat_list[$cat_id]['level']] = $cat_id;
         // 找出他老爸
         $parent_id = $cat_list[$cat_id]['parent_id'];
         if($parent_id > 0)
