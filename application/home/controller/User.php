@@ -125,27 +125,10 @@ class User extends Base{
 
     public function mission(){
         $user_id=$this->user_id;
-        $map=[
-            'user_id'       => $user_id,
-            'order_status' => 2
-        ];
-        $order =  M('order')->where($map)->find();
-        //判断是否存在order表里
-        if(!empty($order)){
-            $order_id=array();
-            $order=$order['order_id'];
-            $order_id=[
-                'order_id' => $order
-            ];
-            $order_str = "rec_id DESC";
-            $order_list = M('order_goods a')
-                ->join('goods b','a.goods_id = b.goods_id','LEFT')
-                ->where($order_id)
-                ->order($order_str)
-                ->select();
+        $complete=M('user_task')->where('user_id','=',$user_id)->find();
 
-            //查询下级中的用户订单
-            $record  = M('users a ')->field('a.user_id')
+        //查询下级中的用户订单
+        $record  = M('users a ')->field('a.user_id')
                 ->where('uid','=',$user_id)
                 ->select();
             $tmp = [] ;
@@ -167,11 +150,8 @@ class User extends Base{
                     }
                 }
             }
-
-        }
         $this->assign('complete',$complete);
         $this->assign('tmp',$tmp);
-        $this->assign('order',$order_list);
         return $this->fetch();
     }
 
