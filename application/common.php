@@ -949,36 +949,36 @@ function confirm_order($id,$user_id = 0){
     $row = M('order')->where(array('order_id'=>$id))->save($data);
     if(!$row)
         return array('status'=>-3,'msg'=>'操作失败');
+    $task=M('order_goods a')->join('task b','a.goods_id = b.good_id')->find();
+    $num = $task['number'];
+    $data2['user_id'] =  $user_id;
+    $data2['task_id'] =  $task['task_id'];
+    $data2['task_number'] =  $task['number'];
+    $data2['create_time'] =time();
+    $data2['start_time']  = time();
+    $data2['end_time']    = strtotime("+$num month");
+    M("user_task")->insertGetId($data2);
 
-    order_give($order);// 调用送礼物方法, 给下单这个人赠送相应的礼物
-
-
-
-//    // 查询用户信息
-//    $number = M('users ')
-//        ->where('user_id', $user_id)
-//        ->find();
-//    $uid = $number['uid'];
-//    //根据用户信息查询上级
-//    $num = M('users ')
-//        ->where('user_id', $uid)
-//        ->find();
-//    //用户下单成功之后order_goods表里的商品mission任务减少1
-//    if ($num != null) {
-//        $arr['a.user_id'] = $num['user_id'];
-//        $arr['a.order_status'] = 2;
-//        $number_order = M('order a')
-//            ->join('order_goods b', 'a.order_id = b.order_id')
-//            ->where($arr)
-//            ->find();
-//        if ($number_order != NULL) {
-//            $ui=$num['user_id'];
-//            Db::execute('update  tp_order_goods a   LEFT JOIN  tp_order b ON a.order_id = b.order_id  set a.mission = a.mission-1  where b.user_id = '.$ui.' and b.order_status =2 ');
-//        }
-//    }
-
-    //分销设置
-    M('rebate_log')->where("order_id", $id)->save(array('status'=>2,'confirm'=>time()));
+    // 查询用户信息
+    $number = M('users ')
+        ->where('user_id', $user_id)
+        ->find();
+    //根据用户信息查询上级
+    $num = M('users ')
+        ->where('user_id', $number['uid'])
+        ->find();
+    //用户下单成功之后task_user表里的完成数量+1
+    if ($num != null) {
+        $number_order = M('user_task')
+            ->where('user_id','=',$num['user_id'])
+            ->find();
+        if ($number_order != NULL) {
+            M("user_task")->where('user_id','=',$num['user_id'])->setInc('complete_number',1);
+            $ta=M("user_task")->where('user_id','=',$num['user_id'])->find();
+            if($ta['task_number'] == $ta['complete_number']) //任务完成时状态变为1.完成时间为当前时间
+                M("user_task")->where('user_id','=',$num['user_id'])->save(array('status'=>1,'complete_time'=>time()));
+        }
+    }
     return array('status'=>1,'msg'=>'操作成功','url'=>U('Order/order_detail',['id'=>$id]));
 }
 
