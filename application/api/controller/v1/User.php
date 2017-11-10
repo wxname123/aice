@@ -399,6 +399,25 @@ class User  extends   Base {
             }
       }
 
+
+//      获取用户信息
+    public  function  getuserinfo($user_id){
+
+        $is_Inter =   isAppPositiveInteger($user_id) ;
+
+        if(!$is_Inter){
+            $e = new  ParameterException(array(
+                'msg' => '参数必须为正整数' ,
+                'errorCode' => '391023',
+            ));
+            throw  $e ;
+        }
+
+         $uModel =   model('User');
+         $udata =   $uModel->getUserInfoBy($user_id);
+
+    }
+
 }
 
 

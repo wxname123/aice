@@ -19,4 +19,16 @@ class  User  extends Model {
             ->find() ;
     }
 
+
+    /*
+     *  根据用户编码获取用户信息
+     *  @param   $user_id    int   :  用户编码
+     *  @return   Array
+     * */
+    public  function  getUserInfoBy($user_id){
+        return   Db::table('tp_users')
+                            ->where('user_id' , $user_id)
+                            ->field('id, nickname mobile, ')
+                            ->find() ;
+    }
 }
