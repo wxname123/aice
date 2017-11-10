@@ -14,7 +14,7 @@ class  Category  extends  Model{
     public  function  getTopList(){
       return    Db::table('tp_goods_category')
                     ->where('parent_id' , 0)
-                    ->field('id, name')
+                    ->field('id, name, CONCAT("'.BASE_PATH.'" , image )  image ')
                     ->select() ;
     }
 

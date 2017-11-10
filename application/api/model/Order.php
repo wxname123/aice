@@ -64,7 +64,41 @@ class  Order  extends  Model {
 
     }
 
+    /*
+     *  订单入库
+     *  @param    $user_id    int  :  用户编码
+     *  @param   $content   Array   :  post传入的数据
+     *  @return   boolean
+     * */
+    public  function  saveData($user_id , $contents){
 
+
+
+        $orderData = [
+            'order_sn'  =>  date('YmdHis').mt_rand(1000,9999) ,
+            'user_id'   =>  $user_id ,
+            'consignee' => $contents['consignee'] ,
+            'province'  => $contents['province'] ,
+            'city'       => $contents['city'] ,
+            'district'  =>  $contents['district'] ,
+            'mobile'    => $contents['mobile'] ,
+            'pay_code'  => $contents['pay_code'] ,
+            'goods_price'   => $contents['goods_price'],
+            'add_time'   => time(),
+        ];
+
+        if($contents['pay_code'] == "cod"){
+            $orderData['pay_name'] = "到货付款" ;
+        }elseif($contents['pay_code'] == "weixin"){
+            $orderData['pay_name'] = "微信支付" ;
+        }elseif ($contents['pay_code'] == "alipay"){
+            $orderData['pay_name'] = "支付宝支付" ;
+        }
+
+//         var_dump($orderData) ; die ;
+         return   Db::name('order')->insertGetId($orderData) ;
+//           return   $this->save($orderData) ;
+    }
 
 
 }
