@@ -138,7 +138,7 @@ class Api extends Base {
             $data = M('sms_log')->where(array('mobile'=>$mobile,'session_id'=>$session_id, 'status'=>1))->order('id DESC')->find();
             //获取时间配置
             $sms_time_out = tpCache('sms.sms_time_out');
-            $sms_time_out = $sms_time_out ? $sms_time_out : 120;
+            $sms_time_out = $sms_time_out ? $sms_time_out : 12;
             //120秒以内不可重复发送
             if($data && (time() - $data['add_time']) < $sms_time_out){
                 $return_arr = array('status'=>-1,'msg'=>$sms_time_out.'秒内不允许重复发送');
@@ -176,6 +176,52 @@ class Api extends Base {
         }
     }
 
+    public function send_code(){
+        $type = I('type');
+        $scene = I('scene');    //发送短信验证码使用场景
+        $mobile = I('mobile');
+        $type = I('type');
+        $sender = I('send');
+        $verify_code = I('verify_code');
+        $session_id =  session_id();
+
+        //注册
+        if(!empty($verify_code)){
+            $verify = new Verify();
+            if (!$verify->check($verify_code, 'user_reg')) {
+                ajaxReturn(array('status'=>-1,'msg'=>'图像验证码错误'));
+            }
+        }
+        if($type == 'email'){
+            //发送邮件验证码
+            $logic = new UsersLogic();
+            $res = $logic->send_email_code($sender);
+            ajaxReturn($res);
+        }else{
+            //判断是否存在验证码
+            $data = M('sms_log')->where(array('mobile'=>$mobile,'session_id'=>$session_id, 'status'=>1))->order('id DESC')->find();
+            //获取时间配置
+            $sms_time_out = '60';
+            //120秒以内不可重复发送
+            if($data && (time() - $data['add_time']) < $sms_time_out){
+                $return_arr = array('status'=>-1,'msg'=>$sms_time_out.'秒内不允许重复发送');
+                ajaxReturn($return_arr);
+            }
+            //随机一个验证码
+            $code = mt_rand(100000,999999);
+            $msg = '验证码：'.$code.',您正在注册成为爱车送用户, 请勿告诉他人，感谢您的支持!';
+            //发送短信
+            $resp = sendSms($sender,$msg,$code,$needstatus = 'true');
+
+            if($resp['status'] == 1){
+                //发送成功, 修改发送状态位成功
+                $return_arr = array('status'=>1,'msg'=>'发送成功,请注意查收'.'');
+            }else{
+                $return_arr = array('status'=>-1,'msg'=>'发送失败'.$resp['msg']);
+            }
+            ajaxReturn($return_arr);
+        }
+    }
 
     
     /**

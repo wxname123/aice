@@ -1017,6 +1017,49 @@ class UsersLogic extends Model
         return $res;
     }
 
+
+
+
+    /**
+     * 检查短信/邮件验证码验证码
+     * @param unknown $code
+     * @param unknown $sender
+     * @param unknown $session_id
+     * @return multitype:number string
+     */
+    public function check_code($sender,$code, $session_id ){
+        $timeOut = time();
+        $inValid = true;  //验证码失效
+
+
+
+        if(!$code)return array('status'=>-1,'msg'=>'请输入短信验证码');
+        //短信
+        $sms_time_out = '60';
+        $sms_time_out = $sms_time_out ? $sms_time_out : 60;
+        $data = M('sms_log')->where(array('mobile'=>$sender,'session_id'=>$session_id , 'status'=>1))->order('id DESC')->find();
+        if(is_array($data) && $data['code'] == $code){
+            $data['sender'] = $sender;
+            $timeOut = $data['add_time']+ $sms_time_out;
+        }else{
+            $inValid = false;
+        }
+
+        if(empty($data)){
+            $res = array('status'=>-1,'msg'=>'请先获取验证码');
+        }elseif($timeOut < time()){
+            $res = array('status'=>-1,'msg'=>'验证码已超时失效');
+        }elseif(!$inValid)
+        {
+            $res = array('status'=>-1,'msg'=>'验证失败,验证码有误');
+        }else{
+            $data['is_check'] = 1; //标示验证通过
+            session('validate_code',$data);
+            $res = array('status'=>1,'msg'=>'验证成功');
+        }
+        return $res;
+    }
+
     
     /**
      * @time 2016/09/01

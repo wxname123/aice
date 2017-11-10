@@ -230,5 +230,67 @@ class SmsLogic
         } else {
             return array('status' => -1, 'msg' => $resp->Message . '. Code: ' . $resp->Code);
         }
-    }    
+    }
+
+
+    public function lcsendSMS($mobile,$msg,$code='',$needstatus = 'true'){
+        $session_id = session_id();
+        //发送记录存储数据库
+
+
+
+        $chuanglan_config['api_send_url']    = 'http://smssh1.253.com/msg/send/json';
+        $chuanglan_config['api_account']     = 'N3300103';
+        $chuanglan_config['api_password']    = 'JWi7jpcZ3';
+
+        $postArr = array(
+            'account'     => $chuanglan_config['api_account'],
+            'password'    => $chuanglan_config['api_password'],
+            'msg'          => urlencode($msg),
+            'phone'        => $mobile,
+            'report'       => $needstatus
+        );
+        $result = $this->curlPost( $chuanglan_config['api_send_url'],$postArr);
+        if(!is_null(json_decode($result))){
+            $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' => 0,  'msg' => $msg));
+            $output=json_decode($result,true);
+            if(isset($output['code']) && isset($output['add_time'])){
+                M('sms_log')->where(array('id' => $log_id))->save(array('status' => 1,'error_msg'=>'发送短信成功')); //修改发送状态为成功
+                $result = ['status' => 1, 'msg' => '短信发送成功'];
+            }else{
+                M('sms_log')->where(array('id' => $log_id))->update(array('error_msg'=>'发送短信失败')); //发送失败, 将发送失败信息保存数据库
+                $result = ['status' => 1, 'msg' => '短信发送失败'];
+            }
+        }
+        return $result;
+    }
+
+    private function curlPost($url,$postFields){
+        $postFields = json_encode($postFields);
+        $ch = curl_init ();
+        curl_setopt( $ch, CURLOPT_URL, $url );
+        curl_setopt( $ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json; charset=utf-8'
+            )
+        );
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt( $ch, CURLOPT_POST, 1 );
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $postFields);
+        curl_setopt( $ch, CURLOPT_TIMEOUT,1);
+        curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $ret = curl_exec ( $ch );
+        if (false == $ret) {
+            $result = curl_error(  $ch);
+        } else {
+            $rsp = curl_getinfo( $ch, CURLINFO_HTTP_CODE);
+            if (200 != $rsp) {
+                $result = "请求状态 ". $rsp . " " . curl_error($ch);
+            } else {
+                $result = $ret;
+            }
+        }
+        curl_close ( $ch );
+        return $result;
+    }
 }

@@ -349,9 +349,11 @@ class Goods extends Base {
                     'goods_price' => I('shop_price'), // 本店价
                     'member_goods_price' => I('shop_price'), // 会员折扣价
                 ));
-                M('task')->where("good_id = $goods_id")->save(array(
+
+                $a=M('task')->where("good_id = $goods_id")->save(array(
                     'number' => I('mission'), // 任务数量
                 ));
+                var_dump($a);
             } else {
                 $Goods->save(); // 写入数据到数据库
                 $goods_id = $insert_id = $Goods->getLastInsID();
@@ -359,7 +361,8 @@ class Goods extends Base {
                     'good_id' => $goods_id,
                     'number'   => I('mission'),
                 ];
-                M('task')->save($a);
+                $b=M('task')->save($a);
+                var_dump($b);
             }
             $Goods->afterSave($goods_id);
 
