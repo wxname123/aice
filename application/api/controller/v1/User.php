@@ -415,6 +415,87 @@ class User  extends   Base {
 
          $uModel =   model('User');
          $udata =   $uModel->getUserInfoBy($user_id);
+         if(!empty($udata)){
+             $e = new  ParameterException(array(
+                 'msg' => 'success' ,
+                 'errorCode' => '0',
+                 'datas'      => $udata ,
+             ));
+             throw  $e ;
+         }else{
+             $e = new  ParameterException(array(
+                 'msg' => '该用户不存在' ,
+                 'errorCode' => '391011',
+                 'datas'      => null ,
+             ));
+             throw  $e ;
+         }
+    }
+
+//    更新用户信息
+    public  function  updateSex($user_id){
+        $is_Inter =   isAppPositiveInteger($user_id) ;
+
+        if(!$is_Inter){
+            $e = new  ParameterException(array(
+                'msg' => '参数必须为正整数' ,
+                'errorCode' => '391023',
+            ));
+            throw  $e ;
+        }
+
+        $data = request()->put() ;
+//        var_dump($data) ;die ;
+
+        if(empty($data)){
+            $e = new  ParameterException(array(
+                'msg' => '参数不能为空' ,
+                'errorCode' => '391016',
+            ));
+            throw  $e ;
+        }
+
+
+        if(!isset($data['sex'])){
+            $e = new  ParameterException(array(
+                'msg' => '性别不能为空' ,
+                'errorCode' => '391016',
+            ));
+            throw  $e ;
+        }
+
+        $udata =  M('users')->where('user_id' , $user_id)->field('sex')->find() ;
+        if($udata == NULL ){
+            $e = new  ParameterException(array(
+                'msg' => '	该用户不存在' ,
+                'errorCode' => '391011',
+            ));
+            throw  $e ;
+        }else{
+            if($udata['sex'] == $data['sex']){
+                $e = new  ParameterException(array(
+                    'msg' => 'success' ,
+                    'errorCode' => '0',
+                ));
+                throw  $e ;
+            }
+        }
+
+        $res =   M('users')->where('user_id' , $user_id)->save(['sex' => $data['sex']]) ;
+
+        if($res){
+            $e = new  ParameterException(array(
+                'msg' => 'success' ,
+                'errorCode' => '0',
+            ));
+            throw  $e ;
+        }else{
+            $e = new  ParameterException(array(
+                'msg' => '性别更改失败' ,
+                'errorCode' => '391027',
+            ));
+            throw  $e ;
+        }
 
     }
 

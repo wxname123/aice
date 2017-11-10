@@ -27,8 +27,13 @@ class  User  extends Model {
      * */
     public  function  getUserInfoBy($user_id){
         return   Db::table('tp_users')
-                            ->where('user_id' , $user_id)
-                            ->field('id, nickname mobile, ')
+                            ->alias('u')
+                            ->where('u.user_id' , $user_id)
+                            ->join('tp_region r', 'r.id = u.province', 'left')
+                            ->join('tp_region r2', 'r2.id = u.city','left')
+                            ->field('u.user_id, u.nickname ,u.mobile,u.sex ,u.username , 
+                                        CONCAT("'.BASE_PATH.'"  , u.head_pic)  head_pic ,
+                                        CONCAT(r.name, r2.name)  region  ')
                             ->find() ;
     }
 }
