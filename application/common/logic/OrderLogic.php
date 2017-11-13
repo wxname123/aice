@@ -258,21 +258,10 @@ class OrderLogic
     public function addOrder($user_id,$shipping_code,$invoice_title, $car_price,$user_note='',$pay_name='')
     {
 
-        // 仿制灌水 1天只能下 50 单  // select * from `tp_order` where user_id = 1  and order_sn like '20151217%'
-        //$order_count = M('Order')->where("user_id",$user_id)->where('order_sn', 'like', date('Ymd')."%")->count(); // 查找购物车商品总数量
-        //if($order_count >= 50)
-        //    return array('status'=>-9,'msg'=>'一天只能下50个订单','result'=>'');
-
-        // 0插入订单 order
-//        $address = M('UserAddress')->where("address_id", $address_id)->find();
-//        $shipping = M('Plugin')->where("code", $shipping_code)->cache(true,TPSHOP_CACHE_TIME)->find();
-
         $order_sn = $this->get_order_sn();          //201710171442465902
 
         //通过  user_id 获取到 tp_users 表里面的mobile
         $user_info =   M('users')->where('user_id' , $user_id)->field('mobile,nickname')->find();
-//        var_dump($user_info) ; die ;
-//        var_dump($user_info) ; die;
         $data = array(
             'order_sn'         => $order_sn, // 订单编号
             'user_id'          =>$user_id, // 用户id
@@ -321,22 +310,10 @@ class OrderLogic
             $data2['prom_type']          = $val['prom_type']; // 0 普通订单,1 限时抢购, 2 团购 , 3 促销优惠
             $data2['prom_id']            = $val['prom_id']; // 活动id
             $order_goods_id              = M("OrderGoods")->insertGetId($data2);
-            // 扣除商品库存  扣除库存移到 付完款后扣除
-            //M('Goods')->where("goods_id = ".$val['goods_id'])->setDec('store_count',$val['goods_num']); // 商品减少库存
+
         }
         // 4 删除已提交订单商品
         M('Cart')->where(['user_id' => $user_id,'selected' => 1])->delete();
-
-        // 5 记录log 日志
-//        $data4['user_id'] = $user_id;
-//        $data4['user_money'] = -$car_price['balance'];
-//        $data4['pay_points'] = -($car_price['pointsFee'] * tpCache('shopping.point_rate'));
-//        $data4['change_time'] = time();
-//        $data4['desc'] = '下单消费';
-//        $data4['order_sn'] = $order['order_sn'];
-//        $data4['order_id'] = $order_id;
-        // 如果使用了积分或者余额才记录
-//        ($data4['user_money'] || $data4['pay_points']) && M("AccountLog")->add($data4);
 
         //分销开关全局
         $distribut_switch = tpCache('distribut.switch');

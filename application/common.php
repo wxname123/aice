@@ -389,10 +389,10 @@ function checkEnableSendSms($scene)
  * 发送短信逻辑
  * @param unknown $scene
  */
-function sendSms($mobile,$msg,$code,$needstatus = 'true')
+function sendSms($mobile,$msg,$code,$scene,$needstatus = 'true')
 {
     $smsLogic = new \app\common\logic\SmsLogic;
-    return $smsLogic->lcsendSMS($mobile,$msg,$code,$needstatus = 'true');
+    return $smsLogic->lcsendSMS($mobile,$msg,$code,$scene,$needstatus = 'true');
 }
 
 /**
@@ -1352,4 +1352,35 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
     }
     $response=curl_exec($curl);
     return $response ;
+}
+
+    function check($code,$sender, $session_id,$scene ){
+     $timeOut = time();
+     $inValid = true;  //验证码失效
+
+        if(!$code)return array('status'=>-1,'msg'=>'请输入短信验证码');
+    //短信
+    $sms_time_out = '600';
+    $sms_time_out = $sms_time_out ? $sms_time_out : 60;
+    $data = M('sms_log')->where(array('mobile'=>$sender,'session_id'=>$session_id ,'scene'=>$scene, 'status'=>1))->order('id DESC')->find();
+    if(is_array($data) && $data['code'] == $code){
+        $data['sender'] = $sender;
+        $timeOut = $data['add_time']+ $sms_time_out;
+    }else{
+        $inValid = false;
+    }
+
+    if(empty($data)){
+        $res = array('status'=>-1,'msg'=>'请先获取验证码');
+    }elseif($timeOut < time()){
+        $res = array('status'=>-1,'msg'=>'验证码已超时失效');
+    }elseif(!$inValid)
+    {
+        $res = array('status'=>-1,'msg'=>'验证失败,验证码有误');
+    }else{
+        $data['is_check'] = 1; //标示验证通过
+        session('validate_code',$data);
+        $res = array('status'=>1,'msg'=>'验证成功');
+    }
+    return $res;
 }

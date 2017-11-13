@@ -39,20 +39,6 @@ class Goods extends Base {
         $goodsLogic = new GoodsLogic();
         $goodsPromFactory = new GoodsPromFactory();
         $goods_id = I("get.id/d");
-
-        $cat_id = M('goods')->where('goods_id','=',$goods_id)->getField('cat_id');
-        $cat_list =  M('goods_category')->getField('id,parent_id,level');
-        $cat_level_arr[$cat_list[$goods_id]['level']] = $cat_id;
-        // 找出他老爸
-        $parent_id = $cat_list[$cat_id]['parent_id'];
-        if($parent_id > 0)
-            $var = $parent_id;
-        // 找出他爷爷
-        $grandpa_id = $cat_list[$parent_id]['parent_id'];
-        if( $grandpa_id >0)
-            $var = $grandpa_id;
-
-
         $Goods = new \app\common\model\Goods();
         $goods = $Goods::get($goods_id);
         if(empty($goods) || ($goods['is_on_sale'] == 0)){
@@ -82,36 +68,6 @@ class Goods extends Base {
             $dispatching = $goodsLogic->getGoodsDispatching($goods['goods_id'], $region_id);
             $this->assign('dispatching', $dispatching);
         }
-
-        //根据user_id查询出该用户通过认证
-
-        if($this->user_id > 0){
-            //已经登录
-            $udata =  M('users')->where('user_id' , $this->user_id)->field('review, statu')->find();
-
-//            var_dump($udata) ; die;
-            if(!empty($udata)){
-                if($udata['statu'] == '0' && $udata['review'] == '0'){
-                    //先提交资料页面
-                    $this->assign('statu', 0 );
-                }elseif ($udata['statu'] == '1'  &&  $udata['review'] == '0'){
-                    //还没有通过认证的界面
-                    $this->assign('statu', 1 );
-                }elseif ($udata['statu'] == '1'  &&  $udata['review'] == '1'){
-                    //直接跳转到下订单页面
-                    $this->assign('statu', 2 );
-                }
-            }else{
-                //查询数据失败
-                $this->assign('statu', 3);
-            }
-        }else{
-            //没有登录
-            $this->assign('statu', 4);
-        }
-
-
-        $this->assign('var', $var);// 全场满多少免运费
         $this->assign('freight_free', $freight_free);// 全场满多少免运费
         $this->assign('spec_goods_price', json_encode($spec_goods_price,true)); // 规格 对应 价格 库存表
         $this->assign('navigate_goods',navigate_goods($goods_id,1));// 面包屑导航
@@ -176,7 +132,7 @@ class Goods extends Base {
             return $html;
         }
 
-        $filter_param = array(); // 帅选数组
+        $filter_param = array(); // 筛选数组
         $id = I('get.id/d',1); // 当前分类id
         $brand_id = I('get.brand_id',0);
         $spec = I('get.spec',0); // 规格
@@ -296,10 +252,12 @@ class Goods extends Base {
         $price = I('price', ''); // 价钱
         $start_price = trim(I('start_price', '0')); // 输入框价钱
         $end_price = trim(I('end_price', '0')); // 输入框价钱
+
+
         if ($start_price && $end_price) $price = $start_price . '-' . $end_price; // 如果输入框有价钱 则使用输入框的价钱
         $q = urldecode(trim(I('q', ''))); // 关键字搜索
         empty($q) && $this->error('请输入搜索词');
-        $id && ($filter_param['id'] = $id); //加入帅选条件中                       
+        $id && ($filter_param['id'] = $id); //加入帅选条件中
         $brand_id && ($filter_param['brand_id'] = $brand_id); //加入帅选条件中
         $price && ($filter_param['price'] = $price); //加入帅选条件中
         $q && ($_GET['q'] = $filter_param['q'] = $q); //加入帅选条件中
@@ -339,7 +297,7 @@ class Goods extends Base {
                 $cateArr[$k]['href'] = U("/Home/Goods/search", $tmp);
             }
         }
-        // 过滤帅选的结果集里面找商品        
+        // 过滤帅选的结果集里面找商品
         if ($brand_id || $price) {
             // 品牌或者价格
             $goods_id_1 = $goodsLogic->getGoodsIdByBrandPrice($brand_id, $price); // 根据 品牌 或者 价格范围 查找所有商品id
@@ -392,7 +350,7 @@ class Goods extends Base {
         $this->assign('consultCount',$count);// 商品咨询数量
         $this->assign('consultList',$list);// 商品咨询
         $this->assign('replyList',$replyList); // 管理员回复
-        $this->assign('page',$show);// 赋值分页输出        
+        $this->assign('page',$show);// 赋值分页输出
         return $this->fetch();
     }
 
@@ -424,7 +382,7 @@ class Goods extends Base {
         }
         $this->assign('commentlist',$list);// 商品评论
         $this->assign('replyList',$replyList); // 管理员回复
-        $this->assign('page',$show);// 赋值分页输出        
+        $this->assign('page',$show);// 赋值分页输出
         return $this->fetch();
     }
 

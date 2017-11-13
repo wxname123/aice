@@ -350,19 +350,40 @@ class Goods extends Base {
                     'member_goods_price' => I('shop_price'), // 会员折扣价
                 ));
 
-                $a=M('task')->where("good_id = $goods_id")->save(array(
+                M('task')->where("goods_id = $goods_id")->save(array(
                     'number' => I('mission'), // 任务数量
                 ));
-                var_dump($a);
+
+                M('goods_certificate')->where("goods_id = $goods_id")->save(array(
+                    'is_identity' => I('is_identity'),
+                    'is_license' => I('is_license'),
+                    'is_credit' => I('is_credit'),
+                    'is_security' => I('is_security'),
+                    'is_bankflow' => I('is_bankflow'),
+                    'is_ownership' => I('is_ownership'),
+                    'is_commencial' => I('is_commencial'),
+                    'update_time'       =>date("Y-m-d H:i:s"),
+                ));
             } else {
                 $Goods->save(); // 写入数据到数据库
                 $goods_id = $insert_id = $Goods->getLastInsID();
                 $a=[
-                    'good_id' => $goods_id,
+                    'goods_id' => $goods_id,
                     'number'   => I('mission'),
                 ];
-                $b=M('task')->save($a);
-                var_dump($b);
+                M('task')->save($a);
+
+                M('goods_certificate')->save(array(
+                   'goods_id'  => $goods_id,
+                    'is_identity' => I('is_identity'),
+                    'is_license' => I('is_license'),
+                    'is_credit' => I('is_credit'),
+                    'is_security' => I('is_security'),
+                    'is_bankflow' => I('is_bankflow'),
+                    'is_ownership' => I('is_ownership'),
+                    'is_commencial' => I('is_commencial'),
+                    'add_time'       =>time(),
+                ));
             }
             $Goods->afterSave($goods_id);
 
@@ -377,7 +398,8 @@ class Goods extends Base {
 
         $goodsInfo = M('Goods')->where('goods_id=' . I('GET.id', 0))->find();
 
-        $mission = M('task')->where('good_id='.I('GET.id',0))->find();
+        $mission = M('task')->where('goods_id='.I('GET.id',0))->find();
+        $certificate = M('goods_certificate')->where('goods_id='.I('GET.id',0))->find();
         if ($goodsInfo['price_ladder']) {
             $goodsInfo['price_ladder'] = unserialize($goodsInfo['price_ladder']);
         }
@@ -390,6 +412,7 @@ class Goods extends Base {
         $plugin_shipping = M('plugin')->where(array('type' => array('eq', 'shipping')))->select();//插件物流
         $shipping_area = D('Shipping_area')->getShippingArea();//配送区域
         $goods_shipping_area_ids = explode(',', $goodsInfo['shipping_area_ids']);
+        $this->assign('certificate', $certificate);
         $this->assign('mission', $mission);
         $this->assign('goods_shipping_area_ids', $goods_shipping_area_ids);
         $this->assign('shipping_area', $shipping_area);
