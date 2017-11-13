@@ -45,7 +45,7 @@ class User  extends   Base {
                 throw  $e ;
             }
 
-          if(!isAppNotEmpty($postdata['nickname'])){
+           if(!isAppNotEmpty($postdata['nickname'])){
               $e = new  ParameterException(array(
                   'msg' => '用户名不能为空' ,
                   'errorCode' => '391017',
@@ -223,7 +223,10 @@ class User  extends   Base {
 
         if($data != NULL ){
             //生成token
+           $token =   $this->generateToken($data['user_id']) ;
+//            var_dump( $token ) ; die ;
 
+            $data['token'] = $token ;
             $e = new  ParameterException(array(
                 'msg' => '登录成功' ,
                 'errorCode' => '0',

@@ -993,7 +993,6 @@ class UsersLogic extends Model
             $sms_time_out = tpCache('sms.sms_time_out');
             $sms_time_out = $sms_time_out ? $sms_time_out : 180;
             $data = M('sms_log')->where(array('mobile'=>$sender,'session_id'=>$session_id , 'status'=>1))->order('id DESC')->find();
-            //file_put_contents('./test.log', json_encode(['mobile'=>$sender,'session_id'=>$session_id, 'data' => $data]));
             if(is_array($data) && $data['code'] == $code){
             	$data['sender'] = $sender;
             	$timeOut = $data['add_time']+ $sms_time_out;
@@ -1021,13 +1020,13 @@ class UsersLogic extends Model
 
 
     /**
-     * 检查短信/邮件验证码验证码
+     * 检查短信验证码验证码
      * @param unknown $code
      * @param unknown $sender
      * @param unknown $session_id
      * @return multitype:number string
      */
-    public function check_code($sender,$code, $session_id ){
+    public function check_code($code,$sender, $session_id,$scene ){
         $timeOut = time();
         $inValid = true;  //验证码失效
 
@@ -1035,9 +1034,9 @@ class UsersLogic extends Model
 
         if(!$code)return array('status'=>-1,'msg'=>'请输入短信验证码');
         //短信
-        $sms_time_out = '60';
+        $sms_time_out = '600';
         $sms_time_out = $sms_time_out ? $sms_time_out : 60;
-        $data = M('sms_log')->where(array('mobile'=>$sender,'session_id'=>$session_id , 'status'=>1))->order('id DESC')->find();
+        $data = M('sms_log')->where(array('mobile'=>$sender,'session_id'=>$session_id ,'scene'=>$scene, 'status'=>1))->order('id DESC')->find();
         if(is_array($data) && $data['code'] == $code){
             $data['sender'] = $sender;
             $timeOut = $data['add_time']+ $sms_time_out;
