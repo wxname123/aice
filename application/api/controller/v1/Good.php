@@ -70,7 +70,20 @@ class   Good  extends  Base{
           }
 
 
-          $goodmodel =  model('Good');
+        //先根据用户编码查询出该用户的姓名， 电话， 配送地址
+        $uModel =  model('User');
+//        $udata =  $uModel->getUserInfo($user_id);
+
+//        if(empty($udata)){
+//            $e = new  ParameterException(array(
+//                'msg' => '该用户不存在' ,
+//                'errorCode' => '391011',
+//                'datas'  =>  null   ,
+//            ));
+//            throw  $e ;
+//        }
+
+         $goodmodel =  model('Good');
 
           $goods_info =  $goodmodel->getGoodsDetail($good_id) ;
 
@@ -87,6 +100,9 @@ class   Good  extends  Base{
                     }
                 }
 
+//                $goods_info = array_merge($udata, $goods_info) ;
+
+//                var_dump($goods_info) ;die("333") ;
                 $e = new  ParameterException(array(
                     'msg' => 'success' ,
                     'errorCode' => '0',

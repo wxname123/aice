@@ -207,36 +207,7 @@ class User extends MobileBase
     }
 
 
-//    下载页
-    public  function  download(){
-        $user_id = $this->user_id ;
 
-        //先检测出当前是android  还是  ios 版本
-        $agent  =   strtolower($_SERVER['HTTP_USER_AGENT']) ;
-        $type ='other';
-        //分别进行判断
-        if(strpos($agent,'iphone') || strpos($agent,'ipad'))
-        {
-            $type ='ios';
-            $map['type'] = 1 ;
-        }
-
-        if(strpos($agent,'android'))
-        {
-            $type ='android';
-            $map['type'] = 2 ;
-        }
-
-        //查询出当前后台设置的版本
-        $res =  Db::table('tp_version')->where($map)->order('update_time desc')->limit(1)->select() ;
-        if(!empty($res)){
-            $this->assign('download_url',$res['url']);
-        }else{
-
-        }
-        return  $this->fetch() ;
-
-    }
 
     public  function  ajax_submit(){
         $base64_image_content = $_POST['img'];
@@ -477,6 +448,39 @@ class User extends MobileBase
         $sms_time_out = tpCache('sms.sms_time_out')>0 ? tpCache('sms.sms_time_out') : 120;
         $this->assign('sms_time_out', $sms_time_out); // 手机短信超时时间
         return $this->fetch();
+    }
+
+
+    //    下载页
+    public  function  download(){
+        $user_id = $this->user_id ;
+
+        //先检测出当前是android  还是  ios 版本
+        $agent  =   strtolower($_SERVER['HTTP_USER_AGENT']) ;
+        $type ='other';
+        //分别进行判断
+        if(strpos($agent,'iphone') || strpos($agent,'ipad'))
+        {
+            $type ='ios';
+            $map['type'] = 1 ;
+        }
+
+        if(strpos($agent,'android'))
+        {
+            $type ='android';
+            $map['type'] = 2 ;
+        }
+
+        //查询出当前后台设置的版本
+        $res =  Db::table('tp_version')->where($map)->order('update_time desc')->limit(1)->select() ;
+        if(!empty($res)){
+//            var_dump($res[0]['url']) ;die;
+            $this->assign('download_url',$res[0]['url']);
+        }else{
+
+        }
+        return  $this->fetch() ;
+
     }
 
     /*

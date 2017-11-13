@@ -4,18 +4,18 @@
 namespace app\api\controller\v1 ;
 
 use think\Controller;
+use  app\common\memcache ;
 
 class  Base  extends  Controller {
 
     public    $post= null ;
-
-      public  function  b(){
-
-      }
+    protected  $memcache_obj = null ;
 
         public   function  _initialize()
         {
             parent::_initialize();
+
+            $this->memcache_obj = memcache\Memcache::singleton() ;
 
             //1. 获取请求的数据
              $this->get_request_data() ;
@@ -36,4 +36,31 @@ class  Base  extends  Controller {
 
             }
         }
+
+
+        public  function  generateToken(){
+
+        }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

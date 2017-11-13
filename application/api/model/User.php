@@ -20,6 +20,19 @@ class  User  extends Model {
     }
 
 
+
+    /*
+     * 根据用户编码查询出该用户的所有下级用户
+     * @param   $user_id    int   :用户编码
+     * @return    Array
+     * */
+    public  function  getSubordinators($user_id){
+        return   Db::table('tp_users')
+                        ->where('uid', $user_id)
+                        ->field('user_id, mobile, nickname ,FROM_UNIXTIME( reg_time , "%Y-%m-%d %H:%i:%s") reg_time  , CONCAT("'.BASE_PATH.'" , head_pic)  head_pic'  )
+                        ->select() ;
+    }
+
     /*
      *  根据用户编码获取用户信息
      *  @param   $user_id    int   :  用户编码
@@ -36,4 +49,6 @@ class  User  extends Model {
                                         CONCAT(r.name, r2.name)  region  ')
                             ->find() ;
     }
+
+
 }
