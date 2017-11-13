@@ -65,7 +65,6 @@ class User extends Base{
         $level = convert_arr_key($level,'level_id');
 
         $complete=M('user_task')->where('user_id','=',$user_id)->find();
-        var_dump($complete);
         $this->assign('complete',$complete);
         $this->assign('level',$level);
         $this->assign('user',$user);
@@ -144,7 +143,6 @@ class User extends Base{
                         ->find();
                     if($number_order != null){
                         $tmp[$key] = $number_order ;
-                        $complete=count($tmp);
 
                     }
                 }

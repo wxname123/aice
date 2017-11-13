@@ -1021,7 +1021,7 @@ class UsersLogic extends Model
 
 
     /**
-     * 检查短信/邮件验证码验证码
+     * 检查短信验证码验证码
      * @param unknown $code
      * @param unknown $sender
      * @param unknown $session_id

@@ -348,8 +348,8 @@ class Cart extends MobileBase {
             ->where($map)
             ->find();
 
-        $goods_num = Db::name('cart')->where(['user_id' => $this->user_id])->find();
-        if($goods_num['goods_num'] >=1){
+        $goods = Db::name('cart')->where(['user_id' => $this->user_id])->find();
+        if($goods['goods_num'] >=1){
             $this->ajaxReturn(['status'=>0,'msg'=>'你有未支付的订单请删除后再提车','result'=>'']);
         }
         if($oder['mission']>0){

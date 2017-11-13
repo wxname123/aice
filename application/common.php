@@ -389,10 +389,10 @@ function checkEnableSendSms($scene)
  * 发送短信逻辑
  * @param unknown $scene
  */
-function sendSms($mobile,$msg,$code,$needstatus = 'true')
+function sendSms($mobile,$msg,$code,$scene,$needstatus = 'true')
 {
     $smsLogic = new \app\common\logic\SmsLogic;
-    return $smsLogic->lcsendSMS($mobile,$msg,$code,$needstatus = 'true');
+    return $smsLogic->lcsendSMS($mobile,$msg,$code,$scene,$needstatus = 'true');
 }
 
 /**

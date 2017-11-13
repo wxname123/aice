@@ -233,12 +233,9 @@ class SmsLogic
     }
 
 
-    public function lcsendSMS($mobile,$msg,$code,$needstatus = 'true'){
+    public function lcsendSMS($mobile,$msg,$code,$scene,$needstatus = 'true'){
         $session_id = session_id();
         //发送记录存储数据库
-
-
-
         $chuanglan_config['api_send_url']    = 'http://smssh1.253.com/msg/send/json';
         $chuanglan_config['api_account']     = 'N3300103';
         $chuanglan_config['api_password']    = 'JWi7jpcZ3';
@@ -252,7 +249,7 @@ class SmsLogic
         );
         $result = $this->curlPost( $chuanglan_config['api_send_url'],$postArr);
         if(!is_null(json_decode($result))){
-            $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' => 0,  'msg' => $msg));
+            $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' =>$scene,  'msg' => $msg));
             $output=json_decode($result,true);
             if($output){
                 M('sms_log')->where(array('id' => $log_id))->save(array('status' => 1,'error_msg'=>'发送短信成功')); //修改发送状态为成功
