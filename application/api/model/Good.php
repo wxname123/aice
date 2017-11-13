@@ -31,6 +31,7 @@ class   Good  extends  Model{
      *   @param   $good_id    ： int   商品编码
      * */
     public  function  getGoodsDetail($good_id){
+
        return    Db::table('tp_goods')
                 ->alias('g')
                 ->join('tp_goods_certificate b', 'b.goods_id = g.goods_id ','left')

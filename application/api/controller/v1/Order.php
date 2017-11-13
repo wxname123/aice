@@ -355,8 +355,6 @@ class  Order  extends   Base{
    * */
     public  function  submitOrder($user_id, $good_id){
 
-
-//        var_dump(request()->post()) ; die ;
         $files  =  request()->file() ;
         $contents = $_POST ;
 

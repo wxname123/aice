@@ -45,7 +45,7 @@ class User  extends   Base {
                 throw  $e ;
             }
 
-          if(!isAppNotEmpty($postdata['nickname'])){
+           if(!isAppNotEmpty($postdata['nickname'])){
               $e = new  ParameterException(array(
                   'msg' => '用户名不能为空' ,
                   'errorCode' => '391017',
@@ -219,9 +219,14 @@ class User  extends   Base {
         //根据 手机号码  ， 密码  去查询数据
          $uModel =  model('User') ;
          $data =  $uModel->identiMobilePass($postdata) ;
-//        var_dump($data) ;die ;
+
 
         if($data != NULL ){
+            //生成token
+           $token =   $this->generateToken($data['user_id']) ;
+//            var_dump( $token ) ; die ;
+
+            $data['token'] = $token ;
             $e = new  ParameterException(array(
                 'msg' => '登录成功' ,
                 'errorCode' => '0',
@@ -399,6 +404,38 @@ class User  extends   Base {
             }
       }
 
+
+//      查询我的下级用户
+    public  function  getSubordinates($user_id){
+
+        $is_Inter =   isAppPositiveInteger($user_id) ;
+        if(!$is_Inter){
+            $e = new  ParameterException(array(
+                'msg' => '参数必须为正整数' ,
+                'errorCode' => '391023',
+            ));
+            throw  $e ;
+        }
+
+        //根据用户编码查询该用户的下级用户
+         $uModel  =   model('User');
+         $udata =  $uModel->getSubordinators($user_id) ;
+         if(!empty($udata)){
+             $e = new  ParameterException(array(
+                 'msg' => 'success' ,
+                 'errorCode' => '0',
+                 'datas'    =>  $udata ,
+             ));
+             throw  $e ;
+         }else{
+             $e = new  ParameterException(array(
+                 'msg' => 'success' ,
+                 'errorCode' => '0',
+                 'datas'    =>  null  ,
+             ));
+             throw  $e ;
+         }
+    }
 
 //      获取用户信息
     public  function  getuserinfo($user_id){
