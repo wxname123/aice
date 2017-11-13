@@ -233,7 +233,7 @@ class SmsLogic
     }
 
 
-    public function lcsendSMS($mobile,$msg,$code='',$needstatus = 'true'){
+    public function lcsendSMS($mobile,$msg,$code,$needstatus = 'true'){
         $session_id = session_id();
         //发送记录存储数据库
 
@@ -254,7 +254,7 @@ class SmsLogic
         if(!is_null(json_decode($result))){
             $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' => 0,  'msg' => $msg));
             $output=json_decode($result,true);
-            if(isset($output['code']) && isset($output['add_time'])){
+            if($output){
                 M('sms_log')->where(array('id' => $log_id))->save(array('status' => 1,'error_msg'=>'发送短信成功')); //修改发送状态为成功
                 $result = ['status' => 1, 'msg' => '短信发送成功'];
             }else{

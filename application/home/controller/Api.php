@@ -179,9 +179,7 @@ class Api extends Base {
     public function send_code(){
         $type = I('type');
         $scene = I('scene');    //发送短信验证码使用场景
-        $mobile = I('mobile');
-        $type = I('type');
-        $sender = I('send');
+        $mobile = I('send');
         $verify_code = I('verify_code');
         $session_id =  session_id();
 
@@ -195,7 +193,7 @@ class Api extends Base {
         if($type == 'email'){
             //发送邮件验证码
             $logic = new UsersLogic();
-            $res = $logic->send_email_code($sender);
+            $res = $logic->send_email_code($mobile);
             ajaxReturn($res);
         }else{
             //判断是否存在验证码
@@ -211,8 +209,7 @@ class Api extends Base {
             $code = mt_rand(100000,999999);
             $msg = '验证码：'.$code.',您正在注册成为爱车送用户, 请勿告诉他人，感谢您的支持!';
             //发送短信
-            $resp = sendSms($sender,$msg,$code,$needstatus = 'true');
-
+            $resp = sendSms($mobile,$msg,$code,$needstatus = 'true');
             if($resp['status'] == 1){
                 //发送成功, 修改发送状态位成功
                 $return_arr = array('status'=>1,'msg'=>'发送成功,请注意查收'.'');
