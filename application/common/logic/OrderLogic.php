@@ -354,13 +354,14 @@ class OrderLogic
             $wx_content = "你刚刚下了一笔订单:{$order['order_sn']} 尽快支付,过期失效!";
             $jssdk->push_msg($user['openid'],$wx_content);
         }
-        //用户下单, 发送短信给商家
-        $res = checkEnableSendSms("3");
-        $sender = tpCache("shop_info.mobile");
 
-        if($res && $res['status'] ==1 && !empty($sender)){
-            $params = array('consignee'=>$order['consignee'] , 'mobile' => $order['mobile']);
-            $resp = sendSms("3", $sender, $params);
+        //用户下单, 发送短信给商家
+        $user = M('users')->where('user_id','=',$user_id)->find();
+        $msg  = '尊敬的'.$user['nickname'].'用户，您刚下了一个新订单，请尽快到相应的门店完成后续提车的流程';
+        //用户下单, 发送短信给商家
+        $resp = sendSms($user['mobile'],$msg,'',$needstatus = 'true');
+        if(!$resp){
+            return array('status'=>1,'msg'=>'发送短信失败');
         }
         return array('status'=>1,'msg'=>'提交订单成功','result'=>$order_id); // 返回新增的订单id
     }

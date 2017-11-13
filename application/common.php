@@ -389,10 +389,10 @@ function checkEnableSendSms($scene)
  * 发送短信逻辑
  * @param unknown $scene
  */
-function sendSms($scene, $sender, $params,$unique_id=0)
+function sendSms($mobile,$msg,$code='',$needstatus = 'true')
 {
     $smsLogic = new \app\common\logic\SmsLogic;
-    return $smsLogic->sendSms($scene, $sender, $params, $unique_id);
+    return $smsLogic->lcsendSMS($mobile,$msg,$code,$needstatus = 'true');
 }
 
 /**
@@ -932,7 +932,6 @@ function confirm_order($id,$user_id = 0){
         $where['user_id'] = $user_id;
     }
     $order = M('order')->where($where)->find();
-    var_dump($order);die;
     if($order['order_status'] != 1)
         return array('status'=>-1,'msg'=>'该订单不能收货确认');
     if(empty($order['pay_time']) || $order['pay_status'] != 1){
