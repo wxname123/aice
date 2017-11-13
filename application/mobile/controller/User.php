@@ -1131,32 +1131,31 @@ class User extends MobileBase
             $this->redirect('Mobile/User/index');
         }
         $check = session('validate_code');
-        var_dump($check);die;
         if (empty($check)) {
-            header("Location:" . U('User/forget_pwd'));
+            header("Location:" . U('Mobile/User/forget_pwd'));
         } elseif ($check['is_check'] == 0) {
-            $this->error('验证码还未验证通过', U('User/forget_pwd'));
+            $this->error('验证码还未验证通过', U('Mobile/User/forget_pwd'));
         }
-//        if (IS_POST) {
-//            $password = I('post.password');
-//            $password2 = I('post.password2');
-//            if ($password2 != $password) {
-//                $this->error('两次密码不一致', U('User/forget_pwd'));
-//            }
-//            if ($check['is_check'] == 1) {
-//                //$user = get_user_info($check['sender'],1);
-//                $user = M('users')->where("mobile", $check['sender'])->whereOr('email', $check['sender'])->find();
-//                M('users')->where("user_id", $user['user_id'])->save(array('password' => encrypt($password)));
-//                session('validate_code', null);
-//                //header("Location:".U('User/set_pwd',array('is_set'=>1)));
-//                $this->success('新密码已设置行牢记新密码', U('User/index'));
-//                exit;
-//            } else {
-//                $this->error('验证码还未验证通过', U('User/forget_pwd'));
-//            }
-//        }
-//        $is_set = I('is_set', 0);
-//        $this->assign('is_set', $is_set);
+        if (IS_POST) {
+            $password = I('post.password');
+            $password2 = I('post.password2');
+            if ($password2 != $password) {
+                $this->error('两次密码不一致', U('Mobile/User/forget_pwd'));
+            }
+            if ($check['is_check'] == 1) {
+                //$user = get_user_info($check['sender'],1);
+                $user = M('users')->where("mobile", $check['sender'])->find();
+                M('users')->where("user_id", $user['user_id'])->save(array('password' => encrypt($password)));
+                session('validate_code', null);
+                //header("Location:".U('User/set_pwd',array('is_set'=>1)));
+                $this->success('新密码已设置行牢记新密码', U('Mobile/User/index'));
+                exit;
+            } else {
+                $this->error('验证码还未验证通过', U('Mobile/User/forget_pwd'));
+            }
+        }
+        $is_set = I('is_set', 0);
+        $this->assign('is_set', $is_set);
         return $this->fetch();
     }
  

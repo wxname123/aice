@@ -249,7 +249,7 @@ class SmsLogic
         );
         $result = $this->curlPost( $chuanglan_config['api_send_url'],$postArr);
         if(!is_null(json_decode($result))){
-            $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' =>$scene,  'msg' => $msg));
+            $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' =>0,'scene'=>$scene,  'msg' => $msg));
             $output=json_decode($result,true);
             if($output){
                 M('sms_log')->where(array('id' => $log_id))->save(array('status' => 1,'error_msg'=>'发送短信成功')); //修改发送状态为成功

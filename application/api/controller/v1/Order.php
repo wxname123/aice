@@ -354,9 +354,6 @@ class  Order  extends   Base{
    *  提交订单
    * */
     public  function  submitOrder($user_id, $good_id){
-
-
-//        var_dump(request()->post()) ; die ;
         $files  =  request()->file() ;
         $contents = $_POST ;
 
@@ -513,14 +510,18 @@ class  Order  extends   Base{
 
                 //先根据user_id   和 good_id  查询该条记录是否存在， 如果存在则更新， 如果不存在则插入
                 $ugData =  M('user_good_image')->where('user_id' , $user_id)->where('good_id' , $good_id)->find() ;
-//                     var_dump($ugData) ;die ;
                 if(empty($ugData)){
                     $resl =  M('user_good_image')->insert($map) ;
+                    $user = request()->post('consignee');
+                    $msg = '尊敬的'.$user.'用户，您刚下了一个新订单，请尽快到相应的门店完成后续提车的流程';
+                     sendSms(request()->post('mobile'),$msg,'',$needstatus = 'true');
                 }else{
                     //删除之前的图片
-//                         var_dump($ugData) ; die ;
                     $this->freeImage($ugData) ;
                     $resl =  M('user_good_image')->where('user_id' , $user_id)->where('good_id' , $good_id)->save($map) ;
+                    $user = request()->post('consignee');
+                    $msg = '尊敬的'.$user.'用户，您刚下了一个新订单，请尽快到相应的门店完成后续提车的流程';
+                    sendSms(request()->post('mobile'),$msg,'',$needstatus = 'true');
                 }
                 if($resl){
                     $e = new  ParameterException(array(

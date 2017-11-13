@@ -219,17 +219,16 @@ class Api extends Base {
      * 验证短信验证码: APP/WAP/PC 共用发送方法
      */
     public function check_validate_code(){
-          
         $code = I('post.code');
         $mobile = I('mobile');
         $send = I('send');
         $sender = empty($mobile) ? $send : $mobile; 
         $type = I('type');
-        $session_id = I('unique_id', session_id());
-        $scene = I('scene', -1);
+        $session_id =session_id();
+        $scene = I('scene');
 
         $logic = new UsersLogic();
-        $res = $logic->check_validate_code($code, $sender, $type ,$session_id, $scene);
+        $res = $logic->check_code($code, $sender,$session_id, $scene);
         ajaxReturn($res);
     }
     
