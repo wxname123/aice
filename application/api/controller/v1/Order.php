@@ -133,6 +133,8 @@ class  Order  extends   Base{
             $contents  =  request()->post() ;
             $files  =  request()->file() ;
 
+
+
             $is_uid_Inter =  isAppPositiveInteger($user_id) ;
             $is_gid_Inter =  isAppPositiveInteger($good_id) ;
 
@@ -218,77 +220,6 @@ class  Order  extends   Base{
             throw  $e ;
         }
 
-/*
-           if(!isset($files['license'])  ||  ( $files['license'] == NULL  )){
-                    $e = new  ParameterException(array(
-                        'msg' => '驾驶证不能为空' ,
-                        'errorCode' => '391016',
-                        'datas'  =>  null  ,
-                    ));
-                    throw  $e ;
-                }
-
-           if(!isset($files['identity'])  ||  ( $files['identity'] == NULL  )){
-            $e = new  ParameterException(array(
-                'msg' => '身份证不能为空' ,
-                'errorCode' => '391016',
-                'datas'  =>  null  ,
-            ));
-            throw  $e ;
-        }
-
-            if(!isset($files['credit'])  ||  ( $files['credit'] == NULL  )){
-                $e = new  ParameterException(array(
-                    'msg' => '银行卡不能为空' ,
-                    'errorCode' => '391016',
-                    'datas'  =>  null  ,
-                ));
-                throw  $e ;
-            }
-
-            if(!isset($files['security'])  ||  ( $files['security'] == NULL  )){
-                $e = new  ParameterException(array(
-                    'msg' => '社保卡或营业执照不能为空' ,
-                    'errorCode' => '391016',
-                    'datas'  =>  null  ,
-                ));
-                throw  $e ;
-            }
-
-            if(!isset($files['ownership'])  ||  ( $files['ownership'] == NULL  )){
-                $e = new  ParameterException(array(
-                    'msg' => '房产证不能为空' ,
-                    'errorCode' => '391016',
-                    'datas'  =>  null  ,
-                ));
-                throw  $e ;
-            }
-*/
-
-//        var_dump($files['license']) ;die ;
-            $imgArr = [] ;
-
-            if(isset($files['identity'])){
-                $imgArr['identity'] =  "identity";
-            }
-            if(isset($files['license'])){
-                $imgArr['license'] =  "license";
-            }
-
-            if(isset($files['credit'])){
-                $imgArr['credit'] =  "credit";
-            }
-            if(isset($files['security'])){
-                $imgArr['security'] =  "security";
-            }
-            if(isset($files['bankflow'])){
-                $imgArr['bankflow'] =  "bankflow";
-            }
-            if(isset($files['ownership'])){
-                $imgArr['ownership'] =  "ownership";
-            }
-
-
             //数据入库(order)
             $oModel =  model('Order');
 
@@ -301,13 +232,13 @@ class  Order  extends   Base{
                         //上传图片， 图片数据入库（tp_user_good_image）
 
                      $save_url = 'public/upload/usergoods/' . date('Y', time()) . '/' . date('m-d', time());
-                     foreach ($files as  $file ){
+                     foreach ($files as  $k=>$file ){
 //                         var_dump($file) ; die ;
                          $info = $file->rule('uniqid')->validate(['size' => 1024 * 1024 * 3, 'ext' => 'jpg,png,gif,jpeg'])->move($save_url);
                          if($info){
                              // 成功上传后 获取上传信息
                              // 输出 jpg
-                             $comment_img[] = '/'.$save_url . '/' . $info->getFilename();
+                             $comment_img[$k][] = '/'.$save_url . '/' . $info->getFilename();
                          }else{
                              $e = new  ParameterException(array(
                                  'msg' => '图片上传失败' ,
@@ -318,24 +249,30 @@ class  Order  extends   Base{
                          }
                      }
 
-
-//                     var_dump($comment_img) ;   var_dump($comment_img) ;
                      $map = [
                          'user_id' =>  $user_id ,
                          'good_id' =>  $good_id ,
                          'create_time' => time() ,
                      ];
-                     if(!empty($comment_img)){
-//                         $map['identity'] = $comment_img[0] ;
-//                         $map['license'] = $comment_img[1] ;
-//                         $map['credit'] = $comment_img[2] ;
-//                         $map['security'] = $comment_img[3] ;
-//                         $map['ownership'] = $comment_img[4] ;
-
-                         foreach ($imgArr as $k=>$v ){
-                            $map[$k] =  $comment_img[$k]  ;
-                          }
+                     if(!empty($comment_img["identity"])){
+                            $map['identity'] =  $comment_img["identity"][0] ;
                      }
+                     if (!empty($comment_img["license"])){
+                             $map['license'] =  $comment_img["license"][0] ;
+                     }
+                     if (!empty($comment_img["credit"])){
+                            $map['credit'] =  $comment_img["credit"][0] ;
+                     }
+                     if(!empty($comment_img["security"])){
+                             $map['security'] =  $comment_img["security"][0] ;
+                     }
+                     if (!empty($comment_img["bankflow"])){
+                            $map['bankflow'] =  $comment_img["bankflow"][0] ;
+                     }
+                     if(!empty($comment_img["ownership"])){
+                            $map['ownership'] =  $comment_img["ownership"][0] ;
+                     }
+
 
                      //先根据user_id   和 good_id  查询该条记录是否存在， 如果存在则更新， 如果不存在则插入
                      $ugData =  M('user_good_image')->where('user_id' , $user_id)->where('good_id' , $good_id)->find() ;
@@ -344,11 +281,10 @@ class  Order  extends   Base{
                          $resl =  M('user_good_image')->insert($map) ;
                      }else{
                          //删除之前的图片
+//                         var_dump($ugData) ; die ;
                          $this->freeImage($ugData) ;
                          $resl =  M('user_good_image')->where('user_id' , $user_id)->where('good_id' , $good_id)->save($map) ;
                      }
-
-
                      if($resl){
                          $e = new  ParameterException(array(
                              'msg' => '订单提交成功' ,
@@ -390,26 +326,26 @@ class  Order  extends   Base{
     protected  function  freeImage($ugData) {
          if($ugData['license'] != ""){
              $ugData['license'] = substr($ugData['license'], 1) ;
-             unlink($ugData['license']) ;
+             @unlink($ugData['license']) ;
          }
 
         if($ugData['identity'] != ""){
             $ugData['identity'] = substr($ugData['identity'], 1) ;
-            unlink($ugData['identity']) ;
+            @unlink($ugData['identity']) ;
         }
 
         if($ugData['credit'] != ""){
             $ugData['credit'] = substr($ugData['credit'], 1) ;
-            unlink($ugData['credit']) ;
+            @unlink($ugData['credit']) ;
         }
 
         if($ugData['security'] != ""){
             $ugData['security'] = substr($ugData['security'], 1) ;
-            unlink($ugData['security']) ;
+            @unlink($ugData['security']) ;
         }
         if($ugData['ownership'] != ""){
             $ugData['ownership'] = substr($ugData['ownership'], 1) ;
-            unlink($ugData['ownership']) ;
+            @unlink($ugData['ownership']) ;
         }
     }
 
