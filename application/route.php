@@ -29,6 +29,7 @@ Route::post('api/:version/user/login','api/:version.User/login');
 Route::post('api/:version/user/password/reset','api/:version.User/reset');
 Route::get('api/:version/user/:user_id/getuserinfo','api/:version.User/getUserInfo');    //获取用户信息接口
 Route::put('api/:version/user/:user_id/updatesex','api/:version.User/updateSex');    //修改用户性别
+Route::get('api/:version/user/sendsms','api/:version.User/sendCode');    //发送验证码
 
 Route::post('api/:version/user/:user_id/uploadimg','api/:version.User/uploadimg');
 Route::get('api/:version/ad/getadlist','api/:version.Ad/getadlist');

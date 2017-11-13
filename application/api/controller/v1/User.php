@@ -338,7 +338,7 @@ class User  extends   Base {
      }
 
      //发送验证码
-    public function send_code()
+    public function sendCode()
     {
         $postdata = request()->post() ;
 
