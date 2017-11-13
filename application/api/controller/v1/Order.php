@@ -133,7 +133,6 @@ class  Order  extends   Base{
             $contents  =  request()->post() ;
             $files  =  request()->file() ;
 
-
             $is_uid_Inter =  isAppPositiveInteger($user_id) ;
             $is_gid_Inter =  isAppPositiveInteger($good_id) ;
 
@@ -212,14 +211,14 @@ class  Order  extends   Base{
 
           if(!isset($contents['goods_num']) || ($contents['goods_num'] == "")){
             $e = new  ParameterException(array(
-                'msg' => '商品名称不能为空' ,
+                'msg' => '商品数量不能为空' ,
                 'errorCode' => '391016',
                 'datas'  =>  null  ,
             ));
             throw  $e ;
         }
 
-
+/*
            if(!isset($files['license'])  ||  ( $files['license'] == NULL  )){
                     $e = new  ParameterException(array(
                         'msg' => '驾驶证不能为空' ,
@@ -264,6 +263,31 @@ class  Order  extends   Base{
                 ));
                 throw  $e ;
             }
+*/
+
+//        var_dump($files['license']) ;die ;
+            $imgArr = [] ;
+
+            if(isset($files['identity'])){
+                $imgArr['identity'] =  "identity";
+            }
+            if(isset($files['license'])){
+                $imgArr['license'] =  "license";
+            }
+
+            if(isset($files['credit'])){
+                $imgArr['credit'] =  "credit";
+            }
+            if(isset($files['security'])){
+                $imgArr['security'] =  "security";
+            }
+            if(isset($files['bankflow'])){
+                $imgArr['bankflow'] =  "bankflow";
+            }
+            if(isset($files['ownership'])){
+                $imgArr['ownership'] =  "ownership";
+            }
+
 
             //数据入库(order)
             $oModel =  model('Order');
@@ -278,6 +302,7 @@ class  Order  extends   Base{
 
                      $save_url = 'public/upload/usergoods/' . date('Y', time()) . '/' . date('m-d', time());
                      foreach ($files as  $file ){
+//                         var_dump($file) ; die ;
                          $info = $file->rule('uniqid')->validate(['size' => 1024 * 1024 * 3, 'ext' => 'jpg,png,gif,jpeg'])->move($save_url);
                          if($info){
                              // 成功上传后 获取上传信息
@@ -293,18 +318,23 @@ class  Order  extends   Base{
                          }
                      }
 
+
+//                     var_dump($comment_img) ;   var_dump($comment_img) ;
                      $map = [
                          'user_id' =>  $user_id ,
                          'good_id' =>  $good_id ,
                          'create_time' => time() ,
                      ];
-
                      if(!empty($comment_img)){
-                         $map['identity'] = $comment_img[0] ;
-                         $map['license'] = $comment_img[1] ;
-                         $map['credit'] = $comment_img[2] ;
-                         $map['security'] = $comment_img[3] ;
-                         $map['ownership'] = $comment_img[4] ;
+//                         $map['identity'] = $comment_img[0] ;
+//                         $map['license'] = $comment_img[1] ;
+//                         $map['credit'] = $comment_img[2] ;
+//                         $map['security'] = $comment_img[3] ;
+//                         $map['ownership'] = $comment_img[4] ;
+
+                         foreach ($imgArr as $k=>$v ){
+                            $map[$k] =  $comment_img[$k]  ;
+                          }
                      }
 
                      //先根据user_id   和 good_id  查询该条记录是否存在， 如果存在则更新， 如果不存在则插入
@@ -320,7 +350,6 @@ class  Order  extends   Base{
 
 
                      if($resl){
-
                          $e = new  ParameterException(array(
                              'msg' => '订单提交成功' ,
                              'errorCode' => '0',
@@ -361,7 +390,7 @@ class  Order  extends   Base{
     protected  function  freeImage($ugData) {
          if($ugData['license'] != ""){
              $ugData['license'] = substr($ugData['license'], 1) ;
-            unlink($ugData['license']) ;
+             unlink($ugData['license']) ;
          }
 
         if($ugData['identity'] != ""){
