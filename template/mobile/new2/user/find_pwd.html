@@ -89,8 +89,10 @@
 
     //提交
     $("#btn_submit").click(function(){
+        var tpcode="";//你这个最好定义下，你刚才那样写虽然不会报错，但是代码不严谨
         var type = $(".m_phone").attr('type');
         var send = $("#validate_type_"+type).attr("val");
+        alert("mobile="+send);
         if(type == 'mobile'){
             if($("#mobile_code").val().length == 0){
                 $("#mobile_code").focus();
@@ -113,7 +115,7 @@
 			data:{code:tpcode,send:send,type:type,scene:2},
             success:function(res){
                 if(res.status==1){
-                    window.location.href = '/index.php?m=Home&c=User&a=set_pwd';
+                    window.location.href = '/index.php?m=Mobile&c=User&a=set_pwd';
                 }else{
                     showErrorMsg(res.msg);
                 }

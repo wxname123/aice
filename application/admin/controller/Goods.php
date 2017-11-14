@@ -353,7 +353,29 @@ class Goods extends Base {
                 M('task')->where("goods_id = $goods_id")->save(array(
                     'number' => I('mission'), // 任务数量
                 ));
-
+            } else {
+                $Goods->save(); // 写入数据到数据库
+                $goods_id = $insert_id = $Goods->getLastInsID();
+                $a=[
+                    'goods_id' => $goods_id,
+                    'number'   => I('mission'),
+                ];
+                M('task')->save($a);
+            }
+            $cert =  M('goods_certificate')->where("goods_id = $goods_id")->find();
+            if($cert == null){
+                M('goods_certificate')->save(array(
+                    'goods_id'  => $goods_id,
+                    'is_identity' => I('is_identity'),
+                    'is_license' => I('is_license'),
+                    'is_credit' => I('is_credit'),
+                    'is_security' => I('is_security'),
+                    'is_bankflow' => I('is_bankflow'),
+                    'is_ownership' => I('is_ownership'),
+                    'is_commencial' => I('is_commencial'),
+                    'add_time'       =>time(),
+                ));
+            }else{
                 M('goods_certificate')->where("goods_id = $goods_id")->save(array(
                     'is_identity' => I('is_identity'),
                     'is_license' => I('is_license'),
@@ -364,27 +386,9 @@ class Goods extends Base {
                     'is_commencial' => I('is_commencial'),
                     'update_time'       =>date("Y-m-d H:i:s"),
                 ));
-            } else {
-                $Goods->save(); // 写入数据到数据库
-                $goods_id = $insert_id = $Goods->getLastInsID();
-                $a=[
-                    'goods_id' => $goods_id,
-                    'number'   => I('mission'),
-                ];
-                M('task')->save($a);
-
-                M('goods_certificate')->save(array(
-                   'goods_id'  => $goods_id,
-                    'is_identity' => I('is_identity'),
-                    'is_license' => I('is_license'),
-                    'is_credit' => I('is_credit'),
-                    'is_security' => I('is_security'),
-                    'is_bankflow' => I('is_bankflow'),
-                    'is_ownership' => I('is_ownership'),
-                    'is_commencial' => I('is_commencial'),
-                    'add_time'       =>time(),
-                ));
             }
+
+
             $Goods->afterSave($goods_id);
 
             $GoodsLogic->saveGoodsAttr($goods_id, I('goods_type')); // 处理商品 属性
