@@ -1,13 +1,12 @@
 <?php
 
-
 namespace app\home\controller;
 use app\common\logic\UsersLogic;
 use think\Db;
 use think\Session;
 use think\Verify;
 use think\Cookie;
-
+session_start();
 class Api extends Base {
     public  $send_scene;
     
@@ -222,12 +221,12 @@ class Api extends Base {
         $code = I('post.code');
         $mobile = I('mobile');
         $send = I('send');
-        $sender = empty($mobile) ? $send : $mobile; 
+        $sender = empty($mobile) ? $send : $mobile;
         $type = I('type');
         $session_id =session_id();
         $scene = I('scene');
-
         $logic = new UsersLogic();
+        session('mymobile',$sender);
         $res = $logic->check_code($code, $sender,$session_id, $scene);
         ajaxReturn($res);
     }
