@@ -392,7 +392,7 @@ function checkEnableSendSms($scene)
 function sendSms($mobile,$msg,$code,$scene,$needstatus = 'true')
 {
     $smsLogic = new \app\common\logic\SmsLogic;
-    return $smsLogic->lcsendSMS($mobile,$msg,$code,$scene,$needstatus = 'true');
+    return $smsLogic->lcsendSMS($mobile,$msg,$code,$scene,$needstatus );
 }
 
 /**
@@ -1354,7 +1354,7 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
     return $response ;
 }
 
-    function check($code,$sender, $session_id,$scene ){
+    function check($code,$sender,$scene){
      $timeOut = time();
      $inValid = true;  //验证码失效
 
@@ -1362,7 +1362,7 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
     //短信
     $sms_time_out = '600';
     $sms_time_out = $sms_time_out ? $sms_time_out : 60;
-    $data = M('sms_log')->where(array('mobile'=>$sender,'session_id'=>$session_id ,'scene'=>$scene, 'status'=>1))->order('id DESC')->find();
+    $data = M('sms_log')->where(array('mobile'=>$sender,'code'=>$code,'scene'=>$scene, 'status'=>1))->order('id DESC')->find();
     if(is_array($data) && $data['code'] == $code){
         $data['sender'] = $sender;
         $timeOut = $data['add_time']+ $sms_time_out;
