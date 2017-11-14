@@ -76,20 +76,27 @@ class  Order  extends  Model {
      * */
     public  function  saveData($user_id , $contents){
 
-
-
         $orderData = [
             'order_sn'  =>  date('YmdHis').mt_rand(1000,9999) ,
             'user_id'   =>  $user_id ,
             'consignee' => $contents['consignee'] ,
-            'province'  => $contents['province'] ,
-            'city'       => $contents['city'] ,
-            'district'  =>  $contents['district'] ,
             'mobile'    => $contents['mobile'] ,
             'pay_code'  => $contents['pay_code'] ,
             'goods_price'   => $contents['goods_price'],
             'add_time'   => time(),
         ];
+
+        if($contents['district']){
+            $orderData['district'] =  $contents['district'] ;
+        }
+        if($contents['province']){
+            $orderData['province'] =  $contents['province'] ;
+        }
+        if($contents['city']){
+            $orderData['city'] =  $contents['city'] ;
+        }
+
+
 
         if($contents['pay_code'] == "cod"){
             $orderData['pay_name'] = "到货付款" ;

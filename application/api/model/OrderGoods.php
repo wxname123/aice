@@ -15,7 +15,7 @@ class   OrderGoods extends  Model {
      *  @param   $good_id   int  :  商品编码
      * */
     public  function  saveData($order_id, $good_id,$contents) {
-//        var_dump($contents['goods_name'] ) ; die ;
+
         $ordergoodData = [
             'order_id'  =>  $order_id ,
             'goods_id'  =>  $good_id ,

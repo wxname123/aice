@@ -85,18 +85,23 @@ class   Good  extends  Base{
          $goodmodel =  model('Good');
 
           $goods_info =  $goodmodel->getGoodsDetail($good_id) ;
-
+//        var_dump($goods_info) ; die ;
             if(!empty($goods_info)){
                 $goods_info['original_img'] = BASE_PATH . $goods_info['original_img'] ;
                 $content  = html_entity_decode($goods_info['goods_content']) ;
-                $cont_arr = getSrcImg($content) ;
-//                var_dump($cont_arr) ; die ;
+
+                if($content != ""){
+                    $cont_arr = getSrcImg($content) ;
+                }else{
+                    $goods_info['goods_content'] = [];
+                }
 
                 if(!empty($cont_arr)){
                     $goods_info['goods_content'] = [] ;
                     foreach ( $cont_arr   as $k=>$v ) {
                         $goods_info['goods_content'][$k] =   BASE_PATH  . $v ;
                     }
+
                 }
 
 //                $goods_info = array_merge($udata, $goods_info) ;
