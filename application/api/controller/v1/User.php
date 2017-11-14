@@ -45,6 +45,30 @@ class User  extends   Base {
                 throw  $e ;
             }
 
+            if(config('app_debug') == false){
+                $mobile =$postdata['mobile'] ;
+                $code = $postdata['vcode'];
+                $session_id = session_id();
+                $check_code =check($code, $mobile, $session_id, $scene="1");
+                if($check_code['status'] != 1){
+                    $e = new  ParameterException(array(
+                        'msg' => '手机验证码不正确' ,
+                        'errorCode' => '391005',
+                    ));
+                    throw  $e ;
+                }
+            }else{
+                //先把 验证码写死
+                if($postdata['vcode'] != "888888"){
+                    $e = new  ParameterException(array(
+                        'msg' => '验证码错误' ,
+                        'errorCode' => '391005',
+                    ));
+                    throw  $e ;
+                }
+            }
+
+
            if(!isAppNotEmpty($postdata['nickname'])){
               $e = new  ParameterException(array(
                   'msg' => '用户名不能为空' ,
@@ -248,14 +272,32 @@ class User  extends   Base {
        // (new  UserResetValidate())->goCheck() ;
         $postdata = request()->post() ;
 
-        //先把 验证码写死
-        if($postdata['vcode'] != "888888"){
-            $e = new  ParameterException(array(
-                'msg' => '验证码错误' ,
-                'errorCode' => '391005',
-            ));
-            throw  $e ;
+
+
+        if(config('app_debug') == false){
+            $mobile =$postdata['mobile'];
+            $code = $postdata['vcode'];
+            $session_id = session_id();
+            $check_code =check($code, $mobile, $session_id, $scene="2");
+            if($check_code['status'] != 1){
+                $e = new  ParameterException(array(
+                    'msg' => '验证码错误' ,
+                    'errorCode' => '391005',
+                ));
+                throw  $e ;
+            }
+        }else{
+            //先把 验证码写死
+            if($postdata['vcode'] != "888888"){
+                $e = new  ParameterException(array(
+                    'msg' => '验证码错误' ,
+                    'errorCode' => '391005',
+                ));
+                throw  $e ;
+            }
         }
+
+
 
 
 

@@ -66,7 +66,7 @@ Route::post('api/:version/user/:user_id/good/:good_id/order/submitorder','api/:v
 
 
 //短信验证码接口还没有写  post
-
+Route::post('api/:version/message/sendsms','api/:version.SendSms/sendCode');    //发送验证码
 
 
 

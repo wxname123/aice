@@ -32,7 +32,7 @@ class  Base  extends  Controller {
              $this->get_request_data() ;
 
             //2.添加黑名单
-            $this->add_black() ;
+//            $this->add_black() ;
         }
 
 
