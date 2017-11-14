@@ -29,7 +29,9 @@ Route::post('api/:version/user/login','api/:version.User/login');
 Route::post('api/:version/user/password/reset','api/:version.User/reset');
 Route::get('api/:version/user/:user_id/getuserinfo','api/:version.User/getUserInfo');    //获取用户信息接口
 Route::put('api/:version/user/:user_id/updatesex','api/:version.User/updateSex');    //修改用户性别
-Route::get('api/:version/user/:user_id/subordinates','api/:version.User/getSubordinates');    //修改用户性别
+Route::get('api/:version/user/:user_id/subordinates','api/:version.User/getSubordinates');    //我的下级
+Route::put('api/:version/user/:user_id/quit','api/:version.User/quit');    //退出登录接口
+
 
 Route::post('api/:version/user/:user_id/uploadimg','api/:version.User/uploadimg');
 Route::get('api/:version/ad/getadlist','api/:version.Ad/getadlist');
@@ -64,8 +66,6 @@ Route::get('api/:version/order/:rec_id/getorderdetail','api/:version.Order/getOr
 Route::post('api/:version/user/:user_id/good/:good_id/order/submitorder','api/:version.Order/submitOrder');   //提交订单接口
 
 
-
-//短信验证码接口还没有写  post
 Route::post('api/:version/message/sendsms','api/:version.SendSms/sendCode');    //发送验证码
 
 

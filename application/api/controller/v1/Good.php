@@ -11,7 +11,6 @@ class   Good  extends  Base{
         $goodModel =   model('Good');
 //        var_dump($page) ; die ;
 
-
         $pageInter =   isPageInteger($page) ;
         $perpageInter = isPageInteger($per_page) ;
 

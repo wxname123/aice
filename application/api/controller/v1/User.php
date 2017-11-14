@@ -50,6 +50,7 @@ class User  extends   Base {
                 $code = $postdata['vcode'];
                 $session_id = session_id();
                 $check_code =check($code, $mobile, $session_id, $scene="1");
+
                 if($check_code['status'] != 1){
                     $e = new  ParameterException(array(
                         'msg' => '手机验证码不正确' ,
@@ -166,7 +167,7 @@ class User  extends   Base {
                 $validator = identity($postdata['nickname'], $postdata['id_card']) ;
                 $validate_info =substr($validator,strpos($validator,'{'));
                 $validate_info =   json_decode($validate_info, true ) ;
-                if($validate_info !=null){
+                if($validate_info != null){
                     if($validate_info['result']['isok'] == false){
                         $e = new  ParameterException(array(
                             'msg' => '身份信息不符合，请填写真实信息' ,
@@ -273,7 +274,6 @@ class User  extends   Base {
         $postdata = request()->post() ;
 
 
-
         if(config('app_debug') == false){
             $mobile =$postdata['mobile'];
             $code = $postdata['vcode'];
@@ -287,6 +287,7 @@ class User  extends   Base {
                 throw  $e ;
             }
         }else{
+
             //先把 验证码写死
             if($postdata['vcode'] != "888888"){
                 $e = new  ParameterException(array(
@@ -576,6 +577,37 @@ class User  extends   Base {
             throw  $e ;
         }
 
+    }
+
+//    退出登录接口
+    public  function  quit($user_id){
+
+            $is_Inter =  isAppPositiveInteger($user_id) ;
+            if(!$is_Inter){
+                $e = new  ParameterException(array(
+                    'msg' => '参数必须为正整数' ,
+                    'errorCode' => '391023',
+                ));
+                throw  $e ;
+        }
+
+            $token =  request()->header('token') ;
+
+            $res =  $this->memcache_obj->delete($token) ;
+
+            if($res ){
+                $e = new  ParameterException(array(
+                    'msg' => '退出成功' ,
+                    'errorCode' => '0',
+                ));
+                throw  $e ;
+            }else{
+                $e = new  ParameterException(array(
+                    'msg' => '退出登录失败' ,
+                    'errorCode' => '391037',
+                ));
+                throw  $e ;
+            }
     }
 
 }

@@ -3,7 +3,7 @@
 namespace  app\api\controller\v1 ;
 use  app\lib\exception\ParameterException ;
 
-class SendSms  extends   Base{
+class SendSms {
 
     //发送验证码
     public function sendCode()

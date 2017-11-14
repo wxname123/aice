@@ -15,6 +15,8 @@
 
 namespace app\common\logic;
 
+use  think\Config ;
+
 /**
  * Description of SmsLogic
  *
@@ -83,7 +85,6 @@ class SmsLogic
         } else {
            return $result = ['status' => -1, 'msg' => '接收手机号不正确['.$sender.']'];
         }
-        
     }
 
     public function identity($nickname,$id_card){
@@ -236,18 +237,18 @@ class SmsLogic
     public function lcsendSMS($mobile,$msg,$code,$scene,$needstatus = 'true'){
         $session_id = session_id();
         //发送记录存储数据库
-        $chuanglan_config['api_send_url']    = 'http://smssh1.253.com/msg/send/json';
-        $chuanglan_config['api_account']     = 'N3300103';
-        $chuanglan_config['api_password']    = 'JWi7jpcZ3';
+//        $chuanglan_config['api_send_url']    = 'http://smssh1.253.com/msg/send/json';
+//        $chuanglan_config['api_account']     = 'N3300103';
+//        $chuanglan_config['api_password']    = 'JWi7jpcZ3';
 
         $postArr = array(
-            'account'     => $chuanglan_config['api_account'],
-            'password'    => $chuanglan_config['api_password'],
+            'account'     =>  Config::get('SEND_SMS.api_account')  , // $chuanglan_config['api_account'],
+            'password'    =>  Config::get('SEND_SMS.api_password')   ,//$chuanglan_config['api_password'],
             'msg'          => urlencode($msg),
             'phone'        => $mobile,
             'report'       => $needstatus
         );
-        $result = $this->curlPost( $chuanglan_config['api_send_url'],$postArr);
+        $result = $this->curlPost(Config::get('SEND_SMS.api_send_url') ,$postArr);      //$chuanglan_config['api_send_url']
         if(!is_null(json_decode($result))){
             $log_id = M('sms_log')->insertGetId(array('mobile' => $mobile, 'code' => $code, 'add_time' => time(), 'session_id' => $session_id, 'status' =>0,'scene'=>$scene,  'msg' => $msg));
             $output=json_decode($result,true);

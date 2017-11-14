@@ -19,7 +19,7 @@ class  Base  extends  Controller {
     //设置过期时间
     protected $expires_time =  86400   ; // 680400  ;// 60*60*24*7 ;
 
-        public   function  _initialize()
+    public   function  _initialize()
         {
             parent::_initialize();
 
@@ -32,7 +32,7 @@ class  Base  extends  Controller {
              $this->get_request_data() ;
 
             //2.添加黑名单
-//            $this->add_black() ;
+            $this->add_black() ;
         }
 
 
@@ -40,7 +40,9 @@ class  Base  extends  Controller {
         public   function  add_black(){
             //把登录 和 注册  拿出来， 其他的接口都要带上token
             $action =  request()->action() ;
-            if($action == "login"  || $action == "regist"){
+
+            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  ;
+            if($is_black){
 
             }else{
                 $token  =  request()->header('token') ;
@@ -53,9 +55,7 @@ class  Base  extends  Controller {
                     ));
                     throw  $e ;
                 }
-
                 $this->validateToken($token , time()) ;
-
             }
         }
 
@@ -151,6 +151,19 @@ class  Base  extends  Controller {
 
         $time_out = $m_data[0] ;
         $user_id = $m_data[1] ;
+
+        if(request()->get('user_id') != NULL ){
+             //比对user_id   和  memcache取出来的user_id  , 如果不一致则表明不是同一个用户
+             if($user_id != request()->get('user_id')){
+                 $e = new  ParameterException(array(
+                     'msg' => '用户编码不一致' ,
+                     'errorCode' => '391038',
+                     'datas'  =>  null
+                 ));
+                 throw  $e ;
+             }
+        }
+
 
         if(!$time_out){
             $e = new  ParameterException(array(

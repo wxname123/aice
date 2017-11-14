@@ -37,7 +37,7 @@ class   Good  extends  Model{
                 ->join('tp_goods_certificate b', 'b.goods_id = g.goods_id ','left')
                 ->where('g.goods_id', $good_id)
                 ->field('g.goods_id, g.goods_sn, g.goods_name, g.click_count, g.market_price, g.shop_price, g.mission ,
-                             g.original_img ,g.store_count, g.comment_count, g.goods_remark, g.goods_content,
+                             g.original_img ,g.store_count, g.comment_count, g.goods_remark, g.goods_content, g.commission ,
                               g.sales_sum , b.is_identity, b.is_license, b.is_credit,b.is_security , b.is_bankflow , b.is_ownership ')
                 ->find() ;
     }
