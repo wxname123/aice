@@ -8,12 +8,7 @@ use think\Model;
 
 class  Brand  extends  Model {
 
-    public  function  getAllList(){
-             return    Db::table('tp_brand')
-                            ->field('id, name,  CONCAT("'.BASE_PATH.'" , logo )  logo ')
-                            ->order('sort desc')
-                            ->select() ;
-    }
+
 
 
     /*
@@ -22,12 +17,15 @@ class  Brand  extends  Model {
      *  @param   $per_page   int  :  分页参数 ：每页显示多少条数据
      * */
     public  function  getAllBrandList($page, $per_page){
+         $page = $page * $per_page ;
+          $totalData = [] ;
           $brandData =   Db::table('tp_brand')
                                     ->field('id , name , CONCAT("'.BASE_PATH.'"  , logo )  logo'   )
                                     ->order('sort desc')
                                     ->select() ;
 
           if(!empty($brandData)){
+              $totalData['list'] = $brandData ;
               $goodData =    Db::table('tp_goods')
                   ->alias('g')
                   ->where('g.is_on_sale', 1)
@@ -37,12 +35,12 @@ class  Brand  extends  Model {
                   ->select();
 
               if(!empty($goodData)){
-                  $brandData['goodlist'] = $goodData ;
+                  $totalData['goodlist'] = $goodData ;
               }else{
-                  $brandData['goodlist'] = [] ;
+                  $totalData['goodlist'] = [] ;
               }
           }
-          return  $brandData ;
+          return  $totalData ;
     }
 
 
@@ -53,6 +51,7 @@ class  Brand  extends  Model {
      *  @param   $per_page   int  :  分页参数 ：每页显示多少条数据
      * */
     public  function  getAllListBy( $brand_id ,$page , $per_page) {
+             $page = $page * $per_page ;
               return    Db::table('tp_goods')
                                 ->alias('g')
                                 ->where('brand_id' , $brand_id)
