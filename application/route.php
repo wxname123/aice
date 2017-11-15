@@ -51,8 +51,6 @@ Route::get('api/:version/version/:type/checkversion','api/:version.Version/check
 //汽车列表  接口
 
 Route::get('api/:version/good/getrecomlist','api/:version.Good/getRecomList');   //获取精品推荐列表接口
-//Route::get('api/:version/brand/getbrandlist','api/:version.Brand/getBrandList');   //查询所有品牌列表接口
-//Route::get('api/:version/good/:brand_id/getbrandgoods','api/:version.Good/getbrandgoods');   //查询某个品牌下所有的商品列表
 
 //任务接口
 Route::get('api/:version/task/:user_id/gettasklist','api/:version.Task/getTaskList');   //查询任务列表

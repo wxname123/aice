@@ -22,7 +22,7 @@ class  Category  extends  Model{
          $totalData = [] ;
          $catData  =    Db::table('tp_goods_category')
                         ->where('parent_id' , 0)
-                        ->field('id, name, CONCAT("'.BASE_PATH.'" , image )  image')
+                        ->field('id, name  , CONCAT("'.BASE_PATH.'" , image )  logo ')
                         ->select() ;
 
 
