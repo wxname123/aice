@@ -560,6 +560,8 @@ class  Order  extends   Base{
 
         $files  =  request()->file() ;
 
+    //getallheaders();     //获取HTTP 头信息
+
         $is_uid_Inter =  isAppPositiveInteger($user_id) ;
         $is_gid_Inter =  isAppPositiveInteger($good_id) ;
 
@@ -703,7 +705,7 @@ class  Order  extends   Base{
                 $save_url = 'public/upload/usergoods/' . date('Y', time()) . '/' . date('m-d', time());
                 foreach ($files as  $k=>$file ){
 //                         var_dump($file) ; die ;
-                    $info = $file->rule('uniqid')->validate(['size' => 1024 * 1024 * 3, 'ext' => 'jpg,png,gif,jpeg'])->move($save_url);
+                    $info = $file->rule('uniqid')->validate(['size' => 1024 * 1024 * 20, 'ext' => 'jpg,png,gif,jpeg'])->move($save_url);
                     if($info){
                         // 成功上传后 获取上传信息
                         // 输出 jpg
