@@ -37,13 +37,13 @@ class  Order  extends  Model {
         return      Db::table('tp_order')
                     ->alias('o')
                     ->where('user_id'  , $user_id)
-                    ->join('tp_order_goods og', 'og.order_id = o.order_id', 'left')
+                    ->join('tp_order_goods og', 'og.order_id = o.order_id')
                     ->join('tp_goods g', 'og.goods_id = g.goods_id', 'left')
                     ->field('o.order_id,og.rec_id , og.goods_id ,g.goods_name  , concat( "'.BASE_PATH.'" ,g.original_img)  original_img  ,  o.order_sn, o.order_status, o.shipping_status,FROM_UNIXTIME( o.add_time , "%Y-%m-%d %H:%i:%s")  add_time , o.goods_price ,
                                 o.shipping_price , o.total_amount, og.goods_num')
-                    ->page($page, $per_page)
+                    ->limit($page, $per_page)
+                    ->order('o.add_time desc')
                     ->select();
-
     }
 
     /*

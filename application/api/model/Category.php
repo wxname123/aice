@@ -35,7 +35,7 @@ class  Category  extends  Model{
                             ->field(' g.goods_id, g.goods_sn, g.goods_name, g.click_count, g.market_price, 
                                        g.shop_price, g.mission , g.original_img ,g.store_count, g.comment_count, g.goods_remark,
                                           sales_sum')
-                            ->page($page, $per_page)
+                            ->limit($page, $per_page)
                             ->order('shop_price  desc')
                             ->select() ;
     }
