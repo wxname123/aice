@@ -169,7 +169,7 @@ class Order extends Base {
     public function refund_order(){
         $data = I('post.');
         if($data){
-            M('users')->where('user_id','=',$data['user_id'])->save(array('review'=>$data['review']));
+            M('user_good_image')->where(['user_id'=>$data['user_id'],'good_id'=>$data['good_id']])->save(array('view'=>$data['view']));
         }
         $this->success('审核成功',U("Admin/Order/refund_order_list"));
     }

@@ -117,10 +117,10 @@
 		             </td>
 		             <td align="center" abbr="article_time" axis="col6" class="">
 		               <div style="text-align: center; width: 60px;" class="">
-						   <if condition="$list.statu eq 0">待处理</if>
-						   <if condition="$list.review eq 1">通过审核</if>
-						   <if condition="$list.review eq 0">未通过审核</if>
-						   <if condition="$list.review eq 2">审核被拒绝</if>
+						   <if condition="$list.view eq 0">待处理</if>
+						   <if condition="$list.view eq 1">通过审核</if>
+						   <if condition="$list.view eq 2">未通过审核</if>
+						   <if condition="$list.view eq 3">审核被拒绝</if>
 		               </div>
 		             </td>
 		             <td align="center" axis="col1" class="handle">
