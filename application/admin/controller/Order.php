@@ -124,12 +124,14 @@ class Order extends Base {
     public function refund_order_list(){
     	$orderLogic = new OrderLogic();
     	$condition = array();
-    	I('consignee') ? $condition['consignee'] = trim(I('consignee')) : false;
-    	I('order_sn') != '' ? $condition['order_sn'] = trim(I('order_sn')) : false;
-    	$condition['shipping_status'] = 0;
-    	$condition['order_status'] = 3;
-    	$condition['pay_status'] = array('gt',0);
-    	$count = M('order')->where($condition)->count();
+    	I('nickname') != '' ? $condition['c.nickname'] = trim(I('nickname')) : false;
+        I('mobile') != '' ? $condition['c.mobile'] = trim(I('nickname')) : false;
+        $count = M('user_good_image a')
+            ->join('goods b','a.good_id = b.goods_id',LEFT)
+            ->join('users c','a.user_id = c.user_id',LEFT)
+            ->where($condition)
+            ->count();
+
     	$Page  = new Page($count,10);
     	//搜索条件下 分页赋值
     	foreach($condition as $key=>$val) {
@@ -138,65 +140,83 @@ class Order extends Base {
     		}
     	}
     	$show = $Page->show();
-    	$orderList = M('order')->where($condition)->limit($Page->firstRow.','.$Page->listRows)->order('add_time DESC')->select();
+    	$orderList = M('user_good_image a')
+            ->join('goods b','a.good_id = b.goods_id',LEFT)
+            ->join('users c','a.user_id = c.user_id',LEFT)
+            ->where($condition)
+            ->limit($Page->firstRow.','.$Page->listRows)
+            ->order('a.create_time DESC')
+            ->select();
     	$this->assign('orderList',$orderList);
     	$this->assign('page',$show);// 赋值分页输出
     	$this->assign('pager',$Page);
     	return $this->fetch();
     }
     
-    public function refund_order_info($order_id){
-    	$orderLogic = new OrderLogic();
-    	$order = $orderLogic->getOrderInfo($order_id);
-    	$orderGoods = $orderLogic->getOrderGoods($order_id);
-    	$this->assign('order',$order);
-    	$this->assign('orderGoods',$orderGoods);
+    public function refund_order_info(){
+             $id =$_GET['id'];
+            $img_id['a.id'] =$id;
+            //  订单总金额查询语句
+            $image = M('user_good_image a')
+                ->join('goods b','a.good_id = b.goods_id',LEFT)
+                ->join('users c','a.user_id = c.user_id',LEFT)
+                ->where($img_id)
+                ->find();
+    	$this->assign('image',$image);
     	return $this->fetch();
+    }
+
+    public function refund_order(){
+        $data = I('post.');
+        if($data){
+            M('user_good_image')->where(['user_id'=>$data['user_id'],'good_id'=>$data['good_id']])->save(array('view'=>$data['view']));
+        }
+        $this->success('审核成功',U("Admin/Order/refund_order_list"));
     }
 
     //取消订单
     //取消订单退款原路退回
-    public function refund_order(){
-    	$data = I('post.');
-    	$orderLogic = new OrderLogic();
-    	$order = $orderLogic->getOrderInfo($data['order_id']);
-    	if(!order){
-    		$this->error('订单不存在或参数错误');
-    	}
-        if($data['pay_status'] == 3){
-            if($data['refund_type']== 1){
-            	//退到用户余额
-            	$return_money = $order['order_amount']+$order['user_money'];
-            	$expense_data = array('money'=>$return_money,'log_type_id'=>$order['order_id'],'type'=>2,'user_id'=>$order['user_id']);
-            	$update_money_res = accountLog($order['user_id'], $return_money, $order['integral'], '用户申请商品退款', 0, $order['order_id'], $order['order_sn']);
-                if($update_money_res){
-                    $coupon_list = M('coupon_list')->where(['uid'=>$order['user_id'],'order_id'=>$order['order_id']])->find();
-                    if(!empty($coupon_list)){
-                        $update_coupon_data = ['status'=>0,'use_time'=>0,'order_id'=>0];
-                        M('coupon_list')->where(['id'=>$coupon_list['id'],'status'=>1])->save($update_coupon_data);
-                    }
-                    M('order')->where(['order_id'=>$order['order_id'],'order_status'=>3,'pay_status'=>1])
-                        ->save(['admin_note'=>$data['admin_note'],'pay_status'=>3]);
-                    expenseLog($expense_data);
-                    $this->success('成功退款到账户余额');
-                }else{
-                    $this->error('退款失败');
-                }
-            }
-            if($data['refund_type']== 0){
-                //支付原路退回
-                if($order['pay_code'] == 'weixin' || $order['pay_code'] == 'alipay' || $order['pay_code'] == 'alipayMobile'){
-                    header("Content-type: text/html; charset=utf-8");
-                    exit('请联系TPshop官网客服购买高级版支持此功能'); 
-                }else{
-                    $this->error('该订单支付方式不支持在线退回');
-                }
-            }
-    	}else{
-    		M('order')->where(array('order_id'=>$order['order_id']))->save($data);
-    		$this->success('拒绝退款操作成功');
-    	}   	
-    }
+//    public function refund_order(){
+//    	$data = I('post.');
+//    	$orderLogic = new OrderLogic();
+//    	$order = $orderLogic->getOrderInfo($data['order_id']);
+//    	if(!order){
+//    		$this->error('订单不存在或参数错误');
+//    	}
+//        if($data['pay_status'] == 3){
+//            if($data['refund_type']== 1){
+//            	//退到用户余额
+//            	$return_money = $order['order_amount']+$order['user_money'];
+//            	$expense_data = array('money'=>$return_money,'log_type_id'=>$order['order_id'],'type'=>2,'user_id'=>$order['user_id']);
+//            	$update_money_res = accountLog($order['user_id'], $return_money, $order['integral'], '用户申请商品退款', 0, $order['order_id'], $order['order_sn']);
+//                if($update_money_res){
+//                    $coupon_list = M('coupon_list')->where(['uid'=>$order['user_id'],'order_id'=>$order['order_id']])->find();
+//                    if(!empty($coupon_list)){
+//                        $update_coupon_data = ['status'=>0,'use_time'=>0,'order_id'=>0];
+//                        M('coupon_list')->where(['id'=>$coupon_list['id'],'status'=>1])->save($update_coupon_data);
+//                    }
+//                    M('order')->where(['order_id'=>$order['order_id'],'order_status'=>3,'pay_status'=>1])
+//                        ->save(['admin_note'=>$data['admin_note'],'pay_status'=>3]);
+//                    expenseLog($expense_data);
+//                    $this->success('成功退款到账户余额');
+//                }else{
+//                    $this->error('退款失败');
+//                }
+//            }
+//            if($data['refund_type']== 0){
+//                //支付原路退回
+//                if($order['pay_code'] == 'weixin' || $order['pay_code'] == 'alipay' || $order['pay_code'] == 'alipayMobile'){
+//                    header("Content-type: text/html; charset=utf-8");
+//                    exit('请联系TPshop官网客服购买高级版支持此功能');
+//                }else{
+//                    $this->error('该订单支付方式不支持在线退回');
+//                }
+//            }
+//    	}else{
+//    		M('order')->where(array('order_id'=>$order['order_id']))->save($data);
+//    		$this->success('拒绝退款操作成功');
+//    	}
+//    }
     /**
      * 订单详情
      * @param int $id 订单id

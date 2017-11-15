@@ -52,12 +52,14 @@ class OrderLogic extends Model
      */
     public function getOrderInfo($order_id)
     {
-        //  订单总金额查询语句		
+        //  订单总金额查询语句
         $order = M('order')->where("order_id = $order_id")->find();
         $order['address2'] = $this->getAddressName($order['province'],$order['city'],$order['district']);
-        $order['address2'] = $order['address2'].$order['address'];		
+        $order['address2'] = $order['address2'].$order['address'];
         return $order;
     }
+
+
 
     /*
      * 根据商品型号获取商品
