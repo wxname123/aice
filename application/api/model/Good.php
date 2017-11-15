@@ -19,6 +19,7 @@ class   Good  extends  Model{
         return   Db::table('tp_goods')
                     ->alias('g')
                     ->where('g.is_hot' , 1)
+                    ->where('g.is_on_sale', 1)
                     ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , original_img')
                     ->limit($page, $per_page)
                     ->order('g.on_time  desc')
@@ -61,6 +62,7 @@ class   Good  extends  Model{
           return   Db::table('tp_goods')
                             ->alias('g')
                             ->where('is_recommend', 1)
+                            ->where('g.is_on_sale', 1)
                             ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , CONCAT("'.BASE_PATH.'" , g.original_img ) original_img')
                             ->limit($page, $per_page)
                             ->order('g.shop_price desc')
@@ -77,6 +79,7 @@ class   Good  extends  Model{
            return   Db::table('tp_goods')
                         ->alias('g')
                         ->where('brand_id', $brand_id)
+                        ->where('g.is_on_sale', 1)
                         ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , CONCAT("'.BASE_PATH.'" , g.original_img ) original_img')
                         ->page($page ,$per_page)
                         ->select() ;

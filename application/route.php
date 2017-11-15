@@ -68,9 +68,10 @@ Route::post('api/:version/user/:user_id/good/:good_id/order/submitorder','api/:v
 
 Route::post('api/:version/message/sendsms','api/:version.SendSms/sendCode');    //发送验证码
 
+//汽车整车、产品品牌     全套接口
+Route::get('api/:version/nav/:nav_id/home/gethomelist','api/:version.HomeList/getHomeList');
 
 
-// http://www.tpshop2.0.com/home/goods/goodsInfo/id/77.html
 
 
 

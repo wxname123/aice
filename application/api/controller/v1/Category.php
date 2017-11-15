@@ -81,4 +81,30 @@ class  Category   extends  Base {
 
     }
 
+
+    /*
+     *  根据 导航栏上面传过来的编码 来选择查询那些数据， 例如 传1 ：表示查询“汽车整车” ， 2 ： 表示 “汽车配饰”  ， 3 ： “产品品牌”
+     *  @param    $nav_id   int   :  导航栏对应的标签
+     *  @return   Array
+     * */
+    public  function  getHomeList($nav_id){
+        die("1111");
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

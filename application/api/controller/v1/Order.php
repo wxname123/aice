@@ -307,7 +307,7 @@ class  Order  extends   Base{
                 $save_url = 'public/upload/usergoods/' . date('Y', time()) . '/' . date('m-d', time());
                 foreach ($files as  $k=>$file ){
 //                         var_dump($file) ; die ;
-                    $info = $file->rule('uniqid')->validate(['size' => 1024 * 1024 * 20, 'ext' => 'jpg,png,gif,jpeg'])->move($save_url);
+                    $info = $file->rule('uniqid')->validate(['size' => 1024 * 1024 * 50, 'ext' => 'jpg,png,gif,jpeg'])->move($save_url);
                     if($info){
                         // 成功上传后 获取上传信息
                         // 输出 jpg
