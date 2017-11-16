@@ -20,7 +20,6 @@ class User  extends   Base {
 
 //          (new UserRegistValidate() )->goCheck() ;
           $postdata = request()->post() ;
-
           if(!isset($postdata['nickname'])  ||  !isset($postdata['mobile'])  || !isset($postdata['password'])  ||  !isset($postdata['recond_mobile'])  ||  !isset($postdata['id_card'])  ){
               $e = new  ParameterException(array(
                   'msg' => '缺少必填参数' ,
@@ -50,7 +49,6 @@ class User  extends   Base {
                 $code = $postdata['vcode'];
                 $session_id = session_id();
                 $check_code =check($code, $mobile, $session_id, $scene="1");
-
                 if($check_code['status'] != 1){
                     $e = new  ParameterException(array(
                         'msg' => '手机验证码不正确' ,
@@ -219,6 +217,7 @@ class User  extends   Base {
     public   function  login(){
 
 //        (  new  UserLoginValidate() )->goCheck() ;
+
 
         $postdata =   request()->post() ;
 

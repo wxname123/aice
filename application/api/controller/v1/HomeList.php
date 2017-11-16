@@ -47,13 +47,9 @@ class  HomeList extends  Base {
                            ));
                            throw  $e ;
                        }
-
-                    $dataList = $catModel->getCatListBy($cat_id , $page, $per_page) ;
-
+                      $dataList = $catModel->getCatListBy($cat_id , $page, $per_page) ;
                 }
-
             }elseif ($nav_id == "4"){
-
                 //判断是否有传入  cat_id  参数
                 $brand_id = request()->get('brand_id') ;
                 $brandModel =   model('Brand');
@@ -62,11 +58,10 @@ class  HomeList extends  Base {
                 }else{
                         $dataList = $brandModel->getAllListBy( $brand_id ,$page , $per_page) ;
                 }
-            }else{
-                //暂时不管
-
+            }elseif ( $nav_id == "1"){
+                        $gModel =   model('Good') ;
+                        $dataList =  $gModel->getRecomDataList($page , $per_page) ;
             }
-
 
         if(!empty($dataList)){
             $e = new  ParameterException(array(

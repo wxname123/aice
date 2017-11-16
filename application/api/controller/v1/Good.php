@@ -124,7 +124,6 @@ class   Good  extends  Base{
 
     }
 
-
     /*
      *  获取精品推荐列表接口
      * */

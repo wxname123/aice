@@ -689,9 +689,9 @@ class Goods extends Base {
         $where = "";
         $keyword = I('keyword');
         $where = $keyword ? " name like '%$keyword%' " : "";
-        $count = $model->where($where)->count();
+        $count = $model->where($where)->where('is_delete' , 1)->count();
         $Page = $pager = new Page($count,10);        
-        $brandList = $model->where($where)->order("`sort` asc")->limit($Page->firstRow.','.$Page->listRows)->select();
+        $brandList = $model->where($where)->where('is_delete' , 1)->order("`sort` asc")->limit($Page->firstRow.','.$Page->listRows)->select();
         $show  = $Page->show(); 
         $cat_list = M('goods_category')->where("parent_id = 0")->getField('id,name'); // 已经改成联动菜单
         $this->assign('cat_list',$cat_list);       
@@ -742,7 +742,9 @@ class Goods extends Base {
         }
         
         $model = M("Brand"); 
-        $model->where('id ='.$_GET['id'])->delete(); 
+//        $model->where('id ='.$_GET['id'])->delete();
+        $model->where('id ='.$_GET['id'])->update(['is_delete'=>0]);
+
         $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);   //$return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);        
         $this->ajaxReturn($return_arr);
     }      
