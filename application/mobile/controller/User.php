@@ -407,25 +407,15 @@ class User extends MobileBase
             $session_id = session_id();
 
             //是否开启注册验证码机制
-            if(check_mobile($mobile)){
-                if($reg_sms_enable){
-                    //手机功能没关闭
-                    $check_code = $logic->check_validate_code($code, $mobile, 'phone', $session_id, $scene);
-                    if($check_code['status'] != 1){
-                        $this->ajaxReturn($check_code);
-                    }
-                }
-            }
-            //是否开启注册邮箱验证码机制
-            if(check_email($mobile)){
-                if($reg_smtp_enable){
-                    //邮件功能未关闭
-                    $check_code = $logic->check_validate_code($code, $mobile);
-                    if($check_code['status'] != 1){
-                        $this->ajaxReturn($check_code);
-                    }
-                }
-            }
+//            if(check_mobile($mobile)){
+//                if($reg_sms_enable){
+//                    //手机功能没关闭$code,$sender, $session_id,$scene
+//                    $check_code = $logic->check_validate_code($code, $mobile, $session_id, $scene);
+//                    if($check_code['status'] != 1){
+//                        $this->ajaxReturn($check_code);
+//                    }
+//                }
+//            }
             $invite = I('invite');
             if(!empty($invite)){
             	$invite = get_user_info($invite,2);//根据手机号查找邀请人
@@ -1133,7 +1123,7 @@ class User extends MobileBase
         if ($this->user_id > 0) {
             $this->redirect('Mobile/User/index');
         }
-        $check = session('mymobile');
+        $check = session('validate_code');
         if (IS_POST) {
             $password = I('post.password');
             $password2 = I('post.password2');

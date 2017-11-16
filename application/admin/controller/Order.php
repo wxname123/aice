@@ -169,9 +169,23 @@ class Order extends Base {
     public function refund_order(){
         $data = I('post.');
         if($data){
-            M('user_good_image')->where(['user_id'=>$data['user_id'],'good_id'=>$data['good_id']])->save(array('view'=>$data['view']));
+           M('user_good_image')->where(['user_id'=>$data['user_id'],'good_id'=>$data['good_id']])->save(array('view'=>$data['view']));
         }
-        $this->success('审核成功',U("Admin/Order/refund_order_list"));
+        $user = M('users')->where('user_id','=',$data['user_id'])->find();
+        if($data['view'] == 1){
+            $msg  = '尊敬的'.$user['nickname'].'用户，您提交的资料已审核通过，请到门店进行后续提车操作';
+        }
+        if($data['view'] == 2){
+            $msg  = '尊敬的'.$user['nickname'].'用户，您提交的资料未通过审核，请重新提交';
+        }
+        if($data['view'] == 3){
+            $msg  = '尊敬的'.$user['nickname'].'用户，您提交的资料被驳回';
+        }
+
+        //用户下单, 发送短信给商家
+       sendSms($user['mobile'],$msg,'',$scene=3,$needstatus = 'true');
+            $this->success('审核资料成功',U("Admin/Order/refund_order_list"));
+
     }
 
     //取消订单
@@ -940,25 +954,24 @@ class Order extends Base {
      */
     public function ajax_return_list(){
         // 搜索条件
-        $order_sn =  trim(I('order_sn'));
-        $order_by = I('order_by') ? I('order_by') : 'addtime';
-        $sort_order = I('sort_order') ? I('sort_order') : 'desc';
-        $status =  I('status');
+        $username =trim(I('nickname'));
 
+        $a = M('users')->where('nickname','=',$username)->find();
+        $user_id = $a['user_id'];
         $where = " 1 = 1 ";
-        $order_sn && $where.= " and order_sn like '%$order_sn%' ";
-        empty($order_sn)&& !empty($status) && $where.= " and status = '$status' ";
-        $count = M('return_goods')->where($where)->count();
+        $username && $where.= " and user_id like '%$user_id%' ";
+        $count = M('user_task a')
+               ->join('users b','a.user_id = b.user_id',LEFT)
+               ->where($where)
+               ->count();
         $Page  = new AjaxPage($count,13);
         $show = $Page->show();
-        $list = M('return_goods')->where($where)->order("$order_by $sort_order")->limit("{$Page->firstRow},{$Page->listRows}")->select();
-        $goods_id_arr = get_arr_column($list, 'goods_id');
-        if(!empty($goods_id_arr)){
-            $goods_list = M('goods')->where("goods_id in (".implode(',', $goods_id_arr).")")->getField('goods_id,goods_name');
-        }
-        $state = C('REFUND_STATUS');
-        $this->assign('state',$state);
-        $this->assign('goods_list',$goods_list);
+        $list = M('user_task a')
+               ->join('users b','a.user_id = b.user_id',LEFT)
+               ->where($where)
+               ->order(" a.update_time desc")
+               ->limit("{$Page->firstRow},{$Page->listRows}")
+               ->select();
         $this->assign('list',$list);
         $this->assign('pager',$Page);
         $this->assign('page',$show);// 赋值分页输出

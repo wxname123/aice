@@ -100,13 +100,6 @@
                 return false;
             }
             tpcode = $("#mobile_code").val();
-        }else if(type == 'email'){
-            if($("#email_code").val().length == 0){
-                $("#email_code").focus();
-                showErrorMsg("验证码不能为空！");
-                return false;
-            }
-            tpcode = $("#email_code").val();
         }
         $.ajax({
             url:'/index.php?m=Home&c=Api&a=check_validate_code&t='+Math.random(),
