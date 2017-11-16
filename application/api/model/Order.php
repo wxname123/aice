@@ -63,9 +63,9 @@ class  Order  extends  Model {
                             ->join('tp_region r3', 'r3.id = u.district','left')
                             ->field('og.rec_id, og.order_id, og.goods_id, og.goods_num,og.goods_price,
                                       FROM_UNIXTIME( o.add_time , "%Y-%m-%d %H:%i:%s")  add_time , o.shipping_price, order_status , 
-                                      g.goods_name , u.mobile, u.nickname, r.name  province_name , r2.name  city_name , r3.name district_name ')
+                                      g.goods_name , u.mobile, u.nickname, r.name  province_name , r2.name  city_name , r3.name district_name ,
+                                       g.commission ')
                             ->find();
-
     }
 
     /*
