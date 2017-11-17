@@ -247,10 +247,11 @@ class User  extends   Base {
 
         if($data != NULL ){
             //生成token
-           $token =   $this->generateToken($data['user_id']) ;
-//            var_dump( $token ) ; die ;
+            if(config('app_debug') == false){
+                $token =   $this->generateToken($data['user_id']) ;
+                $data['token'] = $token ;
+            }
 
-            $data['token'] = $token ;
             $e = new  ParameterException(array(
                 'msg' => '登录成功' ,
                 'errorCode' => '0',

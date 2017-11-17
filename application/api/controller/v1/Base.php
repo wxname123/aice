@@ -5,7 +5,7 @@ namespace app\api\controller\v1 ;
 
 use think\Controller;
 use  app\common\memcache ;
-use  aiche ;
+use  aiche\AESMcrypt  ;
 use  app\lib\exception\ParameterException ;
 
 class  Base  extends  Controller {
@@ -23,16 +23,20 @@ class  Base  extends  Controller {
         {
             parent::_initialize();
 
-            $this->memcache_obj = memcache\Memcache::singleton() ;
-            if($this->aes == null ){
-                $this->aes =  new  aiche\AESMcrypt($bit=128, $key='abcdef1234567890',$iv='0987654321fedcba',$mode='cbc') ;
+            if(config('app_debug') == false){    //正式环境才需要传入token
+                $this->memcache_obj = memcache\Memcache::singleton() ;
+                if($this->aes == null ){
+                    $this->aes =  new  AESMcrypt($bit=128, $key='abcdef1234567890',$iv='0987654321fedcba',$mode='cbc') ;
+                }
             }
 
             //1. 获取请求的数据
              $this->get_request_data() ;
 
             //2.添加黑名单
-//            $this->add_black() ;
+            if(config('app_debug') == false) {
+                $this->add_black();
+            }
         }
 
 
@@ -86,7 +90,7 @@ class  Base  extends  Controller {
             $msg =  $this->generate_char($this->length).$time_out ;
             // token  有三部分组成    1:对msg 编码后的字符串      2:seperator 分隔符（.）    3:对msg加密之后再编码的字符串
 //            $token = base64_encode($msg).'.' .base64_encode($this->aes->encrypt($msg)) ;
-            $token =  $token = $this->aes->encrypt($msg);
+             $token = $this->aes->encrypt($msg);
 
             $data = json_encode(array($time_out , $user_id) , true ) ;
 
