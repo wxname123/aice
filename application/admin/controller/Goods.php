@@ -349,18 +349,22 @@ class Goods extends Base {
                     'goods_price' => I('shop_price'), // 本店价
                     'member_goods_price' => I('shop_price'), // 会员折扣价
                 ));
-
-                M('task')->where("goods_id = $goods_id")->save(array(
-                    'number' => I('mission'), // 任务数量
-                ));
             } else {
                 $Goods->save(); // 写入数据到数据库
                 $goods_id = $insert_id = $Goods->getLastInsID();
+            }
+
+            $number = M('task')->where("goods_id = $goods_id")->find();
+            if($number == null){
                 $a=[
                     'goods_id' => $goods_id,
                     'number'   => I('mission'),
                 ];
                 M('task')->save($a);
+            }else{
+                M('task')->where("goods_id = $goods_id")->save(array(
+                    'number' => I('mission'), // 任务数量
+                ));
             }
             $cert =  M('goods_certificate')->where("goods_id = $goods_id")->find();
             if($cert == null){
