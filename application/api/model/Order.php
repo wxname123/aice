@@ -19,12 +19,12 @@ class  Order  extends  Model {
                                        ->where('o.order_status', 'in', [0, 1])
                                        ->where('o.add_time','between time', [$timeArr['bottom'] , $timeArr['top']])
                                        ->join('tp_users u', 'u.user_id = o.user_id', 'left')
-                                       ->field('o.order_id, o.order_sn, o.order_status, o.shipping_status, o.pay_status, o.user_id , u.mobile , u.review ,
+                                       ->join('tp_user_good_image ug', 'u.user_id = ug.user_id', 'left')
+                                       ->field('o.order_id, o.order_sn, o.order_status, o.shipping_status, o.pay_status, o.user_id , ug.view , u.mobile  ,
                                             if(o.order_status , "订单确认成功", "下单成功")  description , if(u.review, "资料审核通过", "资料审核未通过")  materials')
                                        ->limit(ORDER_COUNT)
                                        ->order('o.add_time desc')
                                        ->select();
-
     }
 
     /*

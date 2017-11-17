@@ -47,7 +47,7 @@ class  HomeList extends  Base {
                            ));
                            throw  $e ;
                        }
-                      $dataList = $catModel->getCatListBy($cat_id , $page, $per_page) ;
+                       $dataList = $catModel->getCatListBy($cat_id , $page, $per_page) ;
                 }
             }elseif ($nav_id == "4"){
                 //判断是否有传入  cat_id  参数

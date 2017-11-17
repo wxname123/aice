@@ -9,8 +9,6 @@ use think\Model;
 class  Brand  extends  Model {
 
 
-
-
     /*
      *  获取所有的品牌数据
      *  @param   $page   int  :    分页参数：当前页
@@ -20,6 +18,7 @@ class  Brand  extends  Model {
          $page = $page * $per_page ;
           $totalData = [] ;
           $brandData =   Db::table('tp_brand')
+                                    ->where('is_delete' , 1)
                                     ->field('id , name , CONCAT("'.BASE_PATH.'"  , logo )  logo'   )
                                     ->order('sort desc')
                                     ->select() ;
@@ -30,7 +29,7 @@ class  Brand  extends  Model {
                   ->alias('g')
                   ->where('g.is_on_sale', 1)
                   ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img  ')
-                  ->order('g.on_time desc')
+                  ->order('g.sort  desc')
                   ->limit($page , $per_page)
                   ->select();
 
@@ -57,7 +56,7 @@ class  Brand  extends  Model {
                                 ->where('brand_id' , $brand_id)
                                 ->where('g.is_on_sale', 1)
                                 ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img ')
-                                ->order('g.on_time desc')
+                                ->order('g.sort  desc')
                                 ->limit($page , $per_page)
                                 ->select() ;
     }

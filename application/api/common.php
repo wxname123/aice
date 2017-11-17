@@ -135,8 +135,8 @@ define('ORDER_COUNT', 20 ) ;
     function  getTopTimeStamp(){
 //        $currtime = time()  ;
 //         $currdate =   date("Y-m-d H:i:s", $currtime) ;
-         $bottom_time = strtotime('-7 days') ;
-         $top_time = strtotime('+7 days') ;
+         $bottom_time = strtotime('-2 days') ;
+         $top_time = strtotime('+2 days') ;
          $map['bottom'] = $bottom_time ;
          $map['top'] = $top_time ;
          return $map ;
