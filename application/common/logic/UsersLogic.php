@@ -1054,7 +1054,7 @@ class UsersLogic extends Model
             $res = array('status'=>-1,'msg'=>'验证失败,验证码有误');
         }else{
             $data['is_check'] = 1; //标示验证通过
-            session('validate_code',$data);
+            $_SESSION['validate_code'] = $data;
             $res = array('status'=>1,'msg'=>'验证成功');
         }
         return $res;

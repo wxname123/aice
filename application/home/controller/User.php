@@ -974,6 +974,7 @@ class User extends Base{
         if ($this->user_id > 0) {
             header("Location: " . U('Home/User/Index'));
         }
+
         if (IS_POST) {
             $username = I('username');
             if (!empty($username)) {

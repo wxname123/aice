@@ -28,7 +28,8 @@
             </td>
             <td align="center" abbr="article_time" axis="col6" class="">
                 <div style="text-align:left; width: 100px;" class="">
-                    {$items['status']}
+                    <if condition="$items['status'] eq 0">未完成</if>
+                    <if condition="$items['status'] eq 1">完成</if>
                 </div>
             </td>
             <td align="center" abbr="article_time" axis="col6" class="">

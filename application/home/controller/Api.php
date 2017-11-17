@@ -210,7 +210,6 @@ class Api extends Base {
         $session_id =session_id();
         $scene = I('scene');
         $logic = new UsersLogic();
-        session('mymobile',$sender);
         $res = $logic->check_code($code, $sender,$session_id, $scene);
         ajaxReturn($res);
     }

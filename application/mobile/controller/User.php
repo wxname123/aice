@@ -407,15 +407,15 @@ class User extends MobileBase
             $session_id = session_id();
 
             //是否开启注册验证码机制
-//            if(check_mobile($mobile)){
-//                if($reg_sms_enable){
-//                    //手机功能没关闭$code,$sender, $session_id,$scene
-//                    $check_code = $logic->check_validate_code($code, $mobile, $session_id, $scene);
-//                    if($check_code['status'] != 1){
-//                        $this->ajaxReturn($check_code);
-//                    }
-//                }
-//            }
+            if(check_mobile($mobile)){
+                if($reg_sms_enable){
+                    //手机功能没关闭$code,$sender, $session_id,$scene
+                    $check_code = $logic->check_validate_code($code, $mobile, $session_id, $scene);
+                    if($check_code['status'] != 1){
+                        $this->ajaxReturn($check_code);
+                    }
+                }
+            }
             $invite = I('invite');
             if(!empty($invite)){
             	$invite = get_user_info($invite,2);//根据手机号查找邀请人
@@ -1123,7 +1123,7 @@ class User extends MobileBase
         if ($this->user_id > 0) {
             $this->redirect('Mobile/User/index');
         }
-        $check = session('validate_code');
+        $check = $_SESSION['validate_code'];
         if (IS_POST) {
             $password = I('post.password');
             $password2 = I('post.password2');
@@ -1132,9 +1132,9 @@ class User extends MobileBase
             }
             if ($check !=null) {
                 //$user = get_user_info($check['sender'],1);
-                $user = M('users')->where("mobile", $check)->find();
+                $user = M('users')->where("mobile", $check['mobile'])->find();
                 M('users')->where("user_id", $user['user_id'])->save(array('password' => encrypt($password)));
-                session('mymobile', null);
+                $_SESSION['validate_code'] == null;
                 //header("Location:".U('User/set_pwd',array('is_set'=>1)));
                 $this->success('新密码已设置行牢记新密码', U('Mobile/User/index'));
                 exit;

@@ -89,7 +89,7 @@
 
     //提交
     $("#btn_submit").click(function(){
-        var tpcode="";//你这个最好定义下，你刚才那样写虽然不会报错，但是代码不严谨
+        var tpcode="";//
         var type = $(".m_phone").attr('type');
         var send = $("#validate_type_"+type).attr("val");
         alert("mobile="+send);
@@ -100,6 +100,13 @@
                 return false;
             }
             tpcode = $("#mobile_code").val();
+        }else if(type == 'email'){
+            if($("#email_code").val().length == 0){
+                $("#email_code").focus();
+                showErrorMsg("验证码不能为空！");
+                return false;
+            }
+            tpcode = $("#email_code").val();
         }
         $.ajax({
             url:'/index.php?m=Home&c=Api&a=check_validate_code&t='+Math.random(),

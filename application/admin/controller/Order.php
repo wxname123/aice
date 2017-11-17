@@ -943,14 +943,14 @@ class Order extends Base {
     }
     
     /**
-     * 退货单列表
+     * 任务单列表
      */
     public function return_list(){
         return $this->fetch();
     }
 
     /*
-     * ajax 退货订单列表
+     * ajax 任务单列表
      */
     public function ajax_return_list(){
         // 搜索条件
