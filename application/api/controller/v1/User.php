@@ -47,8 +47,7 @@ class User  extends   Base {
             if(config('app_debug') == false){
                 $mobile =$postdata['mobile'] ;
                 $code = $postdata['vcode'];
-                $session_id = session_id();
-                $check_code =check($code, $mobile, $session_id, $scene="1");
+                $check_code =check($code, $mobile, $scene="1");
                 if($check_code['status'] != 1){
                     $e = new  ParameterException(array(
                         'msg' => '手机验证码不正确' ,
@@ -277,8 +276,7 @@ class User  extends   Base {
         if(config('app_debug') == false){
             $mobile =$postdata['mobile'];
             $code = $postdata['vcode'];
-            $session_id = session_id();
-            $check_code =check($code, $mobile, $session_id, $scene="2");
+            $check_code =check($code, $mobile, $scene="2");
             if($check_code['status'] != 1){
                 $e = new  ParameterException(array(
                     'msg' => '验证码错误' ,
