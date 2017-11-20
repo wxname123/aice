@@ -179,9 +179,11 @@ class Goods extends MobileBase {
         $cat_level_arr[$cat_list[$goods_id]['level']] = $cat_id;
         // 找出他老爸
         $parent_id = $cat_list[$cat_id]['parent_id'];
+        if($parent_id > 0)
+            $var = $parent_id;
         // 找出他爷爷
         $grandpa_id = $cat_list[$parent_id]['parent_id'];
-        if($grandpa_id > 0)
+        if( $grandpa_id >0)
             $var = $grandpa_id;
 
 
