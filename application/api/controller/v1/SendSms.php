@@ -15,7 +15,7 @@ class SendSms {
 
         //注册
         //判断是否存在验证码
-        $data = M('sms_log')->where(array('mobile' => $mobile, 'session_id' => $session_id, 'status' => 1))->order('id DESC')->find();
+        $data = M('sms_log')->where(array('mobile' => $mobile , 'status' => 1))->order('id DESC')->find();
         //获取时间配置
         $sms_time_out = '60';
         //60秒以内不可重复发送

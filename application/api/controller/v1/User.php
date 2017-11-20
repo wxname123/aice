@@ -214,56 +214,85 @@ class User  extends   Base {
 
 //    用户登录接口
     public   function  login(){
+        $uModel = model('User');
+        $token =  request()->header('token') ;
+        $is_token =    isAppNotEmpty($token) ;
+        if($is_token){
+            // token登录
+             $m_data =  $this->validateToken($token , time()) ;
+             $user_id =  $m_data[1] ;
+             if($user_id){    //取出memcache中的用户编码
+                 //根据用户编码去获取用户登录信息
+                  $data =  $uModel->getUserTokenInfo($user_id) ;
+                  if(!empty($data)){
+                      $e = new  ParameterException(array(
+                          'msg' => '登录成功' ,
+                          'errorCode' => '0',
+                          'datas'  =>  $data
+                      ));
+                      throw  $e ;
+                  }else{
+                      $e = new  ParameterException(array(
+                          'msg' => '该用户不存在',
+                          'errorCode' => '391011',
+                          'datas' => null
+                      ));
+                      throw  $e;
+                  }
+             }else{
+                 $e = new  ParameterException(array(
+                     'msg' => 'token已过期' ,
+                     'errorCode' => '391035',
+                     'datas'  =>  null
+                 ));
+                 throw  $e ;
+             }
 
-//        (  new  UserLoginValidate() )->goCheck() ;
+        }else {
+            //账号密码登录
+            $postdata = request()->post();
 
-
-        $postdata =   request()->post() ;
-
-         $isMobile =  isAppMobile($postdata['mobile']) ;
-         if($isMobile ==  false ){
-             $e = new  ParameterException(array(
-                 'msg' => '手机格式不正确' ,
-                 'errorCode' => '391014',
-             ));
-             throw  $e ;
-         }
-
-
-         if(!isAppNotEmpty($postdata['password'])){
-             $e = new  ParameterException(array(
-                 'msg' => '密码不能为空' ,
-                 'errorCode' => '391014',
-             ));
-             throw  $e ;
-         }
-
-
-        //根据 手机号码  ， 密码  去查询数据
-         $uModel =  model('User') ;
-         $data =  $uModel->identiMobilePass($postdata) ;
-
-
-        if($data != NULL ){
-            //生成token
-            if(config('app_debug') == false){
-                $token =   $this->generateToken($data['user_id']) ;
-                $data['token'] = $token ;
+            $isMobile = isAppMobile($postdata['mobile']);
+            if ($isMobile == false) {
+                $e = new  ParameterException(array(
+                    'msg' => '手机格式不正确',
+                    'errorCode' => '391014',
+                ));
+                throw  $e;
             }
 
-            $e = new  ParameterException(array(
-                'msg' => '登录成功' ,
-                'errorCode' => '0',
-                'datas'  =>  $data
-            ));
-            throw  $e ;
-        }else{
-            $e = new  ParameterException(array(
-                'msg' => '手机号或密码错误' ,
-                'errorCode' => '391007',
-                'datas'  =>  $data
-            ));
-            throw  $e ;
+            if (!isAppNotEmpty($postdata['password'])) {
+                $e = new  ParameterException(array(
+                    'msg' => '密码不能为空',
+                    'errorCode' => '391014',
+                ));
+                throw  $e;
+            }
+
+            //根据 手机号码  ， 密码  去查询数据
+            $data = $uModel->identiMobilePass($postdata);
+
+            if ($data != NULL) {
+                //生成token
+                if (config('app_debug') == false) {
+                    $token = $this->generateToken($data['user_id']);
+                    $data['token'] = $token;
+                }
+
+                $e = new  ParameterException(array(
+                    'msg' => '登录成功',
+                    'errorCode' => '0',
+                    'datas' => $data
+                ));
+                throw  $e;
+            } else {
+                $e = new  ParameterException(array(
+                    'msg' => '手机号或密码错误',
+                    'errorCode' => '391007',
+                    'datas' => $data
+                ));
+                throw  $e;
+            }
         }
     }
 
@@ -276,7 +305,9 @@ class User  extends   Base {
         if(config('app_debug') == false){
             $mobile =$postdata['mobile'];
             $code = $postdata['vcode'];
+
             $check_code =check($code, $mobile, $scene="2");
+
             if($check_code['status'] != 1){
                 $e = new  ParameterException(array(
                     'msg' => '验证码错误' ,

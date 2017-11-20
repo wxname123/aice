@@ -15,11 +15,19 @@ class  User  extends Model {
             ->where('u.mobile', $postdata['mobile'])
             ->where('u.password', encrypt($postdata['password']))
             ->join('tp_users u2', 'u2.user_id = u.uid','left')
-            ->field('u.user_id, u.mobile, u.sex,u.birthday, u.nickname ,u.token ,  u.statu,u.id_card,u.mission,u.is_agent,u.is_distribut,u.uid, u2.nickname  recom_name')
+            ->field('u.user_id, u.mobile, u.sex,u.birthday, u.nickname,  u.statu,u.id_card,u.mission,u.is_agent,u.is_distribut,u.uid, u2.nickname  recom_name')
             ->find() ;
     }
 
 
+
+    public  function getUserTokenInfo($user_id){
+        return   Db::table('tp_users')->alias('u')
+            ->where('u.user_id',$user_id)
+            ->join('tp_users u2', 'u2.user_id = u.uid','left')
+            ->field('u.user_id, u.mobile, u.sex,u.birthday, u.nickname,  u.statu,u.id_card,u.mission,u.is_agent,u.is_distribut,u.uid, u2.nickname  recom_name')
+            ->find() ;
+    }
 
     /*
      * 根据用户编码查询出该用户的所有下级用户

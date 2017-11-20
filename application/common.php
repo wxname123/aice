@@ -1360,7 +1360,7 @@ function getTotalAddress($province_id, $city_id, $district_id, $twon_id, $addres
 
         if(!$code)return array('status'=>-1,'msg'=>'请输入短信验证码');
     //短信
-    $sms_time_out = '60';
+    $sms_time_out = '600';
     $sms_time_out = $sms_time_out ? $sms_time_out : 60;
     $data = M('sms_log')->where(array('mobile'=>$sender,'code'=>$code,'scene'=>$scene, 'status'=>1))->order('id DESC')->find();
     if(is_array($data) && $data['code'] == $code){

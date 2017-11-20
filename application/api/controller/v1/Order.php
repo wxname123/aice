@@ -5,10 +5,20 @@ namespace   app\api\controller\v1 ;
 
 use  app\lib\exception\ParameterException ;
 use think\Db;
+use  Redis ;
 
 class  Order  extends   Base{
 
     public  function  getnews(){
+
+
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+        $redis->set('key','gentry');
+        echo $redis->get('key');
+
+        die ;
+
            $oModel = model('Order');
           //获取时间戳
            $map =  getTopTimeStamp() ;

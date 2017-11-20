@@ -45,7 +45,7 @@ class  Base  extends  Controller {
             //把登录 和 注册  拿出来， 其他的接口都要带上token
             $action =  request()->action() ;
 
-            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  ;
+            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  || ( $action == "sendCode" )  ;
             if($is_black){
 
             }else{
@@ -192,6 +192,7 @@ class  Base  extends  Controller {
         $time_out = $this->timeTostamp($timestamp);
         $data =  json_encode(array( $time_out,$user_id), true );
         $this->memcache_obj->set($token,$data,0,$this->expires_time);
+        return  $m_data ;
     }
 
 }

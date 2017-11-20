@@ -12,6 +12,7 @@ class  Memcache {
     public  static function  singleton(){
         if(!isset(self::$_instance)){
              self::$_instance =  memcache_connect("localhost",11211) ;
+
         }
         return self::$_instance ;
     }
