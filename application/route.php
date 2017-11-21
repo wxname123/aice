@@ -25,6 +25,8 @@ use think\Route;
 //Route::get('goodsInfo/:id','api/goods/goodsInfo',['cache'=>['Home/Goods/goodsInfo',300]]);// 访问方式 http://www.tpshop2.0.com/goodsInfo/77.html
 
 Route::post('api/:version/user/regist','api/:version.User/regist');// 访问方式 http://www.tpshop2.0.com/goodsInfo/77.html
+
+
 Route::post('api/:version/user/login','api/:version.User/login');
 Route::post('api/:version/user/password/reset','api/:version.User/reset');
 Route::get('api/:version/user/:user_id/getuserinfo','api/:version.User/getUserInfo');    //获取用户信息接口
@@ -66,7 +68,6 @@ Route::post('api/:version/message/sendsms','api/:version.SendSms/sendCode');    
 
 //汽车整车、产品品牌     全套接口
 Route::get('api/:version/nav/:nav_id/home/gethomelist','api/:version.HomeList/getHomeList');
-
 
 
 

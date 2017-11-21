@@ -19,6 +19,9 @@ class User  extends   Base {
 //            var_dump($this->post['recond_mobile']) ; die ;
 
 //          (new UserRegistValidate() )->goCheck() ;
+
+
+
           $postdata = request()->post() ;
           if(!isset($postdata['nickname'])  ||  !isset($postdata['mobile'])  || !isset($postdata['password'])  ||  !isset($postdata['recond_mobile'])  ||  !isset($postdata['id_card'])  ){
               $e = new  ParameterException(array(
@@ -181,7 +184,18 @@ class User  extends   Base {
                 }
             }
 
-
+            //获取第三方注册 传参
+            $oauth =  request()->header('oauth') ;
+            if(isset($oauth) ) {
+                if ($oauth != "other") {
+                    $e = new  ParameterException(array(
+                        'msg' => '第三方来源传入错误',
+                        'errorCode' => '391039',
+                    ));
+                    throw  $e;
+                }
+                $map['oauth'] = $oauth;
+            }
 
           //执行 用户注册的逻辑
             $map['password'] =   encrypt(request()->post('password')) ;
@@ -191,6 +205,8 @@ class User  extends   Base {
             $map['reg_time'] = time() ;
             $map['id_card'] = $postdata['id_card'] ;
             $map['token'] = md5(time().mt_rand(1,999999999));
+
+
 
             //数据入库
             $res =    M('users')->save($map);
@@ -214,7 +230,9 @@ class User  extends   Base {
 
 //    用户登录接口
     public   function  login(){
-        $uModel = model('User');
+
+
+       $uModel = model('User');
         $token =  request()->header('token') ;
         $is_token =    isAppNotEmpty($token) ;
         if($is_token){
@@ -300,7 +318,6 @@ class User  extends   Base {
     public  function  reset(){
        // (new  UserResetValidate())->goCheck() ;
         $postdata = request()->post() ;
-
 
         if(config('app_debug') == false){
             $mobile =$postdata['mobile'];
@@ -397,6 +414,7 @@ class User  extends   Base {
 //     上传图像
     public  function uploadimg(){
         $user_id =   request()->get('user_id') ;
+
 
         //(new  IDMustBeInteger())->goCheck() ;
 

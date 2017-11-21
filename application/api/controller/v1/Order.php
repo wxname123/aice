@@ -12,12 +12,12 @@ class  Order  extends   Base{
     public  function  getnews(){
 
 
-        $redis = new Redis();
-        $redis->connect('127.0.0.1', 6379);
-        $redis->set('key','gentry');
-        echo $redis->get('key');
-
-        die ;
+//        $redis = new Redis();
+//        $redis->connect('127.0.0.1', 6379);
+//        $redis->set('key','gentry');
+//        echo $redis->get('key');
+//
+//        die ;
 
            $oModel = model('Order');
           //获取时间戳
@@ -161,6 +161,11 @@ class  Order  extends   Base{
             $ugData['ownership'] = substr($ugData['ownership'], 1) ;
             @unlink($ugData['ownership']) ;
         }
+        if($ugData['commencial'] != ""){
+            $ugData['commencial'] = substr($ugData['commencial'], 1) ;
+            @unlink($ugData['commencial']) ;
+        }
+
     }
 
 
@@ -354,7 +359,9 @@ class  Order  extends   Base{
                 if(!empty($comment_img["ownership"])){
                     $map['ownership'] =  $comment_img["ownership"][0] ;
                 }
-
+                if(!empty($comment_img["commencial"])){
+                    $map['commencial'] =  $comment_img["commencial"][0] ;
+                }
 
                 //先根据user_id   和 good_id  查询该条记录是否存在， 如果存在则更新， 如果不存在则插入
                 $ugData =  M('user_good_image')->where('user_id' , $user_id)->where('good_id' , $good_id)->find() ;
