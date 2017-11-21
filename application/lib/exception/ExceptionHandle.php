@@ -32,7 +32,6 @@ class  ExceptionHandle  extends  Handle{
             $this->errorCode = 999 ;
 //            日志记录
             $this->recordErrorLog($e);
-
         }
 
 //        $request = Request::instance() ;

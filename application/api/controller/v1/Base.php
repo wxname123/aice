@@ -45,7 +45,7 @@ class  Base  extends  Controller {
             //把登录 和 注册  拿出来， 其他的接口都要带上token
             $action =  request()->action() ;
 
-            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  || ( $action == "sendCode" )  ;
+            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  || ( $action == "sendCode" )   || ( $action == "getad") ;
             if($is_black){
 
             }else{
@@ -102,7 +102,7 @@ class  Base  extends  Controller {
     /*
     * 将传递进来的时间戳转为日期， 日期增加一个星期后再转为时间戳，返回时间戳
     * */
-    public  function  timeTostamp($timestamp){
+        public  function  timeTostamp($timestamp){
 
         //时间戳转日期
         $date =  date('Y-m-d H:i:s', $timestamp);
@@ -115,7 +115,7 @@ class  Base  extends  Controller {
 
 
     //生成固定长度的字符串
-    public  function generate_char( $length = 16 ) {
+     public  function generate_char( $length = 16 ) {
         // 密码字符集，可任意添加你需要的字符
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $char = '';
@@ -130,7 +130,7 @@ class  Base  extends  Controller {
 
 
 //    用户每次调用其他接口都会调用token的验证方法，每调用一次就把$time_out在当前时间上往后加7天，存入到memcache中，缓存的key就是token , 每次变化的只是value
-    public  function  validateToken($token,$timestamp){
+      public  function  validateToken($token,$timestamp){
 
         if($token == null ){
             $e = new  ParameterException(array(

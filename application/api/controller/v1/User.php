@@ -402,7 +402,6 @@ class User  extends   Base {
 
         $file  =   request()->file('image') ;
 
-
         if($file == NULL ){
             $e = new  ParameterException(array(
                 'msg' => '上传图片不能为空' ,
@@ -452,7 +451,7 @@ class User  extends   Base {
             $head_pic_url =  M('users')->where('user_id' , $user_id)->getField('head_pic');
             if($head_pic_url != ""){
 
-                unlink(substr($head_pic_url, 1)) ;
+                @unlink(substr($head_pic_url, 1)) ;
             }
 
 
@@ -605,12 +604,10 @@ class User  extends   Base {
             ));
             throw  $e ;
         }
-
     }
 
 //    退出登录接口
     public  function  quit($user_id){
-
             $is_Inter =  isAppPositiveInteger($user_id) ;
             if(!$is_Inter){
                 $e = new  ParameterException(array(
@@ -621,8 +618,9 @@ class User  extends   Base {
         }
 
             $token =  request()->header('token') ;
-
-            $res =  $this->memcache_obj->delete($token) ;
+            if(config('app_debug') == false ){
+                $res =  $this->memcache_obj->delete($token) ;
+            }
 
             if($res ){
                 $e = new  ParameterException(array(

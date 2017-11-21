@@ -13,9 +13,11 @@ class   Task  extends  Model{
                         ->alias('ut')
                         ->where('ut.user_id', $user_id)
                         ->join('tp_task t', 't.task_id = ut.task_id' , 'left')
+                        ->join('tp_goods g', 'g.goods_id = t.goods_id', 'left')
                         ->field('ut.id, ut.task_id,t.name, ut.task_number , ut.complete_number ,ut.status ,
                                     FROM_UNIXTIME( ut.start_time , "%Y-%m-%d %H:%i:%s") start_time   ,
-                                     FROM_UNIXTIME( ut.end_time , "%Y-%m-%d %H:%i:%s") end_time ')
+                                     FROM_UNIXTIME( ut.end_time , "%Y-%m-%d %H:%i:%s") end_time ,
+                                      g.goods_id, g.goods_name , g.shop_price , CONCAT("'.BASE_PATH.'" , g.original_img)  original_img  ')
                         ->page($page, $per_page)
                         ->select() ;
     }

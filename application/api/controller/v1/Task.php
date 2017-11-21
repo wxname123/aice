@@ -33,7 +33,7 @@ class   Task   extends   Base {
 
           $taskModel =   model('Task');
           $taskData =   $taskModel->getTaskListBy($user_id, $page , $per_page);
-//          var_dump($taskData) ; die ;
+
 
         if(!empty($taskData)){
                 $e = new  ParameterException(array(
