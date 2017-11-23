@@ -20,8 +20,6 @@ class User  extends   Base {
 
 //          (new UserRegistValidate() )->goCheck() ;
 
-
-
           $postdata = request()->post() ;
           if(!isset($postdata['nickname'])  ||  !isset($postdata['mobile'])  || !isset($postdata['password'])  ||  !isset($postdata['recond_mobile'])  ||  !isset($postdata['id_card'])  ){
               $e = new  ParameterException(array(
@@ -230,7 +228,6 @@ class User  extends   Base {
 
 //    用户登录接口
     public   function  login(){
-
 
        $uModel = model('User');
         $token =  request()->header('token') ;
