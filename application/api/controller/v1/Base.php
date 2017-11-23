@@ -45,7 +45,8 @@ class  Base  extends  Controller {
             //把登录 和 注册  拿出来， 其他的接口都要带上token
             $action =  request()->action() ;
 
-            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  || ( $action == "sendCode" )   || ( $action == "getad") ;
+            $is_black =  ( $action == "login" )  ||   ( $action == "regist" )  || ( $action == "sendCode" )   || ( $action == "getad")
+                         ||  ( $action == "checkVersion" )   ;
             if($is_black){
 
             }else{

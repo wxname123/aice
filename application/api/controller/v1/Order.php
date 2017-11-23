@@ -176,6 +176,9 @@ class  Order  extends   Base{
 
         $files  =  request()->file() ;
 
+//        $a  = request()->post() ;
+//       $b  = request()->post('consignee') ;
+//        trace($a) ;   trace($b) ;  trace("maoxin") ;
     //getallheaders();     //获取HTTP 头信息
 
         $is_uid_Inter =  isAppPositiveInteger($user_id) ;
