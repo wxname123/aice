@@ -25,7 +25,7 @@ class GoodsLogic extends Model
     public function goods_cat_list($cat_id = 0, $selected = 0, $re_type = true, $level = 0)
     {
                 global $goods_category, $goods_category2;                
-                $sql = "SELECT * FROM  __PREFIX__goods_category ORDER BY parent_id , sort_order ASC";
+                $sql = "SELECT * FROM  __PREFIX__goods_category  WHERE is_delete = 1  ORDER BY parent_id , sort_order ASC";
                 $goods_category = DB::query($sql);
                 $goods_category = convert_arr_key($goods_category, 'id');
                 
@@ -91,7 +91,7 @@ class GoodsLogic extends Model
     public function refresh_cat($id)
     {            
         $GoodsCategory = M("GoodsCategory"); // 实例化User对象
-        $cat = $GoodsCategory->where("id = $id")->find(); // 找出他自己
+        $cat = $GoodsCategory->where("id = $id")->where('is_delete',1)->find(); // 找出他自己
         // 刚新增的分类先把它的值重置一下
         if($cat['parent_id_path'] == '')
         {
@@ -106,7 +106,7 @@ class GoodsLogic extends Model
             $parent_cat['level'] = 0;
         }
         else{
-            $parent_cat = $GoodsCategory->where("id = {$cat['parent_id']}")->find(); // 找出他老爸的parent_id_path
+            $parent_cat = $GoodsCategory->where("id = {$cat['parent_id']}")->where('is_delete',1)->find(); // 找出他老爸的parent_id_path
         }        
         $replace_level = $cat['level'] - ($parent_cat['level'] + 1); // 看看他 相比原来的等级 升级了多少  ($parent_cat['level'] + 1) 他老爸等级加一 就是他现在要改的等级
         $replace_str = $parent_cat['parent_id_path'].'_'.$id;                
@@ -122,7 +122,7 @@ class GoodsLogic extends Model
     {
         header("Content-type: text/html; charset=utf-8");
         $GoodsAttribute = D('GoodsAttribute');
-        $attributeList = $GoodsAttribute->where("type_id = $type_id")->select();                                
+        $attributeList = $GoodsAttribute->where("type_id = $type_id")->where('is_delete',1)->select();
         
         foreach($attributeList as $key => $val)
         {                                                                        
@@ -196,9 +196,9 @@ class GoodsLogic extends Model
     {
         $GoodsAttr = D('GoodsAttr');        
         if($goods_attr_id > 0)
-            return $GoodsAttr->where("goods_attr_id = $goods_attr_id")->select(); 
+            return $GoodsAttr->where("goods_attr_id = $goods_attr_id")->where('is_delete',1)->select();
         if($goods_id > 0 && $attr_id > 0)
-            return $GoodsAttr->where("goods_id = $goods_id and attr_id = $attr_id")->select();        
+            return $GoodsAttr->where("goods_id = $goods_id and attr_id = $attr_id")->where('is_delete',1)->select();
     }
    
     /**
@@ -214,11 +214,11 @@ class GoodsLogic extends Model
          // 属性类型被更改了 就先删除以前的属性类型 或者没有属性 则删除        
         if($goods_type == 0)  
         {
-            $GoodsAttr->where('goods_id = '.$goods_id)->delete(); 
+            $GoodsAttr->where('goods_id = '.$goods_id)->save(array('is_delete'=>0));
             return;
         }
         
-            $GoodsAttrList = $GoodsAttr->where('goods_id = '.$goods_id)->select();
+            $GoodsAttrList = $GoodsAttr->where('goods_id = '.$goods_id)->where('is_delete',1)->select();
             
             $old_goods_attr = array(); // 数据库中的的属性  以 attr_id _ 和值的 组合为键名
             foreach($GoodsAttrList as $k => $v)

@@ -175,13 +175,13 @@ class Goods extends Base {
         $id = $this->request->param('id');
         // 判断子分类
         $GoodsCategory = M("goods_category");
-        $count = $GoodsCategory->where("parent_id = {$id}")->count("id");
+        $count = $GoodsCategory->where("parent_id = {$id}")->where('is_delete' , 1)->count("id");
         $count > 0 && $this->error('该分类下还有分类不得删除!',U('Admin/Goods/categoryList'));
         // 判断是否存在商品
-        $goods_count = M('Goods')->where("cat_id = {$id}")->count('1');
+        $goods_count = M('Goods')->where("cat_id = {$id}")->where('is_delete', 1)->count('1');
         $goods_count > 0 && $this->error('该分类下有商品不得删除!',U('Admin/Goods/categoryList'));
         // 删除分类
-        DB::name('goods_category')->where('id',$id)->delete();
+        DB::name('goods_category')->where('id',$id)->save(array('is_delete' => 0)) ;
         $this->success("操作成功!!!",U('Admin/Goods/categoryList'));
     }
     
@@ -189,7 +189,7 @@ class Goods extends Base {
     /**
      *  商品列表
      */
-    public function goodsList(){      
+    public function goodsList(){
         $GoodsLogic = new GoodsLogic();        
         $brandList = $GoodsLogic->getSortBrands();
         $categoryList = $GoodsLogic->getSortCategory();
@@ -221,7 +221,7 @@ class Goods extends Base {
             $where .= " and cat_id in(".  implode(',', $grandson_ids).") "; // 初始化搜索条件
         }
         
-        $count = M('Goods')->where($where)->count();
+        $count = M('Goods')->where($where)->where('is_delete', 1)->count();
         $Page  = new AjaxPage($count,10);
         /**  搜索条件下 分页赋值
         foreach($condition as $key=>$val) {
@@ -230,7 +230,7 @@ class Goods extends Base {
         */
         $show = $Page->show();
         $order_str = "`{$_POST['orderby1']}` {$_POST['orderby2']}";
-        $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsList = M('Goods')->where($where)->where('is_delete' , 0)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $catList = D('goods_category')->select();
         $catList = convert_arr_key($catList, 'id');
@@ -479,7 +479,7 @@ class Goods extends Base {
      * 商品属性列表
      */
     public function goodsAttributeList(){       
-        $goodsTypeList = M("GoodsType")->select();
+        $goodsTypeList = M("GoodsType")->where('is_delete' , 1)->select();
         $this->assign('goodsTypeList',$goodsTypeList);
         return $this->fetch();
     }   
@@ -493,11 +493,11 @@ class Goods extends Base {
         I('type_id')   && $where = "$where and type_id = ".I('type_id') ;                
         // 关键词搜索               
         $model = M('GoodsAttribute');
-        $count = $model->where($where)->count();
+        $count = $model->where($where)->where('is_delete' , 1)->count();
         $Page       = new AjaxPage($count,13);
         $show = $Page->show();
-        $goodsAttributeList = $model->where($where)->order('`order` desc,attr_id DESC')->limit($Page->firstRow.','.$Page->listRows)->select();
-        $goodsTypeList = M("GoodsType")->getField('id,name');
+        $goodsAttributeList = $model->where($where)->where('is_delete' , 1)->order('`order` desc,attr_id DESC')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsTypeList = M("GoodsType")->where('is_delete' , 1)->getField('id,name');
         $attr_input_type = array(0=>'手工录入',1=>' 从列表中选择',2=>' 多行文本框');
         $this->assign('attr_input_type',$attr_input_type);
         $this->assign('goodsTypeList',$goodsTypeList);        
@@ -605,12 +605,12 @@ class Goods extends Base {
         // 判断此商品是否有订单
         $c1 = M('OrderGoods')->where("goods_id = $goods_id")->count('1');
         $c1 && $error .= '此商品有订单,不得删除! <br/>';
-        
-        
+
+
          // 商品团购
         $c1 = M('group_buy')->where("goods_id = $goods_id")->count('1');
-        $c1 && $error .= '此商品有团购,不得删除! <br/>';   
-        
+        $c1 && $error .= '此商品有团购,不得删除! <br/>';
+
          // 商品退货记录
         $c1 = M('return_goods')->where("goods_id = $goods_id")->count('1');
         $c1 && $error .= '此商品有退货记录,不得删除! <br/>';
@@ -622,7 +622,7 @@ class Goods extends Base {
         }
         
         // 删除此商品        
-        M("Goods")->where('goods_id ='.$goods_id)->delete();  //商品表
+        M("Goods")->where('goods_id ='.$goods_id)->save(array('is_delete' => 0)) ;  //商品表
         M("cart")->where('goods_id ='.$goods_id)->delete();  // 购物车
         M("comment")->where('goods_id ='.$goods_id)->delete();  //商品评论
         M("goods_consult")->where('goods_id ='.$goods_id)->delete();  //商品咨询
@@ -660,10 +660,10 @@ class Goods extends Base {
     {
         $id = input('id');
         // 判断 有无商品使用该属性
-        $count = M("GoodsAttr")->where("attr_id = {$id}")->count("1");
+        $count = M("GoodsAttr")->where("attr_id = {$id}")->where('is_delete', 1)->count("1");
         $count > 0 && $this->error('有商品使用该属性,不得删除!',U('Admin/Goods/goodsAttributeList'));
         // 删除 属性
-        M('GoodsAttribute')->where("attr_id = {$id}")->delete();
+        M('GoodsAttribute')->where("attr_id = {$id}")->save(array('is_delete' => 0))  ;
         $this->success("操作成功!!!",U('Admin/Goods/goodsAttributeList'));
     }            
     
@@ -674,10 +674,10 @@ class Goods extends Base {
     {
         $id = input('id');
         // 判断 商品规格项
-        $count = M("SpecItem")->where("spec_id = {$id}")->count("1");
+        $count = M("SpecItem")->where("spec_id = {$id}")->where('is_delete' , 1)->count("1");
         $count > 0 && $this->error('清空规格项后才可以删除!',U('Admin/Goods/specList'));
         // 删除分类
-        M('Spec')->where("id = {$id}")->delete();
+        M('Spec')->where("id = {$id}")->save(array('is_delete'=>0)) ;
         $this->success("操作成功!!!",U('Admin/Goods/specList'));
     } 
     
@@ -753,7 +753,7 @@ class Goods extends Base {
      * 商品规格列表    
      */
     public function specList(){       
-        $goodsTypeList = M("GoodsType")->select();
+        $goodsTypeList = M("GoodsType")->where('is_delete',1)->select();
         $this->assign('goodsTypeList',$goodsTypeList);
         return $this->fetch();
     }
