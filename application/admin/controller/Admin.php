@@ -1,17 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用TP5助手函数可实现单字母函数M D U等,也可db::name方式,可双向兼容
- * ============================================================================
- * Author: 当燃      
- * Date: 2015-09-09
- */
+
 
 namespace app\admin\controller;
 
@@ -80,7 +68,8 @@ class Admin extends Base {
         }
         return $this->fetch();
     }
-    
+
+
     public function admin_info(){
     	$admin_id = I('get.admin_id/d',0);
     	if($admin_id){
@@ -94,11 +83,13 @@ class Admin extends Base {
     	$this->assign('role',$role);
     	return $this->fetch();
     }
-    
+
+
     public function adminHandle(){
     	$data = I('post.');
     	if(empty($data['password'])){
-    		unset($data['password']);
+            $pwd = M('admin')->where('admin_id','=',$data['admin_id'])->find();
+            $data['password'] =$pwd['password'];
     	}else{
     		$data['password'] = encrypt($data['password']);
     	}
@@ -117,7 +108,7 @@ class Admin extends Base {
     	}
     	
         if($data['act'] == 'del' && $data['admin_id']>1){
-    		$r = D('admin')->where('admin_id', $data['admin_id'])->delete();
+    		 D('admin')->where('admin_id', $data['admin_id'])->delete();
     		exit(json_encode(1));
     	}
     	
@@ -147,7 +138,7 @@ class Admin extends Base {
             if(!empty($condition['user_name']) && !empty($condition['password'])){
                 $condition['password'] = encrypt($condition['password']);
                	$admin_info = M('admin')->join(PREFIX.'admin_role', PREFIX.'admin.role_id='.PREFIX.'admin_role.role_id','INNER')->where($condition)->find();
-                if(is_array($admin_info)){
+               	if(is_array($admin_info)){
                     session('admin_id',$admin_info['admin_id']);
                     session('act_list',$admin_info['act_list']);
                     M('admin')->where("admin_id = ".$admin_info['admin_id'])->save(array('last_login'=>time(),'last_ip'=>  request()->ip()));

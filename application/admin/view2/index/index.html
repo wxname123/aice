@@ -68,7 +68,7 @@
       <div class="manager-menu">
         <div class="title">
           <h4>最后登录</h4>
-          <a href="javascript:void(0);" onClick="CUR_DIALOG = ajax_form('modifypw', '修改密码', '{:U('Admin/modify_pwd',array('admin_id'=>$admin_info['admin_id']))}');" class="edit-password">修改密码</a> </div>
+          <a href="javascript:void(0);" onClick=" ajax_form('modifypw', '修改密码', '{:U('Admin/modify_pwd',array('admin_id'=>$admin_info['admin_id']))}');" class="edit-password">修改密码</a> </div>
         <div class="login-date"> <?php echo date('Y-m-d H:i:s',session('last_login_time'));?> <span>(IP: <?php echo session('last_login_ip');?> )</span> </div>
         <div class="title">
           <h4>常用操作</h4>

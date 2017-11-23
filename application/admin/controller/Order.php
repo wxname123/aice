@@ -39,7 +39,7 @@ class Order extends Base {
      *Ajax首页
      */
     public function ajaxindex(){
-        $orderLogic = new OrderLogic();       
+        $userLogic = new OrderLogic();
         $timegap = I('timegap');
         if($timegap){
         	$gap = explode('-', $timegap);
@@ -87,7 +87,7 @@ class Order extends Base {
         }
         $show = $Page->show();
         //获取订单列表
-        $orderList = $orderLogic->getOrderList($condition,$sort_order,$Page->firstRow,$Page->listRows);
+        $orderList =M('order')->where($condition)->limit($Page->firstRow.','.$Page->listRows)->order($sort_order)->select();
         $this->assign('orderList',$orderList);
         $this->assign('page',$show);// 赋值分页输出
         $this->assign('pager',$Page);
@@ -95,11 +95,13 @@ class Order extends Base {
     }
 
     /*
-     * ajax 发货订单列表
+     * ajax 提车订单列表
     */
     public function ajaxdelivery(){
-    	$orderLogic = new OrderLogic();
-    	$condition = array();
+        $orderLogic = new OrderLogic();
+        // 搜索条件
+        $condition = array();
+
     	I('consignee') ? $condition['consignee'] = trim(I('consignee')) : false;
     	I('order_sn') != '' ? $condition['order_sn'] = trim(I('order_sn')) : false;
     	$shipping_status = I('shipping_status');
@@ -129,6 +131,7 @@ class Order extends Base {
         $count = M('user_good_image a')
             ->join('goods b','a.good_id = b.goods_id',LEFT)
             ->join('users c','a.user_id = c.user_id',LEFT)
+            ->join('order d','d.user_id = a.user_id',LEFT)
             ->where($condition)
             ->count();
 
@@ -143,6 +146,7 @@ class Order extends Base {
     	$orderList = M('user_good_image a')
             ->join('goods b','a.good_id = b.goods_id',LEFT)
             ->join('users c','a.user_id = c.user_id',LEFT)
+            ->join('order d','d.user_id = a.user_id',LEFT)
             ->where($condition)
             ->limit($Page->firstRow.','.$Page->listRows)
             ->order('a.create_time DESC')
@@ -631,7 +635,7 @@ class Order extends Base {
     }
 
     /**
-     * 发货单列表
+     * 提车单列表
      */
     public function delivery_list(){
         return $this->fetch();
@@ -955,23 +959,22 @@ class Order extends Base {
     public function ajax_return_list(){
         // 搜索条件
         $username =trim(I('nickname'));
-
         $a = M('users')->where('nickname','=',$username)->find();
         $user_id = $a['user_id'];
         $where = " 1 = 1 ";
         $username && $where.= " and user_id like '%$user_id%' ";
         $count = M('user_task a')
-               ->join('users b','a.user_id = b.user_id',LEFT)
-               ->where($where)
-               ->count();
+            ->join('users b','a.user_id = b.user_id',LEFT)
+            ->where($where)
+            ->count();
         $Page  = new AjaxPage($count,13);
         $show = $Page->show();
         $list = M('user_task a')
-               ->join('users b','a.user_id = b.user_id',LEFT)
-               ->where($where)
-               ->order(" a.update_time desc")
-               ->limit("{$Page->firstRow},{$Page->listRows}")
-               ->select();
+            ->join('users b','a.user_id = b.user_id',LEFT)
+            ->where($where)
+            ->order(" a.update_time desc")
+            ->limit("{$Page->firstRow},{$Page->listRows}")
+            ->select();
         $this->assign('list',$list);
         $this->assign('pager',$Page);
         $this->assign('page',$show);// 赋值分页输出
