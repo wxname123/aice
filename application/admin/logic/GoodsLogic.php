@@ -25,7 +25,7 @@ class GoodsLogic extends Model
     public function goods_cat_list($cat_id = 0, $selected = 0, $re_type = true, $level = 0)
     {
                 global $goods_category, $goods_category2;                
-                $sql = "SELECT * FROM  __PREFIX__goods_category  WHERE is_delete = 1  ORDER BY parent_id , sort_order ASC";
+                $sql = "SELECT * FROM  __PREFIX__goods_category ORDER BY parent_id , sort_order ASC";
                 $goods_category = DB::query($sql);
                 $goods_category = convert_arr_key($goods_category, 'id');
                 
@@ -91,7 +91,7 @@ class GoodsLogic extends Model
     public function refresh_cat($id)
     {            
         $GoodsCategory = M("GoodsCategory"); // 实例化User对象
-        $cat = $GoodsCategory->where("id = $id")->where('is_delete',1)->find(); // 找出他自己
+        $cat = $GoodsCategory->where("id = $id")->find(); // 找出他自己
         // 刚新增的分类先把它的值重置一下
         if($cat['parent_id_path'] == '')
         {
@@ -106,7 +106,7 @@ class GoodsLogic extends Model
             $parent_cat['level'] = 0;
         }
         else{
-            $parent_cat = $GoodsCategory->where("id = {$cat['parent_id']}")->where('is_delete',1)->find(); // 找出他老爸的parent_id_path
+            $parent_cat = $GoodsCategory->where("id = {$cat['parent_id']}")->find(); // 找出他老爸的parent_id_path
         }        
         $replace_level = $cat['level'] - ($parent_cat['level'] + 1); // 看看他 相比原来的等级 升级了多少  ($parent_cat['level'] + 1) 他老爸等级加一 就是他现在要改的等级
         $replace_str = $parent_cat['parent_id_path'].'_'.$id;                
@@ -122,7 +122,7 @@ class GoodsLogic extends Model
     {
         header("Content-type: text/html; charset=utf-8");
         $GoodsAttribute = D('GoodsAttribute');
-        $attributeList = $GoodsAttribute->where("type_id = $type_id")->where('is_delete',1)->select();
+        $attributeList = $GoodsAttribute->where("type_id = $type_id")->select();                                
         
         foreach($attributeList as $key => $val)
         {                                                                        
@@ -196,9 +196,9 @@ class GoodsLogic extends Model
     {
         $GoodsAttr = D('GoodsAttr');        
         if($goods_attr_id > 0)
-            return $GoodsAttr->where("goods_attr_id = $goods_attr_id")->where('is_delete',1)->select();
+            return $GoodsAttr->where("goods_attr_id = $goods_attr_id")->select(); 
         if($goods_id > 0 && $attr_id > 0)
-            return $GoodsAttr->where("goods_id = $goods_id and attr_id = $attr_id")->where('is_delete',1)->select();
+            return $GoodsAttr->where("goods_id = $goods_id and attr_id = $attr_id")->select();        
     }
    
     /**
@@ -207,69 +207,70 @@ class GoodsLogic extends Model
      * @param int $goods_type  商品类型id
      */
     public function saveGoodsAttr($goods_id,$goods_type)
-    {  
+    {
+
         $GoodsAttr = M('GoodsAttr');
         //$Goods = M("Goods");
                 
          // 属性类型被更改了 就先删除以前的属性类型 或者没有属性 则删除        
-        if($goods_type == 0)  
+        if($goods_type == 0)
         {
-            $GoodsAttr->where('goods_id = '.$goods_id)->save(array('is_delete'=>0));
+            $GoodsAttr->where('goods_id = '.$goods_id)->delete();
             return;
         }
         
-            $GoodsAttrList = $GoodsAttr->where('goods_id = '.$goods_id)->where('is_delete',1)->select();
-            
+            $GoodsAttrList = $GoodsAttr->where('goods_id = '.$goods_id)->select();
+
             $old_goods_attr = array(); // 数据库中的的属性  以 attr_id _ 和值的 组合为键名
             foreach($GoodsAttrList as $k => $v)
-            {                
+            {
                 $old_goods_attr[$v['attr_id'].'_'.$v['attr_value']] = $v;
-            }            
+            }
                               
-            // post 提交的属性  以 attr_id _ 和值的 组合为键名    
+            // post 提交的属性  以 attr_id _ 和值的 组合为键名
             $post_goods_attr = array();
             $post = I("post.");
             foreach($post as $k => $v)
             {
                 $attr_id = str_replace('attr_','',$k);
                 if(!strstr($k, 'attr_') || strstr($k, 'attr_price_'))
-                   continue;                                 
+                   continue;
                foreach ($v as $k2 => $v2)
-               {                      
+               {
                    $v2 = str_replace('_', '', $v2); // 替换特殊字符
                    $v2 = str_replace('@', '', $v2); // 替换特殊字符
                    $v2 = trim($v2);
-                   
+
                    if(empty($v2))
                        continue;
-                   
-                   
+
+
                    $tmp_key = $attr_id."_".$v2;
                    $post_attr_price = I("post.attr_price_{$attr_id}");
-                   $attr_price = $post_attr_price[$k2]; 
+                   $attr_price = $post_attr_price[$k2];
                    $attr_price = $attr_price ? $attr_price : 0;
                    if(array_key_exists($tmp_key , $old_goods_attr)) // 如果这个属性 原来就存在
-                   {   
+                   {
                        if($old_goods_attr[$tmp_key]['attr_price'] != $attr_price) // 并且价格不一样 就做更新处理
-                       {                       
-                            $goods_attr_id = $old_goods_attr[$tmp_key]['goods_attr_id'];                         
-                            $GoodsAttr->where("goods_attr_id = $goods_attr_id")->save(array('attr_price'=>$attr_price));                       
+                       {
+                            $goods_attr_id = $old_goods_attr[$tmp_key]['goods_attr_id'];
+                            $GoodsAttr->where("goods_attr_id = $goods_attr_id")->save(array('attr_price'=>$attr_price));
                        }
                    }
-                   else // 否则这个属性 数据库中不存在 说明要做删除操作
-                   {
-                       $GoodsAttr->add(array('goods_id'=>$goods_id,'attr_id'=>$attr_id,'attr_value'=>$v2,'attr_price'=>$attr_price));                       
+
+                   if($goods_id != null && $attr_id !=null){
+                       $attr=$GoodsAttr->where(array('goods_id'=>$goods_id,'attr_id'=>$attr_id))->find();
+                       if($attr != null){
+                           $GoodsAttr->where(array('goods_id'=>$goods_id,'attr_id'=>$attr_id))->save(array('attr_value'=>$v2,'attr_price'=>$attr_price));
+                       }else{
+                           $GoodsAttr->add(array('goods_id'=>$goods_id,'attr_id'=>$attr_id,'attr_value'=>$v2,'attr_price'=>$attr_price));
+                       }
                    }
-                   unset($old_goods_attr[$tmp_key]);
                }
-                
-            }     
+
+            }
             //file_put_contents("b.html", print_r($post_goods_attr,true));
             // 没有被 unset($old_goods_attr[$tmp_key]); 掉是 说明 数据库中存在 表单中没有提交过来则要删除操作
-            foreach($old_goods_attr as $k => $v)
-            {                
-               $GoodsAttr->where('goods_attr_id = '.$v['goods_attr_id'])->delete(); // 
-            }                       
 
     }
     

@@ -91,7 +91,6 @@ class User extends Base {
         I('second_leader') && ($condition['second_leader'] = I('second_leader')); // 查看二级下线人有哪些
         I('third_leader') && ($condition['third_leader'] = I('third_leader')); // 查看三级下线人有哪些
         $sort_order = I('order_by').' '.I('sort');
-
         $model = M('users');
         $count = $model->where($condition)->count();
         $Page  = new AjaxPage($count,10);
@@ -260,7 +259,13 @@ class User extends Base {
                 exit($this->success('修改成功'));
             exit($this->error('未作内容修改或修改失败'));
         }
-
+//        if(strlen($user['id_card']) ==15){
+//            $user['id_card'] =substr_replace($user['id_card'],"******",6,6);
+//        }
+//
+//        if(strlen($user['id_card']) ==18){
+//            $user['id_card'] =substr_replace($user['id_card'],"******",8,6);
+//        }
         $user_data = M('users')
             ->where(" user_id = {$user['user_id']}")
             ->find();
@@ -446,7 +451,9 @@ class User extends Base {
     public function recharge(){
     	$timegap = I('timegap');
     	$nickname = I('nickname');
+        $admin_info = getAdminInfo(session('admin_id'));
     	$map = array();
+    	$map['user_id'] = $admin_info['agency_id'];
     	if($timegap){
     		$gap = explode(' - ', $timegap);
     		$begin = $gap[0];
@@ -688,6 +695,8 @@ class User extends Base {
     }
     
     public function get_withdrawals_list($status=''){
+        $admin_info = getAdminInfo(session('admin_id'));
+        // 搜索条件
     	$user_id = I('user_id/d');
     	$realname = I('realname');
     	$bank_card = I('bank_card');
@@ -705,6 +714,10 @@ class User extends Base {
     	if($status === '0' || $status > 0) {
     		$where['w.status'] = $status;
     	}
+//    	$user=M('users')->where('uid','=',$admin_info['agency_id'])->select();
+//    	foreach ($user as $key=>$value){
+//    	    $where['user_id'] = $value['user_id'];
+//        }
     	$user_id && $where['u.user_id'] = $user_id;
     	$realname && $where['w.realname'] = array('like','%'.$realname.'%');
     	$bank_card && $where['w.bank_card'] = array('like','%'.$bank_card.'%');

@@ -369,6 +369,7 @@ class User extends MobileBase
      */
     public function reg()
     {
+        $a = $_GET['mobile'];
         if($this->user_id > 0) {
             $this->redirect(U('Mobile/User/index'));
 //            $this->ajaxReturn(['status'=>1,'msg'=>'您已注册']);
@@ -391,7 +392,7 @@ class User extends MobileBase
             $scene = I('post.scene', 1);
 
 //
-//            $statusLogic = new \app\common\logic\SmsLogic;
+
             $isok=  identity($nickname, $id_card);
             $a=substr($isok,strpos($isok,'{'));
             $result = json_decode($a,true);
@@ -409,8 +410,8 @@ class User extends MobileBase
             //是否开启注册验证码机制
             if(check_mobile($mobile)){
                 if($reg_sms_enable){
-                    //手机功能没关闭$code,$sender, $session_id,$scene
-                    $check_code = $logic->check_validate_code($code, $mobile, $session_id, $scene);
+                    //手机功能没关闭
+                    $check_code = $logic->check_code($code, $mobile, $session_id, $scene);
                     if($check_code['status'] != 1){
                         $this->ajaxReturn($check_code);
                     }
@@ -433,6 +434,7 @@ class User extends MobileBase
             $this->ajaxReturn($data);
             exit;
         }
+        $this->assign('a',$a); // 注册启用短信：
         $this->assign('regis_sms_enable',$reg_sms_enable); // 注册启用短信：
         $this->assign('regis_smtp_enable',$reg_smtp_enable); // 注册启用邮箱：
         $sms_time_out = tpCache('sms.sms_time_out')>0 ? tpCache('sms.sms_time_out') : 120;

@@ -3,11 +3,8 @@ return	array(
 	'system'=>array('name'=>'系统','child'=>array(
 				array('name' => '设置','child' => array(
 						array('name'=>'商城设置','act'=>'index','op'=>'System'),
-						//array('name'=>'支付方式','act'=>'index1','op'=>'System'),
 						array('name'=>'地区&配送','act'=>'region','op'=>'Tools'),
 						array('name'=>'短信模板','act'=>'index','op'=>'SmsTemplate'),
-						//array('name'=>'接口对接','act'=>'index3','op'=>'System'),
-						//array('name'=>'验证码设置','act'=>'index4','op'=>'System'),
                         array('name'=>'自定义导航栏','act'=>'navigationList','op'=>'System'),
 						array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 						array('name'=>'清除缓存','act'=>'cleanCache','op'=>'System'),
@@ -23,7 +20,6 @@ return	array(
 						array('name'=>'充值记录','act'=>'recharge','op'=>'User'),
 						array('name'=>'提现申请','act'=>'withdrawals','op'=>'User'),
 						array('name'=>'汇款记录','act'=>'remittance','op'=>'User'),
-						//array('name'=>'会员整合','act'=>'integrate','op'=>'User'),
 				)),
 
 
@@ -50,8 +46,6 @@ return	array(
 				array('name' => '数据','child'=>array(
 						array('name' => '数据备份', 'act'=>'index', 'op'=>'Tools'),
 						array('name' => '数据还原', 'act'=>'restore', 'op'=>'Tools'),
-						//array('name' => '数据恢复', 'act'=>'log', 'op'=>'Admin'),
-						//array('name' => 'SQL查询', 'act'=>'log', 'op'=>'Admin'),
 				))
 	)),
 		
@@ -64,10 +58,6 @@ return	array(
 					array('name' => '商品规格', 'act' =>'specList', 'op' => 'Goods'),
 					array('name' => '品牌列表', 'act'=>'brandList', 'op'=>'Goods'),
 					array('name' => '商品属性', 'act'=>'goodsAttributeList', 'op'=>'Goods'),
-					array('name' => '评论列表', 'act'=>'index', 'op'=>'Comment'),
-					array('name' => '商品咨询', 'act'=>'ask_list', 'op'=>'Comment'),
-
-                                    
 			)),
 
 
@@ -84,7 +74,6 @@ return	array(
                     array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
                     array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
                     array('name' => '文本回复', 'act'=>'text', 'op'=>'Wechat'),
-                    //array('name' => '图文回复', 'act'=>'img', 'op'=>'Wechat'),
              )),
 
 			
@@ -98,11 +87,12 @@ return	array(
 					array('name' => '平台支出记录','act'=>'expense_log','op'=>'Report'),
 			)),
 
-        array('name' => '微信','child' => array(
-            array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
-            array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
-            array('name' => '文本回复', 'act'=>'text', 'op'=>'Wechat'),
-            array('name' => '图文回复', 'act'=>'img', 'op'=>'Wechat'),
+
+           array('name' => '微信','child' => array(
+                   array('name' => '公众号配置', 'act'=>'index', 'op'=>'Wechat'),
+                   array('name' => '微信菜单管理', 'act'=>'menu', 'op'=>'Wechat'),
+                   array('name' => '文本回复', 'act'=>'text', 'op'=>'Wechat'),
+                   array('name' => '图文回复', 'act'=>'img', 'op'=>'Wechat'),
         )),
 	)),
 		
@@ -121,8 +111,6 @@ return	array(
 	'resource'=>array('name'=>'插件','child'=>array(
 			array('name' => '云服务','child' => array(
 				array('name' => '插件库', 'act'=>'index', 'op'=>'Plugin'),
-				//array('name' => '数据备份', 'act'=>'index', 'op'=>'Tools'),
-				//array('name' => '数据还原', 'act'=>'restore', 'op'=>'Tools'),
 			)),
             array('name' => 'App','child' => array(
 				array('name' => '系统更新', 'act'=>'index', 'op'=>'MobileApp'),
