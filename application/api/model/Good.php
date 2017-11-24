@@ -19,6 +19,7 @@ class   Good  extends  Model{
         return   Db::table('tp_goods')
                     ->alias('g')
                     ->where('g.is_hot' , 1)
+                    ->where('g.is_delete', 1)
                     ->where('g.is_on_sale', 1)
                     ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , original_img')
                     ->limit($page, $per_page)
@@ -47,6 +48,7 @@ class   Good  extends  Model{
             ->alias('g')
             ->join('tp_goods_certificate b', 'b.goods_id = g.goods_id ','left')
             ->where('g.goods_id', $good_id)
+            ->where('g.is_delete', 1)
             ->field('g.goods_id, g.goods_sn, g.goods_name, g.click_count, g.market_price, g.shop_price, g.mission ,
                              g.original_img ,g.store_count, g.comment_count, g.goods_remark, g.goods_content, g.commission ,
                               g.sales_sum , b.is_identity, b.is_license, b.is_credit,b.is_security , b.is_bankflow , b.is_ownership ,b.is_commencial')
@@ -64,6 +66,7 @@ class   Good  extends  Model{
                             ->alias('g')
                             ->where('g.is_recommend', 1)
                             ->where('g.is_on_sale', 1)
+                            ->where('g.is_delete',1)
                             ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , CONCAT("'.BASE_PATH.'" , g.original_img ) original_img')
                             ->limit($page, $per_page)
                             ->order('g.sort desc')
@@ -80,6 +83,7 @@ class   Good  extends  Model{
             ->alias('g')
             ->where('g.is_recommend', 1)
             ->where('g.is_on_sale', 1)
+            ->where('g.is_delete',1)
             ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , CONCAT("'.BASE_PATH.'" , g.original_img ) original_img')
             ->limit($page, $per_page)
             ->order('g.sort desc')

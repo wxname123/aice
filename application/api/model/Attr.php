@@ -18,6 +18,7 @@ class  Attr  extends  Model{
            return   Db::table('tp_goods_attr')
                     ->alias('a')
                     ->where('a.goods_id', $good_id)
+                    ->where('a.is_delete',1)
                     ->join('tp_goods_attribute r', 'r.attr_id = a.attr_id', 'left')
                     ->field('a.goods_attr_id  ,   r.attr_id, r.attr_name , a.attr_value ')
                     ->select() ;

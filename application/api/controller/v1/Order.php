@@ -318,8 +318,20 @@ class  Order  extends   Base{
             $ogModel =   model('OrderGoods');
 
             $res =    $ogModel->saveData($result, $good_id,$contents) ;
+
+
             if($res){
                 //上传图片， 图片数据入库（tp_user_good_image）
+
+                $action_info = array(
+                    'order_id'        =>$result,
+                    'action_user'     =>0,
+                    'action_note'     => '您提交了订单，请等待系统确认',
+                    'status_desc'     =>'提交订单', //''
+                    'log_time'        =>time(),
+                );
+                M('order_action')->insertGetId($action_info);
+
 
                 $save_url = 'public/upload/usergoods/' . date('Y', time()) . '/' . date('m-d', time());
                 foreach ($files as  $k=>$file ){

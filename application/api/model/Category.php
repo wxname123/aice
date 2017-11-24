@@ -22,6 +22,7 @@ class  Category  extends  Model{
          $totalData = [] ;
          $catData  =    Db::table('tp_goods_category')
                         ->where('parent_id' , 0)
+                        ->where('is_delete', 1)
                         ->field('id, name  , CONCAT("'.BASE_PATH.'" , image )  logo ')
                         ->select() ;
 
@@ -31,6 +32,7 @@ class  Category  extends  Model{
             $goodData =    Db::table('tp_goods')
                         ->alias('g')
                         ->where('g.is_on_sale', 1)
+                        ->where('g.is_delete', 1)
                         ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img  ')
                         ->order('g.sort desc')
                         ->limit($page , $per_page)
@@ -56,6 +58,7 @@ class  Category  extends  Model{
           return  Db::table('tp_goods')
                                   ->alias('g')
                                   ->where('g.is_on_sale', 1)
+                                  ->where('g.is_delete', 1)
                                   ->where('g.cat_id', $cat_id)
                                   ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img  ')
                                   ->order('g.sort desc')
