@@ -11,10 +11,11 @@ use  app\lib\exception\ParameterException ;
 class  Base  extends  Controller {
 
     public    $post= null ;
+    public    $jsondata = null ;
     protected   $aes = null ;
     //生成验证码的位数
     protected   $length = 8 ;
-    protected  $memcache_obj = null ;
+    protected    $memcache_obj = null ;
 
     //设置过期时间
     protected $expires_time =  86400   ; // 680400  ;// 60*60*24*7 ;
@@ -65,6 +66,7 @@ class  Base  extends  Controller {
         }
 
         public  function  get_request_data(){
+            $this->token =  request()->header('token') ;
             if(request()->isPost()){
                 $postData = request()->getInput();
                 $postData =  json_decode($postData ,true ) ;
@@ -193,6 +195,7 @@ class  Base  extends  Controller {
         $time_out = $this->timeTostamp($timestamp);
         $data =  json_encode(array( $time_out,$user_id), true );
         $this->memcache_obj->set($token,$data,0,$this->expires_time);
+        $this->jsondata = $m_data ;
         return  $m_data ;
     }
 

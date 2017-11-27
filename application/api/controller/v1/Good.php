@@ -9,7 +9,7 @@ class   Good  extends  Base{
     public  function   gethots($page=0 , $per_page=10){
 
         $goodModel =   model('Good');
-//        var_dump($page) ; die ;
+
 
         $pageInter =   isPageInteger($page) ;
         $perpageInter = isPageInteger($per_page) ;
@@ -22,7 +22,13 @@ class   Good  extends  Base{
             throw  $e ;
         }
 
-      $datas =  $goodModel->getHotList($page, $per_page);
+
+
+        $user_id =  $this->jsondata[1] ;
+        $searchKey =  model('SearchKey');
+        $searchKey->setStartNum($page, $per_page) ;
+
+       $datas =  $goodModel->getHotList( $searchKey ,$user_id );
 
       if(!empty($datas)){
           foreach ($datas as $k=>$v ){

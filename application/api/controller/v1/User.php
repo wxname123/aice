@@ -193,6 +193,7 @@ class User  extends   Base {
                     throw  $e;
                 }
                 $map['oauth'] = $oauth;
+                $map['inst_id'] = 2 ;
             }
 
           //执行 用户注册的逻辑
@@ -262,11 +263,9 @@ class User  extends   Base {
                  ));
                  throw  $e ;
              }
-
         }else {
             //账号密码登录
             $postdata = request()->post();
-
             $isMobile = isAppMobile($postdata['mobile']);
             if ($isMobile == false) {
                 $e = new  ParameterException(array(

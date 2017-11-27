@@ -13,18 +13,39 @@ class   Good  extends  Model{
      *  获取热门接口数据
      *  @page    当前页
      *  @per_page
+     *  @user_id  :  用户编码
      * */
-    public function getHotList($page, $per_page){
-        $page = $page * $per_page ;
-        return   Db::table('tp_goods')
-                    ->alias('g')
-                    ->where('g.is_hot' , 1)
-                    ->where('g.is_delete', 1)
-                    ->where('g.is_on_sale', 1)
-                    ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , original_img')
-                    ->limit($page, $per_page)
-                    ->order('g.sort   desc')
-                    ->select() ;
+    public function getHotList( $searchKey  ,$user_id){   //$searchKey
+
+        //娄底代理商下面的用户可以查看我们的商品（搜索商品）， 而我们的用户不能查看
+        //根据token取出用户编码
+        $uModel=   model('User');
+        $inst_id =  $uModel->getUserValueBy($user_id, 'inst_id') ;    //机构编码
+
+        $gModel = model('Good') ;
+        $sql =   ' select g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , g.original_img  from tp_goods  g  '
+                .  ' where g.is_hot = 1 and  g.is_delete = 1 and g.is_on_sale = 1 '  ;
+
+        if($inst_id == "1"){
+            $sql .= '  and   g.inst_id = 1 '  ;
+        }
+             $sql .=      ' ORDER BY g.sort  desc '
+                          . ' limit '  . $searchKey->startNum  . ','  . $searchKey->perPage ;
+
+        $data = $gModel->query($sql) ;
+        return  $data ;
+
+//        $page = $page * $per_page ;
+//        return   Db::table('tp_goods')
+//                    ->alias('g')
+//                    ->where('g.is_hot' , 1)
+//                    ->where('g.is_delete', 1)
+//                    ->where('g.is_on_sale', 1)
+//                    ->field('g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark , original_img')
+//                    ->limit($page, $per_page)
+//                    ->order('g.sort   desc')
+//                    ->select() ;
+
     }
 
 

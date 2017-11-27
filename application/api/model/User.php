@@ -15,7 +15,8 @@ class  User  extends Model {
             ->where('u.mobile', $postdata['mobile'])
             ->where('u.password', encrypt($postdata['password']))
             ->join('tp_users u2', 'u2.user_id = u.uid','left')
-            ->field('u.user_id, u.mobile, u.sex,u.birthday, u.nickname, CONCAT("'.BASE_PATH.'" , u.head_pic) head_pic ,  u.statu,u.id_card,u.mission,u.is_agent,u.is_distribut,u.uid, u2.nickname  recom_name')
+            ->field('u.user_id, u.mobile, u.sex,u.birthday, u.nickname, CONCAT("'.BASE_PATH.'" , u.head_pic) head_pic ,
+                        u.statu,u.id_card,u.mission,u.is_agent,u.is_distribut,u.uid, u.inst_id, u2.nickname  recom_name ')
             ->find() ;
     }
 
@@ -58,5 +59,18 @@ class  User  extends Model {
                             ->find() ;
     }
 
+
+    /*
+     * 根据用户编码 获取 某个值
+     * @param   $user_id    :   用户编码
+     * @param   $column   :  字段名
+     * */
+    public  function  getUserValueBy($user_id , $column){
+         $data =  Db::table('tp_users')
+                    ->where('user_id' , $user_id)
+                    ->value("$column") ;
+
+         return  $data ;
+    }
 
 }
