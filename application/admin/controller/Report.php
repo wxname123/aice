@@ -90,6 +90,8 @@ class Report extends Base{
         $city =  M('region')->where(array('level'=>2))->select();
         //  获取机构地区
         $area =  M('region')->where(array('level'=>3))->select();
+        //管理ID
+        $admin = M('admin')->select();
         if(IS_POST){
             $arr=[
                 'inst_type' => $_POST['inst_type'],
@@ -118,6 +120,7 @@ class Report extends Base{
                 $this->success('操作失败',U('Admin/Report/organization'));
             }
         }
+        $this->assign('admin',$admin);
         $this->assign('province',$province);
         $this->assign('city',$city);
         $this->assign('area',$area);
@@ -139,12 +142,14 @@ class Report extends Base{
 
         //上级机构
         $sql = M('inst')->select();
+        //管理ID
+        $admin = M('admin')->select();
         if(IS_POST){
             $arr=[
                 'inst_type' => $_POST['inst_type'],
                 'inst_name' => $_POST['inst_name'],
                 'parent_inst' => $_POST['parent_inst'],
-                'plat_admin_id' => $_POST['plat_admin_id'],
+                'plat_admin_id' => $_POST['admin_id'],
                 'contact_user'  => $_POST['contact_user'],
                 'contact_phone' => $_POST['contact_phone'],
                 'contact_addr'  => $_POST['contact_addr'],
@@ -167,6 +172,7 @@ class Report extends Base{
                 $this->success('操作失败',U('Admin/Report/organization'));
             }
         }
+        $this->assign('admin',$admin);
         $this->assign('sql',$sql);
         $this->assign('province',$province);
         $this->assign('city',$city);

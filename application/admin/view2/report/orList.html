@@ -40,9 +40,9 @@
                 <dd class="opt">
                     <input value="0" name="inst_type0" id="inst_type0" type="radio" <if condition="$inst['inst_type'] eq 0">checked</if>>
                     <label for="inst_type0">爱车送</label>
-                    <input value="1" name="inst_type1"  id="inst_type1" type="radio" <if condition="$inst['inst_type'] eq 2">checked</if>>
+                    <input value="1" name="inst_type1"  id="inst_type1" type="radio" <if condition="$inst['inst_type'] eq 1">checked</if>>
                     <label for="inst_type1">省代理</label>
-                    <input value="2" name="inst_type2" id="inst_type2" type="radio" <if condition="$inst['inst_type'] eq 1">checked</if>>
+                    <input value="2" name="inst_type2" id="inst_type2" type="radio" <if condition="$inst['inst_type'] eq 2">checked</if>>
                     <label for="inst_type2">全国代理</label>
                     <input value="3"  name="inst_type3" id="inst_type3" type="radio" <if condition="$inst['inst_type'] eq 3">checked</if>>
                     <label for="inst_type3">市代理</label>
@@ -104,11 +104,18 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
-                    <label >平台管理id</label>
+                    <label >所属管理</label>
                 </dt>
                 <dd class="opt">
-                    <input id="plat_admin_id"  name="plat_admin_id" value="{$inst['plat_admin_id']}" class="input-txt" type="text">
-                    <p class="notic">平台管理id</p>
+                    <div>
+                        <select name="admin_id" class="input-sm" class="form-control">
+                            <option value="">选择管理</option>
+                            <volist name="admin" id="list">
+                                <option value="{$list['admin_id']}" <if condition="$inst['plat_admin_id'] eq $list['admin_id']">selected</if> >{$list['user_name']}</option>
+                            </volist>
+                        </select>
+                    </div>
+                    <p class="notic">所属管理</p>
                 </dd>
             </dl>
             <dl class="row">

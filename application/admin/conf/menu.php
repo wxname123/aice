@@ -35,7 +35,6 @@ return	array(
 				array('name' => '权限','child'=>array(
 						array('name' => '管理员列表', 'act'=>'index', 'op'=>'Admin'),
 						array('name' => '角色管理', 'act'=>'role', 'op'=>'Admin'),
-                        array('name' => '机构管理', 'act'=>'organization', 'op'=>'Admin'),
                         array('name'=>'权限资源列表','act'=>'right_list','op'=>'System'),
 						array('name' => '管理员日志', 'act'=>'log', 'op'=>'Admin'),
 						array('name' => '供应商列表', 'act'=>'supplier', 'op'=>'Admin'),

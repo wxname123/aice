@@ -27,7 +27,7 @@
                     <label for="inst_type2">全国代理</label>
                     <input value="3"  name="inst_type" id="inst_type3" type="radio" >
                     <label for="inst_type3">市代理</label>
-                    <input value="5" name="inst_type" id="inst_type4" type="radio" >
+                    <input value="4" name="inst_type" id="inst_type4" type="radio" >
                     <label for="inst_type4">区县代理</label>
                     <span class="err"></span>
                 </dd>
@@ -83,11 +83,18 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
-                    <label >平台管理id</label>
+                    <label >所属管理</label>
                 </dt>
                 <dd class="opt">
-                    <input id="plat_admin_id"  name="plat_admin_id" value="" class="input-txt" type="text">
-                    <p class="notic">平台管理id</p>
+                    <div>
+                        <select name="admin_id" class="input-sm" class="form-control">
+                            <option value="">选择管理</option>
+                            <volist name="admin" id="list">
+                                <option value="{$list['admin_id']}" >{$list['user_name']}</option>
+                            </volist>
+                        </select>
+                    </div>
+                    <p class="notic">所属管理</p>
                 </dd>
             </dl>
             <dl class="row">
