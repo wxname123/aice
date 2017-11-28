@@ -258,6 +258,13 @@ class Admin extends Base {
     		}
     	}
     }
+
+    public function organization(){
+        $or = D('orgnization')->find();
+        return $this->fetch();
+    }
+
+
     
     public function log(){
     	$p = I('p/d',1);
@@ -270,6 +277,10 @@ class Admin extends Base {
 		$this->assign('page',$show);
     	return $this->fetch();
     }
+
+
+
+
 
 
 	/**

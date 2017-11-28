@@ -83,9 +83,17 @@ class UsersLogic extends Model
         }
     	$user['password'] = encrypt($user['password']);
     	$user['reg_time'] = time();
-        $user['is_agent']  = 1;
         $user['token'] = md5(time().mt_rand(1,999999999));
     	$user_id = M('users')->add($user);
+        if($user['inst_id'] !=null){
+            $arr=[
+                'inst_id'=>$user['inst_id'],
+                'user_id'=>$user_id,
+                'add_time'=>time(),
+                'open_status'=>1
+            ];
+            M('referrer')->save($arr);
+        }
     	if(!$user_id){
     		return array('status'=>-1,'msg'=>'添加失败');
     	}else{

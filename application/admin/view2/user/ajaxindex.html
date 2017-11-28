@@ -19,13 +19,13 @@
                 <td align="left" class="">
                     <div style="text-align: center; width: 150px;">{$list.nickname}</div>
                 </td>
-                <td align="left" class="">
-                    <if condition="$list['is_agent'] eq 0"> <div style="text-align: center; width: 80px;">普通会员</div>
-                        <elseif condition="$list['is_agent'] eq 1" /><div style="text-align: center; width: 80px;">市代理</div>
-                        <elseif condition="$list['is_agent'] eq 2" /><div style="text-align: center; width: 80px;">区代理</div>
-                        <else /> <div style="text-align: center; width: 80px;">省代理</div>
-                    </if>
-                </td>
+                <!--<td align="left" class="">-->
+                    <!--<if condition="$list['is_agent'] eq 0"> <div style="text-align: center; width: 80px;">普通会员</div>-->
+                        <!--<elseif condition="$list['is_agent'] eq 1" /><div style="text-align: center; width: 80px;">市代理</div>-->
+                        <!--<elseif condition="$list['is_agent'] eq 2" /><div style="text-align: center; width: 80px;">区代理</div>-->
+                        <!--<else /> <div style="text-align: center; width: 80px;">省代理</div>-->
+                    <!--</if>-->
+                <!--</td>-->
                 <td align="left" class="">
                     <div style="text-align: center; width: 150px;">{$list.mobile}
                         <if condition="($list['mobile_validated'] eq 0) AND ($list['mobile'])">

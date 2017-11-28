@@ -13,8 +13,8 @@ return	array(
 				)),
 				array('name' => '会员','child'=>array(
 						array('name'=>'会员列表','act'=>'index','op'=>'User'),
-                        array('name' => '区代理列表', 'act'=>'area', 'op'=>'Report'),
-                        array('name' => '市代理列表', 'act'=>'agent', 'op'=>'Report'),
+                        array('name' => '机构列表', 'act'=>'organization', 'op'=>'Report'),
+                        array('name' => '机构推荐人', 'act'=>'referrer', 'op'=>'Report'),
 						array('name'=>'会员等级','act'=>'levelList','op'=>'User'),
                         array('name'=>'会员认证','act'=>'memberAuth','op'=>'User'),
 						array('name'=>'充值记录','act'=>'recharge','op'=>'User'),
@@ -35,7 +35,8 @@ return	array(
 				array('name' => '权限','child'=>array(
 						array('name' => '管理员列表', 'act'=>'index', 'op'=>'Admin'),
 						array('name' => '角色管理', 'act'=>'role', 'op'=>'Admin'),
-						array('name'=>'权限资源列表','act'=>'right_list','op'=>'System'),
+                        array('name' => '机构管理', 'act'=>'organization', 'op'=>'Admin'),
+                        array('name'=>'权限资源列表','act'=>'right_list','op'=>'System'),
 						array('name' => '管理员日志', 'act'=>'log', 'op'=>'Admin'),
 						array('name' => '供应商列表', 'act'=>'supplier', 'op'=>'Admin'),
 				)),
@@ -48,8 +49,9 @@ return	array(
 						array('name' => '数据还原', 'act'=>'restore', 'op'=>'Tools'),
 				))
 	)),
-		
-	'shop'=>array('name'=>'商城','child'=>array(
+
+
+    'shop'=>array('name'=>'商城','child'=>array(
 				array('name' => '商品','child' => array(
 				    array('name' => '商品列表', 'act'=>'goodsList', 'op'=>'Goods'),
 					array('name' => '商品分类', 'act'=>'categoryList', 'op'=>'Goods'),

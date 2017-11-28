@@ -41,7 +41,6 @@ class User extends Base {
         trace($condition);
         $userList = $model->where($condition)->order($sort_order)->limit($Page->firstRow.','.$Page->listRows)->select();
         $user_id_arr = get_arr_column($userList, 'user_id');
-//        var_dump( $userList) ; die;
 
         //根据 $userList  中的  $user_id   去 cart表中查询出车型 和 车的价格
         if(!empty($userList)){
@@ -62,7 +61,6 @@ class User extends Base {
         $this->assign('page',$show);// 赋值分页输出
         $this->assign('pager',$Page);
         return $this->fetch();
-
     }
 
 
@@ -125,7 +123,7 @@ class User extends Base {
                 $userList[$k]['mobile_id'] = $v['user_id'] + BUSINESS_ID_BASE ;
             }
         }
-//        var_dump($userList) ; die ;
+
         $this->assign('first_leader',$first_leader);
         $this->assign('second_leader',$second_leader);
         $this->assign('third_leader',$third_leader);
@@ -220,6 +218,8 @@ class User extends Base {
      * 会员详细信息查看
      */
     public function detail(){
+        //机构
+        $sql = M('inst')->select();
         $uid = I('get.id');
         $user = D('users')->where(array('user_id'=>$uid))->find();
         if(!$user)
@@ -236,12 +236,6 @@ class User extends Base {
             }else{
                 $_POST['password'] = encrypt($_POST['password']);
             }
-
-            if(!empty($_POST['email']))
-            {   $email = trim($_POST['email']);
-                $c = M('users')->where("user_id != $uid and email = '$email'")->count();
-                $c && exit($this->error('邮箱不得和已有用户重复'));
-            }            
             
             if(!empty($_POST['mobile']))
             {   $mobile = trim($_POST['mobile']);
@@ -275,8 +269,8 @@ class User extends Base {
         $user['first_leader'] =$us['user_id'];
         $user['first_name']  = $us['nickname'];
         $user['first_lower'] = M('users')->where("uid = {$user['user_id']}")->count();
+        $this->assign('sql',$sql);
         $this->assign('user',$user);
-
         return $this->fetch();
     }
     
@@ -290,8 +284,12 @@ class User extends Base {
 			}else{
 				$this->error('添加失败,'.$res['msg'],U('User/index'));
 			}
+
     	}
         $p = M('region')->where(array('parent_id'=>0,'level'=> 1))->select();
+        //机构
+        $sql = M('inst')->select();
+        $this->assign('sql',$sql);
         $this->assign('province',$p);
     	return $this->fetch();
     }
@@ -774,6 +772,11 @@ class User extends Base {
         $this->ajaxReturn($return_arr);
     }
 
+
+    public function del(){
+        M('withdrawals')->where('id','=',$_GET['id'])->delete();
+    }
+
     /**
      * 修改编辑 申请提现
      */
@@ -833,10 +836,10 @@ class User extends Base {
     			$rdata = array('type'=>1,'money'=>$val['money'],'log_type_id'=>$val['id'],'user_id'=>$val['user_id']);
     			if($atype == 'online'){
     				 header("Content-type: text/html; charset=utf-8");
-                                 exit('请联系TPshop官网客服购买高级版支持此功能'); 
+                                 exit();
     			}else{
     				accountLog($val['user_id'], ($val['money'] * -1), 0,"管理员处理用户提现申请");//手动转账，默认视为已通过线下转方式处理了该笔提现申请
-    				$r = M('withdrawals')->where(array('id'=>$val['id']))->save(array('status'=>2,'pay_time'=>time()));
+    				 M('withdrawals')->where(array('id'=>$val['id']))->save(array('status'=>2,'pay_time'=>time()));
     				expenseLog($rdata);//支出记录日志
     			}
     		}

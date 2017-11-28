@@ -65,7 +65,7 @@ class Report extends Base{
 		return $this->fetch();
 	}
 
-    //	区代理列表
+    //	机构列表
     public function area(){
         $sql = "select a.user_id,a.mobile,from_unixtime(a.reg_time,'%Y-%m-%d') as reg_time,a.nickname ,b.name from __PREFIX__users  a";
         $sql .=" left join __PREFIX__region b on a.district=b.id  where is_agent = 2  order by reg_time DESC limit 100";
@@ -74,6 +74,154 @@ class Report extends Base{
         return $this->fetch();
     }
 
+    public function organization(){
+        $sql = M('inst')->select();
+        $this->assign('sql',$sql);
+        return $this->fetch();
+    }
+
+    public function orList(){
+        $add = array();
+        $inst = M('inst')->where('inst_id','=',$_GET['inst_id'])->find();
+        $sql = M('inst')->select();
+        //  获取省份
+        $province = M('region')->where(array('parent_id'=>0,'level'=>1))->select();
+        //  获取机构城市
+        $city =  M('region')->where(array('level'=>2))->select();
+        //  获取机构地区
+        $area =  M('region')->where(array('level'=>3))->select();
+        if(IS_POST){
+            $arr=[
+                'inst_type' => $_POST['inst_type'],
+                'inst_name' => $_POST['inst_name'],
+                'parent_inst' => $_POST['parent_inst'],
+                'plat_admin_id' => $_POST['plat_admin_id'],
+                'contact_user'  => $_POST['contact_user'],
+                'contact_phone' => $_POST['contact_phone'],
+                'contact_addr'  => $_POST['contact_addr'],
+                'open_status'   => $_POST['open_status'],
+                'add_time'      =>time()
+            ];
+            if($_POST['province'] != null){
+                $arr['province'] = $_POST['province'];
+            }
+            if($_POST['city'] != null){
+                $arr['city'] = $_POST['city'];
+            }
+            if($_POST['area'] != null){
+                $arr['area'] = $_POST['area'];
+            }
+            $a=M('inst')->where('inst_id','=',$_POST['inst_id'])->save($arr);
+            if($a){
+                $this->success('操作成功',U('Admin/Report/organization'));
+            }else{
+                $this->success('操作失败',U('Admin/Report/organization'));
+            }
+        }
+        $this->assign('province',$province);
+        $this->assign('city',$city);
+        $this->assign('area',$area);
+        $this->assign('sql',$sql);
+        $this->assign('inst',$inst);
+        return $this->fetch();
+    }
+
+
+
+    public function add_or(){
+        $add = array();
+        //  获取省份
+        $province = M('region')->where(array('parent_id'=>0,'level'=>1))->select();
+        //  获取订单城市
+        $city =  M('region')->where(array('parent_id'=>$add['province'],'level'=>2))->select();
+        //  获取订单地区
+        $area =  M('region')->where(array('parent_id'=>$add['city'],'level'=>3))->select();
+
+        //上级机构
+        $sql = M('inst')->select();
+        if(IS_POST){
+            $arr=[
+                'inst_type' => $_POST['inst_type'],
+                'inst_name' => $_POST['inst_name'],
+                'parent_inst' => $_POST['parent_inst'],
+                'plat_admin_id' => $_POST['plat_admin_id'],
+                'contact_user'  => $_POST['contact_user'],
+                'contact_phone' => $_POST['contact_phone'],
+                'contact_addr'  => $_POST['contact_addr'],
+                'open_status'   => $_POST['open_status'],
+                'add_time'      =>time()
+            ];
+            if($_POST['province'] != null){
+                $arr['province'] = $_POST['province'];
+            }
+            if($_POST['city'] != null){
+                $arr['city'] = $_POST['city'];
+            }
+            if($_POST['area'] != null){
+                $arr['area'] = $_POST['area'];
+            }
+            $a=M('inst')->add($arr);
+            if($a){
+                $this->success('操作成功',U('Admin/Report/organization'));
+            }else{
+                $this->success('操作失败',U('Admin/Report/organization'));
+            }
+        }
+        $this->assign('sql',$sql);
+        $this->assign('province',$province);
+        $this->assign('city',$city);
+        $this->assign('area',$area);
+        return $this->fetch();
+    }
+
+    public function referrer(){
+        //机构
+
+        $sql = M('inst a')->join('referrer b','a.inst_id = b.inst_id')->select();
+        $this->assign('ref',$sql);
+        return $this->fetch();
+    }
+
+    public function addRef(){
+        $sql = M('inst')->select();
+        if(IS_POST){
+            $arr=[
+                'inst_id' => $_POST['inst_id'],
+                'user_id' => $_POST['user_id'],
+                'open_status'   => $_POST['open_status'],
+                'add_time'      =>time()
+            ];
+            $a=M('referrer')->add($arr);
+            if($a){
+                $this->success('操作成功',U('Admin/Report/referrer'));
+            }else{
+                $this->success('操作失败',U('Admin/Report/referrer'));
+            }
+        }
+        $this->assign('sql',$sql);
+        return $this->fetch();
+    }
+    public  function refEdit(){
+        //机构
+        $sql = M('inst')->select();
+        $ref=M('referrer')->where('id','=',$_GET['id'])->find();
+        if(IS_POST){
+            $arr=[
+                'inst_id' => $_POST['inst_id'],
+                'user_id' => $_POST['user_id'],
+                'open_status'   => $_POST['open_status'],
+            ];
+            $a=M('referrer')->where('id','=',$_GET['id'])->save($arr);
+            if($a){
+                $this->success('操作成功',U('Admin/Report/referrer'));
+            }else{
+                $this->success('操作失败',U('Admin/Report/referrer'));
+            }
+        }
+        $this->assign('sql',$sql);
+        $this->assign('ref',$ref);
+        return $this->fetch();
+    }
 
     //	市代理列表
     public function agent(){
