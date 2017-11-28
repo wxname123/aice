@@ -436,9 +436,9 @@ class GoodsLogic extends Model
         $brandList = S('getSortBrands',$brandList);
         if(!empty($brandList))
             return $brandList;    
-        $brandList =  M("Brand")->cache(true)->select();
-        $brandIdArr =  M("Brand")->cache(true)->where("name in (select `name` from `".C('database.prefix')."brand` group by name having COUNT(id) > 1)")->getField('id,cat_id');
-        $goodsCategoryArr = M('goodsCategory')->cache(true)->where("level = 1")->getField('id,name');
+        $brandList =  M("Brand")->where("is_delete = 1")->cache(true)->select();
+        $brandIdArr =  M("Brand")->cache(true)->where("is_delete = 1")->where("name in (select `name` from `".C('database.prefix')."brand` group by name having COUNT(id) > 1)")->getField('id,cat_id');
+        $goodsCategoryArr = M('goodsCategory')->cache(true)->where("is_delete = 1")->where("level = 1")->getField('id,name');
         $nameList = array();
         foreach($brandList as $k => $v)
         {
@@ -467,7 +467,7 @@ class GoodsLogic extends Model
         {
             return $categoryList;
         }
-        $categoryList =  M("GoodsCategory")->cache(true)->getField('id,name,parent_id,level');
+        $categoryList =  M("GoodsCategory")->cache(true)->where("is_delete = 1")->getField('id,name,parent_id,level');
         $nameList = array();
         foreach($categoryList as $k => $v)
         {
