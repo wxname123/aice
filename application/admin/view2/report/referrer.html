@@ -7,8 +7,8 @@
     <div class="fixed-bar">
         <div class="item-title">
             <div class="subject">
-                <h3>区代理管理列表</h3>
-                <h5>区代理管理列表</h5>
+                <h3>机构列表</h3>
+                <h5>机构管理列表</h5>
             </div>
         </div>
     </div>
@@ -19,14 +19,13 @@
             <span title="收起提示" id="explanationZoom" style="display: block;"></span>
         </div>
         <ul>
-            <li>区代理列表, 由平台设置管理.</li>
+            <li>机构列表, 由平台设置管理.</li>
         </ul>
     </div>
     <div class="flexigrid">
         <div class="mDiv">
             <div class="ftitle">
-                <h3>区代理列表</h3>
-                <!--<h5>(共{$pager->totalRows}条记录)</h5>-->
+                <h3>机构列表</h3>
             </div>
             <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
         </div>
@@ -38,55 +37,81 @@
                         <th class="sign" width="50px">
                             <div style="width: 50px;"><i class="ico-check"></i></div>
                         </th>
-                        <th align="center" width="230px">
-                            <div style="text-align: center; width: 235px;">ID</div>
+                        <th align="center" width="100px">
+                            <div style="text-align: center; width: 100px;">ID</div>
                         </th>
                         <th align="center" width="210px">
-                            <div style="text-align: center; width: 210px;">姓名</div>
+                            <div style="text-align: center; width: 100px;">所属机构</div>
                         </th>
                         <th align="center" width="200px">
-                            <div style="text-align: center; width: 200px">手机号</div>
+                            <div style="text-align: center; width: 200px">用户id</div>
                         </th>
                         <th align="center" width="200px">
-                            <div style="text-align: center; width: 200px">所属区</div>
+                            <div style="text-align: center; width: 200px">添加时间</div>
                         </th>
                         <th align="center" class="">
-                            <div style="text-align: center; width: 100px;">加入时间</div>
+                            <div style="text-align: center; width: 100px;">开通状态</div>
+                        </th>
+                        <th align="center" axis="col1" class="handle">
+                            <div style="text-align: center; width: 150px;">操作</div>
                         </th>
                     </tr>
                     </thead>
                 </table>
             </div>
         </div>
+        <div class="tDiv">
+            <div class="tDiv2">
+                <div class="fbutton">
+                    <a href="/index.php?m=Admin&c=Report&a=addRef">
+                        <div class="add" title="添加推荐人">
+                            <span><i class="fa fa-plus"></i>添加推荐人</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
         <div class="bDiv" style="height: auto;">
             <div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
                 <table>
                     <tbody>
-                    <foreach name="list" item="vo" key="k" >
+                    <volist name="ref" id="vo">
                         <tr>
                             <td class="sign">
                                 <div style="width: 50px;"><i class="ico-check"></i></div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: left; width: 100px;">{$vo.user_id}</div>
+                                <div style="text-align: center; width: 100px;">{$vo['id']}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 100px;">{$vo.nickname}</div>
+                                <div style="text-align: center; width: 200px;">{$vo['inst_name']}</div>
                             </td>
                             <td align="center" class="">
-                                <div style="text-align: center; width: 100px;">{$vo.mobile}</div>
+                                <div style="text-align: center; width: 200px;">{$vo['user_id']}</div>
                             </td>
                             <td align="center" class="">
-                                <div style="text-align: center; width: 100px;">{$vo.name}</div>
+                                <div style="text-align: center; width: 200px;">{$vo['add_time']|date='Y-m-d H:i',###}</div>
                             </td>
                             <td align="center" class="">
-                                <div style="text-align: center; width: 100px;">{$vo.reg_time}</div>
+                                <if condition="$vo['open_status'] eq 1" >
+                                    <div style="text-align: center; width: 100px;">开通</div>
+                                    <else/>
+                                    <div style="text-align: center; width: 100px;">未开通</div>
+                                </if>
+                            </td>
+                            <td align="center" class="handle">
+                                <div style="text-align: center; width: 150px; max-width:150px;">
+                                    <a href="{:U('Report/refEdit',array('id'=>$vo['id']))}" class="btn blue"><i class="fa fa-search"></i>查看详情</a>
+                                </div>
                             </td>
                         </tr>
+                    </volist>
                     </foreach>
                     </tbody>
                 </table>
             </div>
+
             <div class="iDiv" style="display: none;"></div>
         </div>
     </div>

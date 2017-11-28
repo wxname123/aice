@@ -201,36 +201,36 @@ class Goods extends Base {
     /**
      *  商品列表
      */
-    public function ajaxGoodsList(){            
-        
-        $where = ' 1 = 1 '; // 搜索条件                
-        I('intro')    && $where = "$where and ".I('intro')." = 1" ;        
+    public function ajaxGoodsList(){
+
+        $where = ' 1 = 1 '; // 搜索条件
+        I('intro')    && $where = "$where and ".I('intro')." = 1" ;
         I('brand_id') && $where = "$where and brand_id = ".I('brand_id') ;
-        (I('is_on_sale') !== '') && $where = "$where and is_on_sale = ".I('is_on_sale') ;                
+        (I('is_on_sale') !== '') && $where = "$where and is_on_sale = ".I('is_on_sale') ;
         $cat_id = I('cat_id');
-        // 关键词搜索               
+        // 关键词搜索
         $key_word = I('key_word') ? trim(I('key_word')) : '';
         if($key_word)
         {
             $where = "$where and (goods_name like '%$key_word%' or goods_sn like '%$key_word%')" ;
         }
-        
+
         if($cat_id > 0)
         {
-            $grandson_ids = getCatGrandson($cat_id); 
+            $grandson_ids = getCatGrandson($cat_id);
             $where .= " and cat_id in(".  implode(',', $grandson_ids).") "; // 初始化搜索条件
         }
-        
-        $count = M('Goods')->where($where)->where('is_delete', 1)->count();
+
+        $count = M('Goods')->where($where)->count();
         $Page  = new AjaxPage($count,10);
         /**  搜索条件下 分页赋值
         foreach($condition as $key=>$val) {
-            $Page->parameter[$key]   =   urlencode($val);
+        $Page->parameter[$key]   =   urlencode($val);
         }
-        */
+         */
         $show = $Page->show();
         $order_str = "`{$_POST['orderby1']}` {$_POST['orderby2']}";
-        $goodsList = M('Goods')->where($where)->where('is_delete' , 0)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $catList = D('goods_category')->select();
         $catList = convert_arr_key($catList, 'id');
@@ -279,6 +279,8 @@ class Goods extends Base {
      */
     public function addEditGoods()
     {
+        //机构
+        $sql = M('inst')->select();
         $GoodsLogic = new GoodsLogic();
         $Goods = new \app\admin\model\Goods();
         $goods_id = I('goods_id');
@@ -421,6 +423,7 @@ class Goods extends Base {
         $plugin_shipping = M('plugin')->where(array('type' => array('eq', 'shipping')))->select();//插件物流
         $shipping_area = D('Shipping_area')->getShippingArea();//配送区域
         $goods_shipping_area_ids = explode(',', $goodsInfo['shipping_area_ids']);
+        $this->assign('sql',$sql);//机构
         $this->assign('certificate', $certificate);
         $this->assign('mission', $mission);
         $this->assign('goods_shipping_area_ids', $goods_shipping_area_ids);
