@@ -29,13 +29,17 @@ class  HomeList extends  Base {
                 throw  $e ;
             }
 
+            $user_id =  $this->jsondata[1] ;
+            $searchKey =   model('SearchKey');
+            $searchKey->setStartNum($page, $per_page) ;
 
             if($nav_id == "2" ){    // 汽车整车
+
                 //判断是否有传入  cat_id  参数
                  $cat_id = request()->get('cat_id') ;
                  $catModel =   model('Category');
                 if($cat_id == NULL ){
-                     $dataList =    $catModel->getAllCatList($page, $per_page) ;
+                     $dataList =    $catModel->getAllCatList($searchKey, $user_id) ;
                 }else{
                       //cat_id  必须为正整数
                        $cat_inter  =  isAppPositiveInteger($cat_id) ;
@@ -47,20 +51,21 @@ class  HomeList extends  Base {
                            ));
                            throw  $e ;
                        }
-                       $dataList = $catModel->getCatListBy($cat_id , $page, $per_page) ;
+
+                       $dataList = $catModel->getCatListBy($cat_id ,$searchKey, $user_id) ;
                 }
             }elseif ($nav_id == "4"){
                 //判断是否有传入  cat_id  参数
                 $brand_id = request()->get('brand_id') ;
                 $brandModel =   model('Brand');
                 if($brand_id == NULL ){
-                        $dataList = $brandModel->getAllBrandList($page, $per_page) ;
+                        $dataList = $brandModel->getAllBrandList($searchKey , $user_id) ;
                 }else{
-                        $dataList = $brandModel->getAllListBy( $brand_id ,$page , $per_page) ;
+                        $dataList = $brandModel->getAllListBy( $brand_id ,$searchKey , $user_id) ;
                 }
             }elseif ( $nav_id == "1"){
                         $gModel =   model('Good') ;
-                        $dataList =  $gModel->getRecomDataList($page , $per_page) ;
+                        $dataList =  $gModel->getRecomDataList($searchKey , $user_id) ;
             }
 
         if(!empty($dataList)){

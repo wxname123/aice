@@ -146,9 +146,11 @@ class   Good  extends  Base{
             throw  $e ;
         }
 
+          $user_id =  $this->jsondata[1] ;
           $goodModel =   model('Good');
-
-          $goodList =   $goodModel->getRecomList($page , $per_page) ;
+          $searchKey =   model('SearchKey');
+          $searchKey->setStartNum($page, $per_page) ;
+          $goodList =   $goodModel->getRecomList($searchKey, $user_id) ;
 
           if(!empty($goodList)){
               $e = new  ParameterException(array(
