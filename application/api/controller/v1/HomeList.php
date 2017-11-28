@@ -85,4 +85,55 @@ class  HomeList extends  Base {
         }
     }
 
+
+/*
+ *  搜索接口
+ *  @param    $page    int   :   当前页
+ *  @param    $per_page  int  :  每页显示的条目数
+ * */
+    public  function  searchList($page = 0 , $per_page = 10 , $key = ""){
+        $is_page_Inter =   isPageInteger($page) ;
+        $is_per_page_Inter =   isPageInteger($per_page) ;
+
+        if(!$is_page_Inter  || !$is_per_page_Inter){
+            $e = new  ParameterException(array(
+                'msg' => '分页参数必须为整数' ,
+                'errorCode' => '391022',
+            ));
+            throw  $e ;
+        }
+
+      if($key == ""){
+          $e = new  ParameterException(array(
+              'msg' => '搜索内容为空' ,
+              'errorCode' => '391040',
+          ));
+          throw  $e ;
+      }else{
+              $gModel =   model('Good') ;
+              $searchKey =   model('SearchKey');
+              $searchKey->setStartNum($page, $per_page) ;
+              $data =  $gModel->searchGoodList($searchKey , $key) ;
+              if(!empty($data)){
+                  $e = new  ParameterException(array(
+                      'msg' => 'success' ,
+                      'errorCode' => '1',
+                      'datas'  =>  $data ,
+                  ));
+                  throw  $e ;
+              }else{
+                  $e = new  ParameterException(array(
+                      'msg' => 'success' ,
+                      'errorCode' => '1',
+                      'datas'  =>  null  ,
+                  ));
+                  throw  $e ;
+              }
+      }
+
+
+
+
+    }
+
 }

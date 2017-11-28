@@ -41,7 +41,8 @@ class  Category  extends  Model{
 //                        ->limit($page , $per_page)
 //                        ->select();
 
-            $sql =  ' select   g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img  from tp_goods g  '
+            $sql =  ' select   g.goods_id ,g.goods_name , t.number  mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img  from tp_goods g  '
+                    . ' left join  tp_task t on t.goods_id = g.goods_id '
                     .  ' where  g.is_on_sale = 1 and g.is_delete    '  ;
 
             if($inst_id  == "1"){
@@ -76,8 +77,9 @@ class  Category  extends  Model{
 
          $inst_id =  $uModel->getUserValueBy($user_id, 'inst_id') ;
 
-         $sql    =  ' select  g.goods_id ,g.goods_name , g.mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img    from  tp_goods g   '
-                  .  '  where  g.is_on_sale = 1 and  g.is_delete = 1 and  g.cat_id ='.$cat_id.' ' ;
+         $sql    =  ' select  g.goods_id ,g.goods_name , t.number  mission, g.shop_price, g.goods_remark ,CONCAT( "'.BASE_PATH.'" , g.original_img) original_img    from  tp_goods g   '
+                     . ' left join  tp_task t on t.goods_id = g.goods_id '
+                    .  '  where  g.is_on_sale = 1 and  g.is_delete = 1 and  g.cat_id ='.$cat_id.' ' ;
 
           if($inst_id == "1"){
                 $sql .=  ' and g.inst_id = 1 '  ;

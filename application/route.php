@@ -29,6 +29,7 @@ Route::post('api/:version/user/regist','api/:version.User/regist');// 访问方�
 
 Route::post('api/:version/user/login','api/:version.User/login');
 Route::post('api/:version/user/password/reset','api/:version.User/reset');
+Route::post('api/:version/user/feedback','api/:version.FeedBack/feedback');   //消息反馈
 Route::get('api/:version/user/:user_id/getuserinfo','api/:version.User/getUserInfo');    //获取用户信息接口
 Route::put('api/:version/user/:user_id/updatesex','api/:version.User/updateSex');    //修改用户性别
 Route::get('api/:version/user/:user_id/subordinates','api/:version.User/getSubordinates');    //我的下级
@@ -68,6 +69,9 @@ Route::post('api/:version/message/sendsms','api/:version.SendSms/sendCode');    
 
 //汽车整车、产品品牌     全套接口
 Route::get('api/:version/nav/:nav_id/home/gethomelist','api/:version.HomeList/getHomeList');
+//搜索接口
+Route::get('api/:version/home/search','api/:version.HomeList/searchList');
+
 
 
 
